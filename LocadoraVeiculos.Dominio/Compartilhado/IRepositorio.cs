@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Dominio.Compartilhado
 {
-    public interface IRepositorioBase<T> where T : EntidadeBase<T>
+    public interface IRepositorio<T> where T : EntidadeBase<T>
     {
         ValidationResult Inserir(T novoRegistro);
 

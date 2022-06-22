@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.ModuloFuncionario
 {
-    public class Funcionario : EntidadeBase<Funcionario>
+    public interface IRepositorioFuncionario : IRepositorio<Funcionario>
     {
-        public override void Atualizar(Funcionario Registro)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using LocadoraVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.ModuloCliente
 {
-    public class ValidaCliente : AbstractValidator<Cliente>
+    public interface IRepositorioCliente : IRepositorio<Cliente>
     {
-        public ValidaCliente() { }
     }
 }

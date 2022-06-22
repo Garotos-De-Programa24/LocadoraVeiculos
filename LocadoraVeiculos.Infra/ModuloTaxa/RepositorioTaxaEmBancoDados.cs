@@ -1,12 +1,13 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.Compartilhado;
-using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.Compartilhado;
 using System;
 
-namespace LocadoraVeiculos.Infra.ModuloCliente
+
+namespace LocadoraVeiculos.Infra.ModuloTaxa
 {
-    public class RepositorioClienteEmBancoDados : RepositorioBase<Cliente, ValidaCliente, MapeadorCliente>,IRepositorioCliente
+    public class RepositorioTaxaEmBancoDados : RepositorioBase<Taxa, ValidaTaxa, MapeadorTaxa>, IRepositorioTaxa
     {
         protected override string sqlInserir => throw new NotImplementedException();
 
@@ -18,12 +19,12 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
 
         protected override string sqlSelecionarTodos => throw new NotImplementedException();
 
-        public Cliente SelecionarPorNumero(int numero)
+        public Taxa SelecionarPorNumero(int numero)
         {
             throw new NotImplementedException();
         }
 
-        ValidationResult IRepositorio<Cliente>.Excluir(Cliente registro)
+        ValidationResult IRepositorio<Taxa>.Excluir(Taxa registro)
         {
             throw new NotImplementedException();
         }
