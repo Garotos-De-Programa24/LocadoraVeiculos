@@ -28,7 +28,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 
         public override void Atualizar(Cliente Registro)
         {
-            throw new NotImplementedException();
+            //teste
         }
     }
 }
