@@ -9,6 +9,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
+        private string _nome; 
         public override void Atualizar(Cliente Registro)
         {
             throw new NotImplementedException();
