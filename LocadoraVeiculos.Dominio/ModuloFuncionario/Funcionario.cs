@@ -7,11 +7,27 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.ModuloFuncionario
 {
-    public class Funcionario : EntidadeBase<Funcionario>
+    internal class Funcionario
     {
-        public override void Atualizar(Funcionario Registro)
+        public Funcionario(string nome, string login, string senha, decimal salario, DateTime admissao, bool gerente)
         {
-            throw new NotImplementedException();
+
+            Nome = nome;
+            Login = login;
+            Senha = senha;
+            Salario = salario;
+            Admissao = admissao;
+            Gerente = gerente;
         }
+        public string Nome { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }
+        public decimal Salario { get; set; }
+        public DateTime Admissao { get; set; }  
+        public bool Gerente { get; set; }   
+
+
+
+
     }
 }
