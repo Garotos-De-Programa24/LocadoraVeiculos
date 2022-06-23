@@ -9,6 +9,16 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
 {
     public class ValidaTaxa : AbstractValidator<Taxa>
     {
-        public ValidaTaxa() { }
+        public ValidaTaxa()
+        {
+            RuleFor(x => x.Descricao)
+          .NotNull().NotEmpty().MinimumLength(3);
+
+            RuleFor(x => x.Equipamento)
+           .NotNull().NotEmpty();
+
+            RuleFor(x => x.Valor) 
+           .NotNull().NotEmpty();
+        }
     }
 }

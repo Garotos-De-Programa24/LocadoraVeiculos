@@ -4,6 +4,12 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
 {
     public class ValidaAgrupamentoVeiculo : AbstractValidator<Agrupamento>
     {
-        public ValidaAgrupamentoVeiculo() { }
+        public ValidaAgrupamentoVeiculo() 
+        {
+            RuleFor(x => x.NomeAgrupamento)
+            .NotNull().NotEmpty().MinimumLength(3);
+
+        
+        }
     }
 }
