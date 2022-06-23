@@ -181,7 +181,10 @@
             this.Controls.Add(this.btnVeiculos);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "TelaMenuInicial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaMenuInicial";
             this.ResumeLayout(false);
             this.PerformLayout();
