@@ -1,9 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LocadoraVeiculos.Tests.Infra.Compartilhado
+namespace TestProject2
 {
     [TestClass]
-    public class TestesDeIntegracaoBase
+    public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()

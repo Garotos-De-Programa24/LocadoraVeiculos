@@ -9,18 +9,22 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
-        public Cliente(string nome, int cpfCnpj, string endereco, int Cnh, string email, int telefone)
+        public Cliente()
+        {
+        }
+
+        public Cliente(string nome, int cPFCNPJ, string endereco, int Cnh, string email, int telefone)
         {
             Nome = nome;
-            CpfCnpj = cpfCnpj;
+            CPFCNPJ = cPFCNPJ;
             Endereco = endereco;
             CNH = Cnh;
             Email = email;
             Telefone = telefone;
-        } 
+        }
 
         public string Nome { get; set; }
-        public int CpfCnpj { get; set; }
+        public int CPFCNPJ { get; set; }
         public string Endereco { get; set; }
         public int Telefone { get; set; }
         public int CNH { get; set; }
