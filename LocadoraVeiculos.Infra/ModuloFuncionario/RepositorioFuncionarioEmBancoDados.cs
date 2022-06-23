@@ -2,15 +2,11 @@
 using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraVeiculos.Infra.ModuloFuncionario
 {
-    public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, ValidaFuncionario, MapeadorFuncionario>, IRepositorioFuncionario
+    public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, ValidaFuncionario, MapeadorFuncionario>
     {
         protected override string sqlInserir =>
             @"INSERT INTO [TBFUNCIONARIO]
@@ -19,7 +15,7 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
                     [LOGIN], 
                     [SENHA],
                     [SALARIO],                    
-                    [ADMISSAO],
+                    [DATAADMISSAO],
                     [GERENTE]
                 )
             VALUES
@@ -28,7 +24,7 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
                     @LOGIN,
                     @SENHA,
                     @SALARIO,
-                    @ADMISSAO,
+                    @DATAADMISSAO,
                     @GERENTE
                 ); SELECT SCOPE_IDENTITY();";
 
@@ -39,7 +35,7 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
                         [LOGIN] = @LOGIN, 
                         [SENHA] = @SENHA,
                         [SALARIO] = @SALARIO, 
-                        [ADMISSAO] = @ADMISSAO,
+                        [DATAADMISSAO] = @DATAADMISSAO,
                         [GERENTE] = @GERENTE
                     WHERE [ID] = @ID";
 
@@ -50,29 +46,32 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-                [ID] FUNCIONARIO_ID,       
-                [NOME] FUNCIONARIO_NOME,
-                [LOGIN] FUNCIONARIO_LOGIN,
-                [SENHA] FUNCIONARIO_SENHA,
-                [SALARIO] FUNCIONARIO_SALARIO,
-                [ADMISSAO] FUNCIONARIO_SENHA,
-                [SENHA] FUNCIONARIO_SENHA
+                [ID],       
+                [NOME],
+                [LOGIN],
+                [SENHA],
+                [SALARIO],
+                [DATAADMISSAO],
+                [GERENTE]
                 
             FROM
                 [TBFUNCIONARIO]
             WHERE
                 [ID] = @ID";
 
-        protected override string sqlSelecionarTodos => throw new NotImplementedException();
+        protected override string sqlSelecionarTodos =>
+            @"SELECT 
+                [ID],       
+                [NOME],
+                [LOGIN],
+                [SENHA],
+                [SALARIO],
+                [ADMISSAO],
+                [SENHA]                
+            FROM
+                [TBFUNCIONARIO]";
 
-        public Funcionario SelecionarPorNumero(int numero)
-        {
-            throw new NotImplementedException();
-        }
 
-        ValidationResult IRepositorio<Funcionario>.Excluir(Funcionario registro)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

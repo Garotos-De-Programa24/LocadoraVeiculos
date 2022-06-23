@@ -1,14 +1,14 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.ModuloFuncionario
 {
     public class Funcionario : EntidadeBase<Funcionario>
     {
+        public Funcionario()
+        {
+        }
+
         public Funcionario(string nome, string login, string senha, decimal salario, DateTime admissao, bool gerente)
         {
             Nome = nome;
