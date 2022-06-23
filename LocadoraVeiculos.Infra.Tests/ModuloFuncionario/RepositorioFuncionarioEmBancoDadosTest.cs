@@ -91,30 +91,30 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloFuncionario
             Assert.AreEqual(funcionario, funcionarioEncontrado);
         }
 
-        //[TestMethod]
-        //public void Deve_selecionar_todos_os_funcionarios()
-        //{
-        //    //arrange
-        //    var funcionario1 = new Funcionario("Matheus de Souza", "matheus.souza", "321");
-        //    var funcionario2 = new Funcionario("Camila da Silva", "camila.silva", "654");
-        //    var funcionario3 = new Funcionario("Joana de Souza", "joana.souza", "987");
+        [TestMethod]
+        public void Deve_selecionar_todos_os_funcionarios()
+        {
+            //arrange
+            var funcionario1 = new Funcionario("Joaninha","joaninha@funcionario.com","joaninha123",2000,new DateTime(2022,01,03,01,01,01),false);
+            var funcionario2 = new Funcionario("Camila da Silva", "camila.silva","camilinha321", 3000, new DateTime(2022, 01, 03, 01, 01, 01), true);
+            var funcionario3 = new Funcionario("Joana de Souza", "joana.souza","Joanona", 2700,new DateTime(2022,01,01,01,01,01),false);
 
-        //    var repositorio = new RepositorioFuncionarioEmBancoDados();
-        //    repositorio.Inserir(funcionario1);
-        //    repositorio.Inserir(funcionario2);
-        //    repositorio.Inserir(funcionario3);
+            var repositorio = new RepositorioFuncionarioEmBancoDados();
+            repositorio.Inserir(funcionario1);
+            repositorio.Inserir(funcionario2);
+            repositorio.Inserir(funcionario3);
 
-        //    //action
-        //    var funcionarios = repositorio.SelecionarTodos();
+            //action
+            var funcionarios = repositorio.SelecionarTodos();
 
-        //    //assert
+            //assert
 
-        //    Assert.AreEqual(3, funcionarios.Count);
+            Assert.AreEqual(3, funcionarios.Count);
 
-        //    Assert.AreEqual(funcionario1.Nome, funcionarios[0].Nome);
-        //    Assert.AreEqual(funcionario2.Nome, funcionarios[1].Nome);
-        //    Assert.AreEqual(funcionario3.Nome, funcionarios[2].Nome);
+            Assert.AreEqual(funcionario1.Nome, funcionarios[0].Nome);
+            Assert.AreEqual(funcionario2.Nome, funcionarios[1].Nome);
+            Assert.AreEqual(funcionario3.Nome, funcionarios[2].Nome);
 
-        //}
+        }
     }
 }

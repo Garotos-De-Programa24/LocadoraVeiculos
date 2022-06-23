@@ -30,5 +30,21 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
         {
             throw new NotImplementedException();
         }
+        public override bool Equals(object obj)
+        {
+            Funcionario funcionario = obj as Funcionario;
+
+            if (funcionario == null)
+                return false;
+
+            return
+                funcionario.Id.Equals(Id) &&
+                funcionario.Nome.Equals(Nome) &&
+                funcionario.Login.Equals(Login) &&
+                funcionario.Senha.Equals(Senha) &&
+                funcionario.Salario.Equals(Salario) &&
+                funcionario.DataAdmissao.Equals(DataAdmissao) &&
+                funcionario.Gerente.Equals(Gerente);
+        }
     }
 }

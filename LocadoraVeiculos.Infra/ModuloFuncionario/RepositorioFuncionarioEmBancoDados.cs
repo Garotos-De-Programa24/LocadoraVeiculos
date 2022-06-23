@@ -66,8 +66,8 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
                 [LOGIN],
                 [SENHA],
                 [SALARIO],
-                [ADMISSAO],
-                [SENHA]                
+                [DATAADMISSAO],
+                [GERENTE]                
             FROM
                 [TBFUNCIONARIO]";
 
