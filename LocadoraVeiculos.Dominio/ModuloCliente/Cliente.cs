@@ -13,21 +13,22 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
         {
         }
 
-        public Cliente(string nome, int cPFCNPJ, string endereco, int Cnh, string email, int telefone)
+        public Cliente(string nome, int cpfCnpj, string endereco, int cnhCondutor, string email, int telefone)
         {
             Nome = nome;
-            CPFCNPJ = cPFCNPJ;
+            CpfCnpj = cpfCnpj;
             Endereco = endereco;
-            CNH = Cnh;
+            CnhCondutor = cnhCondutor;
             Email = email;
             Telefone = telefone;
         }
 
         public string Nome { get; set; }
-        public int CPFCNPJ { get; set; }
+        public int CpfCnpj { get; set; }
         public string Endereco { get; set; }
-        public int Telefone { get; set; }
-        public int CNH { get; set; }
+        public int CnhCondutor { get; set; }
+        public DateTime ValidadeCnh { get; set; }
+        public int Telefone { get; set; }        
         public string Email { get; set; }
 
         public override void Atualizar(Cliente Registro)

@@ -15,15 +15,15 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
             Login = login;
             Senha = senha;
             Salario = salario;
-            Admissao = admissao;
+            DataAdmissao = admissao;
             Gerente = gerente;
         }
 
         public string Nome { get; set; }
-        public string Login { get; set; }
-        public string Senha { get; set; }
         public decimal Salario { get; set; }
-        public DateTime Admissao { get; set; }
+        public DateTime DataAdmissao { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }        
         public bool Gerente { get; set; }
 
         public override void Atualizar(Funcionario Registro)

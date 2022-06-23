@@ -52,6 +52,8 @@
             this.lVeiculo = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.cBoxAgrupamento = new System.Windows.Forms.ComboBox();
+            this.lAgrupamento = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -270,11 +272,31 @@
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             // 
+            // cBoxAgrupamento
+            // 
+            this.cBoxAgrupamento.FormattingEnabled = true;
+            this.cBoxAgrupamento.Location = new System.Drawing.Point(114, 300);
+            this.cBoxAgrupamento.Name = "cBoxAgrupamento";
+            this.cBoxAgrupamento.Size = new System.Drawing.Size(173, 23);
+            this.cBoxAgrupamento.TabIndex = 51;
+            // 
+            // lAgrupamento
+            // 
+            this.lAgrupamento.AutoSize = true;
+            this.lAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lAgrupamento.Location = new System.Drawing.Point(16, 302);
+            this.lAgrupamento.Name = "lAgrupamento";
+            this.lAgrupamento.Size = new System.Drawing.Size(92, 16);
+            this.lAgrupamento.TabIndex = 50;
+            this.lAgrupamento.Text = "Agrupamento";
+            // 
             // TelaCadastroVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 361);
+            this.Controls.Add(this.cBoxAgrupamento);
+            this.Controls.Add(this.lAgrupamento);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.txtKmPercorridos);
@@ -336,5 +358,7 @@
         private System.Windows.Forms.Label lVeiculo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.ComboBox cBoxAgrupamento;
+        private System.Windows.Forms.Label lAgrupamento;
     }
 }

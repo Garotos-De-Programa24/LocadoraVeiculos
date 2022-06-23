@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.ModuloVeiculo
 {
-    public class AgrupamentoVeiculo : EntidadeBase<AgrupamentoVeiculo>
+    public class Agrupamento : EntidadeBase<Agrupamento>
     {
         public string NomeAgrupamento { get; set; }
-        public List<Veiculo> Veiculos { get; set; }
        
-        public override void Atualizar(AgrupamentoVeiculo Registro)
+        public override void Atualizar(Agrupamento Registro)
         {
             throw new NotImplementedException();
         }
