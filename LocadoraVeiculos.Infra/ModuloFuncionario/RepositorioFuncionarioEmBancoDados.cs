@@ -12,13 +12,56 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
 {
     public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, ValidaFuncionario, MapeadorFuncionario>, IRepositorioFuncionario
     {
-        protected override string sqlInserir => throw new NotImplementedException();
+        protected override string sqlInserir =>
+            @"INSERT INTO [TBFUNCIONARIO]
+                (
+                    [NOME],       
+                    [LOGIN], 
+                    [SENHA],
+                    [SALARIO],                    
+                    [ADMISSAO],
+                    [GERENTE]
+                )
+            VALUES
+                (
+                    @NOME,
+                    @LOGIN,
+                    @SENHA,
+                    @SALARIO,
+                    @ADMISSAO,
+                    @GERENTE
+                ); SELECT SCOPE_IDENTITY();";
 
-        protected override string sqlEditar => throw new NotImplementedException();
+        protected override string sqlEditar =>
+                 @" UPDATE [TBFUNCIONARIO]
+                    SET 
+                        [NOME] = @NOME, 
+                        [LOGIN] = @LOGIN, 
+                        [SENHA] = @SENHA,
+                        [SALARIO] = @SALARIO, 
+                        [ADMISSAO] = @ADMISSAO,
+                        [GERENTE] = @GERENTE
+                    WHERE [ID] = @ID";
 
-        protected override string sqlExcluir => throw new NotImplementedException();
 
-        protected override string sqlSelecionarPorId => throw new NotImplementedException();
+        protected override string sqlExcluir =>
+              @"DELETE FROM [TBFUNCIONARIO] 
+                    WHERE [ID] = @ID";
+
+        protected override string sqlSelecionarPorId =>
+            @"SELECT 
+                [ID] FUNCIONARIO_ID,       
+                [NOME] FUNCIONARIO_NOME,
+                [LOGIN] FUNCIONARIO_LOGIN,
+                [SENHA] FUNCIONARIO_SENHA,
+                [SALARIO] FUNCIONARIO_SALARIO,
+                [ADMISSAO] FUNCIONARIO_SENHA,
+                [SENHA] FUNCIONARIO_SENHA
+                
+            FROM
+                [TBFUNCIONARIO]
+            WHERE
+                [ID] = @ID";
 
         protected override string sqlSelecionarTodos => throw new NotImplementedException();
 

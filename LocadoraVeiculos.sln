@@ -13,15 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Infra", "L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes de Integração", "Testes de Integração", "{A2AF415E-CCCB-46C6-9319-E29CDD7E0785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Tests.Infra", "LocadoraVeiculos.Tests\LocadoraVeiculos.Tests.Infra.csproj", "{0313E93C-80F1-473B-A021-61313E99F33A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Tests.Infra", "LocadoraVeiculos.Tests\LocadoraVeiculos.Tests.Infra.csproj", "{0313E93C-80F1-473B-A021-61313E99F33A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{BD1A0393-79B8-4397-B11F-D80E2133B8BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Tests", "LocadoraVeiculos.Tests\LocadoraVeiculos.Tests.csproj", "{0313E93C-80F1-473B-A021-61313E99F33A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentacao", "Apresentacao", "{52406796-9F18-45E8-A443-0533B10C3BAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Apresentacao", "LocadoraVeiculos.Apresentacao\LocadoraVeiculos.Apresentacao.csproj", "{F8A2967C-6B16-4BBD-AC3E-D9890FA036F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Apresentacao", "LocadoraVeiculos.Apresentacao\LocadoraVeiculos.Apresentacao.csproj", "{F8A2967C-6B16-4BBD-AC3E-D9890FA036F1}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestesUnitarios", "TestesUnitarios", "{C9086E24-6084-492D-94C0-2980A735A654}"
 EndProject
 Global
