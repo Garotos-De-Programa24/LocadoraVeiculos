@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.ModuloFuncionario
 {
-    public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, ValidaFuncionario, MapeadorFuncionario>, IRepositorioFuncionario
+    public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, ValidaFuncionario, MapeadorFuncionario>
     {
         protected override string sqlInserir =>
             @"INSERT INTO [TBFUNCIONARIO]
@@ -63,16 +63,7 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
             WHERE
                 [ID] = @ID";
 
-        protected override string sqlSelecionarTodos => throw new NotImplementedException();
-
-        public Funcionario SelecionarPorNumero(int numero)
-        {
-            throw new NotImplementedException();
-        }
-
-        ValidationResult IRepositorio<Funcionario>.Excluir(Funcionario registro)
-        {
-            throw new NotImplementedException();
-        }
+        protected override string sqlSelecionarTodos => throw new NotImplementedException();        
+        
     }
 }

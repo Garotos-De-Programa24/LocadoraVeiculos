@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Infra.Compartilhado
     {
         protected string enderecoBanco =
             @"Data Source=(LOCALDB)\MSSQLLOCALDB;
-              Initial Catalog=nao sei ainda;
+              Initial Catalog=LocadoraDB;
               Integrated Security=True";
 
         protected abstract string sqlInserir { get; }

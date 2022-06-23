@@ -11,39 +11,37 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
     {
         public override void ConfigurarParametros(Cliente registro, SqlCommand comando)
         {
-                    //SÓ EXEMPLO MESMOOOO
-
-            //comando.Parameters.AddWithValue("ID", registro.Id);
-            //comando.Parameters.AddWithValue("NOME", registro.Nome);
-            //comando.Parameters.AddWithValue("TELEFONE", registro.Telefone);
-            //comando.Parameters.AddWithValue("EMAIL", registro.Email);
-            //comando.Parameters.AddWithValue("CIDADE", registro.Cidade);
-            //comando.Parameters.AddWithValue("ESTADO ", registro.Estado);
+            comando.Parameters.AddWithValue("ID", registro.Id);
+            comando.Parameters.AddWithValue("NOME", registro.Nome);
+            comando.Parameters.AddWithValue("CPFCNPJ", registro.CpfCnpj);
+            comando.Parameters.AddWithValue("ENDERECO", registro.Endereco);
+            comando.Parameters.AddWithValue("CNHCONDUTOR", registro.CnhCondutor);
+            comando.Parameters.AddWithValue("EMAIL", registro.Email);
+            comando.Parameters.AddWithValue("TELEFONE", registro.Telefone);
         }
 
         public override Cliente ConverterRegistro(SqlDataReader leitorRegistro)
         {
+            if(leitorRegistro["ID"] == DBNull.Value)
+                return null;
 
-                    //SÓ EXEMPLO
+            var id = Convert.ToInt32(leitorRegistro["ID"]);
+            var nome = Convert.ToString(leitorRegistro["NOME"]);
+            var cpfCnpj = Convert.ToString(leitorRegistro["CPFCNPJ"]);
+            var endereco = Convert.ToString(leitorRegistro["ENDERECO"]);                      
+            var cnhCondutor = Convert.ToString(leitorRegistro["CNHCONDUTOR"]);
+            var email = Convert.ToString(leitorRegistro["EMAIL"]);
+            var telefone = Convert.ToString(leitorRegistro["TELEFONE"]);
 
-            //if(leitorRegistro["FORNECEDOR_ID"] == DBNull.Value)
-            //    return null;
-
-            //var id = Convert.ToInt32(leitorRegistro["FORNECEDOR_ID"]);
-            //var nome = Convert.ToString(leitorRegistro["FORNECEDOR_NOME"]);
-            //var telefone = Convert.ToString(leitorRegistro["FORNECEDOR_TELEFONE"]);
-            //var email = Convert.ToString(leitorRegistro["FORNECEDOR_EMAIL"]);
-            //var cidade = Convert.ToString(leitorRegistro["FORNECEDOR_CIDADE"]);
-            //var estado = Convert.ToString(leitorRegistro["FORNECEDOR_ESTADO"]);
-
-            //Fornecedor fornecedor = new Fornecedor();
-            //fornecedor.Id = id;
-            //fornecedor.Nome = nome;
-            //fornecedor.Telefone = telefone;
-            //fornecedor.Email = email;
-            //fornecedor.Cidade = cidade;
-            //fornecedor.Estado = estado;
             Cliente cliente = new Cliente();
+            cliente.Id = id;
+            cliente.Nome = nome;
+            cliente.CpfCnpj = cpfCnpj;
+            cliente.Endereco = endereco;
+            cliente.CnhCondutor = cnhCondutor;
+            cliente.Email = email;
+            cliente.Telefone = telefone;
+            
             return cliente;
         }
     }
