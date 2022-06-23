@@ -11,9 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{061826BF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Infra", "LocadoraVeiculos.Infra\LocadoraVeiculos.Infra.csproj", "{3A4D922C-2AD2-4ABE-99D0-C6DF02DA328C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A2AF415E-CCCB-46C6-9319-E29CDD7E0785}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes de Integração", "Testes de Integração", "{A2AF415E-CCCB-46C6-9319-E29CDD7E0785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Tests", "LocadoraVeiculos.Tests\LocadoraVeiculos.Tests.csproj", "{0313E93C-80F1-473B-A021-61313E99F33A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Tests.Infra", "LocadoraVeiculos.Tests\LocadoraVeiculos.Tests.Infra.csproj", "{0313E93C-80F1-473B-A021-61313E99F33A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{BD1A0393-79B8-4397-B11F-D80E2133B8BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestesUnitarios", "TestesUnitarios", "{C9086E24-6084-492D-94C0-2980A735A654}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,7 +44,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F4EF4DCA-57DE-4EB6-B4CA-E0D1153F29F9} = {E2BF2607-9C10-4589-8B3B-79DE9A33048F}
 		{3A4D922C-2AD2-4ABE-99D0-C6DF02DA328C} = {061826BF-B561-42EF-AC27-F1446D7E8696}
+		{A2AF415E-CCCB-46C6-9319-E29CDD7E0785} = {BD1A0393-79B8-4397-B11F-D80E2133B8BE}
 		{0313E93C-80F1-473B-A021-61313E99F33A} = {A2AF415E-CCCB-46C6-9319-E29CDD7E0785}
+		{C9086E24-6084-492D-94C0-2980A735A654} = {BD1A0393-79B8-4397-B11F-D80E2133B8BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8C3C4CC-A35E-41D0-B2C7-B2E20C17B7CA}
