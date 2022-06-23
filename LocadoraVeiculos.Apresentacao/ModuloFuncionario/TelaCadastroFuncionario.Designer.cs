@@ -66,7 +66,7 @@
             this.lTitulo.Name = "lTitulo";
             this.lTitulo.Size = new System.Drawing.Size(253, 25);
             this.lTitulo.TabIndex = 2;
-            this.lTitulo.Text = "Cadastro de Funcionarios";
+            this.lTitulo.Text = "Cadastro de Funcionários";
             // 
             // panel1
             // 
