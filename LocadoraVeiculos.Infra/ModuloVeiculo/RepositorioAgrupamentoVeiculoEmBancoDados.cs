@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.ModuloVeiculo
 {
-    public class RepositorioAgrupamentoVeiculoEmBancoDados : RepositorioBase<AgrupamentoVeiculo, ValidaAgrupamentoVeiculo, MapeadorAgrupamentoVeiculo>, IRepositorioAgrupamentoVeiculo
+    public class RepositorioAgrupamentoVeiculoEmBancoDados : RepositorioBase<Agrupamento, ValidaAgrupamentoVeiculo, MapeadorAgrupamentoVeiculo>, IRepositorioAgrupamentoVeiculo
     {
         protected override string sqlInserir => throw new NotImplementedException();
 
@@ -22,12 +22,12 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
 
         protected override string sqlSelecionarTodos => throw new NotImplementedException();
 
-        public AgrupamentoVeiculo SelecionarPorNumero(int numero)
+        public Agrupamento SelecionarPorNumero(int numero)
         {
             throw new NotImplementedException();
         }
 
-        ValidationResult IRepositorio<AgrupamentoVeiculo>.Excluir(AgrupamentoVeiculo registro)
+        ValidationResult IRepositorio<Agrupamento>.Excluir(Agrupamento registro)
         {
             throw new NotImplementedException();
         }

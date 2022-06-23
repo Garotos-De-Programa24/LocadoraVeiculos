@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.ModuloVeiculo
 {
-    public class MapeadorAgrupamentoVeiculo : MapeadorBase<AgrupamentoVeiculo>
+    public class MapeadorAgrupamentoVeiculo : MapeadorBase<Agrupamento>
     {
-        public override void ConfigurarParametros(AgrupamentoVeiculo registro, SqlCommand comando)
+        public override void ConfigurarParametros(Agrupamento registro, SqlCommand comando)
         {
             throw new NotImplementedException();
         }
 
-        public override AgrupamentoVeiculo ConverterRegistro(SqlDataReader leitorRegistro)
+        public override Agrupamento ConverterRegistro(SqlDataReader leitorRegistro)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestProject1
+namespace LocadoraVeiculos.Infra.Tests
 {
     [TestClass]
     public class UnitTest1
