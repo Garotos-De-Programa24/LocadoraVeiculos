@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"INSERT INTO [TBCLIENTE] 
                 (
                     [NOME],
-                    [CPFCNPJ],
+                    [CPF],
                     [ENDERECO],
                     [CNHCONDUTOR],
                     [VALIDADECNH],
@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
 	            VALUES
                 (
                     @NOME,
-                    @CPFCNPJ,
+                    @CPF,
                     @ENDERECO,
                     @CNHCONDUTOR,
                     @VALIDADECNH,
@@ -36,7 +36,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"UPDATE [TBCLIENTE]	
 		        SET
 			        [NOME] = @NOME,
-			        [CPFCNPJ] = @CPFCNPJ,
+			        [CPF] = @CPF,
                     [ENDERECO] = @ENDERECO,
                     [CNHCONDUTOR] = @CNHCONDUTOR,
                     [VALIDADECNH] = @VALIDADECNH,
@@ -54,7 +54,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"SELECT 
 		            [ID],
                     [NOME],
-                    [CPFCNPJ],
+                    [CPF],
                     [ENDERECO],
                     [CNHCONDUTOR],
                     [VALIDADECNH],
@@ -69,7 +69,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"SELECT 
 		            [ID],
 		            [NOME],
-                    [CPFCNPJ],
+                    [CPF],
                     [ENDERECO],
                     [CNHCONDUTOR],
                     [VALIDADECNH],

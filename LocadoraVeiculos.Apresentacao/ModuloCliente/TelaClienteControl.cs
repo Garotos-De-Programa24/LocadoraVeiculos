@@ -19,9 +19,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Número"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "CpfCnpj", HeaderText = "CPF/CNPJ"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cpf", HeaderText = "CPF"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Endereco", HeaderText = "Endereço"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "CnhCondutor", HeaderText = "CNH Condutor"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "ValidadeCnh", HeaderText = "Validade CNH"},
@@ -38,7 +38,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
 
             foreach (var cliente in clientes)
             {
-                grid.Rows.Add(cliente.Id, cliente.Nome, cliente.CpfCnpj, cliente.Endereco,
+                grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Cpf, cliente.Endereco,
                     cliente.CnhCondutor, cliente.ValidadeCnh.ToString("dd/MM/yyyy"), cliente.Email, cliente.Telefone);
                 
             }

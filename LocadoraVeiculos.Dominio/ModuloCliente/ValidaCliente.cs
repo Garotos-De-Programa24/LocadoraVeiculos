@@ -15,20 +15,23 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
             RuleFor(x => x.Nome)
            .NotNull().NotEmpty().MinimumLength(3);
 
-            RuleFor(x => x.CpfCnpj)
-           .NotNull().NotEmpty().MinimumLength(3);
+            RuleFor(x => x.Cpf)
+           .NotNull().NotEmpty().MinimumLength(11).MaximumLength(18);
 
             RuleFor(x => x.Endereco)
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Telefone)
-           .NotNull().NotEmpty().MinimumLength(3); 
+           .NotNull().NotEmpty().MinimumLength(12); 
 
             RuleFor(x => x.CnhCondutor)
-           .NotNull().NotEmpty().MinimumLength(3);
+           .NotNull().NotEmpty().MinimumLength(10).MaximumLength(11);
+
+            RuleFor(x => x.ValidadeCnh)
+            .GreaterThanOrEqualTo(DateTime.Today);
 
             RuleFor(x => x.Email)
-           .NotNull().NotEmpty().MinimumLength(3);
+           .EmailAddress();
 
         }
     }
