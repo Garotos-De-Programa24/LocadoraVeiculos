@@ -31,7 +31,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             {
                 cliente = value;
                 txtNome.Text = cliente.Nome;
-                txtCPFCNPJ.Text = cliente.CpfCnpj;
+                txtCPF.Text = cliente.Cpf;
                 txtEndereco.Text = cliente.Endereco;                
                 txtCNHCondutor.Text = cliente.CnhCondutor;
 
@@ -49,7 +49,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             cliente.Nome = txtNome.Text;
-            cliente.CpfCnpj = txtCPFCNPJ.Text;
+            cliente.Cpf = txtCPF.Text;
             cliente.Endereco = txtEndereco.Text;
             cliente.CnhCondutor = txtCNHCondutor.Text;
             cliente.ValidadeCnh = dateValidade.Value;

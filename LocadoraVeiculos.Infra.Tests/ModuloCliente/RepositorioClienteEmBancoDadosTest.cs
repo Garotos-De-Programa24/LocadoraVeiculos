@@ -22,7 +22,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
 
             cliente = new Cliente();
             cliente.Nome = "Pedro";
-            cliente.CpfCnpj = "100.000.000-00";
+            cliente.Cpf = "100.000.000-00";
             cliente.Endereco = "Lages";
             cliente.CnhCondutor = "1231545215";
             cliente.ValidadeCnh = DateTime.Today;
@@ -33,7 +33,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_inserir_novo_fornecedor()
+        public void Deve_inserir_novo_cliente()
         {
             //action
             repositorio.Inserir(cliente);
@@ -46,14 +46,14 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_editar_informacoes_fornecedor()
+        public void Deve_editar_informacoes_cliente()
         {
             //arrange                      
             repositorio.Inserir(cliente);
 
             //action
             cliente.Nome = "Joao";
-            cliente.CpfCnpj = "100.000.000-10";
+            cliente.Cpf = "100.000.000-10";
             cliente.Endereco = "Lages-Sc";
             cliente.CnhCondutor = "1234567890";
             cliente.Email = "joao@email.com";
@@ -69,7 +69,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_excluir_fornecedor()
+        public void Deve_excluir_cliente()
         {
             //arrange           
             repositorio.Inserir(cliente);
@@ -83,7 +83,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_selecionar_apenas_um_fornecedor()
+        public void Deve_selecionar_apenas_um_clientes()
         {
             //arrange          
             repositorio.Inserir(cliente);
@@ -97,12 +97,12 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_selecionar_todos_os_fornecedores()
+        public void Deve_selecionar_todos_os_clientes()
         {
             //arrange
-            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "333333333", DateTime.Today, "althis@gmail.com",  "99999-9999");
-            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "222222222", DateTime.Today, "altermed@gmail.com", "88888-8888");
-            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "1111111111", DateTime.Today, "riomed@gmail.com", "77777-7777");
+            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "33333333333", DateTime.Today, "lucas@gmail.com",  "049 99999-9999");
+            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "22222222223", DateTime.Today, "tiago@gmail.com", "049 88888-8888");
+            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "11111111113", DateTime.Today, "riomed@gmail.com", "049 77777-7777");
 
             var repositorio = new RepositorioClienteEmBancoDados();
             repositorio.Inserir(c0);
