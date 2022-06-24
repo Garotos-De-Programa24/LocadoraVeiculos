@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         {
 
         }
-        public Taxa(string equipamento, int valor, string descricao)
+        public Taxa(string equipamento, decimal valor, string descricao)
         {
             Equipamento = equipamento;
             Valor = valor;
@@ -27,6 +27,19 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         public override void Atualizar(Taxa Registro)
         {
             throw new NotImplementedException();
+        }
+        public override bool Equals(object obj)
+        {
+            Taxa taxa = obj as Taxa;
+
+            if (taxa == null)
+                return false;
+
+            return
+                taxa.Id.Equals(Id) &&
+                taxa.Equipamento.Equals(Equipamento) &&
+                taxa.Descricao.Equals(Descricao) &&
+                taxa.Valor.Equals(Valor);
         }
     }
 }

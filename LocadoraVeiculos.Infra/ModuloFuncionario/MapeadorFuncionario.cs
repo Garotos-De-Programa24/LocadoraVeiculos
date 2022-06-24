@@ -1,20 +1,40 @@
 ﻿
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.Compartilhado;
+using System;
 using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.ModuloFuncionario
 {
     public class MapeadorFuncionario : MapeadorBase<Funcionario>
     {
-        public override void ConfigurarParametros(Funcionario registro, SqlCommand comando)
+        public override void ConfigurarParametros(Funcionario funcionario, SqlCommand comando)
         {
-            throw new System.NotImplementedException();
+            comando.Parameters.AddWithValue("ID", funcionario.Id);
+            comando.Parameters.AddWithValue("NOME", funcionario.Nome);
+            comando.Parameters.AddWithValue("SALARIO", funcionario.Salario);
+            comando.Parameters.AddWithValue("DATAADMISSAO", funcionario.DataAdmissao);
+            comando.Parameters.AddWithValue("LOGIN", funcionario.Login);
+            comando.Parameters.AddWithValue("SENHA", funcionario.Senha);
+            comando.Parameters.AddWithValue("GERENTE", funcionario.Gerente);
+
         }
 
-        public override Funcionario ConverterRegistro(SqlDataReader leitorRegistro)
+        public override Funcionario ConverterRegistro(SqlDataReader leitorFuncionario)
         {
-            throw new System.NotImplementedException();
+            var id = Convert.ToInt32(leitorFuncionario["ID"]);
+            var nome = Convert.ToString(leitorFuncionario["NOME"]);
+            var salario = Convert.ToDecimal(leitorFuncionario["SALARIO"]);
+            var dataadmissao = Convert.ToDateTime(leitorFuncionario["DATAADMISSAO"]);
+            var login = Convert.ToString(leitorFuncionario["LOGIN"]);
+            var senha = Convert.ToString(leitorFuncionario["SENHA"]);
+            var gerente = Convert.ToBoolean(leitorFuncionario["GERENTE"]);
+
+
+            Funcionario funcionario = new Funcionario(nome,login,senha,salario,dataadmissao,gerente);
+            funcionario.Id = id;
+
+            return funcionario;
         }
     }
 }

@@ -5,7 +5,7 @@
     [DataAdmissao] DATE           NOT NULL,
     [Login]        VARCHAR (100)  NOT NULL,
     [Senha]        VARCHAR (100)  NOT NULL,
-    [Gerente]      VARCHAR (10)   NOT NULL,
+    [Gerente]      BIT   NOT NULL,
     CONSTRAINT [PK_TBFuncionario] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
