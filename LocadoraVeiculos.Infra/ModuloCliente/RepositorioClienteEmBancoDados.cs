@@ -17,6 +17,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
                     [CPFCNPJ],
                     [ENDERECO],
                     [CNHCONDUTOR],
+                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            )
@@ -26,6 +27,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
                     @CPFCNPJ,
                     @ENDERECO,
                     @CNHCONDUTOR,
+                    @VALIDADECNH,
                     @EMAIL,
                     @TELEFONE
                 );SELECT SCOPE_IDENTITY();";
@@ -37,6 +39,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
 			        [CPFCNPJ] = @CPFCNPJ,
                     [ENDERECO] = @ENDERECO,
                     [CNHCONDUTOR] = @CNHCONDUTOR,
+                    [VALIDADECNH] = @VALIDADECNH,
                     [EMAIL] = @EMAIL,
                     [TELEFONE] = @TELEFONE
 		        WHERE
@@ -54,6 +57,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
                     [CPFCNPJ],
                     [ENDERECO],
                     [CNHCONDUTOR],
+                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            FROM 
@@ -68,6 +72,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
                     [CPFCNPJ],
                     [ENDERECO],
                     [CNHCONDUTOR],
+                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            FROM 

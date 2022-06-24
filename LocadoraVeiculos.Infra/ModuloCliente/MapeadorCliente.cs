@@ -16,6 +16,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             comando.Parameters.AddWithValue("CPFCNPJ", registro.CpfCnpj);
             comando.Parameters.AddWithValue("ENDERECO", registro.Endereco);
             comando.Parameters.AddWithValue("CNHCONDUTOR", registro.CnhCondutor);
+            comando.Parameters.AddWithValue("VALIDADECNH", registro.ValidadeCnh);
             comando.Parameters.AddWithValue("EMAIL", registro.Email);
             comando.Parameters.AddWithValue("TELEFONE", registro.Telefone);
         }
@@ -30,6 +31,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             var cpfCnpj = Convert.ToString(leitorRegistro["CPFCNPJ"]);
             var endereco = Convert.ToString(leitorRegistro["ENDERECO"]);                      
             var cnhCondutor = Convert.ToString(leitorRegistro["CNHCONDUTOR"]);
+            var validadeCnh = Convert.ToDateTime(leitorRegistro["VALIDADECNH"]);
             var email = Convert.ToString(leitorRegistro["EMAIL"]);
             var telefone = Convert.ToString(leitorRegistro["TELEFONE"]);
 
@@ -39,6 +41,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             cliente.CpfCnpj = cpfCnpj;
             cliente.Endereco = endereco;
             cliente.CnhCondutor = cnhCondutor;
+            cliente.ValidadeCnh = validadeCnh;
             cliente.Email = email;
             cliente.Telefone = telefone;
             

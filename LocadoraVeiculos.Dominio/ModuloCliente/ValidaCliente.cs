@@ -16,16 +16,16 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.CpfCnpj)
-           .NotNull().NotEmpty();
+           .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Endereco)
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Telefone)
-           .NotNull().NotEmpty(); 
+           .NotNull().NotEmpty().MinimumLength(3); 
 
             RuleFor(x => x.CnhCondutor)
-           .NotNull().NotEmpty();
+           .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Email)
            .NotNull().NotEmpty().MinimumLength(3);

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelRegistros = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVeiculos = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
@@ -42,20 +42,20 @@
             this.btnEntrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelRegistros
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(138, 69);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(662, 381);
-            this.panel1.TabIndex = 0;
+            this.panelRegistros.BackColor = System.Drawing.Color.White;
+            this.panelRegistros.Location = new System.Drawing.Point(138, 69);
+            this.panelRegistros.Name = "panelRegistros";
+            this.panelRegistros.Size = new System.Drawing.Size(1084, 488);
+            this.panelRegistros.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Yellow;
             this.panel2.Location = new System.Drawing.Point(1, 59);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(799, 11);
+            this.panel2.Size = new System.Drawing.Size(1221, 11);
             this.panel2.TabIndex = 0;
             // 
             // btnVeiculos
@@ -79,6 +79,7 @@
             this.btnClientes.TabIndex = 1;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnTaxas
             // 
@@ -108,7 +109,7 @@
             this.Titulo.BackColor = System.Drawing.Color.Transparent;
             this.Titulo.Font = new System.Drawing.Font("Geometr415 Blk BT", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Titulo.ForeColor = System.Drawing.Color.White;
-            this.Titulo.Location = new System.Drawing.Point(456, 5);
+            this.Titulo.Location = new System.Drawing.Point(877, 5);
             this.Titulo.Name = "Titulo";
             this.Titulo.Size = new System.Drawing.Size(332, 51);
             this.Titulo.TabIndex = 4;
@@ -168,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1221, 557);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.Senha);
             this.Controls.Add(this.Login);
@@ -180,7 +181,7 @@
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnVeiculos);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelRegistros);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TelaMenuInicial";
@@ -193,7 +194,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelRegistros;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnVeiculos;
         private System.Windows.Forms.Button btnClientes;

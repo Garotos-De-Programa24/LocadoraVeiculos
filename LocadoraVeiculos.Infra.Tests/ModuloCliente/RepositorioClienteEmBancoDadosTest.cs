@@ -25,6 +25,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
             cliente.CpfCnpj = "100.000.000-00";
             cliente.Endereco = "Lages";
             cliente.CnhCondutor = "1231545215";
+            cliente.ValidadeCnh = DateTime.Today;
             cliente.Email = "pedro@email.com";
             cliente.Telefone = "(49) 99999-9999";
 
@@ -99,9 +100,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         public void Deve_selecionar_todos_os_fornecedores()
         {
             //arrange
-            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "333333333", "althis@gmail.com",  "99999-9999");
-            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "222222222", "altermed@gmail.com", "88888-8888");
-            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "1111111111", "riomed@gmail.com", "77777-7777");
+            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "333333333", DateTime.Today, "althis@gmail.com",  "99999-9999");
+            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "222222222", DateTime.Today, "altermed@gmail.com", "88888-8888");
+            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "1111111111", DateTime.Today, "riomed@gmail.com", "77777-7777");
 
             var repositorio = new RepositorioClienteEmBancoDados();
             repositorio.Inserir(c0);

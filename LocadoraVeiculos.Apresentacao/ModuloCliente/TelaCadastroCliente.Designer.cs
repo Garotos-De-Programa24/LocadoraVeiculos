@@ -33,20 +33,20 @@
             this.lNome = new System.Windows.Forms.Label();
             this.lCPFCNPJ = new System.Windows.Forms.Label();
             this.lEndereco = new System.Windows.Forms.Label();
-            this.txtVeiculo = new System.Windows.Forms.TextBox();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtPlaca = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtCPFCNPJ = new System.Windows.Forms.TextBox();
+            this.txtEndereco = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtCapacidadeTanque = new System.Windows.Forms.TextBox();
+            this.txtCNHCondutor = new System.Windows.Forms.TextBox();
             this.lCNHCondutor = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtValidadeCNH = new System.Windows.Forms.TextBox();
             this.lValidadeCNH = new System.Windows.Forms.Label();
             this.txtTelefone = new System.Windows.Forms.TextBox();
             this.lTelefone = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lEmail = new System.Windows.Forms.Label();
+            this.dateValidade = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,26 +101,26 @@
             this.lEndereco.TabIndex = 4;
             this.lEndereco.Text = "Endereço";
             // 
-            // txtVeiculo
+            // txtNome
             // 
-            this.txtVeiculo.Location = new System.Drawing.Point(68, 82);
-            this.txtVeiculo.Name = "txtVeiculo";
-            this.txtVeiculo.Size = new System.Drawing.Size(454, 23);
-            this.txtVeiculo.TabIndex = 9;
+            this.txtNome.Location = new System.Drawing.Point(68, 82);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(454, 23);
+            this.txtNome.TabIndex = 9;
             // 
-            // txtMarca
+            // txtCPFCNPJ
             // 
-            this.txtMarca.Location = new System.Drawing.Point(100, 117);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(422, 23);
-            this.txtMarca.TabIndex = 10;
+            this.txtCPFCNPJ.Location = new System.Drawing.Point(100, 117);
+            this.txtCPFCNPJ.Name = "txtCPFCNPJ";
+            this.txtCPFCNPJ.Size = new System.Drawing.Size(422, 23);
+            this.txtCPFCNPJ.TabIndex = 10;
             // 
-            // txtPlaca
+            // txtEndereco
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(91, 150);
-            this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(431, 23);
-            this.txtPlaca.TabIndex = 11;
+            this.txtEndereco.Location = new System.Drawing.Point(91, 150);
+            this.txtEndereco.Name = "txtEndereco";
+            this.txtEndereco.Size = new System.Drawing.Size(431, 23);
+            this.txtEndereco.TabIndex = 11;
             // 
             // btnCadastrar
             // 
@@ -132,6 +132,7 @@
             this.btnCadastrar.TabIndex = 16;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnCancelar
             // 
@@ -144,12 +145,12 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // txtCapacidadeTanque
+            // txtCNHCondutor
             // 
-            this.txtCapacidadeTanque.Location = new System.Drawing.Point(141, 183);
-            this.txtCapacidadeTanque.Name = "txtCapacidadeTanque";
-            this.txtCapacidadeTanque.Size = new System.Drawing.Size(381, 23);
-            this.txtCapacidadeTanque.TabIndex = 24;
+            this.txtCNHCondutor.Location = new System.Drawing.Point(141, 183);
+            this.txtCNHCondutor.Name = "txtCNHCondutor";
+            this.txtCNHCondutor.Size = new System.Drawing.Size(381, 23);
+            this.txtCNHCondutor.TabIndex = 24;
             // 
             // lCNHCondutor
             // 
@@ -168,13 +169,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(535, 16);
             this.panel1.TabIndex = 0;
-            // 
-            // txtValidadeCNH
-            // 
-            this.txtValidadeCNH.Location = new System.Drawing.Point(141, 217);
-            this.txtValidadeCNH.Name = "txtValidadeCNH";
-            this.txtValidadeCNH.Size = new System.Drawing.Size(381, 23);
-            this.txtValidadeCNH.TabIndex = 26;
             // 
             // lValidadeCNH
             // 
@@ -220,25 +214,32 @@
             this.lEmail.TabIndex = 29;
             this.lEmail.Text = "Email";
             // 
+            // dateValidade
+            // 
+            this.dateValidade.Location = new System.Drawing.Point(143, 214);
+            this.dateValidade.Name = "dateValidade";
+            this.dateValidade.Size = new System.Drawing.Size(235, 23);
+            this.dateValidade.TabIndex = 31;
+            // 
             // TelaCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 361);
+            this.Controls.Add(this.dateValidade);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lEmail);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.lTelefone);
-            this.Controls.Add(this.txtValidadeCNH);
             this.Controls.Add(this.lValidadeCNH);
-            this.Controls.Add(this.txtCapacidadeTanque);
+            this.Controls.Add(this.txtCNHCondutor);
             this.Controls.Add(this.lCNHCondutor);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.txtPlaca);
-            this.Controls.Add(this.txtMarca);
-            this.Controls.Add(this.txtVeiculo);
+            this.Controls.Add(this.txtEndereco);
+            this.Controls.Add(this.txtCPFCNPJ);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lEndereco);
             this.Controls.Add(this.lCPFCNPJ);
             this.Controls.Add(this.lNome);
@@ -259,19 +260,19 @@
         private System.Windows.Forms.Label lNome;
         private System.Windows.Forms.Label lCPFCNPJ;
         private System.Windows.Forms.Label lEndereco;
-        private System.Windows.Forms.TextBox txtVeiculo;
-        private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.TextBox txtPlaca;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtCPFCNPJ;
+        private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtCapacidadeTanque;
+        private System.Windows.Forms.TextBox txtCNHCondutor;
         private System.Windows.Forms.Label lCNHCondutor;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtValidadeCNH;
         private System.Windows.Forms.Label lValidadeCNH;
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label lTelefone;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lEmail;
+        private System.Windows.Forms.DateTimePicker dateValidade;
     }
 }
