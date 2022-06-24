@@ -1,15 +1,10 @@
 ﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
-using LocadoraVeiculos.Infra.Compartilhado;
+using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloCliente;
+using LocadoraVeiculos.Infra.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao
@@ -33,16 +28,22 @@ namespace LocadoraVeiculos.Apresentacao
         private void InicializarControladores()
         {
             var repositorioCliente = new RepositorioClienteEmBancoDados();
+            var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
             //var repositorioMateria = new RepositorioMateriaEmArquivo(dataContext);
             //var repositorioQuestao = new RepositorioQuestaoEmArquivo(dataContext);
             //var repositorioTeste = new RepositorioTesteEmArquivo(dataContext);
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
+            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
             //controladores.Add("Matérias", new ControladorMateria(repositorioMateria, repositorioDisciplina));
             //controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, repositorioMateria));
             //controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao));
         }
+        private void btnFuncionario_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal("Funcionário");
 
+        }
         private void btnClientes_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal("Clientes");
@@ -78,5 +79,7 @@ namespace LocadoraVeiculos.Apresentacao
         {
             controlador.Excluir();
         }
+
+        
     }
 }
