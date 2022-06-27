@@ -114,11 +114,11 @@
             // 
             this.Titulo.AutoSize = true;
             this.Titulo.BackColor = System.Drawing.Color.Transparent;
-            this.Titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.Titulo.Font = new System.Drawing.Font("Geometr415 Blk BT", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Titulo.ForeColor = System.Drawing.Color.White;
-            this.Titulo.Location = new System.Drawing.Point(877, 5);
+            this.Titulo.Location = new System.Drawing.Point(877, 3);
             this.Titulo.Name = "Titulo";
-            this.Titulo.Size = new System.Drawing.Size(344, 51);
+            this.Titulo.Size = new System.Drawing.Size(332, 51);
             this.Titulo.TabIndex = 13;
             this.Titulo.Text = "Rech\'s Locadora";
             // 

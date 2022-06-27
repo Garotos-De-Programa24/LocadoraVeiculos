@@ -31,15 +31,16 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
             this.txtEquipamento = new System.Windows.Forms.TextBox();
             this.lEndereco = new System.Windows.Forms.Label();
-            this.lCPFCNPJ = new System.Windows.Forms.Label();
             this.lNome = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBoxDiario = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.MaskedTextBox();
+            this.lValor = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(435, 326);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
-            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -61,52 +62,35 @@
             this.btnCadastrar.Location = new System.Drawing.Point(342, 326);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
-            this.btnCadastrar.TabIndex = 32;
+            this.btnCadastrar.TabIndex = 5;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click_1);
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(95, 150);
+            this.txtDescricao.Location = new System.Drawing.Point(95, 146);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(427, 63);
-            this.txtDescricao.TabIndex = 27;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Location = new System.Drawing.Point(66, 117);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(456, 23);
-            this.txtValor.TabIndex = 26;
+            this.txtDescricao.TabIndex = 3;
             // 
             // txtEquipamento
             // 
             this.txtEquipamento.Location = new System.Drawing.Point(116, 82);
             this.txtEquipamento.Name = "txtEquipamento";
             this.txtEquipamento.Size = new System.Drawing.Size(406, 23);
-            this.txtEquipamento.TabIndex = 25;
+            this.txtEquipamento.TabIndex = 1;
             // 
             // lEndereco
             // 
             this.lEndereco.AutoSize = true;
             this.lEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lEndereco.Location = new System.Drawing.Point(19, 150);
+            this.lEndereco.Location = new System.Drawing.Point(19, 146);
             this.lEndereco.Name = "lEndereco";
             this.lEndereco.Size = new System.Drawing.Size(69, 16);
-            this.lEndereco.TabIndex = 20;
+            this.lEndereco.TabIndex = 9;
             this.lEndereco.Text = "Descrição";
-            // 
-            // lCPFCNPJ
-            // 
-            this.lCPFCNPJ.AutoSize = true;
-            this.lCPFCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCPFCNPJ.Location = new System.Drawing.Point(19, 117);
-            this.lCPFCNPJ.Name = "lCPFCNPJ";
-            this.lCPFCNPJ.Size = new System.Drawing.Size(39, 16);
-            this.lCPFCNPJ.TabIndex = 19;
-            this.lCPFCNPJ.Text = "Valor";
             // 
             // lNome
             // 
@@ -115,7 +99,7 @@
             this.lNome.Location = new System.Drawing.Point(19, 84);
             this.lNome.Name = "lNome";
             this.lNome.Size = new System.Drawing.Size(87, 16);
-            this.lNome.TabIndex = 18;
+            this.lNome.TabIndex = 7;
             this.lNome.Text = "Equipamento";
             // 
             // panel2
@@ -136,7 +120,7 @@
             this.lTitulo.Location = new System.Drawing.Point(13, 9);
             this.lTitulo.Name = "lTitulo";
             this.lTitulo.Size = new System.Drawing.Size(194, 25);
-            this.lTitulo.TabIndex = 2;
+            this.lTitulo.TabIndex = 10;
             this.lTitulo.Text = "Cadastro de Taxas";
             // 
             // panel1
@@ -154,25 +138,59 @@
             this.checkBoxDiario.Location = new System.Drawing.Point(19, 222);
             this.checkBoxDiario.Name = "checkBoxDiario";
             this.checkBoxDiario.Size = new System.Drawing.Size(110, 20);
-            this.checkBoxDiario.TabIndex = 36;
+            this.checkBoxDiario.TabIndex = 4;
             this.checkBoxDiario.Text = "Calculo Diario";
             this.checkBoxDiario.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(68, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 16);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "R$";
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(67, 114);
+            this.txtValor.Mask = "000000";
+            this.txtValor.Name = "txtValor";
+            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtValor.Size = new System.Drawing.Size(76, 23);
+            this.txtValor.TabIndex = 2;
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValor.ValidatingType = typeof(int);
+            // 
+            // lValor
+            // 
+            this.lValor.AutoSize = true;
+            this.lValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lValor.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lValor.Location = new System.Drawing.Point(18, 116);
+            this.lValor.Name = "lValor";
+            this.lValor.Size = new System.Drawing.Size(39, 16);
+            this.lValor.TabIndex = 8;
+            this.lValor.Text = "Valor";
             // 
             // TelaCadastroTaxa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 361);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtValor);
+            this.Controls.Add(this.lValor);
             this.Controls.Add(this.checkBoxDiario);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.txtDescricao);
-            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.txtEquipamento);
             this.Controls.Add(this.lEndereco);
-            this.Controls.Add(this.lCPFCNPJ);
             this.Controls.Add(this.lNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -191,14 +209,15 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.TextBox txtEquipamento;
         private System.Windows.Forms.Label lEndereco;
-        private System.Windows.Forms.Label lCPFCNPJ;
         private System.Windows.Forms.Label lNome;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lTitulo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkBoxDiario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox txtValor;
+        private System.Windows.Forms.Label lValor;
     }
 }

@@ -12,13 +12,13 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Login)
-           .EmailAddress();
+           .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Senha)
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Salario)
-           .NotNull().NotEmpty();
+           .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.DataAdmissao)
            .NotEqual(DateTime.MinValue);

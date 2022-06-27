@@ -33,7 +33,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                 txtNome.Text = cliente.Nome;
                 txtCPF.Text = cliente.Cpf;
                 txtEndereco.Text = cliente.Endereco;                
-                txtCNHCondutor.Text = cliente.CnhCondutor;
+                MaskedCNHCondutor.Text = cliente.CnhCondutor;
 
                 if (cliente.ValidadeCnh == DateTime.MinValue)
                 {
@@ -51,7 +51,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             cliente.Nome = txtNome.Text;
             cliente.Cpf = txtCPF.Text;
             cliente.Endereco = txtEndereco.Text;
-            cliente.CnhCondutor = txtCNHCondutor.Text;
+            cliente.CnhCondutor = MaskedCNHCondutor.Text;
             cliente.ValidadeCnh = dateValidade.Value;
             cliente.Email = txtEmail.Text;
             cliente.Telefone = txtTelefone.Text;

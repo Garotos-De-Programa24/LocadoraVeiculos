@@ -15,10 +15,10 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
           .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Equipamento)
-           .NotNull().NotEmpty();
+           .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Valor) 
-           .NotNull().NotEmpty();
+           .NotNull().NotEmpty().MinimumLength(1);
         }
     }
 }

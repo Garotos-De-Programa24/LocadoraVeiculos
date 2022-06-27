@@ -37,7 +37,6 @@
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtCNHCondutor = new System.Windows.Forms.TextBox();
             this.lCNHCondutor = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lValidadeCNH = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.dateValidade = new System.Windows.Forms.DateTimePicker();
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.MaskedCNHCondutor = new System.Windows.Forms.MaskedTextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             this.lTitulo.Location = new System.Drawing.Point(13, 9);
             this.lTitulo.Name = "lTitulo";
             this.lTitulo.Size = new System.Drawing.Size(239, 25);
-            this.lTitulo.TabIndex = 2;
+            this.lTitulo.TabIndex = 0;
             this.lTitulo.Text = "Cadastro de Condutores";
             // 
             // lNome
@@ -78,7 +78,7 @@
             this.lNome.Location = new System.Drawing.Point(19, 84);
             this.lNome.Name = "lNome";
             this.lNome.Size = new System.Drawing.Size(43, 16);
-            this.lNome.TabIndex = 2;
+            this.lNome.TabIndex = 1;
             this.lNome.Text = "Nome";
             // 
             // lCPF
@@ -88,7 +88,7 @@
             this.lCPF.Location = new System.Drawing.Point(19, 119);
             this.lCPF.Name = "lCPF";
             this.lCPF.Size = new System.Drawing.Size(35, 16);
-            this.lCPF.TabIndex = 3;
+            this.lCPF.TabIndex = 2;
             this.lCPF.Text = "CPF";
             // 
             // lEndereco
@@ -98,7 +98,7 @@
             this.lEndereco.Location = new System.Drawing.Point(19, 152);
             this.lEndereco.Name = "lEndereco";
             this.lEndereco.Size = new System.Drawing.Size(66, 16);
-            this.lEndereco.TabIndex = 4;
+            this.lEndereco.TabIndex = 3;
             this.lEndereco.Text = "Endereço";
             // 
             // txtNome
@@ -106,14 +106,14 @@
             this.txtNome.Location = new System.Drawing.Point(68, 82);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(454, 23);
-            this.txtNome.TabIndex = 9;
+            this.txtNome.TabIndex = 8;
             // 
             // txtEndereco
             // 
             this.txtEndereco.Location = new System.Drawing.Point(91, 150);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(431, 23);
-            this.txtEndereco.TabIndex = 11;
+            this.txtEndereco.TabIndex = 10;
             // 
             // btnCadastrar
             // 
@@ -122,7 +122,7 @@
             this.btnCadastrar.Location = new System.Drawing.Point(342, 326);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
-            this.btnCadastrar.TabIndex = 16;
+            this.btnCadastrar.TabIndex = 15;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
@@ -134,16 +134,9 @@
             this.btnCancelar.Location = new System.Drawing.Point(435, 326);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // txtCNHCondutor
-            // 
-            this.txtCNHCondutor.Location = new System.Drawing.Point(141, 183);
-            this.txtCNHCondutor.Name = "txtCNHCondutor";
-            this.txtCNHCondutor.Size = new System.Drawing.Size(381, 23);
-            this.txtCNHCondutor.TabIndex = 24;
             // 
             // lCNHCondutor
             // 
@@ -152,7 +145,7 @@
             this.lCNHCondutor.Location = new System.Drawing.Point(19, 185);
             this.lCNHCondutor.Name = "lCNHCondutor";
             this.lCNHCondutor.Size = new System.Drawing.Size(116, 16);
-            this.lCNHCondutor.TabIndex = 23;
+            this.lCNHCondutor.TabIndex = 4;
             this.lCNHCondutor.Text = "CNH do Condutor";
             // 
             // panel1
@@ -170,7 +163,7 @@
             this.lValidadeCNH.Location = new System.Drawing.Point(19, 219);
             this.lValidadeCNH.Name = "lValidadeCNH";
             this.lValidadeCNH.Size = new System.Drawing.Size(118, 16);
-            this.lValidadeCNH.TabIndex = 25;
+            this.lValidadeCNH.TabIndex = 5;
             this.lValidadeCNH.Text = "Validade da CNH";
             // 
             // lTelefone
@@ -180,7 +173,7 @@
             this.lTelefone.Location = new System.Drawing.Point(19, 253);
             this.lTelefone.Name = "lTelefone";
             this.lTelefone.Size = new System.Drawing.Size(60, 16);
-            this.lTelefone.TabIndex = 27;
+            this.lTelefone.TabIndex = 6;
             this.lTelefone.Text = "Telefone";
             // 
             // txtEmail
@@ -188,7 +181,7 @@
             this.txtEmail.Location = new System.Drawing.Point(70, 285);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(452, 23);
-            this.txtEmail.TabIndex = 30;
+            this.txtEmail.TabIndex = 14;
             // 
             // lEmail
             // 
@@ -197,7 +190,7 @@
             this.lEmail.Location = new System.Drawing.Point(19, 287);
             this.lEmail.Name = "lEmail";
             this.lEmail.Size = new System.Drawing.Size(45, 16);
-            this.lEmail.TabIndex = 29;
+            this.lEmail.TabIndex = 7;
             this.lEmail.Text = "Email";
             // 
             // dateValidade
@@ -205,7 +198,7 @@
             this.dateValidade.Location = new System.Drawing.Point(143, 214);
             this.dateValidade.Name = "dateValidade";
             this.dateValidade.Size = new System.Drawing.Size(235, 23);
-            this.dateValidade.TabIndex = 31;
+            this.dateValidade.TabIndex = 12;
             // 
             // txtCPF
             // 
@@ -213,7 +206,7 @@
             this.txtCPF.Mask = "000.000.000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(96, 23);
-            this.txtCPF.TabIndex = 32;
+            this.txtCPF.TabIndex = 9;
             // 
             // txtTelefone
             // 
@@ -221,7 +214,15 @@
             this.txtTelefone.Mask = "(000) 00000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(119, 23);
-            this.txtTelefone.TabIndex = 33;
+            this.txtTelefone.TabIndex = 13;
+            // 
+            // MaskedCNHCondutor
+            // 
+            this.MaskedCNHCondutor.Location = new System.Drawing.Point(143, 183);
+            this.MaskedCNHCondutor.Mask = "00000000000";
+            this.MaskedCNHCondutor.Name = "MaskedCNHCondutor";
+            this.MaskedCNHCondutor.Size = new System.Drawing.Size(96, 23);
+            this.MaskedCNHCondutor.TabIndex = 11;
             // 
             // TelaCadastroCliente
             // 
@@ -229,6 +230,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 361);
+            this.Controls.Add(this.MaskedCNHCondutor);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCPF);
             this.Controls.Add(this.dateValidade);
@@ -236,7 +238,6 @@
             this.Controls.Add(this.lEmail);
             this.Controls.Add(this.lTelefone);
             this.Controls.Add(this.lValidadeCNH);
-            this.Controls.Add(this.txtCNHCondutor);
             this.Controls.Add(this.lCNHCondutor);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCadastrar);
@@ -247,6 +248,8 @@
             this.Controls.Add(this.lNome);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "TelaCadastroCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaCadastroCliente";
@@ -267,7 +270,6 @@
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtCNHCondutor;
         private System.Windows.Forms.Label lCNHCondutor;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lValidadeCNH;
@@ -277,5 +279,6 @@
         private System.Windows.Forms.DateTimePicker dateValidade;
         private System.Windows.Forms.MaskedTextBox txtCPF;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
+        private System.Windows.Forms.MaskedTextBox MaskedCNHCondutor;
     }
 }

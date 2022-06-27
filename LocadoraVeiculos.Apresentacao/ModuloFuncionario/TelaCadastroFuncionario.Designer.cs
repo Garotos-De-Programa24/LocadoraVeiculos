@@ -66,7 +66,7 @@
             this.lTitulo.Location = new System.Drawing.Point(13, 9);
             this.lTitulo.Name = "lTitulo";
             this.lTitulo.Size = new System.Drawing.Size(259, 25);
-            this.lTitulo.TabIndex = 2;
+            this.lTitulo.TabIndex = 9;
             this.lTitulo.Text = "Cadastro de Funcionários";
             // 
             // panel1
@@ -84,7 +84,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(435, 326);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
-            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -95,7 +95,7 @@
             this.btnCadastrar.Location = new System.Drawing.Point(342, 326);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
-            this.btnCadastrar.TabIndex = 32;
+            this.btnCadastrar.TabIndex = 7;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
@@ -105,21 +105,21 @@
             this.txtSenha.Location = new System.Drawing.Point(71, 214);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(451, 23);
-            this.txtSenha.TabIndex = 29;
+            this.txtSenha.TabIndex = 5;
             // 
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(68, 183);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(454, 23);
-            this.txtLogin.TabIndex = 28;
+            this.txtLogin.TabIndex = 4;
             // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(68, 82);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(454, 23);
-            this.txtNome.TabIndex = 25;
+            this.txtNome.TabIndex = 1;
             // 
             // lSenha
             // 
@@ -128,7 +128,7 @@
             this.lSenha.Location = new System.Drawing.Point(19, 216);
             this.lSenha.Name = "lSenha";
             this.lSenha.Size = new System.Drawing.Size(46, 16);
-            this.lSenha.TabIndex = 22;
+            this.lSenha.TabIndex = 14;
             this.lSenha.Text = "Senha";
             // 
             // lLogin
@@ -138,7 +138,7 @@
             this.lLogin.Location = new System.Drawing.Point(19, 183);
             this.lLogin.Name = "lLogin";
             this.lLogin.Size = new System.Drawing.Size(40, 16);
-            this.lLogin.TabIndex = 21;
+            this.lLogin.TabIndex = 13;
             this.lLogin.Text = "Login";
             // 
             // lDataAdmissao
@@ -148,7 +148,7 @@
             this.lDataAdmissao.Location = new System.Drawing.Point(19, 150);
             this.lDataAdmissao.Name = "lDataAdmissao";
             this.lDataAdmissao.Size = new System.Drawing.Size(119, 16);
-            this.lDataAdmissao.TabIndex = 20;
+            this.lDataAdmissao.TabIndex = 12;
             this.lDataAdmissao.Text = "Data da Admissão";
             // 
             // lSalario
@@ -158,7 +158,7 @@
             this.lSalario.Location = new System.Drawing.Point(19, 117);
             this.lSalario.Name = "lSalario";
             this.lSalario.Size = new System.Drawing.Size(50, 16);
-            this.lSalario.TabIndex = 19;
+            this.lSalario.TabIndex = 11;
             this.lSalario.Text = "Salário";
             // 
             // lNome
@@ -168,7 +168,7 @@
             this.lNome.Location = new System.Drawing.Point(19, 84);
             this.lNome.Name = "lNome";
             this.lNome.Size = new System.Drawing.Size(44, 16);
-            this.lNome.TabIndex = 18;
+            this.lNome.TabIndex = 10;
             this.lNome.Text = "Nome";
             // 
             // checkBoxAdmin
@@ -178,7 +178,7 @@
             this.checkBoxAdmin.Location = new System.Drawing.Point(71, 243);
             this.checkBoxAdmin.Name = "checkBoxAdmin";
             this.checkBoxAdmin.Size = new System.Drawing.Size(64, 20);
-            this.checkBoxAdmin.TabIndex = 34;
+            this.checkBoxAdmin.TabIndex = 6;
             this.checkBoxAdmin.Text = "Admin";
             this.checkBoxAdmin.UseVisualStyleBackColor = true;
             // 
@@ -187,15 +187,16 @@
             this.dateAdmissao.Location = new System.Drawing.Point(144, 150);
             this.dateAdmissao.Name = "dateAdmissao";
             this.dateAdmissao.Size = new System.Drawing.Size(235, 23);
-            this.dateAdmissao.TabIndex = 35;
+            this.dateAdmissao.TabIndex = 3;
             // 
             // maskedSalario
             // 
             this.maskedSalario.Location = new System.Drawing.Point(68, 115);
             this.maskedSalario.Mask = "000000";
             this.maskedSalario.Name = "maskedSalario";
-            this.maskedSalario.Size = new System.Drawing.Size(67, 23);
-            this.maskedSalario.TabIndex = 36;
+            this.maskedSalario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.maskedSalario.Size = new System.Drawing.Size(76, 23);
+            this.maskedSalario.TabIndex = 2;
             this.maskedSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.maskedSalario.ValidatingType = typeof(int);
             // 
@@ -204,7 +205,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(75, 119);
+            this.label1.Location = new System.Drawing.Point(69, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 16);
             this.label1.TabIndex = 37;
