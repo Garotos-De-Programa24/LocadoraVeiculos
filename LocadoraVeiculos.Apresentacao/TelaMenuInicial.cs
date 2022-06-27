@@ -124,6 +124,22 @@ namespace LocadoraVeiculos.Apresentacao
             List<Funcionario> funcionarios = rep.SelecionarTodos();
 
             //abertura do programa sem senha!
+            if (btnEntrar.Text == "Deslogar")
+            {
+                gerente = false;
+                lStatus.Text = "DESLOGADO";
+                lStatus.ForeColor = System.Drawing.Color.Red;
+                statusLogin = false;
+                txtLogin.Enabled = true;
+                txtLogin.Text = "";
+                txtSenha.Enabled = true;
+                txtSenha.Text = "";
+                btnCadastrar.Enabled = false;
+                btnEditar.Enabled = false;
+                btnExcluir.Enabled = false;
+                btnEntrar.Text = "Entrar";
+                return;
+            }
 
             if (login.ToLower() == "admin" && senha.ToLower() == "admin")
             {
@@ -136,9 +152,9 @@ namespace LocadoraVeiculos.Apresentacao
                 btnCadastrar.Enabled = true;
                 btnEditar.Enabled = true;
                 btnExcluir.Enabled = true;
+                btnEntrar.Text = "Deslogar";
                 return;
             }
-
 
             foreach (Funcionario f in funcionarios)
             {
