@@ -9,7 +9,7 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
         {
         }
 
-        public Funcionario(string nome, string login, string senha, decimal salario, DateTime admissao, bool gerente)
+        public Funcionario(string nome, string login, string senha, string salario, DateTime admissao, bool gerente)
         {
             Nome = nome;
             Login = login;
@@ -20,7 +20,7 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
         }
 
         public string Nome { get; set; }
-        public decimal Salario { get; set; }
+        public string Salario { get; set; }
         public DateTime DataAdmissao { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }        

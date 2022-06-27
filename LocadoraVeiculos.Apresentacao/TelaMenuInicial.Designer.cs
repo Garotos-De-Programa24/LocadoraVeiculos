@@ -106,6 +106,7 @@
             this.btnFuncionario.TabIndex = 3;
             this.btnFuncionario.Text = "Funcionário";
             this.btnFuncionario.UseVisualStyleBackColor = false;
+            this.btnFuncionario.Click += new System.EventHandler(this.btnFuncionario_Click);
             // 
             // Titulo
             // 
