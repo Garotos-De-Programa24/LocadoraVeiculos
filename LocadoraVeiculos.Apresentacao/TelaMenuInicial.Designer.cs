@@ -63,6 +63,14 @@
             // 
             // btnAgrupamento
             // 
+            this.btnVeiculos.BackColor = System.Drawing.Color.White;
+            this.btnVeiculos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnVeiculos.Location = new System.Drawing.Point(9, 78);
+            this.btnVeiculos.Name = "btnVeiculos";
+            this.btnVeiculos.Size = new System.Drawing.Size(120, 26);
+            this.btnVeiculos.TabIndex = 0;
+            this.btnVeiculos.Text = "Veículos";
+            this.btnVeiculos.UseVisualStyleBackColor = false;
             this.btnAgrupamento.BackColor = System.Drawing.Color.White;
             this.btnAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAgrupamento.Location = new System.Drawing.Point(9, 78);
@@ -76,7 +84,7 @@
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.White;
-            this.btnClientes.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnClientes.Location = new System.Drawing.Point(9, 110);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(120, 26);
@@ -88,7 +96,7 @@
             // btnTaxas
             // 
             this.btnTaxas.BackColor = System.Drawing.Color.White;
-            this.btnTaxas.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTaxas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnTaxas.Location = new System.Drawing.Point(9, 142);
             this.btnTaxas.Name = "btnTaxas";
             this.btnTaxas.Size = new System.Drawing.Size(120, 26);
@@ -99,23 +107,24 @@
             // btnFuncionario
             // 
             this.btnFuncionario.BackColor = System.Drawing.Color.White;
-            this.btnFuncionario.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnFuncionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnFuncionario.Location = new System.Drawing.Point(9, 174);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(120, 26);
             this.btnFuncionario.TabIndex = 3;
             this.btnFuncionario.Text = "Funcionário";
             this.btnFuncionario.UseVisualStyleBackColor = false;
+            this.btnFuncionario.Click += new System.EventHandler(this.btnFuncionario_Click);
             // 
             // Titulo
             // 
             this.Titulo.AutoSize = true;
             this.Titulo.BackColor = System.Drawing.Color.Transparent;
-            this.Titulo.Font = new System.Drawing.Font("Geometr415 Blk BT", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.Titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Titulo.ForeColor = System.Drawing.Color.White;
             this.Titulo.Location = new System.Drawing.Point(877, 5);
             this.Titulo.Name = "Titulo";
-            this.Titulo.Size = new System.Drawing.Size(332, 51);
+            this.Titulo.Size = new System.Drawing.Size(344, 51);
             this.Titulo.TabIndex = 4;
             this.Titulo.Text = "Rech\'s Locadora";
             // 
@@ -137,22 +146,22 @@
             // Login
             // 
             this.Login.AutoSize = true;
-            this.Login.Font = new System.Drawing.Font("Geometr415 Blk BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Login.ForeColor = System.Drawing.Color.White;
             this.Login.Location = new System.Drawing.Point(12, 5);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(48, 19);
+            this.Login.Size = new System.Drawing.Size(48, 20);
             this.Login.TabIndex = 0;
             this.Login.Text = "Login";
             // 
             // Senha
             // 
             this.Senha.AutoSize = true;
-            this.Senha.Font = new System.Drawing.Font("Geometr415 Blk BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Senha.ForeColor = System.Drawing.Color.White;
             this.Senha.Location = new System.Drawing.Point(12, 30);
             this.Senha.Name = "Senha";
-            this.Senha.Size = new System.Drawing.Size(53, 19);
+            this.Senha.Size = new System.Drawing.Size(56, 20);
             this.Senha.TabIndex = 1;
             this.Senha.Text = "Senha";
             // 
@@ -170,7 +179,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCadastrar.Location = new System.Drawing.Point(504, 29);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(81, 23);
@@ -181,7 +190,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnEditar.Location = new System.Drawing.Point(591, 29);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(81, 23);
@@ -192,7 +201,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExcluir.Location = new System.Drawing.Point(678, 29);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(81, 23);

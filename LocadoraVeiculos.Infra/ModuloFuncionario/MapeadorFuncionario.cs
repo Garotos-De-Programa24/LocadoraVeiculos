@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
         {
             var id = Convert.ToInt32(leitorFuncionario["ID"]);
             var nome = Convert.ToString(leitorFuncionario["NOME"]);
-            var salario = Convert.ToDecimal(leitorFuncionario["SALARIO"]);
+            var salario = Convert.ToString(leitorFuncionario["SALARIO"]);
             var dataadmissao = Convert.ToDateTime(leitorFuncionario["DATAADMISSAO"]);
             var login = Convert.ToString(leitorFuncionario["LOGIN"]);
             var senha = Convert.ToString(leitorFuncionario["SENHA"]);

@@ -108,6 +108,8 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCliente
             //assert
             resultado.ShouldHaveValidationErrorFor(c => c.Email);
         }
+
+        [TestMethod]
         public void Telefone_Deve_Ser_Valido()
         {
             //arrange

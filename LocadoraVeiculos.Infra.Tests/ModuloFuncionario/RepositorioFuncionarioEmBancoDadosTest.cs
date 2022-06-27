@@ -22,10 +22,11 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloFuncionario
 
             funcionario = new Funcionario();
             funcionario.Nome = "Alberto Roberto";
-            funcionario.Login = "albertoroberto";
+            funcionario.Login = "albertoroberto@gmail.com";
             funcionario.Senha = "321";
-            funcionario.Salario = 2000;
-            funcionario.DataAdmissao = Convert.ToDateTime("24/06/2022");
+            funcionario.Salario = "2000";
+            funcionario.DataAdmissao = new DateTime(2021,02,02);
+            funcionario.Gerente = true;
             repositorio = new RepositorioFuncionarioEmBancoDados();
         }
 
@@ -51,7 +52,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloFuncionario
 
             //action
             funcionario.Nome = "Pedro Augusto";
-            funcionario.Login = "pedro.augusto";
+            funcionario.Login = "pedro.augusto@funcionario.com";
             funcionario.Senha = "654";
 
             repositorio.Editar(funcionario);
@@ -95,9 +96,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloFuncionario
         public void Deve_selecionar_todos_os_funcionarios()
         {
             //arrange
-            var funcionario1 = new Funcionario("Joaninha","joaninha@funcionario.com","joaninha123",2000,new DateTime(2022,01,03,01,01,01),false);
-            var funcionario2 = new Funcionario("Camila da Silva", "camila.silva","camilinha321", 3000, new DateTime(2022, 01, 03, 01, 01, 01), true);
-            var funcionario3 = new Funcionario("Joana de Souza", "joana.souza","Joanona", 2700,new DateTime(2022,01,01,01,01,01),false);
+            var funcionario1 = new Funcionario("Joaninha","joaninha@funcionario.com","joaninha123","2000",new DateTime(2022,01,03,01,01,01),false);
+            var funcionario2 = new Funcionario("Camila da Silva", "camila.silva@Funcionario.com","camilinha321", "3000", new DateTime(2022, 01, 03, 01, 01, 01), true);
+            var funcionario3 = new Funcionario("Joana de Souza", "joana.souza@funcionario.com","Joanona", "2700",new DateTime(2022,01,01,01,01,01),false);
 
             var repositorio = new RepositorioFuncionarioEmBancoDados();
             repositorio.Inserir(funcionario1);
