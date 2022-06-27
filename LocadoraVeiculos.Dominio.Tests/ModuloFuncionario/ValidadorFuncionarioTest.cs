@@ -69,7 +69,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloFuncionario
         public void Login_Deve_Ser_Valido()
         {
             // arrange
-            funcionario.Login = "dsadasdasad321321";
+            funcionario.Login = null;
 
             // action
             var resultado = validador.TestValidate(funcionario);
