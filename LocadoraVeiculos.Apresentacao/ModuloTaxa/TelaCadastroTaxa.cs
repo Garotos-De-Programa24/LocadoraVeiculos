@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using LocadoraVeiculos.Dominio.ModuloTaxa;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,43 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
         public TelaCadastroTaxa()
         {
             InitializeComponent();
+        }
+        private Taxa taxa;
+        public Func<Taxa, ValidationResult> GravarRegistro { get; set; }
+
+        public Taxa Taxa
+        {
+            get
+            {
+                return taxa;
+            }
+            set
+            {
+                taxa = value;
+                txtEquipamento.Text = Taxa.Equipamento;
+                txtValor.Text = Taxa.Valor;
+                txtDescricao.Text = Taxa.Descricao;
+                
+
+               
+            }
+        }
+
+
+
+        private void btnCadastrar_Click_1(object sender, EventArgs e)
+        {
+            taxa.Equipamento = txtEquipamento.Text;
+            taxa.Valor = txtValor.Text;
+            taxa.Descricao = txtDescricao.Text;
+
+            var resultadoValidacao = GravarRegistro(Taxa);
+            if (resultadoValidacao.IsValid == false)
+            {
+                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }

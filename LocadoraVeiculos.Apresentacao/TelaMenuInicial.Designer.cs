@@ -95,6 +95,7 @@
             this.btnTaxas.TabIndex = 2;
             this.btnTaxas.Text = "Taxas";
             this.btnTaxas.UseVisualStyleBackColor = false;
+            this.btnTaxas.Click += new System.EventHandler(this.btnTaxas_Click);
             // 
             // btnFuncionario
             // 

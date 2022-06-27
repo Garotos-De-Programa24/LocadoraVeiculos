@@ -2,10 +2,13 @@
 using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
+using LocadoraVeiculos.Apresentacao.ModuloTaxa;
+using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloFuncionario;
+using LocadoraVeiculos.Infra.ModuloTaxa;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -33,7 +36,7 @@ namespace LocadoraVeiculos.Apresentacao
             var repositorioCliente = new RepositorioClienteEmBancoDados();
             var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
             //var repositorioMateria = new RepositorioMateriaEmArquivo(dataContext);
-            //var repositorioQuestao = new RepositorioQuestaoEmArquivo(dataContext);
+            var repositorioTaxa = new RepositorioTaxaEmBancoDados();
             //var repositorioTeste = new RepositorioTesteEmArquivo(dataContext);
             var repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
 
@@ -44,6 +47,7 @@ namespace LocadoraVeiculos.Apresentacao
             //controladores.Add("Matérias", new ControladorMateria(repositorioMateria, repositorioDisciplina));
             //controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, repositorioMateria));
             //controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao));
+            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
             controladores.Add("Agrupamentos", new ControladorAgrupamento(repositorioAgrupamento));
         }
         private void btnFuncionario_Click(object sender, EventArgs e)
@@ -95,5 +99,10 @@ namespace LocadoraVeiculos.Apresentacao
         }
 
         
+
+        private void btnTaxas_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal("Taxas");
+        }
     }
 }
