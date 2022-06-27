@@ -39,6 +39,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxDiario = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,11 +147,23 @@
             this.panel1.Size = new System.Drawing.Size(535, 16);
             this.panel1.TabIndex = 35;
             // 
+            // checkBoxDiario
+            // 
+            this.checkBoxDiario.AutoSize = true;
+            this.checkBoxDiario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxDiario.Location = new System.Drawing.Point(19, 222);
+            this.checkBoxDiario.Name = "checkBoxDiario";
+            this.checkBoxDiario.Size = new System.Drawing.Size(110, 20);
+            this.checkBoxDiario.TabIndex = 36;
+            this.checkBoxDiario.Text = "Calculo Diario";
+            this.checkBoxDiario.UseVisualStyleBackColor = true;
+            // 
             // TelaCadastroTaxa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 361);
+            this.Controls.Add(this.checkBoxDiario);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnCancelar);
@@ -186,5 +199,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lTitulo;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBoxDiario;
     }
 }

@@ -17,6 +17,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             comando.Parameters.AddWithValue("EQUIPAMENTO", taxa.Equipamento);
             comando.Parameters.AddWithValue("DESCRICAO", taxa.Descricao);
             comando.Parameters.AddWithValue("VALOR", taxa.Valor);
+            comando.Parameters.AddWithValue("TAXADIARIA", taxa.TaxaDiaria);
 
         }
 
@@ -26,8 +27,9 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             var equipamento = Convert.ToString(leitorTaxa["EQUIPAMENTO"]);
             var descricao = Convert.ToString(leitorTaxa["DESCRICAO"]);
             var valor = Convert.ToString(leitorTaxa["VALOR"]);
+            var taxaDiaria = Convert.ToBoolean(leitorTaxa["TAXADIARIA"]);
 
-            Taxa taxa = new Taxa(equipamento,valor,descricao);
+            Taxa taxa = new Taxa(equipamento,valor,descricao,taxaDiaria);
             taxa.Id = id;
 
             return taxa;
