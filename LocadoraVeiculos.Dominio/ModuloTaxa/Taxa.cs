@@ -40,7 +40,8 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
                 taxa.Id.Equals(Id) &&
                 taxa.Equipamento.Equals(Equipamento) &&
                 taxa.Descricao.Equals(Descricao) &&
-                taxa.Valor.Equals(Valor);
+                taxa.Valor.Equals(Valor)&&
+                taxa.TaxaDiaria.Equals(TaxaDiaria);
         }
     }
 }
