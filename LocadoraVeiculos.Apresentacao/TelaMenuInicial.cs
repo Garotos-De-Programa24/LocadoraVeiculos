@@ -3,8 +3,7 @@ using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
 using LocadoraVeiculos.Apresentacao.ModuloTaxa;
-using LocadoraVeiculos.Infra.Compartilhado;
-using LocadoraVeiculos.Infra.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloFuncionario;
@@ -19,12 +18,18 @@ namespace LocadoraVeiculos.Apresentacao
     {
         private ControladorBase controlador;
         private Dictionary<string, ControladorBase> controladores;
-        
+        bool gerente = false;
+        string login;
+        string senha;
+
         public TelaMenuInicial()
         {
             InitializeComponent();
             Instancia = this;
             InicializarControladores();
+            btnCadastrar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnExcluir.Enabled = false;
         }
         public static TelaMenuInicial Instancia
         {
@@ -35,25 +40,27 @@ namespace LocadoraVeiculos.Apresentacao
         {
             var repositorioCliente = new RepositorioClienteEmBancoDados();
             var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
-            //var repositorioMateria = new RepositorioMateriaEmArquivo(dataContext);
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
-            //var repositorioTeste = new RepositorioTesteEmArquivo(dataContext);
             var repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
-            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
-            //controladores.Add("Matérias", new ControladorMateria(repositorioMateria, repositorioDisciplina));
-            //controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, repositorioMateria));
-            //controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao));
+            controladores.Add("Funcionarios", new ControladorFuncionario(repositorioFuncionario));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
             controladores.Add("Agrupamentos", new ControladorAgrupamento(repositorioAgrupamento));
         }
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Funcionário");
+            if(gerente == true)
+            ConfigurarTelaPrincipal("Funcionarios");
 
+            if (gerente == false)
+            {
+                MessageBox.Show("Você não tem permissão para acessar essa tabela",
+                "Tela Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
         }
         private void btnClientes_Click(object sender, EventArgs e)
         {
@@ -85,24 +92,81 @@ namespace LocadoraVeiculos.Apresentacao
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            controlador.Inserir();
+            if(controlador != null)
+                controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            controlador.Editar();
+            if (controlador != null)
+                controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            controlador.Excluir();
+            if (controlador != null)
+                controlador.Excluir();
         }
-
-        
 
         private void btnTaxas_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal("Taxas");
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            login = txtLogin.Text;
+            senha = txtSenha.Text;
+            bool statusLogin = false;
+
+            RepositorioFuncionarioEmBancoDados rep = new RepositorioFuncionarioEmBancoDados();
+
+            List<Funcionario> funcionarios = rep.SelecionarTodos();
+
+            //abertura do programa sem senha!
+
+            if (login.ToLower() == "admin" && senha.ToLower() == "admin")
+            {
+                gerente = true;
+                lStatus.Text = "LOGADO";
+                lStatus.ForeColor = System.Drawing.Color.Green;
+                statusLogin = true;
+                txtLogin.Enabled = false;
+                txtSenha.Enabled = false;
+                btnCadastrar.Enabled = true;
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+                return;
+            }
+
+
+            foreach (Funcionario f in funcionarios)
+            {
+                if (f.Login.ToLower() == login.ToLower())
+                {
+                    if (f.Senha == senha)
+                    {
+                        if (f.Gerente == true)
+                            gerente = true;
+
+                        lStatus.Text = "LOGADO";
+                        lStatus.ForeColor = System.Drawing.Color.Green;
+                        statusLogin = true;
+                        txtLogin.Enabled = false;
+                        txtSenha.Enabled = false;
+                        btnCadastrar.Enabled = true;
+                        btnEditar.Enabled = true;
+                        btnExcluir.Enabled = true;
+                        break;
+                    }
+                    else
+                        break;
+                }
+                else
+                {
+                    lStatus.Text = "LOGIN OU SENHA INCORRETOS";                    
+                }
+            }
         }
     }
 }

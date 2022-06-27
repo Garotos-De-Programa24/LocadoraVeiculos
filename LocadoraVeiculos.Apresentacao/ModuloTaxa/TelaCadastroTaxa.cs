@@ -32,10 +32,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
                 taxa = value;
                 txtEquipamento.Text = Taxa.Equipamento;
                 txtValor.Text = Taxa.Valor;
-                txtDescricao.Text = Taxa.Descricao;
-                
-
-               
+                txtDescricao.Text = Taxa.Descricao;               
             }
         }
 
