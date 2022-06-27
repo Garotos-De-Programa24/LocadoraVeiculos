@@ -33,13 +33,13 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloTaxa
             var resultado = validador.TestValidate(taxa);
 
             // assert
-            resultado.ShouldHaveValidationErrorFor(t => t.Descricao);
+            resultado.ShouldHaveValidationErrorFor(t => t.Equipamento);
         }
         [TestMethod]
         public void Equipamento_Deve_Ser_Maior_que_3_Caracteres()
         {
             // arrange
-            taxa.Equipamento = "An";
+            taxa.Equipamento = "A";
 
             // action
             var resultado = validador.TestValidate(taxa);
@@ -109,19 +109,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloTaxa
             // assert
             resultado.ShouldHaveValidationErrorFor(t => t.Valor);
         }
-        [TestMethod]
-        public void Valor_Deve_Ser_Maior_que_3_Caracteres()
-        {
-            // arrange
-            taxa.Valor = "An";
-
-            // action
-            var resultado = validador.TestValidate(taxa);
-
-            // assert
-            resultado.ShouldHaveValidationErrorFor(t => t.Valor);
-        }
-
+    
         [TestMethod]
         public void Valor_Nao_deve_ser_vazio()
         {
