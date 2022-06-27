@@ -14,13 +14,15 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                 (
                     [EQUIPAMENTO],       
                     [VALOR], 
-                    [DESCRICAO]
+                    [DESCRICAO],
+                    [TAXADIARIA]
                 )
             VALUES
                 (
                     @EQUIPAMENTO,
                     @VALOR,
-                    @DESCRICAO
+                    @DESCRICAO,
+                    @TAXADIARIA
                 ); SELECT SCOPE_IDENTITY();";
 
         protected override string sqlEditar =>
@@ -28,7 +30,8 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                     SET 
                         [EQUIPAMENTO] = @EQUIPAMENTO, 
                         [VALOR] = @VALOR, 
-                        [DESCRICAO] = @DESCRICAO
+                        [DESCRICAO] = @DESCRICAO,
+                        [TAXADIARIA] = @TAXADIARIA
                     WHERE [ID] = @ID";
 
         protected override string sqlExcluir =>
@@ -40,7 +43,8 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                 [ID],       
                 [EQUIPAMENTO],
                 [VALOR],
-                [DESCRICAO]
+                [DESCRICAO],
+                [TAXADIARIA]
                 
             FROM
                 [TBTAXA]
@@ -52,7 +56,8 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                 [ID],       
                 [EQUIPAMENTO],
                 [VALOR],
-                [DESCRICAO]
+                [DESCRICAO],
+                [TAXADIARIA]
                 
             FROM
                 [TBTAXA]";

@@ -25,7 +25,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
             {
                 funcionario = value;
                 txtNome.Text = funcionario.Nome;
-                //txtSalario.Text = Convert.ToString(funcionario.Salario);
                 txtLogin.Text = funcionario.Login;
                 txtSenha.Text = funcionario.Senha;
                 maskedSalario.Text = funcionario.Salario;
@@ -47,7 +46,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
             funcionario.Nome = txtNome.Text;
             funcionario.Login = txtLogin.Text;
             funcionario.Senha = txtSenha.Text;
-            //funcionario.Salario = Convert.ToDecimal(txtSalario.Text);
             funcionario.Salario = maskedSalario.Text;
             funcionario.DataAdmissao = dateAdmissao.Value;
 

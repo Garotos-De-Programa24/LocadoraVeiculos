@@ -19,10 +19,12 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "ID"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Equipamento", HeaderText = "Equipamento"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descricao"},            
+                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descricao"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Taxa Diaria", HeaderText = "Taxa Diaria"},
+
             };
             return colunas;
         }
@@ -33,7 +35,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 
             foreach (var t in taxa)
             {
-                grid.Rows.Add(t.Id, t.Equipamento, t.Valor, t.Descricao);
+                grid.Rows.Add(t.Id,t.Equipamento, t.Valor, t.Descricao,t.TaxaDiaria);
 
             }
         }

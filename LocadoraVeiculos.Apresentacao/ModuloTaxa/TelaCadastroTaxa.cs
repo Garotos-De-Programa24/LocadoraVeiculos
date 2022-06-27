@@ -32,7 +32,11 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
                 taxa = value;
                 txtEquipamento.Text = Taxa.Equipamento;
                 txtValor.Text = Taxa.Valor;
-                txtDescricao.Text = Taxa.Descricao;               
+                txtDescricao.Text = Taxa.Descricao;
+
+                
+
+               
             }
         }
 
@@ -43,6 +47,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
             taxa.Equipamento = txtEquipamento.Text;
             taxa.Valor = txtValor.Text;
             taxa.Descricao = txtDescricao.Text;
+
+            taxa.TaxaDiaria = checkBoxDiario.Checked;
 
             var resultadoValidacao = GravarRegistro(Taxa);
             if (resultadoValidacao.IsValid == false)

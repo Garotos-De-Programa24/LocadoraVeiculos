@@ -3,6 +3,7 @@
     [Equipamento] VARCHAR (100)  NOT NULL,
     [Valor]       DECIMAL (7, 2) NOT NULL,
     [Descricao]   VARCHAR (300)  NOT NULL,
+    [TaxaDiaria] BIT NOT NULL, 
     CONSTRAINT [PK_TBTaxa] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

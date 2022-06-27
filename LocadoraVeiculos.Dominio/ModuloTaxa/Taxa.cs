@@ -13,16 +13,17 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         {
 
         }
-        public Taxa(string equipamento, string valor, string descricao)
+        public Taxa(string equipamento, string valor, string descricao,bool taxaDiaria)
         {
             Equipamento = equipamento;
             Valor = valor;
             Descricao = descricao;
+            TaxaDiaria = taxaDiaria;
         }
         public string Equipamento { get; set; }
         public string Valor { get; set; }
         public string Descricao { get; set; }
-        
+        public bool TaxaDiaria { get; set; }
 
         public override void Atualizar(Taxa Registro)
         {
