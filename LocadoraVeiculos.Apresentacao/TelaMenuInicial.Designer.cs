@@ -62,15 +62,7 @@
             this.panel2.TabIndex = 0;
             // 
             // btnAgrupamento
-            // 
-            this.btnVeiculos.BackColor = System.Drawing.Color.White;
-            this.btnVeiculos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnVeiculos.Location = new System.Drawing.Point(9, 78);
-            this.btnVeiculos.Name = "btnVeiculos";
-            this.btnVeiculos.Size = new System.Drawing.Size(120, 26);
-            this.btnVeiculos.TabIndex = 0;
-            this.btnVeiculos.Text = "Veículos";
-            this.btnVeiculos.UseVisualStyleBackColor = false;
+            //
             this.btnAgrupamento.BackColor = System.Drawing.Color.White;
             this.btnAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAgrupamento.Location = new System.Drawing.Point(9, 78);
