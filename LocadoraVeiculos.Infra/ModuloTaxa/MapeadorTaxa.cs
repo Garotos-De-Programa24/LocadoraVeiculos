@@ -25,7 +25,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             var id = Convert.ToInt32(leitorTaxa["ID"]);
             var equipamento = Convert.ToString(leitorTaxa["EQUIPAMENTO"]);
             var descricao = Convert.ToString(leitorTaxa["DESCRICAO"]);
-            var valor = Convert.ToDecimal(leitorTaxa["VALOR"]);
+            var valor = Convert.ToString(leitorTaxa["VALOR"]);
 
             Taxa taxa = new Taxa(equipamento,valor,descricao);
             taxa.Id = id;
