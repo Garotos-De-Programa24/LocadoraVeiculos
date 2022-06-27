@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.ModuloVeiculo
 {
-    public interface IRepositorioAgrupamentoVeiculo : IRepositorio<Agrupamento>
+    public interface IRepositorioVeiculo : IRepositorio<Veiculo>
     {
+
     }
 }

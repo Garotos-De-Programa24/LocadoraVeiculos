@@ -30,7 +30,7 @@
         {
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnVeiculos = new System.Windows.Forms.Button();
+            this.btnAgrupamento = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnTaxas = new System.Windows.Forms.Button();
             this.btnFuncionario = new System.Windows.Forms.Button();
@@ -61,16 +61,17 @@
             this.panel2.Size = new System.Drawing.Size(1221, 11);
             this.panel2.TabIndex = 0;
             // 
-            // btnVeiculos
+            // btnAgrupamento
             // 
-            this.btnVeiculos.BackColor = System.Drawing.Color.White;
-            this.btnVeiculos.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnVeiculos.Location = new System.Drawing.Point(9, 78);
-            this.btnVeiculos.Name = "btnVeiculos";
-            this.btnVeiculos.Size = new System.Drawing.Size(120, 26);
-            this.btnVeiculos.TabIndex = 0;
-            this.btnVeiculos.Text = "Veículos";
-            this.btnVeiculos.UseVisualStyleBackColor = false;
+            this.btnAgrupamento.BackColor = System.Drawing.Color.White;
+            this.btnAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAgrupamento.Location = new System.Drawing.Point(9, 78);
+            this.btnAgrupamento.Name = "btnAgrupamento";
+            this.btnAgrupamento.Size = new System.Drawing.Size(120, 26);
+            this.btnAgrupamento.TabIndex = 0;
+            this.btnAgrupamento.Text = "Agrupamentos";
+            this.btnAgrupamento.UseVisualStyleBackColor = false;
+            this.btnAgrupamento.Click += new System.EventHandler(this.btnAgrupamento_Click);
             // 
             // btnClientes
             // 
@@ -218,7 +219,7 @@
             this.Controls.Add(this.btnFuncionario);
             this.Controls.Add(this.btnTaxas);
             this.Controls.Add(this.btnClientes);
-            this.Controls.Add(this.btnVeiculos);
+            this.Controls.Add(this.btnAgrupamento);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelRegistros);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -235,7 +236,7 @@
 
         private System.Windows.Forms.Panel panelRegistros;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnVeiculos;
+        private System.Windows.Forms.Button btnAgrupamento;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnTaxas;
         private System.Windows.Forms.Button btnFuncionario;

@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
