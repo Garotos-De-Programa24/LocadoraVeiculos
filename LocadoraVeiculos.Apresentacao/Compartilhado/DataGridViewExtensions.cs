@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado
                 BackColor = Color.LightGray,
                 Font = font,
                 ForeColor = Color.Black,
-                SelectionBackColor = Color.LightGray,
+                SelectionBackColor = Color.LightGreen,
                 SelectionForeColor = Color.Black
             };
 
@@ -29,7 +29,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado
             {
                 BackColor = Color.White,
                 Font = font,
-                SelectionBackColor = Color.LightGray,
+                SelectionBackColor = Color.LightGreen,
                 SelectionForeColor = Color.Black
             };
 
