@@ -42,6 +42,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
             if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                MessageBox.Show(erro, "Cadastro de Grupo de Veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 DialogResult = DialogResult.None;
             }

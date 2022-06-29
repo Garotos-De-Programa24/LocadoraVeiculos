@@ -61,6 +61,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
+                MessageBox.Show(erro,"Cadastro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 DialogResult = DialogResult.None;
             }
         }
