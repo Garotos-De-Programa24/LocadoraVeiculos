@@ -46,7 +46,7 @@
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(435, 326);
+            this.btnCancelar.Location = new System.Drawing.Point(435, 187);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
             this.btnCancelar.TabIndex = 6;
@@ -57,7 +57,7 @@
             // 
             this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrar.Location = new System.Drawing.Point(342, 326);
+            this.btnCadastrar.Location = new System.Drawing.Point(342, 187);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
             this.btnCadastrar.TabIndex = 5;
@@ -67,9 +67,9 @@
             // 
             // txtEquipamento
             // 
-            this.txtEquipamento.Location = new System.Drawing.Point(116, 82);
+            this.txtEquipamento.Location = new System.Drawing.Point(112, 82);
             this.txtEquipamento.Name = "txtEquipamento";
-            this.txtEquipamento.Size = new System.Drawing.Size(406, 23);
+            this.txtEquipamento.Size = new System.Drawing.Size(410, 23);
             this.txtEquipamento.TabIndex = 1;
             // 
             // lNome
@@ -127,7 +127,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(117, 118);
+            this.label1.Location = new System.Drawing.Point(115, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 16);
             this.label1.TabIndex = 40;
@@ -135,11 +135,11 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(116, 113);
+            this.txtValor.Location = new System.Drawing.Point(112, 113);
             this.txtValor.Mask = "000000";
             this.txtValor.Name = "txtValor";
             this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtValor.Size = new System.Drawing.Size(76, 23);
+            this.txtValor.Size = new System.Drawing.Size(63, 23);
             this.txtValor.TabIndex = 2;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValor.ValidatingType = typeof(int);
@@ -159,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 361);
+            this.ClientSize = new System.Drawing.Size(534, 222);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.lValor);
@@ -172,9 +172,10 @@
             this.Controls.Add(this.lNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroTaxa";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCadastroTaxa";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

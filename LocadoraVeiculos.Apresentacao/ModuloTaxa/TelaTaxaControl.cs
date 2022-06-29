@@ -19,10 +19,10 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "ID"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Equipamento", HeaderText = "Equipamento"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},                
-                new DataGridViewTextBoxColumn { DataPropertyName = "Taxa Diaria", HeaderText = "Taxa Diaria"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo de Taxa", HeaderText = "Tipo de Taxa"},
 
             };
             return colunas;

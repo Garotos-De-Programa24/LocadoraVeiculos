@@ -30,8 +30,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Login", HeaderText = "Login"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Senha", HeaderText = "Senha"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Salario", HeaderText = "Salario"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Data de Admissao", HeaderText = "Data de Admissao"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Salario", HeaderText = "Salário"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data de Admissao", HeaderText = "Data de Admissão"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Gerente", HeaderText = "Gerente"},
             };
 
