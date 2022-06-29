@@ -147,6 +147,7 @@ namespace LocadoraVeiculos.Apresentacao
                 btnEditar.Enabled = false;
                 btnExcluir.Enabled = false;
                 btnEntrar.Text = "Entrar";
+                ConfigurarTelaPrincipal("Clientes");
                 return;
             }
 
@@ -182,6 +183,7 @@ namespace LocadoraVeiculos.Apresentacao
                         btnCadastrar.Enabled = true;
                         btnEditar.Enabled = true;
                         btnExcluir.Enabled = true;
+                        btnEntrar.Text = "Deslogar";
                         break;
                     }
                     else

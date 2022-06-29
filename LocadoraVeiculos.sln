@@ -3,22 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{E2BF2607-9C10-4589-8B3B-79DE9A33048F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Dominio", "3-Dominio", "{E2BF2607-9C10-4589-8B3B-79DE9A33048F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Dominio", "LocadoraVeiculos.Dominio\LocadoraVeiculos.Dominio.csproj", "{F4EF4DCA-57DE-4EB6-B4CA-E0D1153F29F9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{061826BF-B561-42EF-AC27-F1446D7E8696}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infra", "4-Infra", "{061826BF-B561-42EF-AC27-F1446D7E8696}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Infra", "LocadoraVeiculos.Infra\LocadoraVeiculos.Infra.csproj", "{3A4D922C-2AD2-4ABE-99D0-C6DF02DA328C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentacao", "Apresentacao", "{52406796-9F18-45E8-A443-0533B10C3BAB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Apresentacao", "1-Apresentacao", "{52406796-9F18-45E8-A443-0533B10C3BAB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Apresentacao", "LocadoraVeiculos.Apresentacao\LocadoraVeiculos.Apresentacao.csproj", "{F8A2967C-6B16-4BBD-AC3E-D9890FA036F1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F4EF4DCA-57DE-4EB6-B4CA-E0D1153F29F9} = {F4EF4DCA-57DE-4EB6-B4CA-E0D1153F29F9}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A80A5E20-FFBF-41E5-B10C-4E3FC8E61A25}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tests", "5-Tests", "{A80A5E20-FFBF-41E5-B10C-4E3FC8E61A25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestesUnitarios", "TestesUnitarios", "{4E94E9C4-B3FC-4F23-A038-AD01417DC1C3}"
 EndProject
@@ -36,9 +36,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Dominio.Te
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LocadoraVeiculos.Projeto.BancoDados", "LocadoraVeiculos.Projeto.BancoDados\LocadoraVeiculos.Projeto.BancoDados.sqlproj", "{3E302158-C8FD-4A12-B874-951C634299DC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicação", "Aplicação", "{C6FCADA0-1228-45BE-A2FC-E9231264CD1A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Aplicação", "2-Aplicação", "{C6FCADA0-1228-45BE-A2FC-E9231264CD1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Aplicacao", "LocadoraVeiculos.Aplicacao\LocadoraVeiculos.Aplicacao.csproj", "{B082C9BA-5584-483A-8EEE-9B69E6473C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Aplicacao", "LocadoraVeiculos.Aplicacao\LocadoraVeiculos.Aplicacao.csproj", "{B082C9BA-5584-483A-8EEE-9B69E6473C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

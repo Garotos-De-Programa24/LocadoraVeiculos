@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             VALUES
                 (
                     @EQUIPAMENTO,
-                    @VALOR,                    
+                    @VALOR,
                     @TAXADIARIA
                 ); SELECT SCOPE_IDENTITY();";
 
@@ -61,8 +61,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             @"SELECT 
                 [ID],       
                 [EQUIPAMENTO],
-                [VALOR],
-                [DESCRICAO],
+                [VALOR],                
                 [TAXADIARIA]
                 
             FROM
