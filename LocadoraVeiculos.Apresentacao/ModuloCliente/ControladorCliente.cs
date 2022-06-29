@@ -38,8 +38,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                MessageBox.Show("Selecione uma disciplina primeiro",
-                "Edição de Disciplinas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione uma Cliente primeiro",
+                "Edição de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

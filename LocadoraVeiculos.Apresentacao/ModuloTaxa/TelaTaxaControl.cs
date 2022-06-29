@@ -34,9 +34,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 
             foreach (var t in taxa)
             {
-                grid.Rows.Add(t.Id,t.Equipamento, t.Valor,t.TaxaDiaria);
-
+                grid.Rows.Add(t.Id,t.Equipamento, "R$ " +  t.Valor, NomearTaxa(t.TaxaDiaria));
             }
+        }
+
+        public string NomearTaxa(bool tipo)
+        {
+            string resultado = "Taxa Fixa";
+            if (tipo == true)
+            {
+                resultado = "Taxa Diária";
+            }
+            return resultado;
         }
 
         public int ObtemNumeroTaxaSelecionado()

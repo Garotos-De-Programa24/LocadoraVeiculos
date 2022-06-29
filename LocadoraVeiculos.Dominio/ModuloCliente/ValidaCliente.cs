@@ -16,13 +16,16 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Cpf)
-           .NotNull().NotEmpty().MinimumLength(11).MaximumLength(18);
+           .NotNull()
+           .NotEmpty()
+           .MinimumLength(14).WithMessage("CPF deve conter 11 Digitos");
 
             RuleFor(x => x.Endereco)
            .NotNull().NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.Telefone)
-           .NotNull().NotEmpty().MinimumLength(12); 
+           .NotNull().NotEmpty()
+           .MinimumLength(15).WithMessage("Telefone deve conter os 12 Digitos");
 
             RuleFor(x => x.CnhCondutor)
            .NotNull().NotEmpty().MinimumLength(10).MaximumLength(11);

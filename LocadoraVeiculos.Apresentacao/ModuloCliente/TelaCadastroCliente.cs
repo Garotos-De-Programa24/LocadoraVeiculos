@@ -49,12 +49,12 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             cliente.Nome = txtNome.Text;
-            cliente.Cpf = txtCPF.Text;
+            cliente.Cpf = RemoverEspaços(txtCPF.Text.Split(" "));
             cliente.Endereco = txtEndereco.Text;
             cliente.CnhCondutor = MaskedCNHCondutor.Text;
             cliente.ValidadeCnh = dateValidade.Value;
             cliente.Email = txtEmail.Text;
-            cliente.Telefone = txtTelefone.Text;
+            cliente.Telefone = RemoverEspaços(txtTelefone.Text.Split(" "));
 
             var resultadoValidacao = GravarRegistro(cliente);
             if (resultadoValidacao.IsValid == false)
@@ -64,6 +64,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                 MessageBox.Show(erro,"Cadastro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 DialogResult = DialogResult.None;
             }
+        }
+        private string RemoverEspaços(string[] valid)
+        {
+            string resultado = "";
+
+            for (int i = 0; i < valid.Length; i++)
+            {
+                if (valid[i] != "")
+                {
+                    resultado = valid[i];
+                }
+            }
+            return resultado;
         }
     }
 }
