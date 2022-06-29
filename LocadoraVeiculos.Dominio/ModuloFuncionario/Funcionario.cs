@@ -46,5 +46,16 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
                 funcionario.DataAdmissao.Equals(DataAdmissao) &&
                 funcionario.Gerente.Equals(Gerente);
         }
+        public string GetGerente()
+        {
+            if(Gerente == false)
+            {
+                return "Não";
+            }
+            else
+            {
+                return "Sim";
+            }
+        }
     }
 }

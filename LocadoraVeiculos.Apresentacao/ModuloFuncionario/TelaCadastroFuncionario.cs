@@ -55,6 +55,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
             if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                MessageBox.Show(erro, "Cadastro de Funcionario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 DialogResult = DialogResult.None;
             }

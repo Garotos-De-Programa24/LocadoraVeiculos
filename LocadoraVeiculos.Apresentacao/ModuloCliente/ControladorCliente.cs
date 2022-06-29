@@ -27,6 +27,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             tela.GravarRegistro = repositorioCliente.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
+
             if (resultado == DialogResult.OK)
                 CarregarClientes();
         }

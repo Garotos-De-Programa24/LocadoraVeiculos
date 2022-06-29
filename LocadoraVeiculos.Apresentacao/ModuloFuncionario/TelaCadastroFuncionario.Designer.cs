@@ -81,7 +81,7 @@
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(435, 326);
+            this.btnCancelar.Location = new System.Drawing.Point(435, 262);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
             this.btnCancelar.TabIndex = 8;
@@ -92,7 +92,7 @@
             // 
             this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrar.Location = new System.Drawing.Point(342, 326);
+            this.btnCadastrar.Location = new System.Drawing.Point(342, 262);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
             this.btnCadastrar.TabIndex = 7;
@@ -102,9 +102,9 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(71, 214);
+            this.txtSenha.Location = new System.Drawing.Point(68, 212);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(451, 23);
+            this.txtSenha.Size = new System.Drawing.Size(454, 23);
             this.txtSenha.TabIndex = 5;
             // 
             // txtLogin
@@ -175,7 +175,7 @@
             // 
             this.checkBoxAdmin.AutoSize = true;
             this.checkBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxAdmin.Location = new System.Drawing.Point(71, 243);
+            this.checkBoxAdmin.Location = new System.Drawing.Point(68, 241);
             this.checkBoxAdmin.Name = "checkBoxAdmin";
             this.checkBoxAdmin.Size = new System.Drawing.Size(64, 20);
             this.checkBoxAdmin.TabIndex = 6;
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 361);
+            this.ClientSize = new System.Drawing.Size(534, 293);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.maskedSalario);
             this.Controls.Add(this.dateAdmissao);
@@ -234,9 +234,11 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroFuncionario";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCadastroFuncionario";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

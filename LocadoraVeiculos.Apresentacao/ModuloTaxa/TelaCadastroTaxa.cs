@@ -54,6 +54,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
             if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                MessageBox.Show(erro, "Cadastro de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 DialogResult = DialogResult.None;
             }
