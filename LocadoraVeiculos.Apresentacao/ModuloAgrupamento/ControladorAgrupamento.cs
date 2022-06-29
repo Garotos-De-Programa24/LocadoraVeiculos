@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
+﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
+using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using System;
@@ -12,19 +13,21 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
 {
     public class ControladorAgrupamento : ControladorBase
     {
-        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
+        private readonly IRepositorioAgrupamento repositorioAgrupamento;
         private TelaAgrupamentoControl telaAgrupamentoControl;
+        private readonly ServicoAgrupamento servicoAgrupamento;
 
-        public ControladorAgrupamento(RepositorioAgrupamentoEmBancoDados repositorioAgrupamento)
+        public ControladorAgrupamento(IRepositorioAgrupamento repositorioAgrupamento, ServicoAgrupamento servicoAgrupamento)
         {
             this.repositorioAgrupamento = repositorioAgrupamento;
+            this.servicoAgrupamento = servicoAgrupamento;
         }
 
         public override void Inserir()
         {
             TelaCadastroAgrupamento tela = new TelaCadastroAgrupamento();
             tela.Agrupamento = new Agrupamento();
-            tela.GravarRegistro = repositorioAgrupamento.Inserir;
+            tela.GravarRegistro = servicoAgrupamento.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
             if (resultado == DialogResult.OK)
@@ -46,7 +49,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
 
             tela.Agrupamento = agrupamentoSelecionado;
 
-            tela.GravarRegistro = repositorioAgrupamento.Editar;
+            tela.GravarRegistro = servicoAgrupamento.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

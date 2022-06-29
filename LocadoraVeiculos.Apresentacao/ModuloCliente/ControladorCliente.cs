@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
+﻿using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using System;
@@ -12,11 +13,13 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
 {
     public class ControladorCliente : ControladorBase
     {
-        private RepositorioClienteEmBancoDados repositorioCliente;
+        private readonly IRepositorioCliente repositorioCliente;
         private TelaClienteControl telaClienteControl;
+        private readonly ServicoCliente servicoCliente;
 
-        public ControladorCliente(RepositorioClienteEmBancoDados repositorioCliente)
+        public ControladorCliente(IRepositorioCliente repositorioCliente, ServicoCliente servicoCliente)
         {
+            this.servicoCliente = servicoCliente;
             this.repositorioCliente = repositorioCliente;
         }
 
@@ -24,7 +27,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
         {
             TelaCadastroCliente tela = new TelaCadastroCliente();
             tela.Cliente = new Cliente();
-            tela.GravarRegistro = repositorioCliente.Inserir;
+            tela.GravarRegistro = servicoCliente.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -47,7 +50,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
 
             tela.Cliente = clienteSelecionado;
 
-            tela.GravarRegistro = repositorioCliente.Editar;
+            tela.GravarRegistro = servicoCliente.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

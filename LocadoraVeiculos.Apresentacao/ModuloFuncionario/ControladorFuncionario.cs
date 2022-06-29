@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
+﻿using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloFuncionario;
 using System.Collections.Generic;
@@ -8,19 +9,21 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
 {
     public class ControladorFuncionario : ControladorBase
     {
-        private RepositorioFuncionarioEmBancoDados repositorioFuncionario;
+        private readonly IRepositorioFuncionario repositorioFuncionario;
         private TelaFuncionarioControl telaFuncionarioControl;
+        private readonly ServicoFuncionario servicoFuncionario;
 
-        public ControladorFuncionario(RepositorioFuncionarioEmBancoDados repositorioFuncionario)
+        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario, ServicoFuncionario servicoFuncionario)
         {
             this.repositorioFuncionario = repositorioFuncionario;
+            this.servicoFuncionario = servicoFuncionario;
         }
 
         public override void Inserir()
         {
             TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
             tela.Funcionario = new Funcionario();
-            tela.GravarRegistro = repositorioFuncionario.Inserir;
+            tela.GravarRegistro = servicoFuncionario.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
             if (resultado == DialogResult.OK)
@@ -42,7 +45,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
 
             tela.Funcionario = funcionarioSelecionado;
 
-            tela.GravarRegistro = repositorioFuncionario.Editar;
+            tela.GravarRegistro = servicoFuncionario.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

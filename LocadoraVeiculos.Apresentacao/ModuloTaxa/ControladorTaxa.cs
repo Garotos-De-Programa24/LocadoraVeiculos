@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
+﻿using LocadoraVeiculos.Aplicacao.ModuloTaxa;
+using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.ModuloTaxa;
 using System;
@@ -12,20 +13,22 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 {
     internal class ControladorTaxa : ControladorBase
     {
-        private RepositorioTaxaEmBancoDados repositorioTaxa;
+        private readonly IRepositorioTaxa repositorioTaxa;
         private TelaTaxaControl telaTaxaControl;
+        private readonly ServicoTaxa servicoTaxa;
 
 
-        public ControladorTaxa(RepositorioTaxaEmBancoDados repositorioCliente)
+        public ControladorTaxa(IRepositorioTaxa repositorioCliente,ServicoTaxa servicoTaxa)
         {
             this.repositorioTaxa = repositorioCliente;
+            this.servicoTaxa = servicoTaxa;
         }
 
         public override void Inserir()
         {
             TelaCadastroTaxa tela = new TelaCadastroTaxa();
             tela.Taxa = new Taxa();
-            tela.GravarRegistro = repositorioTaxa.Inserir;
+            tela.GravarRegistro = servicoTaxa.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
             if (resultado == DialogResult.OK)
@@ -47,7 +50,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 
             tela.Taxa = clienteSelecionado;
 
-            tela.GravarRegistro = repositorioTaxa.Editar;
+            tela.GravarRegistro = servicoTaxa.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

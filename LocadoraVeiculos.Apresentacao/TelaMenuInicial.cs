@@ -1,4 +1,8 @@
-﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
+﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
+using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculos.Aplicacao.ModuloTaxa;
+using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
@@ -43,12 +47,17 @@ namespace LocadoraVeiculos.Apresentacao
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
             var repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
 
+            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoCliente = new ServicoCliente(repositorioCliente);
+            var servicoGrupoVeiculo = new ServicoAgrupamento(repositorioAgrupamento);
+            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
+
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
-            controladores.Add("Funcionarios", new ControladorFuncionario(repositorioFuncionario));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
-            controladores.Add("Agrupamentos", new ControladorAgrupamento(repositorioAgrupamento));
+            controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
+            controladores.Add("Agrupamentos", new ControladorAgrupamento(repositorioAgrupamento, servicoGrupoVeiculo));
+            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Funcionarios", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
         }
         private void btnFuncionario_Click(object sender, EventArgs e)
         {

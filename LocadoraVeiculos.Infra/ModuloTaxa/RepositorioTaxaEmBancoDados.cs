@@ -3,11 +3,11 @@ using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.Compartilhado;
 using System;
-
+using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.ModuloTaxa
 {
-    public class RepositorioTaxaEmBancoDados : RepositorioBase<Taxa, ValidaTaxa, MapeadorTaxa>
+    public class RepositorioTaxaEmBancoDados : RepositorioBase<Taxa, MapeadorTaxa>,IRepositorioTaxa
     {
         protected override string sqlInserir =>
             @"INSERT INTO [TBTAXA]
@@ -62,7 +62,22 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             FROM
                 [TBTAXA]";
 
+        protected string sqlSelecionarPorNome =>
+            @"SELECT 
+                [ID],       
+                [EQUIPAMENTO],
+                [VALOR],
+                [DESCRICAO],
+                [TAXADIARIA]
+                
+            FROM
+                [TBTAXA]
+            WHERE
+                [EQUIPAMENTO] = @EQUIPAMENTO";
 
-
+        public Taxa SelecionarTaxaPeloNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("EQUIPAMENTO", nome));
+        }
     }
 }

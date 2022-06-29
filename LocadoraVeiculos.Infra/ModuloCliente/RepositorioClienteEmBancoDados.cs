@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.ModuloCliente
 {
-    public class RepositorioClienteEmBancoDados : RepositorioBase<Cliente, ValidaCliente,MapeadorCliente>
+    public class RepositorioClienteEmBancoDados : RepositorioBase<Cliente,MapeadorCliente>,IRepositorioCliente
     {        
         protected override string sqlInserir =>
             @"INSERT INTO [TBCLIENTE] 
@@ -77,6 +77,23 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
                     [TELEFONE]
 	            FROM 
 		            [TBCLIENTE]";
-        
+        protected string sqlSelecionarPorNome =>
+            @"SELECT 
+		            [ID],
+                    [NOME],
+                    [CPF],
+                    [ENDERECO],
+                    [CNHCONDUTOR],
+                    [VALIDADECNH],
+                    [EMAIL],
+                    [TELEFONE]
+	            FROM 
+		            [TBCLIENTE]
+		        WHERE
+                    [NOME] = @NOME";
+        public Cliente SelecionarClientePorNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
+        }
     }
 }

@@ -2,11 +2,11 @@
 using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.Compartilhado;
-
+using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.ModuloFuncionario
 {
-    public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, ValidaFuncionario, MapeadorFuncionario>
+    public class RepositorioFuncionarioEmBancoDados : RepositorioBase<Funcionario, MapeadorFuncionario>,IRepositorioFuncionario
     {
         protected override string sqlInserir =>
             @"INSERT INTO [TBFUNCIONARIO]
@@ -71,7 +71,44 @@ namespace LocadoraVeiculos.Infra.ModuloFuncionario
             FROM
                 [TBFUNCIONARIO]";
 
+        private string sqlSelecionarPorNome =>
+               @"SELECT 
+                [ID],       
+                [NOME],
+                [LOGIN],
+                [SENHA],
+                [SALARIO],
+                [DATAADMISSAO],
+                [GERENTE]
+                
+            FROM
+                [TBFUNCIONARIO]
+            WHERE
+                [NOME] = @NOME";
 
-       
+        private string sqlSelecionarPorUsuario =>
+            @"SELECT 
+                [ID],       
+                [NOME],
+                [LOGIN],
+                [SENHA],
+                [SALARIO],
+                [DATAADMISSAO],
+                [GERENTE]
+                
+            FROM
+                [TBFUNCIONARIO]
+            WHERE
+                [LOGIN] = @LOGIN";
+
+        public Funcionario SelecionarFuncionarioPorNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
+        }
+
+        public Funcionario SelecionarFuncionarioPorUsuario(string usuario)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorUsuario, new SqlParameter("LOGIN", usuario));
+        }
     }
 }

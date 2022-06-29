@@ -1,9 +1,10 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.Compartilhado;
+using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.ModuloAgrupamento
 {
-    public class RepositorioAgrupamentoEmBancoDados : RepositorioBase<Agrupamento, ValidaAgrupamento, MapeadorAgrupamento>
+    public class RepositorioAgrupamentoEmBancoDados : RepositorioBase<Agrupamento, MapeadorAgrupamento>,IRepositorioAgrupamento
     {
         protected override string sqlInserir =>
             @"INSERT INTO [TBAGRUPAMENTO] 
@@ -42,5 +43,19 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
 		            [AGRUPAMENTO]                    
 	            FROM 
 		            [TBAGRUPAMENTO]";
+        private string sqlSelecionarPorNome =>
+                @"SELECT 
+		            [ID],
+                    [AGRUPAMENTO]                    
+	            FROM 
+		            [TBAGRUPAMENTO]
+		        WHERE
+                    [AGRUPAMENTO] = @AGRUPAMENTO";
+
+
+        public Agrupamento SelecionarAgrupamentoPorNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("AGRUPAMENTO", nome));
+        }
     }
 }

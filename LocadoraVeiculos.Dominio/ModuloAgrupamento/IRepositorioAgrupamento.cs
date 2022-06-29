@@ -9,6 +9,7 @@ namespace LocadoraVeiculos.Dominio.ModuloAgrupamento
 {
     public interface IRepositorioAgrupamento : IRepositorio<Agrupamento>
     {
+        Agrupamento SelecionarAgrupamentoPorNome(string nome);
 
     }
 }
