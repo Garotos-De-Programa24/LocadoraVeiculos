@@ -23,7 +23,6 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloTaxa
 
             taxa = new Taxa();
             taxa.Equipamento = "Cadeira Infantil";
-            taxa.Descricao = "Uma cadeira pra criança";
             taxa.Valor = "80";
             taxa.TaxaDiaria = false;
             
@@ -52,7 +51,6 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloTaxa
 
             //action
             taxa.Equipamento = "GPS";
-            taxa.Descricao = "aparelho de geoloalização";
             taxa.Valor = "120";
 
             repositorio.Editar(taxa);
@@ -96,9 +94,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloTaxa
         public void Deve_selecionar_todos_os_funcionarios()
         {
             //arrange
-            var funcionario1 = new Taxa("Cadeira Infantil","180","Uma cadeira Pra criança", true);
-            var funcionario2 = new Taxa("GPS", "120", "Aparelho de geolocalização", true);
-            var funcionario3 = new Taxa("Frigobar","320", "Uma geladerinha pra tomar uma breja.(Beba Com moderação)", true);
+            var funcionario1 = new Taxa("Cadeira Infantil","180", true);
+            var funcionario2 = new Taxa("GPS", "120", true);
+            var funcionario3 = new Taxa("Frigobar","320", true);
 
             var repositorio = new RepositorioTaxaEmBancoDados();
             repositorio.Inserir(funcionario1);

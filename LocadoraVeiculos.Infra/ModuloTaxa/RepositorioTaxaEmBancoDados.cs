@@ -13,15 +13,13 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             @"INSERT INTO [TBTAXA]
                 (
                     [EQUIPAMENTO],       
-                    [VALOR], 
-                    [DESCRICAO],
+                    [VALOR],                     
                     [TAXADIARIA]
                 )
             VALUES
                 (
                     @EQUIPAMENTO,
-                    @VALOR,
-                    @DESCRICAO,
+                    @VALOR,                    
                     @TAXADIARIA
                 ); SELECT SCOPE_IDENTITY();";
 
@@ -29,8 +27,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                  @" UPDATE [TBTAXA]
                     SET 
                         [EQUIPAMENTO] = @EQUIPAMENTO, 
-                        [VALOR] = @VALOR, 
-                        [DESCRICAO] = @DESCRICAO,
+                        [VALOR] = @VALOR,
                         [TAXADIARIA] = @TAXADIARIA
                     WHERE [ID] = @ID";
 
@@ -42,8 +39,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             @"SELECT 
                 [ID],       
                 [EQUIPAMENTO],
-                [VALOR],
-                [DESCRICAO],
+                [VALOR],                
                 [TAXADIARIA]
                 
             FROM
@@ -55,8 +51,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
             @"SELECT 
                 [ID],       
                 [EQUIPAMENTO],
-                [VALOR],
-                [DESCRICAO],
+                [VALOR],                
                 [TAXADIARIA]
                 
             FROM

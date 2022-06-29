@@ -30,9 +30,7 @@
         {
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtEquipamento = new System.Windows.Forms.TextBox();
-            this.lEndereco = new System.Windows.Forms.Label();
             this.lNome = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lTitulo = new System.Windows.Forms.Label();
@@ -67,30 +65,12 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click_1);
             // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Location = new System.Drawing.Point(95, 146);
-            this.txtDescricao.Multiline = true;
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(427, 63);
-            this.txtDescricao.TabIndex = 3;
-            // 
             // txtEquipamento
             // 
             this.txtEquipamento.Location = new System.Drawing.Point(116, 82);
             this.txtEquipamento.Name = "txtEquipamento";
             this.txtEquipamento.Size = new System.Drawing.Size(406, 23);
             this.txtEquipamento.TabIndex = 1;
-            // 
-            // lEndereco
-            // 
-            this.lEndereco.AutoSize = true;
-            this.lEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lEndereco.Location = new System.Drawing.Point(19, 146);
-            this.lEndereco.Name = "lEndereco";
-            this.lEndereco.Size = new System.Drawing.Size(69, 16);
-            this.lEndereco.TabIndex = 9;
-            this.lEndereco.Text = "Descrição";
             // 
             // lNome
             // 
@@ -135,7 +115,7 @@
             // 
             this.checkBoxDiario.AutoSize = true;
             this.checkBoxDiario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxDiario.Location = new System.Drawing.Point(19, 222);
+            this.checkBoxDiario.Location = new System.Drawing.Point(116, 144);
             this.checkBoxDiario.Name = "checkBoxDiario";
             this.checkBoxDiario.Size = new System.Drawing.Size(110, 20);
             this.checkBoxDiario.TabIndex = 4;
@@ -147,7 +127,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(68, 116);
+            this.label1.Location = new System.Drawing.Point(117, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 16);
             this.label1.TabIndex = 40;
@@ -155,7 +135,7 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(67, 114);
+            this.txtValor.Location = new System.Drawing.Point(116, 113);
             this.txtValor.Mask = "000000";
             this.txtValor.Name = "txtValor";
             this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -169,7 +149,7 @@
             this.lValor.AutoSize = true;
             this.lValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lValor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lValor.Location = new System.Drawing.Point(18, 116);
+            this.lValor.Location = new System.Drawing.Point(67, 118);
             this.lValor.Name = "lValor";
             this.lValor.Size = new System.Drawing.Size(39, 16);
             this.lValor.TabIndex = 8;
@@ -188,9 +168,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.txtEquipamento);
-            this.Controls.Add(this.lEndereco);
             this.Controls.Add(this.lNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -208,9 +186,7 @@
 
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnCadastrar;
-        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TextBox txtEquipamento;
-        private System.Windows.Forms.Label lEndereco;
         private System.Windows.Forms.Label lNome;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lTitulo;
