@@ -23,8 +23,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cpf", HeaderText = "CPF"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Endereco", HeaderText = "Endereço"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "CnhCondutor", HeaderText = "CNH Condutor"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValidadeCnh", HeaderText = "Validade CNH"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "CnhCondutor", HeaderText = "CNH do Condutor"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValidadeCnh", HeaderText = "Validade da CNH"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Email", HeaderText = "E-Mail"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone"},
             };

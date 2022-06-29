@@ -1,6 +1,4 @@
 ﻿using FluentValidation.TestHelper;
-
-
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,8 +14,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloTaxa
         {
             taxa = new()
             {
-                Equipamento = "Cadeira Infantil",
-                Descricao = "Uma cadeira pra criança",
+                Equipamento = "Cadeira Infantil",                
                 Valor = "80",
                 TaxaDiaria = false
             };
@@ -47,7 +44,6 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloTaxa
             // assert
             resultado.ShouldHaveValidationErrorFor(t => t.Equipamento);
         }
-
         [TestMethod]
         public void Equipamento_Nao_deve_ser_vazio()
         {
@@ -61,43 +57,6 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloTaxa
             resultado.ShouldHaveValidationErrorFor(t => t.Equipamento);
         }
         [TestMethod]
-        public void Descricao_Deve_Ser_Obrigatorio()
-        {
-            // arrange
-            taxa.Descricao = null;
-
-            // action
-            var resultado = validador.TestValidate(taxa);
-
-            // assert
-            resultado.ShouldHaveValidationErrorFor(t => t.Descricao);
-        }
-        [TestMethod]
-        public void Descricao_Deve_Ser_Maior_que_3_Caracteres()
-        {
-            // arrange
-            taxa.Descricao = "An";
-
-            // action
-            var resultado = validador.TestValidate(taxa);
-
-            // assert
-            resultado.ShouldHaveValidationErrorFor(t => t.Descricao);
-        }
-
-        [TestMethod]
-        public void Descricao_Nao_deve_ser_vazio()
-        {
-            // arrange
-            taxa.Descricao = "";
-
-            // action
-            var resultado = validador.TestValidate(taxa);
-
-            // assert
-            resultado.ShouldHaveValidationErrorFor(t => t.Descricao);
-        }
-        [TestMethod]
         public void Valor_Deve_Ser_Obrigatorio()
         {
             // arrange
@@ -109,7 +68,6 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloTaxa
             // assert
             resultado.ShouldHaveValidationErrorFor(t => t.Valor);
         }
-    
         [TestMethod]
         public void Valor_Nao_deve_ser_vazio()
         {

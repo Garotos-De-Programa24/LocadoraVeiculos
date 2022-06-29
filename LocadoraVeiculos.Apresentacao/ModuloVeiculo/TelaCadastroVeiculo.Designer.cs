@@ -88,16 +88,16 @@
             // 
             // txtKmPercorridos
             // 
-            this.txtKmPercorridos.Location = new System.Drawing.Point(127, 202);
+            this.txtKmPercorridos.Location = new System.Drawing.Point(171, 202);
             this.txtKmPercorridos.Name = "txtKmPercorridos";
-            this.txtKmPercorridos.Size = new System.Drawing.Size(201, 23);
+            this.txtKmPercorridos.Size = new System.Drawing.Size(157, 23);
             this.txtKmPercorridos.TabIndex = 47;
             // 
             // lKmPercorridos
             // 
             this.lKmPercorridos.AutoSize = true;
             this.lKmPercorridos.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lKmPercorridos.Location = new System.Drawing.Point(16, 204);
+            this.lKmPercorridos.Location = new System.Drawing.Point(60, 204);
             this.lKmPercorridos.Name = "lKmPercorridos";
             this.lKmPercorridos.Size = new System.Drawing.Size(105, 16);
             this.lKmPercorridos.TabIndex = 46;
@@ -105,16 +105,16 @@
             // 
             // txtAno
             // 
-            this.txtAno.Location = new System.Drawing.Point(403, 70);
+            this.txtAno.Location = new System.Drawing.Point(467, 70);
             this.txtAno.Name = "txtAno";
-            this.txtAno.Size = new System.Drawing.Size(116, 23);
+            this.txtAno.Size = new System.Drawing.Size(52, 23);
             this.txtAno.TabIndex = 45;
             // 
             // lAno
             // 
             this.lAno.AutoSize = true;
             this.lAno.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAno.Location = new System.Drawing.Point(365, 72);
+            this.lAno.Location = new System.Drawing.Point(429, 72);
             this.lAno.Name = "lAno";
             this.lAno.Size = new System.Drawing.Size(32, 16);
             this.lAno.TabIndex = 44;
@@ -122,16 +122,16 @@
             // 
             // txtCapacidadeTanque
             // 
-            this.txtCapacidadeTanque.Location = new System.Drawing.Point(175, 171);
+            this.txtCapacidadeTanque.Location = new System.Drawing.Point(171, 171);
             this.txtCapacidadeTanque.Name = "txtCapacidadeTanque";
-            this.txtCapacidadeTanque.Size = new System.Drawing.Size(344, 23);
+            this.txtCapacidadeTanque.Size = new System.Drawing.Size(348, 23);
             this.txtCapacidadeTanque.TabIndex = 43;
             // 
             // lCapacidadeTanque
             // 
             this.lCapacidadeTanque.AutoSize = true;
             this.lCapacidadeTanque.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCapacidadeTanque.Location = new System.Drawing.Point(16, 173);
+            this.lCapacidadeTanque.Location = new System.Drawing.Point(12, 173);
             this.lCapacidadeTanque.Name = "lCapacidadeTanque";
             this.lCapacidadeTanque.Size = new System.Drawing.Size(153, 16);
             this.lCapacidadeTanque.TabIndex = 42;
@@ -139,25 +139,25 @@
             // 
             // btnAddCor
             // 
-            this.btnAddCor.Location = new System.Drawing.Point(456, 267);
+            this.btnAddCor.Location = new System.Drawing.Point(477, 267);
             this.btnAddCor.Name = "btnAddCor";
-            this.btnAddCor.Size = new System.Drawing.Size(63, 23);
+            this.btnAddCor.Size = new System.Drawing.Size(42, 23);
             this.btnAddCor.TabIndex = 41;
             this.btnAddCor.Text = "Add";
             this.btnAddCor.UseVisualStyleBackColor = true;
             // 
             // txtCor
             // 
-            this.txtCor.Location = new System.Drawing.Point(334, 267);
+            this.txtCor.Location = new System.Drawing.Point(377, 267);
             this.txtCor.Name = "txtCor";
-            this.txtCor.Size = new System.Drawing.Size(116, 23);
+            this.txtCor.Size = new System.Drawing.Size(94, 23);
             this.txtCor.TabIndex = 40;
             // 
             // lAddCor
             // 
             this.lAddCor.AutoSize = true;
             this.lAddCor.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAddCor.Location = new System.Drawing.Point(235, 269);
+            this.lAddCor.Location = new System.Drawing.Point(278, 269);
             this.lAddCor.Name = "lAddCor";
             this.lAddCor.Size = new System.Drawing.Size(93, 16);
             this.lAddCor.TabIndex = 39;
@@ -166,36 +166,36 @@
             // cBoxCor
             // 
             this.cBoxCor.FormattingEnabled = true;
-            this.cBoxCor.Location = new System.Drawing.Point(50, 267);
+            this.cBoxCor.Location = new System.Drawing.Point(171, 267);
             this.cBoxCor.Name = "cBoxCor";
-            this.cBoxCor.Size = new System.Drawing.Size(169, 23);
+            this.cBoxCor.Size = new System.Drawing.Size(101, 23);
             this.cBoxCor.TabIndex = 38;
             // 
             // cBoxCombustivel
             // 
             this.cBoxCombustivel.FormattingEnabled = true;
-            this.cBoxCombustivel.Location = new System.Drawing.Point(155, 234);
+            this.cBoxCombustivel.Location = new System.Drawing.Point(171, 234);
             this.cBoxCombustivel.Name = "cBoxCombustivel";
-            this.cBoxCombustivel.Size = new System.Drawing.Size(173, 23);
+            this.cBoxCombustivel.Size = new System.Drawing.Size(157, 23);
             this.cBoxCombustivel.TabIndex = 37;
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(66, 138);
+            this.txtPlaca.Location = new System.Drawing.Point(171, 138);
             this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(453, 23);
+            this.txtPlaca.Size = new System.Drawing.Size(348, 23);
             this.txtPlaca.TabIndex = 36;
             // 
             // txtMarca
             // 
-            this.txtMarca.Location = new System.Drawing.Point(70, 105);
+            this.txtMarca.Location = new System.Drawing.Point(171, 105);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(449, 23);
+            this.txtMarca.Size = new System.Drawing.Size(348, 23);
             this.txtMarca.TabIndex = 35;
             // 
             // txtVeiculo
             // 
-            this.txtVeiculo.Location = new System.Drawing.Point(76, 70);
+            this.txtVeiculo.Location = new System.Drawing.Point(171, 70);
             this.txtVeiculo.Name = "txtVeiculo";
             this.txtVeiculo.Size = new System.Drawing.Size(252, 23);
             this.txtVeiculo.TabIndex = 34;
@@ -204,7 +204,7 @@
             // 
             this.lCor.AutoSize = true;
             this.lCor.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCor.Location = new System.Drawing.Point(16, 269);
+            this.lCor.Location = new System.Drawing.Point(137, 269);
             this.lCor.Name = "lCor";
             this.lCor.Size = new System.Drawing.Size(28, 16);
             this.lCor.TabIndex = 33;
@@ -214,7 +214,7 @@
             // 
             this.lTipoCombustivel.AutoSize = true;
             this.lTipoCombustivel.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lTipoCombustivel.Location = new System.Drawing.Point(16, 236);
+            this.lTipoCombustivel.Location = new System.Drawing.Point(32, 236);
             this.lTipoCombustivel.Name = "lTipoCombustivel";
             this.lTipoCombustivel.Size = new System.Drawing.Size(133, 16);
             this.lTipoCombustivel.TabIndex = 32;
@@ -224,7 +224,7 @@
             // 
             this.lPlaca.AutoSize = true;
             this.lPlaca.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lPlaca.Location = new System.Drawing.Point(16, 140);
+            this.lPlaca.Location = new System.Drawing.Point(121, 140);
             this.lPlaca.Name = "lPlaca";
             this.lPlaca.Size = new System.Drawing.Size(44, 16);
             this.lPlaca.TabIndex = 31;
@@ -234,7 +234,7 @@
             // 
             this.lMarca.AutoSize = true;
             this.lMarca.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lMarca.Location = new System.Drawing.Point(16, 107);
+            this.lMarca.Location = new System.Drawing.Point(117, 107);
             this.lMarca.Name = "lMarca";
             this.lMarca.Size = new System.Drawing.Size(48, 16);
             this.lMarca.TabIndex = 30;
@@ -244,7 +244,7 @@
             // 
             this.lVeiculo.AutoSize = true;
             this.lVeiculo.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lVeiculo.Location = new System.Drawing.Point(16, 72);
+            this.lVeiculo.Location = new System.Drawing.Point(111, 72);
             this.lVeiculo.Name = "lVeiculo";
             this.lVeiculo.Size = new System.Drawing.Size(54, 16);
             this.lVeiculo.TabIndex = 29;
@@ -254,7 +254,7 @@
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(432, 326);
+            this.btnCancelar.Location = new System.Drawing.Point(432, 385);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
             this.btnCancelar.TabIndex = 49;
@@ -265,7 +265,7 @@
             // 
             this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCadastrar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrar.Location = new System.Drawing.Point(339, 326);
+            this.btnCadastrar.Location = new System.Drawing.Point(339, 385);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
             this.btnCadastrar.TabIndex = 48;
@@ -275,16 +275,16 @@
             // cBoxAgrupamento
             // 
             this.cBoxAgrupamento.FormattingEnabled = true;
-            this.cBoxAgrupamento.Location = new System.Drawing.Point(114, 300);
+            this.cBoxAgrupamento.Location = new System.Drawing.Point(171, 300);
             this.cBoxAgrupamento.Name = "cBoxAgrupamento";
-            this.cBoxAgrupamento.Size = new System.Drawing.Size(173, 23);
+            this.cBoxAgrupamento.Size = new System.Drawing.Size(157, 23);
             this.cBoxAgrupamento.TabIndex = 51;
             // 
             // lAgrupamento
             // 
             this.lAgrupamento.AutoSize = true;
             this.lAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAgrupamento.Location = new System.Drawing.Point(16, 302);
+            this.lAgrupamento.Location = new System.Drawing.Point(73, 302);
             this.lAgrupamento.Name = "lAgrupamento";
             this.lAgrupamento.Size = new System.Drawing.Size(92, 16);
             this.lAgrupamento.TabIndex = 50;
@@ -294,7 +294,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 361);
+            this.ClientSize = new System.Drawing.Size(534, 420);
             this.Controls.Add(this.cBoxAgrupamento);
             this.Controls.Add(this.lAgrupamento);
             this.Controls.Add(this.btnCancelar);

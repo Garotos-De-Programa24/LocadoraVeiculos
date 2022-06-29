@@ -92,9 +92,9 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(110, 73);
+            this.txtNome.Location = new System.Drawing.Point(169, 73);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(412, 23);
+            this.txtNome.Size = new System.Drawing.Size(353, 23);
             this.txtNome.TabIndex = 57;
             // 
             // lAgrupamento
@@ -103,9 +103,9 @@
             this.lAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lAgrupamento.Location = new System.Drawing.Point(12, 75);
             this.lAgrupamento.Name = "lAgrupamento";
-            this.lAgrupamento.Size = new System.Drawing.Size(92, 16);
+            this.lAgrupamento.Size = new System.Drawing.Size(151, 16);
             this.lAgrupamento.TabIndex = 52;
-            this.lAgrupamento.Text = "Agrupamento";
+            this.lAgrupamento.Text = "Nome do Agrupamento";
             // 
             // TelaCadastroAgrupamento
             // 
@@ -120,9 +120,10 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroAgrupamento";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCadastroAgrupamento";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

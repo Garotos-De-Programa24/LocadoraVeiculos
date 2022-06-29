@@ -13,16 +13,14 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         {
 
         }
-        public Taxa(string equipamento, string valor, string descricao,bool taxaDiaria)
+        public Taxa(string equipamento, string valor,bool taxaDiaria)
         {
             Equipamento = equipamento;
-            Valor = valor;
-            Descricao = descricao;
+            Valor = valor;            
             TaxaDiaria = taxaDiaria;
         }
         public string Equipamento { get; set; }
-        public string Valor { get; set; }
-        public string Descricao { get; set; }
+        public string Valor { get; set; }        
         public bool TaxaDiaria { get; set; }
 
         public override void Atualizar(Taxa Registro)
@@ -38,8 +36,7 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
 
             return
                 taxa.Id.Equals(Id) &&
-                taxa.Equipamento.Equals(Equipamento) &&
-                taxa.Descricao.Equals(Descricao) &&
+                taxa.Equipamento.Equals(Equipamento) &&                
                 taxa.Valor.Equals(Valor)&&
                 taxa.TaxaDiaria.Equals(TaxaDiaria);
         }

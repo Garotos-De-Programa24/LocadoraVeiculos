@@ -67,15 +67,15 @@
             this.lTitulo.ForeColor = System.Drawing.Color.White;
             this.lTitulo.Location = new System.Drawing.Point(13, 9);
             this.lTitulo.Name = "lTitulo";
-            this.lTitulo.Size = new System.Drawing.Size(239, 25);
+            this.lTitulo.Size = new System.Drawing.Size(208, 25);
             this.lTitulo.TabIndex = 0;
-            this.lTitulo.Text = "Cadastro de Condutores";
+            this.lTitulo.Text = "Cadastro de Clientes";
             // 
             // lNome
             // 
             this.lNome.AutoSize = true;
             this.lNome.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lNome.Location = new System.Drawing.Point(19, 84);
+            this.lNome.Location = new System.Drawing.Point(85, 76);
             this.lNome.Name = "lNome";
             this.lNome.Size = new System.Drawing.Size(43, 16);
             this.lNome.TabIndex = 1;
@@ -85,7 +85,7 @@
             // 
             this.lCPF.AutoSize = true;
             this.lCPF.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCPF.Location = new System.Drawing.Point(19, 119);
+            this.lCPF.Location = new System.Drawing.Point(93, 109);
             this.lCPF.Name = "lCPF";
             this.lCPF.Size = new System.Drawing.Size(35, 16);
             this.lCPF.TabIndex = 2;
@@ -95,7 +95,7 @@
             // 
             this.lEndereco.AutoSize = true;
             this.lEndereco.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lEndereco.Location = new System.Drawing.Point(19, 152);
+            this.lEndereco.Location = new System.Drawing.Point(62, 142);
             this.lEndereco.Name = "lEndereco";
             this.lEndereco.Size = new System.Drawing.Size(66, 16);
             this.lEndereco.TabIndex = 3;
@@ -103,16 +103,16 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(68, 82);
+            this.txtNome.Location = new System.Drawing.Point(134, 74);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(454, 23);
+            this.txtNome.Size = new System.Drawing.Size(388, 23);
             this.txtNome.TabIndex = 8;
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(91, 150);
+            this.txtEndereco.Location = new System.Drawing.Point(134, 140);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(431, 23);
+            this.txtEndereco.Size = new System.Drawing.Size(388, 23);
             this.txtEndereco.TabIndex = 10;
             // 
             // btnCadastrar
@@ -142,7 +142,7 @@
             // 
             this.lCNHCondutor.AutoSize = true;
             this.lCNHCondutor.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCNHCondutor.Location = new System.Drawing.Point(19, 185);
+            this.lCNHCondutor.Location = new System.Drawing.Point(12, 175);
             this.lCNHCondutor.Name = "lCNHCondutor";
             this.lCNHCondutor.Size = new System.Drawing.Size(116, 16);
             this.lCNHCondutor.TabIndex = 4;
@@ -160,7 +160,7 @@
             // 
             this.lValidadeCNH.AutoSize = true;
             this.lValidadeCNH.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lValidadeCNH.Location = new System.Drawing.Point(19, 219);
+            this.lValidadeCNH.Location = new System.Drawing.Point(10, 211);
             this.lValidadeCNH.Name = "lValidadeCNH";
             this.lValidadeCNH.Size = new System.Drawing.Size(118, 16);
             this.lValidadeCNH.TabIndex = 5;
@@ -170,7 +170,7 @@
             // 
             this.lTelefone.AutoSize = true;
             this.lTelefone.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lTelefone.Location = new System.Drawing.Point(19, 253);
+            this.lTelefone.Location = new System.Drawing.Point(68, 241);
             this.lTelefone.Name = "lTelefone";
             this.lTelefone.Size = new System.Drawing.Size(60, 16);
             this.lTelefone.TabIndex = 6;
@@ -178,31 +178,31 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(70, 285);
+            this.txtEmail.Location = new System.Drawing.Point(134, 272);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(452, 23);
+            this.txtEmail.Size = new System.Drawing.Size(388, 23);
             this.txtEmail.TabIndex = 14;
             // 
             // lEmail
             // 
             this.lEmail.AutoSize = true;
             this.lEmail.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lEmail.Location = new System.Drawing.Point(19, 287);
+            this.lEmail.Location = new System.Drawing.Point(78, 274);
             this.lEmail.Name = "lEmail";
-            this.lEmail.Size = new System.Drawing.Size(45, 16);
+            this.lEmail.Size = new System.Drawing.Size(50, 16);
             this.lEmail.TabIndex = 7;
-            this.lEmail.Text = "Email";
+            this.lEmail.Text = "E-mail";
             // 
             // dateValidade
             // 
-            this.dateValidade.Location = new System.Drawing.Point(143, 214);
+            this.dateValidade.Location = new System.Drawing.Point(134, 206);
             this.dateValidade.Name = "dateValidade";
             this.dateValidade.Size = new System.Drawing.Size(235, 23);
             this.dateValidade.TabIndex = 12;
             // 
             // txtCPF
             // 
-            this.txtCPF.Location = new System.Drawing.Point(60, 117);
+            this.txtCPF.Location = new System.Drawing.Point(134, 107);
             this.txtCPF.Mask = "000.000.000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(96, 23);
@@ -210,15 +210,15 @@
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(85, 251);
-            this.txtTelefone.Mask = "(000) 00000-0000";
+            this.txtTelefone.Location = new System.Drawing.Point(134, 239);
+            this.txtTelefone.Mask = "(000)00000-0000";
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(119, 23);
+            this.txtTelefone.Size = new System.Drawing.Size(96, 23);
             this.txtTelefone.TabIndex = 13;
             // 
             // MaskedCNHCondutor
             // 
-            this.MaskedCNHCondutor.Location = new System.Drawing.Point(143, 183);
+            this.MaskedCNHCondutor.Location = new System.Drawing.Point(134, 173);
             this.MaskedCNHCondutor.Mask = "00000000000";
             this.MaskedCNHCondutor.Name = "MaskedCNHCondutor";
             this.MaskedCNHCondutor.Size = new System.Drawing.Size(96, 23);
@@ -250,9 +250,10 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroCliente";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCadastroCliente";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

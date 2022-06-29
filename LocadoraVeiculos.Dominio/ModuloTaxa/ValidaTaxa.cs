@@ -11,9 +11,6 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
     {
         public ValidaTaxa()
         {
-            RuleFor(x => x.Descricao)
-           .NotNull().NotEmpty().MinimumLength(3);
-
             RuleFor(x => x.Equipamento)
            .NotNull().NotEmpty().MinimumLength(3);
 

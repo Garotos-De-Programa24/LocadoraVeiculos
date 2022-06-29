@@ -14,8 +14,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
         public override void ConfigurarParametros(Taxa taxa, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", taxa.Id);
-            comando.Parameters.AddWithValue("EQUIPAMENTO", taxa.Equipamento);
-            comando.Parameters.AddWithValue("DESCRICAO", taxa.Descricao);
+            comando.Parameters.AddWithValue("EQUIPAMENTO", taxa.Equipamento);            
             comando.Parameters.AddWithValue("VALOR", taxa.Valor);
             comando.Parameters.AddWithValue("TAXADIARIA", taxa.TaxaDiaria);
 
@@ -24,12 +23,11 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
         public override Taxa ConverterRegistro(SqlDataReader leitorTaxa)
         {
             var id = Convert.ToInt32(leitorTaxa["ID"]);
-            var equipamento = Convert.ToString(leitorTaxa["EQUIPAMENTO"]);
-            var descricao = Convert.ToString(leitorTaxa["DESCRICAO"]);
+            var equipamento = Convert.ToString(leitorTaxa["EQUIPAMENTO"]);            
             var valor = Convert.ToString(leitorTaxa["VALOR"]);
             var taxaDiaria = Convert.ToBoolean(leitorTaxa["TAXADIARIA"]);
 
-            Taxa taxa = new Taxa(equipamento,valor,descricao,taxaDiaria);
+            Taxa taxa = new Taxa(equipamento,valor,taxaDiaria);
             taxa.Id = id;
 
             return taxa;

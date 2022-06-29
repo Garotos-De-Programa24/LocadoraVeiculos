@@ -102,30 +102,30 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(68, 212);
+            this.txtSenha.Location = new System.Drawing.Point(137, 203);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(454, 23);
+            this.txtSenha.Size = new System.Drawing.Size(385, 23);
             this.txtSenha.TabIndex = 5;
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(68, 183);
+            this.txtLogin.Location = new System.Drawing.Point(137, 171);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(454, 23);
+            this.txtLogin.Size = new System.Drawing.Size(385, 23);
             this.txtLogin.TabIndex = 4;
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(68, 82);
+            this.txtNome.Location = new System.Drawing.Point(137, 75);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(454, 23);
+            this.txtNome.Size = new System.Drawing.Size(385, 23);
             this.txtNome.TabIndex = 1;
             // 
             // lSenha
             // 
             this.lSenha.AutoSize = true;
             this.lSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lSenha.Location = new System.Drawing.Point(19, 216);
+            this.lSenha.Location = new System.Drawing.Point(85, 205);
             this.lSenha.Name = "lSenha";
             this.lSenha.Size = new System.Drawing.Size(46, 16);
             this.lSenha.TabIndex = 14;
@@ -135,7 +135,7 @@
             // 
             this.lLogin.AutoSize = true;
             this.lLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lLogin.Location = new System.Drawing.Point(19, 183);
+            this.lLogin.Location = new System.Drawing.Point(91, 173);
             this.lLogin.Name = "lLogin";
             this.lLogin.Size = new System.Drawing.Size(40, 16);
             this.lLogin.TabIndex = 13;
@@ -145,7 +145,7 @@
             // 
             this.lDataAdmissao.AutoSize = true;
             this.lDataAdmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lDataAdmissao.Location = new System.Drawing.Point(19, 150);
+            this.lDataAdmissao.Location = new System.Drawing.Point(12, 144);
             this.lDataAdmissao.Name = "lDataAdmissao";
             this.lDataAdmissao.Size = new System.Drawing.Size(119, 16);
             this.lDataAdmissao.TabIndex = 12;
@@ -155,7 +155,7 @@
             // 
             this.lSalario.AutoSize = true;
             this.lSalario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lSalario.Location = new System.Drawing.Point(19, 117);
+            this.lSalario.Location = new System.Drawing.Point(81, 110);
             this.lSalario.Name = "lSalario";
             this.lSalario.Size = new System.Drawing.Size(50, 16);
             this.lSalario.TabIndex = 11;
@@ -165,7 +165,7 @@
             // 
             this.lNome.AutoSize = true;
             this.lNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lNome.Location = new System.Drawing.Point(19, 84);
+            this.lNome.Location = new System.Drawing.Point(87, 77);
             this.lNome.Name = "lNome";
             this.lNome.Size = new System.Drawing.Size(44, 16);
             this.lNome.TabIndex = 10;
@@ -175,7 +175,7 @@
             // 
             this.checkBoxAdmin.AutoSize = true;
             this.checkBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxAdmin.Location = new System.Drawing.Point(68, 241);
+            this.checkBoxAdmin.Location = new System.Drawing.Point(137, 234);
             this.checkBoxAdmin.Name = "checkBoxAdmin";
             this.checkBoxAdmin.Size = new System.Drawing.Size(64, 20);
             this.checkBoxAdmin.TabIndex = 6;
@@ -184,14 +184,14 @@
             // 
             // dateAdmissao
             // 
-            this.dateAdmissao.Location = new System.Drawing.Point(144, 150);
+            this.dateAdmissao.Location = new System.Drawing.Point(137, 139);
             this.dateAdmissao.Name = "dateAdmissao";
             this.dateAdmissao.Size = new System.Drawing.Size(235, 23);
             this.dateAdmissao.TabIndex = 3;
             // 
             // maskedSalario
             // 
-            this.maskedSalario.Location = new System.Drawing.Point(68, 115);
+            this.maskedSalario.Location = new System.Drawing.Point(137, 107);
             this.maskedSalario.Mask = "000000";
             this.maskedSalario.Name = "maskedSalario";
             this.maskedSalario.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -205,7 +205,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(69, 117);
+            this.label1.Location = new System.Drawing.Point(138, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 16);
             this.label1.TabIndex = 37;
