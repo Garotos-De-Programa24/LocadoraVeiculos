@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
             RuleFor(x => x.Nome)
            .NotNull().NotEmpty().MinimumLength(3);
 
-            RuleFor(x => x.Cpf)
+            RuleFor(x => x.CpfCnpj)
            .NotNull()
            .NotEmpty()
            .MinimumLength(14).WithMessage("CPF deve conter 11 Digitos");
@@ -26,13 +26,6 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
             RuleFor(x => x.Telefone)
            .NotNull().NotEmpty()
            .MinimumLength(15).WithMessage("Telefone deve conter os 12 Digitos");
-
-            RuleFor(x => x.CnhCondutor)
-           .NotNull().NotEmpty().MinimumLength(10).MaximumLength(11);
-
-            RuleFor(x => x.ValidadeCnh)
-            .GreaterThanOrEqualTo(DateTime.Today);
-
             RuleFor(x => x.Email)
            .EmailAddress();
 

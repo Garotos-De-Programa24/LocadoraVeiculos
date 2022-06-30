@@ -13,22 +13,19 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
         {
         }
 
-        public Cliente(string nome, string cpf, string endereco, string cnhCondutor,DateTime validadeCnh, string email, string telefone)
+        public Cliente(string nome, string cpfCnpj, string endereco, string email, string telefone)
         {
             Nome = nome;
-            Cpf = cpf;
+            CpfCnpj = cpfCnpj;
             Endereco = endereco;
-            CnhCondutor = cnhCondutor;
-            ValidadeCnh = validadeCnh;
             Email = email;
             Telefone = telefone;
         }
 
         public string Nome { get; set; }
-        public string Cpf { get; set; }
+        public string CpfCnpj { get; set; }
+        
         public string Endereco { get; set; }
-        public string CnhCondutor { get; set; }
-        public DateTime ValidadeCnh { get; set; }
         public string Telefone { get; set; }        
         public string Email { get; set; }
 
@@ -46,10 +43,8 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
             return
                 cliente.Id.Equals(Id) &&
                 cliente.Nome.Equals(Nome) &&
-                cliente.Cpf.Equals(Cpf) &&
+                cliente.CpfCnpj.Equals(CpfCnpj) &&
                 cliente.Endereco.Equals(Endereco) &&
-                cliente.CnhCondutor.Equals(CnhCondutor) &&
-                cliente.ValidadeCnh.Equals(ValidadeCnh) &&
                 cliente.Email.Equals(Email)&&
                 cliente.Telefone.Equals(Telefone);
         }

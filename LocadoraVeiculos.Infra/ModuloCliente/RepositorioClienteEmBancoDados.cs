@@ -14,20 +14,16 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"INSERT INTO [TBCLIENTE] 
                 (
                     [NOME],
-                    [CPF],
+                    [CPFCNPJ],
                     [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            )
 	            VALUES
                 (
                     @NOME,
-                    @CPF,
+                    @CPFCNPJ,
                     @ENDERECO,
-                    @CNHCONDUTOR,
-                    @VALIDADECNH,
                     @EMAIL,
                     @TELEFONE
                 );SELECT SCOPE_IDENTITY();";
@@ -36,10 +32,8 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"UPDATE [TBCLIENTE]	
 		        SET
 			        [NOME] = @NOME,
-			        [CPF] = @CPF,
+			        [CPFCNPJ] = @CPFCNPJ,
                     [ENDERECO] = @ENDERECO,
-                    [CNHCONDUTOR] = @CNHCONDUTOR,
-                    [VALIDADECNH] = @VALIDADECNH,
                     [EMAIL] = @EMAIL,
                     [TELEFONE] = @TELEFONE
 		        WHERE
@@ -54,10 +48,8 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"SELECT 
 		            [ID],
                     [NOME],
-                    [CPF],
+                    [CPFCNPJ],
                     [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            FROM 
@@ -69,10 +61,8 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"SELECT 
 		            [ID],
 		            [NOME],
-                    [CPF],
+                    [CPFCNPJ],
                     [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            FROM 
@@ -81,10 +71,8 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             @"SELECT 
 		            [ID],
                     [NOME],
-                    [CPF],
+                    [CPFCNPJ],
                     [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
                     [EMAIL],
                     [TELEFONE]
 	            FROM 
