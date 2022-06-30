@@ -32,15 +32,12 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                 cliente = value;
                 txtNome.Text = cliente.Nome;
                 txtCPF.Text = cliente.Cpf;
-                txtEndereco.Text = cliente.Endereco;                
-                MaskedCNHCondutor.Text = cliente.CnhCondutor;
+                txtEndereco.Text = cliente.Endereco;
 
-                if (cliente.ValidadeCnh == DateTime.MinValue)
-                {
-                    cliente.ValidadeCnh = dateValidade.Value;
-                }
-
-                dateValidade.Value = cliente.ValidadeCnh;
+                //if (cliente.ValidadeCnh == DateTime.MinValue)
+                //{
+                //    cliente.ValidadeCnh = dateValidade.Value;
+                //}                
                 txtEmail.Text = cliente.Email;
                 txtTelefone.Text = cliente.Telefone;
             }
@@ -50,9 +47,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
         {
             cliente.Nome = txtNome.Text;
             cliente.Cpf = RemoverEspaços(txtCPF.Text.Split(" "));
-            cliente.Endereco = txtEndereco.Text;
-            cliente.CnhCondutor = MaskedCNHCondutor.Text;
-            cliente.ValidadeCnh = dateValidade.Value;
+            cliente.Endereco = txtEndereco.Text;            
             cliente.Email = txtEmail.Text;
             cliente.Telefone = RemoverEspaços(txtTelefone.Text.Split(" "));
 

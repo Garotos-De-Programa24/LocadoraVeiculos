@@ -54,7 +54,10 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.cBoxAgrupamento = new System.Windows.Forms.ComboBox();
             this.lAgrupamento = new System.Windows.Forms.Label();
+            this.btnSelecionarFoto = new System.Windows.Forms.Button();
+            this.pictureCarro = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -139,25 +142,26 @@
             // 
             // btnAddCor
             // 
-            this.btnAddCor.Location = new System.Drawing.Point(477, 267);
+            this.btnAddCor.Location = new System.Drawing.Point(477, 295);
             this.btnAddCor.Name = "btnAddCor";
             this.btnAddCor.Size = new System.Drawing.Size(42, 23);
             this.btnAddCor.TabIndex = 41;
             this.btnAddCor.Text = "Add";
             this.btnAddCor.UseVisualStyleBackColor = true;
+            this.btnAddCor.Click += new System.EventHandler(this.btnAddCor_Click);
             // 
             // txtCor
             // 
-            this.txtCor.Location = new System.Drawing.Point(377, 267);
+            this.txtCor.Location = new System.Drawing.Point(432, 267);
             this.txtCor.Name = "txtCor";
-            this.txtCor.Size = new System.Drawing.Size(94, 23);
+            this.txtCor.Size = new System.Drawing.Size(87, 23);
             this.txtCor.TabIndex = 40;
             // 
             // lAddCor
             // 
             this.lAddCor.AutoSize = true;
             this.lAddCor.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAddCor.Location = new System.Drawing.Point(278, 269);
+            this.lAddCor.Location = new System.Drawing.Point(334, 269);
             this.lAddCor.Name = "lAddCor";
             this.lAddCor.Size = new System.Drawing.Size(93, 16);
             this.lAddCor.TabIndex = 39;
@@ -168,7 +172,7 @@
             this.cBoxCor.FormattingEnabled = true;
             this.cBoxCor.Location = new System.Drawing.Point(171, 267);
             this.cBoxCor.Name = "cBoxCor";
-            this.cBoxCor.Size = new System.Drawing.Size(101, 23);
+            this.cBoxCor.Size = new System.Drawing.Size(157, 23);
             this.cBoxCor.TabIndex = 38;
             // 
             // cBoxCombustivel
@@ -254,7 +258,7 @@
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(432, 385);
+            this.btnCancelar.Location = new System.Drawing.Point(435, 426);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
             this.btnCancelar.TabIndex = 49;
@@ -265,12 +269,13 @@
             // 
             this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCadastrar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrar.Location = new System.Drawing.Point(339, 385);
+            this.btnCadastrar.Location = new System.Drawing.Point(342, 426);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
             this.btnCadastrar.TabIndex = 48;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // cBoxAgrupamento
             // 
@@ -290,11 +295,32 @@
             this.lAgrupamento.TabIndex = 50;
             this.lAgrupamento.Text = "Agrupamento";
             // 
+            // btnSelecionarFoto
+            // 
+            this.btnSelecionarFoto.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSelecionarFoto.Location = new System.Drawing.Point(60, 332);
+            this.btnSelecionarFoto.Name = "btnSelecionarFoto";
+            this.btnSelecionarFoto.Size = new System.Drawing.Size(105, 23);
+            this.btnSelecionarFoto.TabIndex = 53;
+            this.btnSelecionarFoto.Text = "Selecionar Foto";
+            this.btnSelecionarFoto.UseVisualStyleBackColor = true;
+            this.btnSelecionarFoto.Click += new System.EventHandler(this.btnSelecionarFoto_Click);
+            // 
+            // pictureCarro
+            // 
+            this.pictureCarro.Location = new System.Drawing.Point(171, 332);
+            this.pictureCarro.Name = "pictureCarro";
+            this.pictureCarro.Size = new System.Drawing.Size(157, 117);
+            this.pictureCarro.TabIndex = 54;
+            this.pictureCarro.TabStop = false;
+            // 
             // TelaCadastroVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 420);
+            this.ClientSize = new System.Drawing.Size(534, 461);
+            this.Controls.Add(this.pictureCarro);
+            this.Controls.Add(this.btnSelecionarFoto);
             this.Controls.Add(this.cBoxAgrupamento);
             this.Controls.Add(this.lAgrupamento);
             this.Controls.Add(this.btnCancelar);
@@ -322,11 +348,13 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroVeiculo";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCadastroVeiculo";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,5 +388,7 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.ComboBox cBoxAgrupamento;
         private System.Windows.Forms.Label lAgrupamento;
+        private System.Windows.Forms.Button btnSelecionarFoto;
+        private System.Windows.Forms.PictureBox pictureCarro;
     }
 }

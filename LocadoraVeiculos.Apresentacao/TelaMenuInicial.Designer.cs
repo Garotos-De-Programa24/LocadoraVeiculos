@@ -66,7 +66,7 @@
             // 
             this.btnAgrupamento.BackColor = System.Drawing.Color.White;
             this.btnAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAgrupamento.Location = new System.Drawing.Point(9, 78);
+            this.btnAgrupamento.Location = new System.Drawing.Point(9, 108);
             this.btnAgrupamento.Name = "btnAgrupamento";
             this.btnAgrupamento.Size = new System.Drawing.Size(120, 26);
             this.btnAgrupamento.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             this.btnClientes.BackColor = System.Drawing.Color.White;
             this.btnClientes.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnClientes.Location = new System.Drawing.Point(9, 110);
+            this.btnClientes.Location = new System.Drawing.Point(9, 76);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(120, 26);
             this.btnClientes.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             this.btnTaxas.BackColor = System.Drawing.Color.White;
             this.btnTaxas.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTaxas.Location = new System.Drawing.Point(9, 142);
+            this.btnTaxas.Location = new System.Drawing.Point(9, 140);
             this.btnTaxas.Name = "btnTaxas";
             this.btnTaxas.Size = new System.Drawing.Size(120, 26);
             this.btnTaxas.TabIndex = 5;
@@ -102,7 +102,7 @@
             // 
             this.btnFuncionario.BackColor = System.Drawing.Color.White;
             this.btnFuncionario.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnFuncionario.Location = new System.Drawing.Point(9, 174);
+            this.btnFuncionario.Location = new System.Drawing.Point(9, 172);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(120, 26);
             this.btnFuncionario.TabIndex = 6;

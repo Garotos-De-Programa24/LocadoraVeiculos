@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
+namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 {
-    public partial class TelaCadastroVeiculo : Form
+    public partial class TelaCadastroCondutor : Form
     {
-        public TelaCadastroVeiculo()
+        public TelaCadastroCondutor()
         {
             InitializeComponent();
-        }
-
-        private void btnAddCor_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSelecionarFoto_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
