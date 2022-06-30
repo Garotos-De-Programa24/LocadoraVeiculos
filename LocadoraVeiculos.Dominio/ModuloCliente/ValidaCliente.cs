@@ -11,7 +11,6 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
     {
         public ValidaCliente() 
         {
-
             RuleFor(x => x.Nome)
            .NotNull().NotEmpty().MinimumLength(3);
 
@@ -35,7 +34,6 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 
             RuleFor(x => x.Email)
            .EmailAddress();
-
         }
     }
 }

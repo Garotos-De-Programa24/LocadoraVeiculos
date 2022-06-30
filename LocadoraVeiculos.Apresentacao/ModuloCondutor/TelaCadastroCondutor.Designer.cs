@@ -48,8 +48,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lTitulo = new System.Windows.Forms.Label();
             this.lCliente = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.comboCliente = new System.Windows.Forms.ComboBox();
+            this.checkClienteCondutor = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,32 +237,32 @@
             this.lCliente.TabIndex = 35;
             this.lCliente.Text = "Cliente";
             // 
-            // comboBox2
+            // comboCliente
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(135, 67);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(235, 23);
-            this.comboBox2.TabIndex = 37;
+            this.comboCliente.FormattingEnabled = true;
+            this.comboCliente.Location = new System.Drawing.Point(135, 67);
+            this.comboCliente.Name = "comboCliente";
+            this.comboCliente.Size = new System.Drawing.Size(235, 23);
+            this.comboCliente.TabIndex = 37;
             // 
-            // radioButton1
+            // checkClienteCondutor
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(376, 68);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(135, 19);
-            this.radioButton1.TabIndex = 38;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Cliente é o Condutor";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.checkClienteCondutor.AutoSize = true;
+            this.checkClienteCondutor.Location = new System.Drawing.Point(376, 69);
+            this.checkClienteCondutor.Name = "checkClienteCondutor";
+            this.checkClienteCondutor.Size = new System.Drawing.Size(136, 19);
+            this.checkClienteCondutor.TabIndex = 38;
+            this.checkClienteCondutor.Text = "Cliente é o Condutor";
+            this.checkClienteCondutor.UseVisualStyleBackColor = true;
+            this.checkClienteCondutor.CheckedChanged += new System.EventHandler(this.checkClienteCondutor_CheckedChanged);
             // 
             // TelaCadastroCondutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 375);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.checkClienteCondutor);
+            this.Controls.Add(this.comboCliente);
             this.Controls.Add(this.lCliente);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -317,7 +317,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lTitulo;
         private System.Windows.Forms.Label lCliente;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ComboBox comboCliente;
+        private System.Windows.Forms.CheckBox checkClienteCondutor;
     }
 }

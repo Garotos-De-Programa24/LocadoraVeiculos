@@ -44,6 +44,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.lStatus = new System.Windows.Forms.Label();
+            this.btnCondutores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelRegistros
@@ -217,12 +218,25 @@
             this.lStatus.TabIndex = 12;
             this.lStatus.Text = "Deslogado";
             // 
+            // btnCondutores
+            // 
+            this.btnCondutores.BackColor = System.Drawing.Color.White;
+            this.btnCondutores.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCondutores.Location = new System.Drawing.Point(9, 204);
+            this.btnCondutores.Name = "btnCondutores";
+            this.btnCondutores.Size = new System.Drawing.Size(120, 26);
+            this.btnCondutores.TabIndex = 14;
+            this.btnCondutores.Text = "Condutores";
+            this.btnCondutores.UseVisualStyleBackColor = false;
+            this.btnCondutores.Click += new System.EventHandler(this.btnCondutores_Click);
+            // 
             // TelaMenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1221, 557);
+            this.Controls.Add(this.btnCondutores);
             this.Controls.Add(this.lStatus);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -267,5 +281,6 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label lStatus;
+        private System.Windows.Forms.Button btnCondutores;
     }
 }

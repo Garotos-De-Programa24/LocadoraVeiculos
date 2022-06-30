@@ -34,10 +34,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                 txtCPF.Text = cliente.Cpf;
                 txtEndereco.Text = cliente.Endereco;
 
-                //if (cliente.ValidadeCnh == DateTime.MinValue)
-                //{
-                //    cliente.ValidadeCnh = dateValidade.Value;
-                //}                
+                               
                 txtEmail.Text = cliente.Email;
                 txtTelefone.Text = cliente.Telefone;
             }
