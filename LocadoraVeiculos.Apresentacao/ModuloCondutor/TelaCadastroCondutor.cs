@@ -90,8 +90,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             Cliente cliente = (Cliente)comboCliente.SelectedItem;
 
             txtNome.Text = cliente.Nome;
-            if(cliente.Cpf.Length == 14)
-            txtCPF.Text = cliente.Cpf;
+            if(cliente.CpfCnpj.Length == 14)
+            txtCPF.Text = cliente.CpfCnpj;
             txtEndereco.Text = cliente.Endereco;
             txtTelefone.Text = cliente.Telefone;
             txtEmail.Text = cliente.Email;

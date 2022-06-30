@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
         public ValidationResult Inserir(Condutor arg)
         {
-            var resultadoValidacao = ValidaCondutor(arg);
+            var resultadoValidacao = ValidarCondutor(arg);
 
             if (resultadoValidacao.IsValid)
                 repositorioCondutor.Inserir(arg);
@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
         public ValidationResult Editar(Condutor arg)
         {
-            var resultadoValidacao = ValidarCliente(arg);
+            var resultadoValidacao = ValidarCondutor(arg);
 
             if (resultadoValidacao.IsValid)
                 repositorioCondutor.Editar(arg);
