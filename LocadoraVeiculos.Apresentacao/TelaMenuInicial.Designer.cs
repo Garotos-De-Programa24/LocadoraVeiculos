@@ -45,6 +45,7 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.lStatus = new System.Windows.Forms.Label();
             this.btnCondutores = new System.Windows.Forms.Button();
+            this.btnPlanosCobranca = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelRegistros
@@ -66,7 +67,7 @@
             // btnAgrupamento
             // 
             this.btnAgrupamento.BackColor = System.Drawing.Color.White;
-            this.btnAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAgrupamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAgrupamento.Location = new System.Drawing.Point(9, 108);
             this.btnAgrupamento.Name = "btnAgrupamento";
             this.btnAgrupamento.Size = new System.Drawing.Size(120, 26);
@@ -78,7 +79,7 @@
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.White;
-            this.btnClientes.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnClientes.Location = new System.Drawing.Point(9, 76);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(120, 26);
@@ -90,7 +91,7 @@
             // btnTaxas
             // 
             this.btnTaxas.BackColor = System.Drawing.Color.White;
-            this.btnTaxas.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTaxas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnTaxas.Location = new System.Drawing.Point(9, 140);
             this.btnTaxas.Name = "btnTaxas";
             this.btnTaxas.Size = new System.Drawing.Size(120, 26);
@@ -102,7 +103,7 @@
             // btnFuncionario
             // 
             this.btnFuncionario.BackColor = System.Drawing.Color.White;
-            this.btnFuncionario.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnFuncionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnFuncionario.Location = new System.Drawing.Point(9, 172);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(120, 26);
@@ -115,11 +116,11 @@
             // 
             this.Titulo.AutoSize = true;
             this.Titulo.BackColor = System.Drawing.Color.Transparent;
-            this.Titulo.Font = new System.Drawing.Font("Geometr415 Blk BT", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.Titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Titulo.ForeColor = System.Drawing.Color.White;
             this.Titulo.Location = new System.Drawing.Point(877, 3);
             this.Titulo.Name = "Titulo";
-            this.Titulo.Size = new System.Drawing.Size(332, 51);
+            this.Titulo.Size = new System.Drawing.Size(344, 51);
             this.Titulo.TabIndex = 13;
             this.Titulo.Text = "Rech\'s Locadora";
             // 
@@ -166,7 +167,7 @@
             this.btnEntrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEntrar.FlatAppearance.BorderSize = 0;
-            this.btnEntrar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnEntrar.Location = new System.Drawing.Point(204, 30);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(51, 23);
@@ -177,7 +178,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCadastrar.Location = new System.Drawing.Point(504, 29);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(81, 23);
@@ -188,7 +189,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnEditar.Location = new System.Drawing.Point(591, 29);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(81, 23);
@@ -199,7 +200,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExcluir.Location = new System.Drawing.Point(678, 29);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(81, 23);
@@ -221,7 +222,7 @@
             // btnCondutores
             // 
             this.btnCondutores.BackColor = System.Drawing.Color.White;
-            this.btnCondutores.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCondutores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCondutores.Location = new System.Drawing.Point(9, 204);
             this.btnCondutores.Name = "btnCondutores";
             this.btnCondutores.Size = new System.Drawing.Size(120, 26);
@@ -230,12 +231,24 @@
             this.btnCondutores.UseVisualStyleBackColor = false;
             this.btnCondutores.Click += new System.EventHandler(this.btnCondutores_Click);
             // 
+            // btnPlanosCobranca
+            // 
+            this.btnPlanosCobranca.BackColor = System.Drawing.Color.White;
+            this.btnPlanosCobranca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPlanosCobranca.Location = new System.Drawing.Point(10, 236);
+            this.btnPlanosCobranca.Name = "btnPlanosCobranca";
+            this.btnPlanosCobranca.Size = new System.Drawing.Size(122, 26);
+            this.btnPlanosCobranca.TabIndex = 15;
+            this.btnPlanosCobranca.Text = "Planos\r\n";
+            this.btnPlanosCobranca.UseVisualStyleBackColor = false;
+            // 
             // TelaMenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1221, 557);
+            this.Controls.Add(this.btnPlanosCobranca);
             this.Controls.Add(this.btnCondutores);
             this.Controls.Add(this.lStatus);
             this.Controls.Add(this.btnExcluir);
@@ -282,5 +295,6 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label lStatus;
         private System.Windows.Forms.Button btnCondutores;
+        private System.Windows.Forms.Button btnPlanosCobranca;
     }
 }

@@ -20,7 +20,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCliente
             cliente = new()
             {
                 Nome = "Pedro",
-                Cpf = "100.000.000-00",
+                CpfCnpj = "100.000.000-00",
                 Endereco = "Lages",
                 CnhCondutor = "1231545215",
                 ValidadeCnh = DateTime.Today,
