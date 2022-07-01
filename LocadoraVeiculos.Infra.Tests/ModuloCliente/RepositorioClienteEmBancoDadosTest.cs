@@ -18,14 +18,13 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
 
         public RepositorioClienteEmBancoDadosTest()
         {
+            Db.ExecutarSql("DELETE FROM TBCONDUTOR; DBCC CHECKIDENT (TBCONDUTOR, RESEED, 0)");
             Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
 
             cliente = new Cliente();
             cliente.Nome = "Pedro";
-            cliente.Cpf = "100.000.000-00";
+            cliente.CpfCnpj = "100.000.000-00";
             cliente.Endereco = "Lages";
-            cliente.CnhCondutor = "1231545215";
-            cliente.ValidadeCnh = DateTime.Today;
             cliente.Email = "pedro@email.com";
             cliente.Telefone = "(49) 99999-9999";
 
@@ -53,9 +52,8 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
 
             //action
             cliente.Nome = "Joao";
-            cliente.Cpf = "100.000.000-10";
+            cliente.CpfCnpj = "100.000.000-10";
             cliente.Endereco = "Lages-Sc";
-            cliente.CnhCondutor = "1234567890";
             cliente.Email = "joao@email.com";
             cliente.Telefone = "(49) 00000-0000";
 
@@ -100,9 +98,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         public void Deve_selecionar_todos_os_clientes()
         {
             //arrange
-            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "33333333333", DateTime.Today, "lucas@gmail.com",  "(049) 99999-9999");
-            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "22222222223", DateTime.Today, "tiago@gmail.com", "(049) 88888-8888");
-            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "11111111113", DateTime.Today, "riomed@gmail.com", "(049) 77777-7777");
+            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "lucas@gmail.com",  "(049) 99999-9999");
+            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "tiago@gmail.com", "(049) 88888-8888");
+            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "riomed@gmail.com", "(049) 77777-7777");
 
             var repositorio = new RepositorioClienteEmBancoDados();
             repositorio.Inserir(c0);

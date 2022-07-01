@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Dominio.ModuloCondutor;
+﻿using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Infra.Compartilhado;
 using System;
 using System.Data.SqlClient;
@@ -6,7 +7,7 @@ using System.Data.SqlClient;
 namespace LocadoraVeiculos.Infra.ModuloCondutor
 {
     public class MapeadorCondutor : MapeadorBase<Condutor>
-    {
+    {        
         public override void ConfigurarParametros(Condutor registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Id);
@@ -25,8 +26,8 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
             if (leitorRegistro["ID"] == DBNull.Value)
                 return null;
 
-            var id = Convert.ToInt32(leitorRegistro["ID"]);
-            var cliente_id = Convert.ToInt32(leitorRegistro["CLIENTE_ID"]);
+            //cria o condutor
+            var id = Convert.ToInt32(leitorRegistro["ID"]);                     
             var nome = Convert.ToString(leitorRegistro["NOME"]);
             var cpf = Convert.ToString(leitorRegistro["CPF"]);
             var endereco = Convert.ToString(leitorRegistro["ENDERECO"]);
@@ -35,16 +36,35 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
             var email = Convert.ToString(leitorRegistro["EMAIL"]);
             var telefone = Convert.ToString(leitorRegistro["TELEFONE"]);
 
-            Condutor condutor = new Condutor();
-            condutor.Id = id;
-            condutor.Cliente.Id = cliente_id;
-            condutor.Nome = nome;
-            condutor.Cpf = cpf;
-            condutor.Endereco = endereco;
-            condutor.CnhCondutor = cnhCondutor;
-            condutor.ValidadeCnh = validadeCnh;
-            condutor.Email = email;
-            condutor.Telefone = telefone;
+            Condutor condutor = new Condutor()
+            {
+                Id = id,
+                Nome = nome,
+                Cpf = cpf,
+                Email = email,
+                Telefone = telefone,
+                Endereco = endereco,
+                CnhCondutor = cnhCondutor,
+                ValidadeCnh = validadeCnh,
+            };
+
+            //cria o cliente
+            var cliente_id = Convert.ToInt32(leitorRegistro["CLIENTE_ID"]);
+            var cliente_nome = Convert.ToString(leitorRegistro["CLIENTE_NOME"]);
+            var cliente_cpfcnpj = Convert.ToString(leitorRegistro["CPFCNPJ"]);
+            var cliente_endereco = Convert.ToString(leitorRegistro["CLIENTE_ENDERECO"]);
+            var cliente_email = Convert.ToString(leitorRegistro["CLIENTE_EMAIL"]);
+            var cliente_telefone = Convert.ToString(leitorRegistro["CLIENTE_TELEFONE"]);
+            
+            condutor.Cliente = new Cliente()
+            {
+                Id = cliente_id,
+                Nome = cliente_nome,
+                CpfCnpj = cliente_cpfcnpj,
+                Endereco = cliente_endereco,
+                Email = cliente_email,
+                Telefone = cliente_telefone,
+            };
 
             return condutor;
         }

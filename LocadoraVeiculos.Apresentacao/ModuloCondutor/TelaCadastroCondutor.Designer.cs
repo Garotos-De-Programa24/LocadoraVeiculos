@@ -239,11 +239,13 @@
             // 
             // comboCliente
             // 
+            this.comboCliente.DisplayMember = "Nome";
             this.comboCliente.FormattingEnabled = true;
             this.comboCliente.Location = new System.Drawing.Point(135, 67);
             this.comboCliente.Name = "comboCliente";
             this.comboCliente.Size = new System.Drawing.Size(235, 23);
             this.comboCliente.TabIndex = 37;
+            this.comboCliente.ValueMember = "Nome";
             // 
             // checkClienteCondutor
             // 

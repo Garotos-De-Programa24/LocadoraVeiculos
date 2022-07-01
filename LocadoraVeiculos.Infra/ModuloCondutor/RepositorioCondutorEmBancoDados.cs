@@ -1,11 +1,6 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Infra.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.ModuloCondutor
 {
@@ -14,7 +9,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
         protected override string sqlInserir =>
             @"INSERT INTO [TBCONDUTOR] 
                 (
-                    [CLIENTE_ID],
+                    [CLIENTE_ID],                    
                     [NOME],
                     [CPF],
                     [ENDERECO],
@@ -25,7 +20,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
 	            )
 	            VALUES
                 (
-                    @CLIENTE_ID,
+                    @CLIENTE_ID,                    
                     @NOME,
                     @CPF,
                     @ENDERECO,
@@ -38,7 +33,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
         protected override string sqlEditar =>
             @"UPDATE [TBCONDUTOR]	
 		        SET
-                    [CLIENTE_ID] = @CLIENTE_ID,
+                    [CLIENTE_ID] = @CLIENTE_ID,                    
 			        [NOME] = @NOME,
 			        [CPF] = @CPF,
                     [ENDERECO] = @ENDERECO,
@@ -56,48 +51,70 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-		            [ID],
-                    [CLIENTE_ID],
-                    [NOME],
-                    [CPF],
-                    [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
-                    [EMAIL],
-                    [TELEFONE]
+		            COND.[ID],
+                    COND.[CLIENTE_ID],
+                    CLI.[NOME] AS CLIENTE_NOME,
+                    CLI.[CPFCNPJ],
+                    CLI.[ENDERECO] AS CLIENTE_ENDERECO,
+                    CLI.[EMAIL] AS CLIENTE_EMAIL,
+                    CLI.[TELEFONE] AS CLIENTE_TELEFONE,
+                    COND.[NOME],
+                    COND.[CPF],
+                    COND.[ENDERECO],
+                    COND.[CNHCONDUTOR],
+                    COND.[VALIDADECNH],
+                    COND.[EMAIL],
+                    COND.[TELEFONE]
 	            FROM 
-		            [TBCONDUTOR]
+		            [TBCONDUTOR] AS COND INNER JOIN [TBCLIENTE] AS CLI
+                ON
+                    CLI.ID = COND.CLIENTE_ID
 		        WHERE
-                    [ID] = @ID";
+                    COND.[ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-		            [ID],
-                    [CLIENTE_ID],
-		            [NOME],
-                    [CPF],
-                    [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
-                    [EMAIL],
-                    [TELEFONE]
+		            COND.[ID],
+                    COND.[CLIENTE_ID],
+                    CLI.[NOME] AS CLIENTE_NOME,
+                    CLI.[CPFCNPJ],
+                    CLI.[ENDERECO] AS CLIENTE_ENDERECO,
+                    CLI.[EMAIL] AS CLIENTE_EMAIL,
+                    CLI.[TELEFONE] AS CLIENTE_TELEFONE,
+                    COND.[NOME],
+                    COND.[CPF],
+                    COND.[ENDERECO],
+                    COND.[CNHCONDUTOR],
+                    COND.[VALIDADECNH],
+                    COND.[EMAIL],
+                    COND.[TELEFONE]
 	            FROM 
-		            [TBCONDUTOR]";
+		            [TBCONDUTOR] AS COND INNER JOIN [TBCLIENTE] AS CLI
+                ON
+                    CLI.ID = COND.CLIENTE_ID";
+		        
         protected string sqlSelecionarPorNome =>
             @"SELECT 
-		            [ID],
-                    [CLIENTE_ID],
-                    [NOME],
-                    [CPF],
-                    [ENDERECO],
-                    [CNHCONDUTOR],
-                    [VALIDADECNH],
-                    [EMAIL],
-                    [TELEFONE]
+		            COND.[ID],
+                    COND.[CLIENTE_ID],
+                    CLI.[NOME] AS CLIENTE_NOME,
+                    CLI.[CPFCNPJ],
+                    CLI.[ENDERECO] AS CLIENTE_ENDERECO,
+                    CLI.[EMAIL] AS CLIENTE_EMAIL,
+                    CLI.[TELEFONE] AS CLIENTE_TELEFONE,
+                    COND.[NOME],
+                    COND.[CPF],
+                    COND.[ENDERECO],
+                    COND.[CNHCONDUTOR],
+                    COND.[VALIDADECNH],
+                    COND.[EMAIL],
+                    COND.[TELEFONE]
 	            FROM 
-		            [TBCONDUTOR]
+		            [TBCONDUTOR] AS COND INNER JOIN [TBCLIENTE] AS CLI
+                ON
+                    CLI.ID = COND.CLIENTE_ID
 		        WHERE
-                    [NOME] = @NOME";
+                    COND.[NOME] = @NOME";
         public Condutor SelecionarCondutorPorNome(string nome)
         {
             return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
