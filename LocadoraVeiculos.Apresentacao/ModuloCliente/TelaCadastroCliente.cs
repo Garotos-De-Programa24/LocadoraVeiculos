@@ -24,12 +24,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             {
                 cliente = value;
                 
-                string str = "";
-                if (cliente.CpfCnpj != null)
-                {
-                    str = cliente.CpfCnpj;
-                }
-
+                string str = "" + cliente.CpfCnpj;
                 if (str.Length > 14)
                 {
                     checkBoxCNPJ.Checked = true;
