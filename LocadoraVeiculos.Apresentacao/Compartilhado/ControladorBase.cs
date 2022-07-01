@@ -7,7 +7,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado
         public abstract void Inserir();
         public abstract void Editar();
         public abstract void Excluir();
-        public abstract UserControl ObtemListagem();        
+        public abstract UserControl ObtemListagem();
     }
 }
 

@@ -1,26 +1,31 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
+using LocadoraVeiculos.Infra.ModuloCliente;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 {
     public partial class TelaCadastroCondutor : Form
     {
+        private RepositorioClienteEmBancoDados repositorioCliente;
+
         public TelaCadastroCondutor()
         {
             InitializeComponent();
+            repositorioCliente = new RepositorioClienteEmBancoDados();
+            
+            List<Cliente> clientes = repositorioCliente.SelecionarTodos();
+            foreach (Cliente c in clientes)
+            {
+                comboCliente.Items.Add(c);
+            }
         }
         
         private Condutor condutor;
+        
         public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
 
         public Condutor Condutor
@@ -36,11 +41,12 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
                 txtNome.Text = condutor.Nome;
                 txtCPF.Text = condutor.Cpf;
                 txtEndereco.Text = condutor.Endereco;
-
                 if (condutor.ValidadeCnh == DateTime.MinValue)
                 {
                     condutor.ValidadeCnh = dateValidade.Value;
                 }
+                MaskedCNHCondutor.Text = condutor.CnhCondutor;
+                dateValidade.Value = condutor.ValidadeCnh;
                 txtEmail.Text = condutor.Email;
                 txtTelefone.Text = condutor.Telefone;
             }
@@ -52,12 +58,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             condutor.Cpf = RemoverEspaços(txtCPF.Text.Split(" "));
             condutor.Endereco = txtEndereco.Text;
             condutor.CnhCondutor = MaskedCNHCondutor.Text;
-
-            if (condutor.ValidadeCnh == DateTime.MinValue)
-            {
-                condutor.ValidadeCnh = dateValidade.Value;
-            } 
-
+            condutor.ValidadeCnh = dateValidade.Value;
             condutor.Email = txtEmail.Text;
             condutor.Telefone = RemoverEspaços(txtTelefone.Text.Split(" "));
 

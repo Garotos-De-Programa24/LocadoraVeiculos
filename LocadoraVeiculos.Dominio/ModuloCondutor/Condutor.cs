@@ -8,6 +8,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
     {
         public Condutor()
         {
+            Cliente = new Cliente();
         }
 
         public Condutor(Cliente cliente, string nome, string cpf, string endereco, string cnhCondutor, DateTime validadeCnh, string email, string telefone)
