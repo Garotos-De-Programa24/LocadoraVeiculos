@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 namespace LocadoraVeiculos.Infra.ModuloCondutor
 {
     public class MapeadorCondutor : MapeadorBase<Condutor>
-    {        
+    {
         public override void ConfigurarParametros(Condutor registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Id);
