@@ -1,10 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 {
@@ -12,7 +8,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
     {
         private IRepositorioPlanoCobranca repositorioPlano;
 
-        ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlano)
+        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlano)
         {
             this.repositorioPlano = repositorioPlano;
         }

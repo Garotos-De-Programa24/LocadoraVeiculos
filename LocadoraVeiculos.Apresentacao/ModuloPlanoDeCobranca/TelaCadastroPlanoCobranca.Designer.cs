@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lTitulo = new System.Windows.Forms.Label();
             this.lTituloPlano = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lAgrupamento = new System.Windows.Forms.Label();
@@ -62,6 +62,14 @@
             this.panel2.Size = new System.Drawing.Size(535, 53);
             this.panel2.TabIndex = 3;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Yellow;
+            this.panel1.Location = new System.Drawing.Point(0, 37);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(535, 16);
+            this.panel1.TabIndex = 4;
+            // 
             // lTitulo
             // 
             this.lTitulo.AutoSize = true;
@@ -73,14 +81,6 @@
             this.lTitulo.Size = new System.Drawing.Size(289, 25);
             this.lTitulo.TabIndex = 9;
             this.lTitulo.Text = "Cadastro Plano de Cobrança";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Yellow;
-            this.panel1.Location = new System.Drawing.Point(0, 37);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(535, 16);
-            this.panel1.TabIndex = 4;
             // 
             // lTituloPlano
             // 
@@ -135,6 +135,7 @@
             this.rdbtnPlanoLivre.TabStop = true;
             this.rdbtnPlanoLivre.Text = "Plano Livre";
             this.rdbtnPlanoLivre.UseVisualStyleBackColor = true;
+            this.rdbtnPlanoLivre.CheckedChanged += new System.EventHandler(this.rdbtnPlanos_CheckedChanged);
             // 
             // rdbtnPlanoDiario
             // 
@@ -146,6 +147,7 @@
             this.rdbtnPlanoDiario.TabStop = true;
             this.rdbtnPlanoDiario.Text = "Plano Diario";
             this.rdbtnPlanoDiario.UseVisualStyleBackColor = true;
+            this.rdbtnPlanoDiario.CheckedChanged += new System.EventHandler(this.rdbtnPlanos_CheckedChanged);
             // 
             // rdbtnPlanoControlado
             // 
@@ -157,6 +159,7 @@
             this.rdbtnPlanoControlado.TabStop = true;
             this.rdbtnPlanoControlado.Text = "Plano Controlado";
             this.rdbtnPlanoControlado.UseVisualStyleBackColor = true;
+            this.rdbtnPlanoControlado.CheckedChanged += new System.EventHandler(this.rdbtnPlanos_CheckedChanged);
             // 
             // label1
             // 
@@ -249,6 +252,7 @@
             this.btnCadastrar.TabIndex = 41;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnCancelar
             // 

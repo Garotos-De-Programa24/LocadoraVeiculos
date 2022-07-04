@@ -241,6 +241,7 @@
             this.btnPlanosCobranca.TabIndex = 15;
             this.btnPlanosCobranca.Text = "Planos\r\n";
             this.btnPlanosCobranca.UseVisualStyleBackColor = false;
+            this.btnPlanosCobranca.Click += new System.EventHandler(this.btnPlanosCobranca_Click);
             // 
             // TelaMenuInicial
             // 

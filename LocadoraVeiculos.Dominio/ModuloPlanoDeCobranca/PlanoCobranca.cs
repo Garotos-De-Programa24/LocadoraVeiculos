@@ -1,10 +1,7 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
 {
@@ -12,24 +9,26 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
     {
         public PlanoCobranca()
         {
+            GrupoVeiculos = new Agrupamento();
         }
 
-        public PlanoCobranca(string nomePlano, Agrupamento grupoVeiculos, TipoPlano tipoPlano, decimal livre, decimal diario, decimal controlado)
+        public PlanoCobranca(Agrupamento grupoVeiculo,string nomePlano, Agrupamento grupoVeiculos, EnunPlano tipoPlano, decimal valorDiario, decimal valorPorKm, decimal limiteQuilometragem)
         {
+            this.GrupoVeiculos = grupoVeiculo;
             NomePlano = nomePlano;
             GrupoVeiculos = grupoVeiculos;
-            Plano = tipoPlano;
-            Livre = livre;
-            Diario = diario;
-            Controlado = controlado;
+            TipoPlano = tipoPlano;
+            ValorDiario = valorDiario;
+            ValorPorKm = valorPorKm;
+            LimiteQuilometragem = limiteQuilometragem;
         }
 
         public string NomePlano { get; set; }
         public Agrupamento GrupoVeiculos { get; set; }
-        public TipoPlano Plano { get; set; }
-        public decimal Livre { get; set; }
-        public decimal Diario { get; set; }
-        public decimal Controlado { get; set; }
+        public EnunPlano TipoPlano { get; set; }
+        public decimal ValorDiario { get; set; }
+        public decimal ValorPorKm { get; set; }
+        public decimal LimiteQuilometragem { get; set; }
 
         public override void Atualizar(PlanoCobranca Registro)
         {
@@ -47,10 +46,10 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
                 plano.Id.Equals(Id) &&
                 plano.NomePlano.Equals(NomePlano) &&
                 plano.GrupoVeiculos.Equals(GrupoVeiculos) &&
-                plano.Plano.Equals(Plano) &&
-                plano.Livre.Equals(Livre) &&
-                plano.Diario.Equals(Diario) &&
-                plano.Controlado.Equals(Controlado);
+                plano.TipoPlano.Equals(TipoPlano) &&
+                plano.ValorDiario.Equals(ValorDiario) &&
+                plano.ValorPorKm.Equals(ValorPorKm) &&
+                plano.LimiteQuilometragem.Equals(LimiteQuilometragem);
         }
     }
 }

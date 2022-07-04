@@ -4,9 +4,6 @@ using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
@@ -14,33 +11,85 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
     public class ControladorPlanoDeCobranca : ControladorBase
     {
         private readonly IRepositorioPlanoCobranca repositorioPlanoCobranca;
-        private TelaCadastroPlanoCobranca telaCadastroPlanoCobranca;
-        private readonly ServicoPlanoCobranca ServicoPlanoCobranca;
+        private TelaPlanoCobrancaControl telaPlanoCobrancaControl;
+        private readonly ServicoPlanoCobranca servicoPlanoCobranca;
 
         public ControladorPlanoDeCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca, ServicoPlanoCobranca servicoPlanoCobranca)
         {
             this.repositorioPlanoCobranca = repositorioPlanoCobranca;
-            this.ServicoPlanoCobranca = servicoPlanoCobranca;
+            this.servicoPlanoCobranca = servicoPlanoCobranca;
         }
         public override void Inserir()
         {
-            throw new NotImplementedException();
+            TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca();
+            tela.PlanoCobranca = new PlanoCobranca();
+            tela.GravarRegistro = servicoPlanoCobranca.Inserir;
+
+            DialogResult resultado = tela.ShowDialog();
+            if (resultado == DialogResult.OK)
+                CarregarPlanosDeCobranca();
         }
         public override void Editar()
         {
-            throw new NotImplementedException();
-        }
+            PlanoCobranca planoSelecionado = ObtemPlanoSelecionado();
+            if (planoSelecionado == null)
+            {
+                MessageBox.Show("Selecione uma Plano de Cobrança primeiro",
+                "Edição de Condutores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca();
+            tela.PlanoCobranca = planoSelecionado;
+            tela.GravarRegistro = servicoPlanoCobranca.Editar;
 
+            DialogResult resultado = tela.ShowDialog();
+            if(resultado == DialogResult.OK)
+            {
+                CarregarPlanosDeCobranca();
+            }
+        }
         public override void Excluir()
         {
-            throw new NotImplementedException();
-        }
+            PlanoCobranca planoSelecioando = ObtemPlanoSelecionado();
 
-       
+            if (planoSelecioando == null)
+            {
+                MessageBox.Show("Selecione um plano de Cobrança",
+                "Exclusão de Condutores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir este Plano?",
+                "Exclusão de Condutores", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.OK)
+            {
+                repositorioPlanoCobranca.Excluir(planoSelecioando);
+                CarregarPlanosDeCobranca();
+            }
+
+        }
 
         public override UserControl ObtemListagem()
         {
-            throw new NotImplementedException();
+            if (telaPlanoCobrancaControl == null)
+                telaPlanoCobrancaControl = new TelaPlanoCobrancaControl();
+
+            CarregarPlanosDeCobranca();
+
+            return telaPlanoCobrancaControl;
+        }
+        private void CarregarPlanosDeCobranca()
+        {
+            List<PlanoCobranca> condutores = repositorioPlanoCobranca.SelecionarTodos();
+
+            telaPlanoCobrancaControl.AtualizarRegistros(condutores);
+        }
+        private PlanoCobranca ObtemPlanoSelecionado()
+        {
+            var id = telaPlanoCobrancaControl.ObtemNumeroPlanoCobrancaSelecionado();
+
+            return repositorioPlanoCobranca.SelecionarPorId(id);
         }
     }
 }

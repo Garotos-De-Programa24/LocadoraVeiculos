@@ -2,18 +2,21 @@
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloCondutor;
 using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
+using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.ModuloTaxa;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloCondutor;
 using LocadoraVeiculos.Infra.ModuloFuncionario;
+using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -50,12 +53,14 @@ namespace LocadoraVeiculos.Apresentacao
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
             var repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
             var repositorioCondutor = new RepositorioCondutorEmBancoDados();
+            var repositorioPlanoCobranca = new RepositorioPlanoCobrancaEmBancoDados();
 
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculo = new ServicoAgrupamento(repositorioAgrupamento);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor);
+            var servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -64,6 +69,7 @@ namespace LocadoraVeiculos.Apresentacao
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
             controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, servicoCondutor));
             controladores.Add("Funcionarios", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("Planos", new ControladorPlanoDeCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
         }
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
@@ -95,6 +101,10 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnCondutores_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal("Condutores");
+        }
+        private void btnPlanosCobranca_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal("Planos");
         }
         private void ConfigurarTelaPrincipal(string tipo)
         {

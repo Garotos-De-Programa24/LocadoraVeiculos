@@ -2,11 +2,7 @@
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
 {
@@ -16,10 +12,10 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
         {
             comando.Parameters.AddWithValue("ID", registro.Id);
             comando.Parameters.AddWithValue("NOMEPLANO", registro.NomePlano);
-            comando.Parameters.AddWithValue("TIPOPLANO", registro.Plano);
-            comando.Parameters.AddWithValue("VALOR_LIVRE", registro.Livre);
-            comando.Parameters.AddWithValue("VALOR_DIARIO", registro.Diario);
-            comando.Parameters.AddWithValue("VALOR_CONTROLADO", registro.Controlado);
+            comando.Parameters.AddWithValue("TIPOPLANO", registro.TipoPlano);
+            comando.Parameters.AddWithValue("VALOR_LIVRE", registro.ValorDiario);
+            comando.Parameters.AddWithValue("VALOR_DIARIO", registro.ValorPorKm);
+            comando.Parameters.AddWithValue("VALOR_CONTROLADO", registro.LimiteQuilometragem);
             comando.Parameters.AddWithValue("AGRUPAMENTO_ID", registro.GrupoVeiculos.Id);
         }
 
@@ -37,10 +33,10 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
             PlanoCobranca novoPlano = new PlanoCobranca();
             novoPlano.Id = id;
             novoPlano.NomePlano = nomePlano;
-            novoPlano.Plano = (TipoPlano)tipoPlano;
-            novoPlano.Livre = valorLivre;
-            novoPlano.Diario = valorDiario;
-            novoPlano.Controlado = valorControlado;
+            novoPlano.TipoPlano = (EnunPlano)tipoPlano;
+            novoPlano.ValorDiario = valorLivre;
+            novoPlano.ValorPorKm = valorDiario;
+            novoPlano.LimiteQuilometragem = valorControlado;
 
             novoPlano.GrupoVeiculos = agrupamento;
 

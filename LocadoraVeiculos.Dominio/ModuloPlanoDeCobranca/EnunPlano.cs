@@ -2,7 +2,7 @@
 
 namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
 {
-    public enum TipoPlano
+    public enum EnunPlano
     {
         [Description("Livre")]
         Livre,
