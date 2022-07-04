@@ -10,3 +10,7 @@
     CONSTRAINT [FK_TBPlano_TBAgrupamento] FOREIGN KEY ([Id]) REFERENCES [dbo].[TBAgrupamento] ([Id])
 );
 
+
+GO
+ALTER TABLE [dbo].[TBPlano] NOCHECK CONSTRAINT [FK_TBPlano_TBAgrupamento];
+

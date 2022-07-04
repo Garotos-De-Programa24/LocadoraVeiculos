@@ -12,3 +12,7 @@
     CONSTRAINT [FK_TBCondutor_TBCliente] FOREIGN KEY ([Id]) REFERENCES [dbo].[TBCliente] ([Id])
 );
 
+
+GO
+ALTER TABLE [dbo].[TBCondutor] NOCHECK CONSTRAINT [FK_TBCondutor_TBCliente];
+
