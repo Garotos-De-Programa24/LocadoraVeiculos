@@ -235,9 +235,9 @@
             // 
             this.btnPlanosCobranca.BackColor = System.Drawing.Color.White;
             this.btnPlanosCobranca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPlanosCobranca.Location = new System.Drawing.Point(10, 236);
+            this.btnPlanosCobranca.Location = new System.Drawing.Point(9, 236);
             this.btnPlanosCobranca.Name = "btnPlanosCobranca";
-            this.btnPlanosCobranca.Size = new System.Drawing.Size(122, 26);
+            this.btnPlanosCobranca.Size = new System.Drawing.Size(120, 26);
             this.btnPlanosCobranca.TabIndex = 15;
             this.btnPlanosCobranca.Text = "Planos\r\n";
             this.btnPlanosCobranca.UseVisualStyleBackColor = false;

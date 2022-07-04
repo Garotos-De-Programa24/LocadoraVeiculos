@@ -24,14 +24,14 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
 			        [ID] = @ID";
 
         protected override string sqlExcluir =>
-            @"DELETE FROM [TBAGRUPAMENTO]			        
+            @"DELETE FROM [TBAGRUPAMENTO]
 		        WHERE
 			        [ID] = @ID";
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            [ID],
-                    [AGRUPAMENTO]                    
+                    [AGRUPAMENTO]
 	            FROM 
 		            [TBAGRUPAMENTO]
 		        WHERE

@@ -11,6 +11,10 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
     {
         public ValidaCondutor()
         {
+            RuleFor(x => x.Cliente)
+                .NotNull()
+                .NotEmpty();
+
             RuleFor(x => x.Nome)
                 .NotNull()
                 .NotEmpty()
@@ -29,7 +33,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
                .MinimumLength(15).WithMessage("Telefone deve conter os 12 Digitos");
 
             RuleFor(x => x.CnhCondutor)
-               .NotNull().NotEmpty().MinimumLength(10).MaximumLength(11);
+               .NotNull().NotEmpty().Length(11);
 
             RuleFor(x => x.ValidadeCnh)
                 .GreaterThanOrEqualTo(DateTime.Today);
