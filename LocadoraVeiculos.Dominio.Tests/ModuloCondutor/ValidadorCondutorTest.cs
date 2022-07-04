@@ -19,9 +19,9 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
 
         public ValidadorCondutorTest()
         {
+            repositorioCliente = new RepositorioClienteEmBancoDados();
             condutor = new()
-            {
-                Cliente = repositorioCliente.SelecionarPorId(1),
+            {                
                 Nome = "João",
                 Cpf = "111.111.111.11",
                 Endereco = "Lages",
@@ -30,6 +30,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
                 Email = "condutor@gmail.com",
                 Telefone = "(049)99999-9999"
             };
+            condutor.Cliente = repositorioCliente.SelecionarPorId(1);
 
             validador = new ValidaCondutor();
         }
@@ -110,6 +111,31 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
 
             //assert
             resultado.ShouldHaveValidationErrorFor(c => c.Telefone);
+        }
+
+        [TestMethod]
+        public void CNH_Condutor_Eh_Obrigatorio()
+        {
+            //arrange
+            condutor.CnhCondutor = null;
+
+            //action
+            var resultado = validador.TestValidate(condutor);
+
+            //assert
+            resultado.ShouldHaveValidationErrorFor(c => c.CnhCondutor);
+        }
+        [TestMethod]
+        public void Validade_CNH_Deve_Ser_Maior_DataAtual()
+        {
+            //arrange
+            condutor.ValidadeCnh = DateTime.Today.AddDays(-1);
+
+            //action
+            var resultado = validador.TestValidate(condutor);
+
+            //assert
+            resultado.ShouldHaveValidationErrorFor(c => c.ValidadeCnh);
         }
     }
 }

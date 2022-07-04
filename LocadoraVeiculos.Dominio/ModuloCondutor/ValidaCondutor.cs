@@ -11,6 +11,10 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
     {
         public ValidaCondutor()
         {
+            RuleFor(x => x.Cliente)
+                .NotNull()
+                .NotEmpty();
+
             RuleFor(x => x.Nome)
                 .NotNull()
                 .NotEmpty()
