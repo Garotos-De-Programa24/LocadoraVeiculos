@@ -11,7 +11,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
         {
             InitializeComponent();
             grid.ConfigurarGridZebrado();
-            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridSomenteLeitura();            
             grid.Columns.AddRange(ObterColunas());
         }
 
