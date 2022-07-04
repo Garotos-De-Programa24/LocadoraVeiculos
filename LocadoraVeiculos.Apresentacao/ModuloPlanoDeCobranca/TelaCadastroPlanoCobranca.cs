@@ -37,8 +37,11 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
                 planoCobranca = value;
                 txtNome.Text = planoCobranca.NomePlano;
                 cmbAgrupamento.Text = planoCobranca.GrupoVeiculos.Nome;
+                if(planoCobranca.ValorPorKm != 0)
                 maskedValorDiario.Text = Convert.ToString(planoCobranca.ValorPorKm);
+                if(planoCobranca.ValorDiario != 0)
                 maskedValorPorKm.Text = Convert.ToString(planoCobranca.ValorDiario);
+                if(planoCobranca.LimiteQuilometragem != 0)
                 txtLimitQuilometragem.Text = Convert.ToString(planoCobranca.LimiteQuilometragem);
                 PreencherTipoPlano();
             }
@@ -47,9 +50,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
         {
             planoCobranca.NomePlano = txtNome.Text;
             planoCobranca.GrupoVeiculos = (Agrupamento)cmbAgrupamento.SelectedItem;
-            planoCobranca.ValorDiario = Convert.ToDecimal(maskedValorDiario.Text);
-            planoCobranca.ValorPorKm = Convert.ToDecimal(maskedValorPorKm.Text);
-            planoCobranca.LimiteQuilometragem = Convert.ToDecimal(txtLimitQuilometragem.Text);
+            planoCobranca.ValorDiario = Convert.ToDecimal(RemoverEspaços(maskedValorDiario.Text.Split(" ")));
+            planoCobranca.ValorPorKm = Convert.ToDecimal(RemoverEspaços(maskedValorPorKm.Text.Split(" ")));
+            planoCobranca.LimiteQuilometragem = Convert.ToDecimal(RemoverEspaços(txtLimitQuilometragem.Text.Split(" ")));
             planoCobranca.TipoPlano = ObterTipoPlano();
 
             var resultadoValidacao = GravarRegistro(planoCobranca);
@@ -156,6 +159,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
                 EnabledMaskedValorPorKm();
                 EnabledtxtLimiteQuilometragem();
             }
+        }
+        private string RemoverEspaços(string[] valid)
+        {
+            string resultado = "";
+
+            for (int i = 0; i < valid.Length; i++)
+            {
+                if (valid[i] != "")
+                {
+                    resultado = valid[i];
+                }
+            }
+            return resultado;
         }
     }
 }

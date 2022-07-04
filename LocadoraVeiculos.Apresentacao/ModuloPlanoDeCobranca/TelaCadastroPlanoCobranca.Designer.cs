@@ -111,11 +111,13 @@
             // 
             // cmbAgrupamento
             // 
+            this.cmbAgrupamento.DisplayMember = "Nome";
             this.cmbAgrupamento.FormattingEnabled = true;
             this.cmbAgrupamento.Location = new System.Drawing.Point(150, 88);
             this.cmbAgrupamento.Name = "cmbAgrupamento";
             this.cmbAgrupamento.Size = new System.Drawing.Size(121, 23);
             this.cmbAgrupamento.TabIndex = 14;
+            this.cmbAgrupamento.ValueMember = "Nome";
             // 
             // panel3
             // 

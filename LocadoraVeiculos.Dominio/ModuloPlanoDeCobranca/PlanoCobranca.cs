@@ -12,11 +12,10 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
             GrupoVeiculos = new Agrupamento();
         }
 
-        public PlanoCobranca(Agrupamento grupoVeiculo,string nomePlano, Agrupamento grupoVeiculos, EnunPlano tipoPlano, decimal valorDiario, decimal valorPorKm, decimal limiteQuilometragem)
+        public PlanoCobranca(Agrupamento grupoVeiculo,string nomePlano, EnunPlano tipoPlano, decimal valorDiario, decimal valorPorKm, decimal limiteQuilometragem)
         {
             this.GrupoVeiculos = grupoVeiculo;
             NomePlano = nomePlano;
-            GrupoVeiculos = grupoVeiculos;
             TipoPlano = tipoPlano;
             ValorDiario = valorDiario;
             ValorPorKm = valorPorKm;

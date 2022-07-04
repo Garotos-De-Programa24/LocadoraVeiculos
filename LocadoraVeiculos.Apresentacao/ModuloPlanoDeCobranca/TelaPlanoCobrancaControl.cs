@@ -42,9 +42,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
 
             foreach (var plano in planoDeCobranca)
             {
-                grid.Rows.Add(plano.Id, plano.NomePlano,plano.GrupoVeiculos.Nome,
-                    plano.TipoPlano, plano.ValorDiario, plano.ValorPorKm,
-                    plano.LimiteQuilometragem);
+                if (plano.TipoPlano == EnunPlano.Livre) { 
+                grid.Rows.Add(plano.Id, plano.NomePlano, plano.GrupoVeiculos.Nome,
+                    plano.TipoPlano, plano.ValorDiario,"-","-");
+                }else if(plano.TipoPlano == EnunPlano.Diario)
+                {
+                    grid.Rows.Add(plano.Id, plano.NomePlano, plano.GrupoVeiculos.Nome,
+                    plano.TipoPlano, plano.ValorDiario, plano.ValorPorKm, "-");
+                }else if(plano.TipoPlano == EnunPlano.Controlado)
+                {
+                    grid.Rows.Add(plano.Id, plano.NomePlano, plano.GrupoVeiculos.Nome,
+                    plano.TipoPlano, plano.ValorDiario, plano.ValorPorKm, plano.LimiteQuilometragem);
+                }
             }
         }
 
@@ -52,5 +61,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
         {
             return grid.SelecionarNumero<int>();
         }
+
+    
     }
 }
