@@ -1,13 +1,6 @@
 ﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
@@ -44,15 +37,15 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
             {
                 if (plano.TipoPlano == EnunPlano.Livre) { 
                 grid.Rows.Add(plano.Id, plano.NomePlano, plano.GrupoVeiculos.Nome,
-                    plano.TipoPlano, plano.ValorDiario,"-","-");
+                    plano.TipoPlano, "R$"+plano.ValorDiario,"-","-");
                 }else if(plano.TipoPlano == EnunPlano.Diario)
                 {
                     grid.Rows.Add(plano.Id, plano.NomePlano, plano.GrupoVeiculos.Nome,
-                    plano.TipoPlano, plano.ValorDiario, plano.ValorPorKm, "-");
+                    plano.TipoPlano,"R$"+plano.ValorDiario,"R$" + plano.ValorPorKm, "-");
                 }else if(plano.TipoPlano == EnunPlano.Controlado)
                 {
                     grid.Rows.Add(plano.Id, plano.NomePlano, plano.GrupoVeiculos.Nome,
-                    plano.TipoPlano, plano.ValorDiario, plano.ValorPorKm, plano.LimiteQuilometragem);
+                    plano.TipoPlano,"R$" + plano.ValorDiario, "R$" + plano.ValorPorKm, plano.LimiteQuilometragem );
                 }
             }
         }

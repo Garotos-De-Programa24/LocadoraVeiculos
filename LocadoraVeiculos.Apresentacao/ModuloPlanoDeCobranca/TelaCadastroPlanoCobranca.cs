@@ -37,12 +37,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
                 planoCobranca = value;
                 txtNome.Text = planoCobranca.NomePlano;
                 cmbAgrupamento.Text = planoCobranca.GrupoVeiculos.Nome;
+
                 if(planoCobranca.ValorPorKm != 0)
                 maskedValorDiario.Text = Convert.ToString(planoCobranca.ValorPorKm);
+
                 if(planoCobranca.ValorDiario != 0)
                 maskedValorPorKm.Text = Convert.ToString(planoCobranca.ValorDiario);
+
                 if(planoCobranca.LimiteQuilometragem != 0)
-                txtLimitQuilometragem.Text = Convert.ToString(planoCobranca.LimiteQuilometragem);
+                maskedLimitQuilometragem.Text = Convert.ToString(planoCobranca.LimiteQuilometragem);
+                
                 PreencherTipoPlano();
             }
         }
@@ -50,9 +54,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
         {
             planoCobranca.NomePlano = txtNome.Text;
             planoCobranca.GrupoVeiculos = (Agrupamento)cmbAgrupamento.SelectedItem;
-            planoCobranca.ValorDiario = Convert.ToDecimal(RemoverEspaços(maskedValorDiario.Text.Split(" ")));
-            planoCobranca.ValorPorKm = Convert.ToDecimal(RemoverEspaços(maskedValorPorKm.Text.Split(" ")));
-            planoCobranca.LimiteQuilometragem = Convert.ToDecimal(RemoverEspaços(txtLimitQuilometragem.Text.Split(" ")));
+            planoCobranca.SetValorDiario(maskedValorDiario.Text);
+            planoCobranca.SetValorPorKm(maskedValorPorKm.Text);
+            planoCobranca.SetLimiteQuilometragem(maskedLimitQuilometragem.Text);
             planoCobranca.TipoPlano = ObterTipoPlano();
 
             var resultadoValidacao = GravarRegistro(planoCobranca);
@@ -90,31 +94,25 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
             if(planoCobranca.TipoPlano == EnunPlano.Livre)
             {
                 rdbtnPlanoLivre.Checked = true;
-                DesabilitarMaskedValorPorKm();
-                DesabilitartxtLimiteQui();
-                EnabledMaskedValorDiario();
+                AtivarTextMask();
             }
             else if (planoCobranca.TipoPlano == EnunPlano.Diario)
             {
                 rdbtnPlanoDiario.Checked = true;
-                DesabilitartxtLimiteQui();
-                EnabledMaskedValorDiario();
-                EnabledMaskedValorPorKm();
+                AtivarTextMask();
 
             }
             else if(planoCobranca.TipoPlano == EnunPlano.Controlado)
             {
                 rdbtnPlanoControlado.Checked = true;
-                EnabledMaskedValorDiario();
-                EnabledMaskedValorPorKm();
-                EnabledtxtLimiteQuilometragem();
+                AtivarTextMask();
             }
            
         }
-
+        #region Metodos para habilitar e desablitar os textBox
         private void EnabledtxtLimiteQuilometragem()
         {
-            txtLimitQuilometragem.Enabled = true;
+            maskedLimitQuilometragem.Enabled = true;
         }
 
         private void EnabledMaskedValorPorKm()
@@ -131,24 +129,27 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
         }
         private void DesabilitartxtLimiteQui()
         {
-            txtLimitQuilometragem.Enabled = false;
+            maskedLimitQuilometragem.Enabled = false;
         }
 
         private void rdbtnPlanos_CheckedChanged(object sender, EventArgs e)
         {
             AtivarTextMask();
         }
-
+        #endregion
         private void AtivarTextMask()
         {
             if(rdbtnPlanoLivre.Checked == true)
             {
+                maskedValorPorKm.Clear();
                 DesabilitarMaskedValorPorKm();
+                maskedLimitQuilometragem.Clear();
                 DesabilitartxtLimiteQui();
                 EnabledMaskedValorDiario();
             }
             else if(rdbtnPlanoDiario.Checked == true)
             {
+                maskedLimitQuilometragem.Clear();
                 DesabilitartxtLimiteQui();
                 EnabledMaskedValorDiario();
                 EnabledMaskedValorPorKm();
@@ -159,19 +160,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
                 EnabledMaskedValorPorKm();
                 EnabledtxtLimiteQuilometragem();
             }
-        }
-        private string RemoverEspaços(string[] valid)
-        {
-            string resultado = "";
-
-            for (int i = 0; i < valid.Length; i++)
-            {
-                if (valid[i] != "")
-                {
-                    resultado = valid[i];
-                }
-            }
-            return resultado;
         }
     }
 }

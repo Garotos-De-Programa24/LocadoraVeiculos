@@ -26,9 +26,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
             planoCobranca.GrupoVeiculos = repositorioAgrupamento.SelecionarPorId(1);
             planoCobranca.NomePlano = "Uber Basico";
             planoCobranca.TipoPlano = EnunPlano.Diario;
-            planoCobranca.ValorDiario = 45;
-            planoCobranca.ValorPorKm = 52;
-            planoCobranca.LimiteQuilometragem = 80;
+            planoCobranca.SetValorDiario("45");
+            planoCobranca.SetValorPorKm("52");
+            planoCobranca.SetLimiteQuilometragem("80");
 
 
         }
@@ -58,9 +58,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
             //action
             planoCobranca.NomePlano = "99 Basico";
             planoCobranca.TipoPlano = EnunPlano.Controlado;
-            planoCobranca.ValorDiario = 99;
-            planoCobranca.ValorPorKm = 5;
-            planoCobranca.LimiteQuilometragem = 10;
+            planoCobranca.SetValorDiario("99");
+            planoCobranca.SetValorPorKm("5");
+            planoCobranca.SetLimiteQuilometragem("8");
             repositorioPlano.Editar(planoCobranca);
 
             //assert

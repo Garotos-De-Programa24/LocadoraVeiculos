@@ -17,17 +17,54 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
             this.GrupoVeiculos = grupoVeiculo;
             NomePlano = nomePlano;
             TipoPlano = tipoPlano;
-            ValorDiario = valorDiario;
-            ValorPorKm = valorPorKm;
-            LimiteQuilometragem = limiteQuilometragem;
+            this.valorDiario = valorDiario;
+            this.valorPorKm = valorPorKm;
+            this.limiteQuilometragem = limiteQuilometragem;
         }
 
         public string NomePlano { get; set; }
         public Agrupamento GrupoVeiculos { get; set; }
         public EnunPlano TipoPlano { get; set; }
-        public decimal ValorDiario { get; set; }
-        public decimal ValorPorKm { get; set; }
-        public decimal LimiteQuilometragem { get; set; }
+        public decimal ValorDiario { get => valorDiario; }
+        public decimal ValorPorKm { get => valorPorKm;  }
+        public decimal LimiteQuilometragem { get => limiteQuilometragem;}
+
+        private decimal valorDiario;
+        private decimal valorPorKm;
+        private decimal limiteQuilometragem;
+
+        public void SetValorDiario(string valorDiario)
+        {
+            string valor = LimparString(valorDiario);
+            if (valor == "")
+                valor = "0";
+            this.valorDiario = Convert.ToDecimal(valor);
+        }
+        public void SetValorPorKm(string valorPorKm)
+        {
+            string valor = LimparString(valorPorKm);
+            if (valor == "")
+                valor = "0";
+            this.valorPorKm = Convert.ToDecimal(valor);
+        }
+        public void SetLimiteQuilometragem(string limiteQuilometragem)
+        {
+            string valor = LimparString(limiteQuilometragem);
+            if (valor == "")
+                valor = "0";
+            this.limiteQuilometragem = Convert.ToDecimal(valor);
+        }
+
+        private string LimparString(string valorBrutoSemFormatar)
+        {
+            string strValor = valorBrutoSemFormatar;
+            string[] charsToRemove = new string[] { ",", ".", "-" ," "};
+            foreach (var c in charsToRemove)
+            {
+                strValor = strValor.Replace(c, string.Empty);
+            }
+            return strValor;
+        }
 
         public override void Atualizar(PlanoCobranca Registro)
         {
@@ -46,9 +83,9 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
                 plano.NomePlano.Equals(NomePlano) &&
                 plano.GrupoVeiculos.Equals(GrupoVeiculos) &&
                 plano.TipoPlano.Equals(TipoPlano) &&
-                plano.ValorDiario.Equals(ValorDiario) &&
-                plano.ValorPorKm.Equals(ValorPorKm) &&
-                plano.LimiteQuilometragem.Equals(LimiteQuilometragem);
+                plano.valorDiario.Equals(valorDiario) &&
+                plano.valorPorKm.Equals(valorPorKm) &&
+                plano.limiteQuilometragem.Equals(limiteQuilometragem);
         }
     }
 }

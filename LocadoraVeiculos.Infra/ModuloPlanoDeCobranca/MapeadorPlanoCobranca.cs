@@ -24,9 +24,9 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
             var id = Convert.ToInt32(leitorRegistro["ID"]);
             var nomePlano = Convert.ToString(leitorRegistro["NOMEPLANO"]);
             var tipoPlano = Convert.ToInt32(leitorRegistro["TIPOPLANO"]);
-            var valorLivre = Convert.ToDecimal(leitorRegistro["VALOR_LIVRE"]);
-            var valorDiario = Convert.ToDecimal(leitorRegistro["VALOR_DIARIO"]);
-            var valorControlado = Convert.ToDecimal(leitorRegistro["VALOR_CONTROLADO"]);
+            var valorLivre = Convert.ToString(leitorRegistro["VALOR_LIVRE"]);
+            var valorDiario = Convert.ToString(leitorRegistro["VALOR_DIARIO"]);
+            var valorControlado = Convert.ToString(leitorRegistro["VALOR_CONTROLADO"]);
 
             var agrupamento = new MapeadorAgrupamento().ConverterRegistro(leitorRegistro);
 
@@ -34,9 +34,9 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
             novoPlano.Id = id;
             novoPlano.NomePlano = nomePlano;
             novoPlano.TipoPlano = (EnunPlano)tipoPlano;
-            novoPlano.ValorDiario = valorLivre;
-            novoPlano.ValorPorKm = valorDiario;
-            novoPlano.LimiteQuilometragem = valorControlado;
+            novoPlano.SetValorDiario(valorLivre);
+            novoPlano.SetValorPorKm(valorDiario);
+            novoPlano.SetLimiteQuilometragem(valorControlado);
 
             novoPlano.GrupoVeiculos = agrupamento;
 
