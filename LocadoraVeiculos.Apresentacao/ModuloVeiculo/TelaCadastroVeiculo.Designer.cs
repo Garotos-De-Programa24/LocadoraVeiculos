@@ -73,11 +73,11 @@
             // 
             this.lTitulo.AutoSize = true;
             this.lTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lTitulo.Font = new System.Drawing.Font("Geometr415 Blk BT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lTitulo.ForeColor = System.Drawing.Color.White;
             this.lTitulo.Location = new System.Drawing.Point(13, 9);
             this.lTitulo.Name = "lTitulo";
-            this.lTitulo.Size = new System.Drawing.Size(210, 25);
+            this.lTitulo.Size = new System.Drawing.Size(217, 25);
             this.lTitulo.TabIndex = 2;
             this.lTitulo.Text = "Cadastro de Veículos";
             // 
@@ -99,10 +99,10 @@
             // lKmPercorridos
             // 
             this.lKmPercorridos.AutoSize = true;
-            this.lKmPercorridos.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lKmPercorridos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lKmPercorridos.Location = new System.Drawing.Point(60, 204);
             this.lKmPercorridos.Name = "lKmPercorridos";
-            this.lKmPercorridos.Size = new System.Drawing.Size(105, 16);
+            this.lKmPercorridos.Size = new System.Drawing.Size(99, 16);
             this.lKmPercorridos.TabIndex = 46;
             this.lKmPercorridos.Text = "Km Percorridos";
             // 
@@ -116,10 +116,10 @@
             // lAno
             // 
             this.lAno.AutoSize = true;
-            this.lAno.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lAno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lAno.Location = new System.Drawing.Point(429, 72);
             this.lAno.Name = "lAno";
-            this.lAno.Size = new System.Drawing.Size(32, 16);
+            this.lAno.Size = new System.Drawing.Size(31, 16);
             this.lAno.TabIndex = 44;
             this.lAno.Text = "Ano";
             // 
@@ -133,10 +133,10 @@
             // lCapacidadeTanque
             // 
             this.lCapacidadeTanque.AutoSize = true;
-            this.lCapacidadeTanque.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lCapacidadeTanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lCapacidadeTanque.Location = new System.Drawing.Point(12, 173);
             this.lCapacidadeTanque.Name = "lCapacidadeTanque";
-            this.lCapacidadeTanque.Size = new System.Drawing.Size(153, 16);
+            this.lCapacidadeTanque.Size = new System.Drawing.Size(151, 16);
             this.lCapacidadeTanque.TabIndex = 42;
             this.lCapacidadeTanque.Text = "Capacidade do Tanque";
             // 
@@ -148,7 +148,6 @@
             this.btnAddCor.TabIndex = 41;
             this.btnAddCor.Text = "Add";
             this.btnAddCor.UseVisualStyleBackColor = true;
-            this.btnAddCor.Click += new System.EventHandler(this.btnAddCor_Click);
             // 
             // txtCor
             // 
@@ -160,10 +159,10 @@
             // lAddCor
             // 
             this.lAddCor.AutoSize = true;
-            this.lAddCor.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lAddCor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lAddCor.Location = new System.Drawing.Point(334, 269);
             this.lAddCor.Name = "lAddCor";
-            this.lAddCor.Size = new System.Drawing.Size(93, 16);
+            this.lAddCor.Size = new System.Drawing.Size(88, 16);
             this.lAddCor.TabIndex = 39;
             this.lAddCor.Text = "Adicionar Cor";
             // 
@@ -207,7 +206,7 @@
             // lCor
             // 
             this.lCor.AutoSize = true;
-            this.lCor.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lCor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lCor.Location = new System.Drawing.Point(137, 269);
             this.lCor.Name = "lCor";
             this.lCor.Size = new System.Drawing.Size(28, 16);
@@ -217,47 +216,47 @@
             // lTipoCombustivel
             // 
             this.lTipoCombustivel.AutoSize = true;
-            this.lTipoCombustivel.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lTipoCombustivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lTipoCombustivel.Location = new System.Drawing.Point(32, 236);
             this.lTipoCombustivel.Name = "lTipoCombustivel";
-            this.lTipoCombustivel.Size = new System.Drawing.Size(133, 16);
+            this.lTipoCombustivel.Size = new System.Drawing.Size(129, 16);
             this.lTipoCombustivel.TabIndex = 32;
             this.lTipoCombustivel.Text = "Tipo de combustível";
             // 
             // lPlaca
             // 
             this.lPlaca.AutoSize = true;
-            this.lPlaca.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lPlaca.Location = new System.Drawing.Point(121, 140);
             this.lPlaca.Name = "lPlaca";
-            this.lPlaca.Size = new System.Drawing.Size(44, 16);
+            this.lPlaca.Size = new System.Drawing.Size(42, 16);
             this.lPlaca.TabIndex = 31;
             this.lPlaca.Text = "Placa";
             // 
             // lMarca
             // 
             this.lMarca.AutoSize = true;
-            this.lMarca.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lMarca.Location = new System.Drawing.Point(117, 107);
             this.lMarca.Name = "lMarca";
-            this.lMarca.Size = new System.Drawing.Size(48, 16);
+            this.lMarca.Size = new System.Drawing.Size(45, 16);
             this.lMarca.TabIndex = 30;
             this.lMarca.Text = "Marca";
             // 
             // lVeiculo
             // 
             this.lVeiculo.AutoSize = true;
-            this.lVeiculo.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lVeiculo.Location = new System.Drawing.Point(111, 72);
             this.lVeiculo.Name = "lVeiculo";
-            this.lVeiculo.Size = new System.Drawing.Size(54, 16);
+            this.lVeiculo.Size = new System.Drawing.Size(52, 16);
             this.lVeiculo.TabIndex = 29;
             this.lVeiculo.Text = "Veículo";
             // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCancelar.Location = new System.Drawing.Point(435, 426);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
@@ -268,7 +267,7 @@
             // btnCadastrar
             // 
             this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnCadastrar.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCadastrar.Location = new System.Drawing.Point(342, 426);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
@@ -279,32 +278,33 @@
             // 
             // cBoxAgrupamento
             // 
+            this.cBoxAgrupamento.DisplayMember = "Nome";
             this.cBoxAgrupamento.FormattingEnabled = true;
             this.cBoxAgrupamento.Location = new System.Drawing.Point(171, 300);
             this.cBoxAgrupamento.Name = "cBoxAgrupamento";
             this.cBoxAgrupamento.Size = new System.Drawing.Size(157, 23);
             this.cBoxAgrupamento.TabIndex = 51;
+            this.cBoxAgrupamento.ValueMember = "Nome";
             // 
             // lAgrupamento
             // 
             this.lAgrupamento.AutoSize = true;
-            this.lAgrupamento.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lAgrupamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lAgrupamento.Location = new System.Drawing.Point(73, 302);
             this.lAgrupamento.Name = "lAgrupamento";
-            this.lAgrupamento.Size = new System.Drawing.Size(92, 16);
+            this.lAgrupamento.Size = new System.Drawing.Size(88, 16);
             this.lAgrupamento.TabIndex = 50;
             this.lAgrupamento.Text = "Agrupamento";
             // 
             // btnSelecionarFoto
             // 
-            this.btnSelecionarFoto.Font = new System.Drawing.Font("Geometr212 BkCn BT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSelecionarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSelecionarFoto.Location = new System.Drawing.Point(60, 332);
             this.btnSelecionarFoto.Name = "btnSelecionarFoto";
             this.btnSelecionarFoto.Size = new System.Drawing.Size(105, 23);
             this.btnSelecionarFoto.TabIndex = 53;
             this.btnSelecionarFoto.Text = "Selecionar Foto";
             this.btnSelecionarFoto.UseVisualStyleBackColor = true;
-            this.btnSelecionarFoto.Click += new System.EventHandler(this.btnSelecionarFoto_Click);
             // 
             // pictureCarro
             // 
