@@ -26,33 +26,32 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         {
             var colunas = new DataGridViewColumn[]
           {
-                new DataGridViewTextBoxColumn { DataPropertyName = "VeiculoNome", HeaderText = "veiculoNome"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Marca", HeaderText = "marca"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Ano", HeaderText = "ano"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Placa", HeaderText = "placa"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Capacidadetanque", HeaderText = "capacidadetanque"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "KmPercorrido", HeaderText = "KmPercorrido"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Combustivel", HeaderText = "combustivel"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Cor", HeaderText = "cor"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Agrupamento", HeaderText = "agrupamentoVeiculo"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veiculo"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Marca", HeaderText = "Marca"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Ano", HeaderText = "Ano"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Placa", HeaderText = "Placa"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Capacidade do Tanque", HeaderText = "Capacidade do Tanque"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Km Percorrido", HeaderText = "Km Percorrido"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Combustivel", HeaderText = "Combustível"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cor", HeaderText = "Cor"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Agrupamento", HeaderText = "Agrupamento"},
           };
 
             return colunas;
         }
-        public void AtualizarRegistros(List<Veiculo> condutores)
+        public void AtualizarRegistros(List<Veiculo> veiculos)
         {
             grid.Rows.Clear();
 
-            foreach (var condutor in condutores)
+            foreach (var veiculo in veiculos)
             {
-                grid.Rows.Add(condutor.VeiculoNome, condutor.Agrupamento,
-                    condutor.Marca, condutor.Ano, condutor.Placa,
-                    condutor.CapacidadeTanque, condutor.KmPercorridos,
-                     condutor.Combustivel, condutor.Cor);
+                grid.Rows.Add(veiculo.VeiculoNome,veiculo.Marca, veiculo.Ano, veiculo.Placa,
+                    veiculo.CapacidadeTanque, veiculo.KmPercorridos,
+                     veiculo.Combustivel, veiculo.Cor);
             }
         }
 
-        public int ObtemNumeroCondutorSelecionado()
+        public int ObtemNumeroVeiculoSelecionado()
         {
             return grid.SelecionarNumero<int>();
         }

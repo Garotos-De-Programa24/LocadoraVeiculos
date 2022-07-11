@@ -37,18 +37,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             set
             {
                 condutor = value;
-                comboCliente.Text = condutor.Cliente.Nome;
-                txtNome.Text = condutor.Nome;
-                txtCPF.Text = condutor.Cpf;
-                txtEndereco.Text = condutor.Endereco;
-                if (condutor.ValidadeCnh == DateTime.MinValue)
-                {
-                    condutor.ValidadeCnh = dateValidade.Value;
-                }
-                MaskedCNHCondutor.Text = condutor.CnhCondutor;
-                dateValidade.Value = condutor.ValidadeCnh;
-                txtEmail.Text = condutor.Email;
-                txtTelefone.Text = condutor.Telefone;
             }
         }
         private void btnCadastrar_Click(object sender, EventArgs e)

@@ -18,9 +18,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
         {
             InitializeComponent();
         }
+
         private Taxa taxa;
         public Func<Taxa, ValidationResult> GravarRegistro { get; set; }
-
         public Taxa Taxa
         {
             get
@@ -34,8 +34,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
                 txtValor.Text = Taxa.Valor;
             }
         }
-
-
 
         private void btnCadastrar_Click_1(object sender, EventArgs e)
         {

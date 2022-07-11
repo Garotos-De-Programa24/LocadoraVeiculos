@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
@@ -17,6 +11,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
     public partial class TelaCadastroVeiculo : Form
     {
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
+        private Veiculo veiculo;
+
+
         public TelaCadastroVeiculo()
         {
             InitializeComponent();
@@ -27,9 +24,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             {
                 cBoxAgrupamento.Items.Add(c);
             }
+
+            cBoxCor.Items.Add("Azul");
+            cBoxCor.Items.Add("Vermelho");
+            cBoxCor.Items.Add("Amarelo");
+            cBoxCor.Items.Add("Branco");
+            cBoxCor.Items.Add("Verde");
+            cBoxCor.Items.Add("Cinza");
+            cBoxCor.Items.Add("Prata");
+            cBoxCor.Items.Add("Preto");
+            cBoxCor.Items.Add("Roxo");
         }
 
-        private Veiculo veiculo;
+        
         public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
 
         public Veiculo Veiculo
@@ -41,29 +48,39 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             set
             {
                 veiculo = value;
-                cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
-                cBoxCombustivel.Text = veiculo.Combustivel;
-                txtCor.Text = veiculo.Cor;
-                txtPlaca.Text = veiculo.Placa;
-                txtMarca.Text = veiculo.Marca;
+                txtVeiculo.Text = veiculo.VeiculoNome;
                 txtAno.Text = veiculo.Ano;
+                txtMarca.Text = veiculo.Marca;
+                txtPlaca.Text = veiculo.Placa;
                 txtCapacidadeTanque.Text = veiculo.CapacidadeTanque;
                 txtKmPercorridos.Text = veiculo.KmPercorridos;
+                cBoxCombustivel.Text = veiculo.Combustivel;
+                cBoxCor.Text = veiculo.Cor;
+                cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
                 
-
             }
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
-            veiculo.Combustivel = cBoxCombustivel.Text;
-            veiculo.Placa = txtPlaca.Text;
-            veiculo.Marca = txtMarca.Text;
+            veiculo.VeiculoNome = txtVeiculo.Text;
             veiculo.Ano = txtAno.Text;
-            veiculo.Cor = txtCor.Text;
+            veiculo.Marca = txtMarca.Text;
+            veiculo.Placa = txtPlaca.Text;
             veiculo.CapacidadeTanque = txtCapacidadeTanque.Text;
             veiculo.KmPercorridos = txtKmPercorridos.Text;
+            veiculo.Combustivel = cBoxCombustivel.Text;
+            veiculo.Cor = cBoxCor.Text;
+            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
+
+            var resultadoValidacao = GravarRegistro(veiculo);
+            if (resultadoValidacao.IsValid == false)
+            {
+                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+
+                MessageBox.Show(erro, "Cadastro de Condutor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                DialogResult = DialogResult.None;
+            }
 
         }
 

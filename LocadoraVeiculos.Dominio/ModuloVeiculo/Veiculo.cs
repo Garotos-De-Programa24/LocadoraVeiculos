@@ -23,11 +23,11 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
         
         public Veiculo()
         {
-
+            Agrupamento = new Agrupamento();
         }
-        public Veiculo(string veiculoNome, string marca, string ano, string placa, string capacidadeTanque, string kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo)
+        public Veiculo(byte[] foto, string veiculoNome, string marca, string ano, string placa, string capacidadeTanque, string kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo)
         {
-
+            Foto = foto;
             VeiculoNome = veiculoNome;
             Marca = marca;
             Ano = ano;

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Compartilhado;
+using LocadoraVeiculos.Infra.ModuloAgrupamento;
 
 namespace LocadoraVeiculos.Infra.ModuloVeiculo
 {
@@ -15,14 +11,16 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         public override void ConfigurarParametros(Veiculo registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Cor);
-            comando.Parameters.AddWithValue("CLIENTE_ID", registro.VeiculoNome);
+            comando.Parameters.AddWithValue("FOTO", registro.Foto);
+            comando.Parameters.AddWithValue("VEICULONOME", registro.VeiculoNome);
             comando.Parameters.AddWithValue("MARCA", registro.Marca);
             comando.Parameters.AddWithValue("ANO", registro.Ano);
             comando.Parameters.AddWithValue("PLACA", registro.Placa);
             comando.Parameters.AddWithValue("CAPACIDADETANQUE", registro.CapacidadeTanque);
             comando.Parameters.AddWithValue("KMPERCORRIDO", registro.KmPercorridos);
             comando.Parameters.AddWithValue("COMBUSTIVEL", registro.Combustivel);
-            comando.Parameters.AddWithValue("AGRUPAMENTO", registro.Agrupamento);
+            comando.Parameters.AddWithValue("COR", registro.Cor);
+            comando.Parameters.AddWithValue("AGRUPAMENTO_ID", registro.Agrupamento.Id);
         }
 
         public override Veiculo ConverterRegistro(SqlDataReader leitorRegistro)
@@ -30,8 +28,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             if (leitorRegistro["ID"] == DBNull.Value)
                 return null;
 
-
-            var cor = Convert.ToString(leitorRegistro["COR"]);
+            var foto = (byte[])(leitorRegistro["FOTO"]);
             var veiculoNome = Convert.ToString(leitorRegistro["VEICULONOME"]);
             var marca = Convert.ToString(leitorRegistro["MARCA"]);
             var ano = Convert.ToString(leitorRegistro["ANO"]);
@@ -39,12 +36,13 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             var capacidadetanque = Convert.ToString(leitorRegistro["CAPACIDADETANQUE"]);
             var kmpercorrido = Convert.ToString(leitorRegistro["KMPERCORRIDO"]);
             var combustivel = Convert.ToString(leitorRegistro["COMBUSTIVEL"]);
-            var agrupamento = Convert.ToInt32(leitorRegistro["AGRUPAMENTO_ID"]);
-
-
+            var cor = Convert.ToString(leitorRegistro["COR"]);
+            var agrupamento = new MapeadorAgrupamento().ConverterRegistro(leitorRegistro);
+            
 
             Veiculo veiculo = new Veiculo()
             {
+                Foto = foto,
                 Marca = marca,
                 VeiculoNome = veiculoNome,
                 Ano = ano,
@@ -53,10 +51,10 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 KmPercorridos = kmpercorrido,
                 Combustivel = combustivel,
                 Cor = cor,
+            };
 
-            }
-            ;
-            veiculo.Agrupamento = new Agrupamento();
+            veiculo.Agrupamento = agrupamento;
+
             return veiculo;
         }
     }

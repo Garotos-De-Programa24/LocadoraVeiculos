@@ -52,8 +52,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                 [ID],       
                 [EQUIPAMENTO],
                 [VALOR],                
-                [TAXADIARIA]
-                
+                [TAXADIARIA]                
             FROM
                 [TBTAXA]";
 
@@ -62,8 +61,7 @@ namespace LocadoraVeiculos.Infra.ModuloTaxa
                 [ID],       
                 [EQUIPAMENTO],
                 [VALOR],                
-                [TAXADIARIA]
-                
+                [TAXADIARIA]                
             FROM
                 [TBTAXA]
             WHERE
