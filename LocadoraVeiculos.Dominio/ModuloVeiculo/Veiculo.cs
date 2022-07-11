@@ -12,10 +12,10 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
     {
         public string VeiculoNome{ get; set; }
         public string Marca { get; set; }
-        public int Ano { get; set; }
+        public string Ano { get; set; }
         public string Placa { get; set; }
-        public int CapacidadeTanque { get; set; }
-        public int KmPercorridos { get; set; }
+        public string CapacidadeTanque { get; set; }
+        public string KmPercorridos { get; set; }
         public string Combustivel { get; set; }
         public string Cor { get; set; }
         public Agrupamento Agrupamento { get; set; }
@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
         {
 
         }
-        public Veiculo(string veiculoNome, string marca, int ano, string placa, int capacidadeTanque, int kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo)
+        public Veiculo(string veiculoNome, string marca, string ano, string placa, string capacidadeTanque, string kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo)
         {
             VeiculoNome = veiculoNome;
             Marca = marca;

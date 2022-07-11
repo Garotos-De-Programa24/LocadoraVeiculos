@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
+using Serilog;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 {
@@ -12,23 +13,46 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             this.repositorioCondutor = repositorioCondutor;
         }
 
-        public ValidationResult Inserir(Condutor arg)
+        public ValidationResult Inserir(Condutor condutor)
         {
-            var resultadoValidacao = ValidarCondutor(arg);
+            Log.Logger.Information("Tentando inserir no condutor @{condutor", condutor);
+
+            var resultadoValidacao = ValidarCondutor(condutor);
 
             if (resultadoValidacao.IsValid)
-                repositorioCondutor.Inserir(arg);
-
+            {
+                repositorioCondutor.Inserir(condutor);
+                Log.Logger.Information("Condutor{CondutorNome} inserido com sucesso.", condutor.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir Condutor {CondutorNome} -> Motivo: {erro}", condutor.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
-        public ValidationResult Editar(Condutor arg)
+        public ValidationResult Editar(Condutor condutor)
         {
-            var resultadoValidacao = ValidarCondutor(arg);
+            Log.Logger.Information("Tentando editar no condutor @{condutor", condutor);
+
+            var resultadoValidacao = ValidarCondutor(condutor);
 
             if (resultadoValidacao.IsValid)
-                repositorioCondutor.Editar(arg);
+            {
+                repositorioCondutor.Editar(condutor);
+                Log.Logger.Information("Condutor{CondutorNome} editar com sucesso.", condutor.Nome);
 
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar Condutor {CondutorNome} -> Motivo: {erro}", condutor.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 

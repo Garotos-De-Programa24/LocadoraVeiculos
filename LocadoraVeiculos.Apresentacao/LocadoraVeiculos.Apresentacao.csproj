@@ -10,7 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculos.Aplicacao\LocadoraVeiculos.Aplicacao.csproj" />
     <ProjectReference Include="..\LocadoraVeiculos.Dominio\LocadoraVeiculos.Dominio.csproj" />
-    <ProjectReference Include="..\LocadoraVeiculos.Infra\LocadoraVeiculos.Infra.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculos.Infra\LocadoraVeiculos.Infra.BancoDados.csproj" />
   </ItemGroup>
 
   <ItemGroup>
