@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloCliente;
+using Serilog;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
@@ -13,22 +14,46 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             this.repositorioCliente = repositorioCliente;
         }
 
-        public ValidationResult Inserir(Cliente arg)
+        public ValidationResult Inserir(Cliente cliente)
         {
-            var resultadoValidacao = ValidarCliente(arg);
+            Log.Logger.Information("Tentando inserir no cliente @{cliente", cliente);
+
+            var resultadoValidacao = ValidarCliente(cliente);
 
             if (resultadoValidacao.IsValid)
-                repositorioCliente.Inserir(arg);
+            {
+                repositorioCliente.Inserir(cliente);
+                Log.Logger.Information("Cliente{ClienteNome} inserido com sucesso.", cliente.Nome);
 
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir Cliente {ClienteNome} -> Motivo: {erro}", cliente.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
-        public ValidationResult Editar(Cliente arg)
+        public ValidationResult Editar(Cliente cliente)
         {
-            var resultadoValidacao = ValidarCliente(arg);
+            Log.Logger.Information("Tentando editar no cliente @{cliente", cliente);
+
+            var resultadoValidacao = ValidarCliente(cliente);
 
             if (resultadoValidacao.IsValid)
-                repositorioCliente.Editar(arg);
+            {
+                Log.Logger.Information("Cliente{ClienteNome} editar com sucesso.", cliente.Nome);
+                repositorioCliente.Editar(cliente);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar Cliente {ClienteNome} -> Motivo: {erro}", cliente.Nome, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }

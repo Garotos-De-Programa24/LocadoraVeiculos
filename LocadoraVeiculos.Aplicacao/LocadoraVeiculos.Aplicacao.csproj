@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculos.Dominio\LocadoraVeiculos.Dominio.csproj" />
-    <ProjectReference Include="..\LocadoraVeiculos.Infra\LocadoraVeiculos.Infra.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculos.Infra\LocadoraVeiculos.Infra.BancoDados.csproj" />
   </ItemGroup>
 
 </Project>

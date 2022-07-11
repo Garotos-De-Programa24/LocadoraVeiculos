@@ -1,10 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
 {
@@ -17,21 +13,42 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
         }
         public ValidationResult Inserir(Agrupamento agrupamento)
         {
+            Log.Logger.Information("Tentando inserir no Grupo de Veiculos @{agrupamento", agrupamento);
             ValidationResult resultadoValidacao = Validar(agrupamento);
 
-            if (resultadoValidacao.IsValid)
-                repositorioAgrupamento.Inserir(agrupamento);
-
+            if (resultadoValidacao.IsValid) { 
+            repositorioAgrupamento.Inserir(agrupamento);
+                Log.Logger.Information("Grupo de Veiculos {AgrupamentoNome} inserido com sucesso.", agrupamento.Nome);
+            }
+            else
+            {
+                foreach(var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir Grupo de Veiculos {AgrupamentoNome} -> Motivo: {erro}", agrupamento.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
-        public ValidationResult Editar(Agrupamento funcionario)
+        public ValidationResult Editar(Agrupamento agrupamento)
         {
-            ValidationResult resultadoValidacao = Validar(funcionario);
+            Log.Logger.Information("Tentando editar no Grupo de Veiculos @{agrupamento", agrupamento);
+
+            ValidationResult resultadoValidacao = Validar(agrupamento);
 
             if (resultadoValidacao.IsValid)
-                repositorioAgrupamento.Editar(funcionario);
+            {
+                repositorioAgrupamento.Editar(agrupamento);
+                Log.Logger.Information("Grupo de Veiculos {AgrupamentoNome} editado com sucesso.", agrupamento.Nome);
 
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar Grupo de Veiculos {AgrupamentoNome} -> Motivo: {erro}", agrupamento.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
