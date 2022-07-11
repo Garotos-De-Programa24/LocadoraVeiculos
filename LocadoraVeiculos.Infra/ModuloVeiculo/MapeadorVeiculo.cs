@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Compartilhado;
 
@@ -13,15 +14,15 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
     {
         public override void ConfigurarParametros(Veiculo registro, SqlCommand comando)
         {
-            comando.Parameters.AddWithValue("ID", registro.Id);
-            comando.Parameters.AddWithValue("CLIENTE_ID", registro.Cliente.Id);
-            comando.Parameters.AddWithValue("NOME", registro.Nome);
-            comando.Parameters.AddWithValue("CPF", registro.Cpf);
-            comando.Parameters.AddWithValue("ENDERECO", registro.Endereco);
-            comando.Parameters.AddWithValue("CNHCONDUTOR", registro.CnhCondutor);
-            comando.Parameters.AddWithValue("VALIDADECNH", registro.ValidadeCnh);
-            comando.Parameters.AddWithValue("EMAIL", registro.Email);
-            comando.Parameters.AddWithValue("TELEFONE", registro.Telefone);
+            comando.Parameters.AddWithValue("ID", registro.Cor);
+            comando.Parameters.AddWithValue("CLIENTE_ID", registro.VeiculoNome);
+            comando.Parameters.AddWithValue("MARCA", registro.Marca);
+            comando.Parameters.AddWithValue("ANO", registro.Ano);
+            comando.Parameters.AddWithValue("PLACA", registro.Placa);
+            comando.Parameters.AddWithValue("CAPACIDADETANQUE", registro.CapacidadeTanque);
+            comando.Parameters.AddWithValue("KMPERCORRIDO", registro.KmPercorridos);
+            comando.Parameters.AddWithValue("COMBUSTIVEL", registro.Combustivel);
+            comando.Parameters.AddWithValue("AGRUPAMENTO", registro.Agrupamento);
         }
 
         public override Veiculo ConverterRegistro(SqlDataReader leitorRegistro)
@@ -29,49 +30,38 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             if (leitorRegistro["ID"] == DBNull.Value)
                 return null;
 
-            //cria o condutor
-            var id = Convert.ToInt32(leitorRegistro["ID"]);
-            var nome = Convert.ToString(leitorRegistro["NOME"]);
-            var cpf = Convert.ToString(leitorRegistro["CPF"]);
-            var endereco = Convert.ToString(leitorRegistro["ENDERECO"]);
-            var cnhCondutor = Convert.ToString(leitorRegistro["CNHCONDUTOR"]);
-            var validadeCnh = Convert.ToDateTime(leitorRegistro["VALIDADECNH"]);
-            var email = Convert.ToString(leitorRegistro["EMAIL"]);
-            var telefone = Convert.ToString(leitorRegistro["TELEFONE"])
+
+            var cor = Convert.ToString(leitorRegistro["COR"]);
+            var veiculoNome = Convert.ToString(leitorRegistro["VEICULONOME"]);
+            var marca = Convert.ToString(leitorRegistro["MARCA"]);
+            var ano = Convert.ToString(leitorRegistro["ANO"]);
+            var placa = Convert.ToString(leitorRegistro["PLACA"]);
+            var capacidadetanque = Convert.ToString(leitorRegistro["CAPACIDADETANQUE"]);
+            var kmpercorrido = Convert.ToString(leitorRegistro["KMPERCORRIDO"]);
+            var combustivel = Convert.ToString(leitorRegistro["COMBUSTIVEL"]);
+            var agrupamento = Convert.ToInt32(leitorRegistro["AGRUPAMENTO_ID"]);
 
 
 
-            Condutor condutor = new Condutor()
+            Veiculo veiculo = new Veiculo()
             {
-                Id = id,
-                Nome = nome,
-                Cpf = cpf,
-                Email = email,
-                Telefone = telefone,
-                Endereco = endereco,
-                CnhCondutor = cnhCondutor,
-                ValidadeCnh = validadeCnh,
-            };
+                Marca = marca,
+                VeiculoNome = veiculoNome,
+                Ano = ano,
+                Placa = placa,
+                CapacidadeTanque = capacidadetanque,
+                KmPercorridos = kmpercorrido,
+                Combustivel = combustivel,
+                Cor = cor,
 
-            //cria o cliente
-            var cliente_id = Convert.ToInt32(leitorRegistro["CLIENTE_ID"]);
-            var cliente_nome = Convert.ToString(leitorRegistro["CLIENTE_NOME"]);
-            var cliente_cpfcnpj = Convert.ToString(leitorRegistro["CPFCNPJ"]);
-            var cliente_endereco = Convert.ToString(leitorRegistro["CLIENTE_ENDERECO"]);
-            var cliente_email = Convert.ToString(leitorRegistro["CLIENTE_EMAIL"]);
-            var cliente_telefone = Convert.ToString(leitorRegistro["CLIENTE_TELEFONE"]);
-
-            condutor.Cliente = new Cliente()
-            {
-                Id = cliente_id,
-                Nome = cliente_nome,
-                CpfCnpj = cliente_cpfcnpj,
-                Endereco = cliente_endereco,
-                Email = cliente_email,
-                Telefone = cliente_telefone,
-            };
-
-            return condutor;
+            }
+            ;
+            veiculo.Agrupamento = new Agrupamento();
+            return veiculo;
         }
     }
 }
+          
+        
+    
+

@@ -10,6 +10,7 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
 {
     public class Veiculo : EntidadeBase<Veiculo>
     {
+        public byte [] Foto { get; set; }
         public string VeiculoNome{ get; set; }
         public string Marca { get; set; }
         public string Ano { get; set; }
@@ -26,6 +27,7 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
         }
         public Veiculo(string veiculoNome, string marca, string ano, string placa, string capacidadeTanque, string kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo)
         {
+
             VeiculoNome = veiculoNome;
             Marca = marca;
             Ano = ano;
