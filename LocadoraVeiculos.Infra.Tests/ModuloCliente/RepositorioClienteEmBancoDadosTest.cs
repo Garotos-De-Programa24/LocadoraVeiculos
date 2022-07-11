@@ -2,11 +2,6 @@
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
 {
@@ -26,7 +21,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
             cliente.CpfCnpj = "100.000.000-00";
             cliente.Endereco = "Lages";
             cliente.Email = "pedro@email.com";
-            cliente.Telefone = "(49) 99999-9999";
+            cliente.Telefone = "(49)99999-9999";
 
             repositorio = new RepositorioClienteEmBancoDados();
         }
@@ -55,7 +50,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
             cliente.CpfCnpj = "100.000.000-10";
             cliente.Endereco = "Lages-Sc";
             cliente.Email = "joao@email.com";
-            cliente.Telefone = "(49) 00000-0000";
+            cliente.Telefone = "(49)00000-0000";
 
             repositorio.Editar(cliente);
 
@@ -98,9 +93,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
         public void Deve_selecionar_todos_os_clientes()
         {
             //arrange
-            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "lucas@gmail.com",  "(049) 99999-9999");
-            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "tiago@gmail.com", "(049) 88888-8888");
-            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "riomed@gmail.com", "(049) 77777-7777");
+            var c0 = new Cliente("lucas", "000.000.000-00", "Lages", "lucas@gmail.com",  "(049)99999-9999");
+            var c1 = new Cliente("tiago", "111.111.111-11", "Lages", "tiago@gmail.com", "(049)88888-8888");
+            var c2 = new Cliente("luiza", "222.222.222-22", "Lages", "riomed@gmail.com", "(049)77777-7777");
 
             var repositorio = new RepositorioClienteEmBancoDados();
             repositorio.Inserir(c0);
