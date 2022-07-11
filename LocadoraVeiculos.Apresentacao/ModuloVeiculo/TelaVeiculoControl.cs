@@ -26,15 +26,15 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         {
             var colunas = new DataGridViewColumn[]
           {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Cpf", HeaderText = "CPF"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "CNH", HeaderText = "CNH"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Validade da CNH", HeaderText = "Validade da CNH"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Endereco", HeaderText = "Endereço"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Email", HeaderText = "E-Mail"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "VeiculoNome", HeaderText = "veiculoNome"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Marca", HeaderText = "marca"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Ano", HeaderText = "ano"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Placa", HeaderText = "placa"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Capacidadetanque", HeaderText = "capacidadetanque"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "KmPercorrido", HeaderText = "KmPercorrido"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Combustivel", HeaderText = "combustivel"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cor", HeaderText = "cor"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Agrupamento", HeaderText = "agrupamentoVeiculo"},
           };
 
             return colunas;
@@ -45,10 +45,10 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 
             foreach (var condutor in condutores)
             {
-                grid.Rows.Add(condutor.Id, condutor.Cliente.Nome,
-                    condutor.Nome, condutor.Cpf, condutor.CnhCondutor,
-                    condutor.ValidadeCnh.ToShortDateString(), condutor.Endereco,
-                     condutor.Email, condutor.Telefone);
+                grid.Rows.Add(condutor.VeiculoNome, condutor.Agrupamento,
+                    condutor.Marca, condutor.Ano, condutor.Placa,
+                    condutor.CapacidadeTanque, condutor.KmPercorridos,
+                     condutor.Combustivel, condutor.Cor);
             }
         }
 
