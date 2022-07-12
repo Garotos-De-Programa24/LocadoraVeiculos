@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Compartilhado;
 
@@ -10,7 +9,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         protected override string sqlInserir => 
             @"INSERT INTO [TBVEICULO]
                 (
-                    [FOTO],
+                    
                     [VEICULONOME],
                     [MARCA],
                     [ANO],
@@ -23,7 +22,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 )
             VALUES
                 (
-                    @FOTO,
+                    
                     @VEICULONOME,
                     @MARCA,
                     @ANO,
@@ -38,7 +37,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         protected override string sqlEditar =>
             @" UPDATE [TBVEICULO]
                 SET 
-                    [FOTO] = @FOTO,
+                    
                     [VEICULONOME] = @VEICULONOME,
                     [MARCA] = @MARCA,
                     [ANO] = @ANO,
@@ -57,7 +56,6 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         protected override string sqlSelecionarPorId =>
             @"SELECT 
                 VEIC.[ID],
-                VEIC.[FOTO],
                 VEIC.[VEICULONOME],
                 VEIC.[MARCA],
                 VEIC.[ANO],
@@ -73,12 +71,11 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 ON
                     GRUPO.ID = VEIC.AGRUPAMENTO_ID
             WHERE
-                [ID] = @ID";
+                VEIC.[ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-                VEIC.[ID],
-                VEIC.[FOTO],
+                VEIC.[ID],                
                 VEIC.[VEICULONOME],
                 VEIC.[MARCA],
                 VEIC.[ANO],
@@ -97,7 +94,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         protected string sqlSelecionarPorNome =>
             @"SELECT 
                 VEIC.[ID],
-                VEIC.[FOTO],
+                
                 VEIC.[VEICULONOME],
                 VEIC.[MARCA],
                 VEIC.[ANO],

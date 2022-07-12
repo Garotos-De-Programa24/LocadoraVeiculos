@@ -11,7 +11,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         public override void ConfigurarParametros(Veiculo registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Cor);
-            comando.Parameters.AddWithValue("FOTO", registro.Foto);
+            //comando.Parameters.AddWithValue("FOTO", registro.Foto);
             comando.Parameters.AddWithValue("VEICULONOME", registro.VeiculoNome);
             comando.Parameters.AddWithValue("MARCA", registro.Marca);
             comando.Parameters.AddWithValue("ANO", registro.Ano);
@@ -28,7 +28,8 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             if (leitorRegistro["ID"] == DBNull.Value)
                 return null;
 
-            var foto = (byte[])(leitorRegistro["FOTO"]);
+            //var foto = (byte[])(leitorRegistro["FOTO"]);
+            var id = Convert.ToInt32(leitorRegistro["ID"]);
             var veiculoNome = Convert.ToString(leitorRegistro["VEICULONOME"]);
             var marca = Convert.ToString(leitorRegistro["MARCA"]);
             var ano = Convert.ToString(leitorRegistro["ANO"]);
@@ -42,7 +43,8 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
 
             Veiculo veiculo = new Veiculo()
             {
-                Foto = foto,
+                //Foto = foto,
+                Id = id,
                 Marca = marca,
                 VeiculoNome = veiculoNome,
                 Ano = ano,

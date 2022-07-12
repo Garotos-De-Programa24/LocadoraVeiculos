@@ -25,7 +25,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         private DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]
-          {
+            {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veiculo"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Marca", HeaderText = "Marca"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Ano", HeaderText = "Ano"},
@@ -35,7 +35,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 new DataGridViewTextBoxColumn { DataPropertyName = "Combustivel", HeaderText = "Combustível"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cor", HeaderText = "Cor"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Agrupamento", HeaderText = "Agrupamento"},
-          };
+            };
 
             return colunas;
         }
@@ -47,7 +47,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             {
                 grid.Rows.Add(veiculo.VeiculoNome,veiculo.Marca, veiculo.Ano, veiculo.Placa,
                     veiculo.CapacidadeTanque, veiculo.KmPercorridos,
-                     veiculo.Combustivel, veiculo.Cor);
+                     veiculo.Combustivel, veiculo.Cor, veiculo.Agrupamento.Nome);
             }
         }
 

@@ -25,15 +25,11 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 cBoxAgrupamento.Items.Add(c);
             }
 
-            cBoxCor.Items.Add("Azul");
-            cBoxCor.Items.Add("Vermelho");
-            cBoxCor.Items.Add("Amarelo");
-            cBoxCor.Items.Add("Branco");
-            cBoxCor.Items.Add("Verde");
-            cBoxCor.Items.Add("Cinza");
-            cBoxCor.Items.Add("Prata");
-            cBoxCor.Items.Add("Preto");
-            cBoxCor.Items.Add("Roxo");
+            cBoxCombustivel.Items.Add("Gasolina");
+            cBoxCombustivel.Items.Add("Alcool");
+            cBoxCombustivel.Items.Add("Diesel");
+            cBoxCombustivel.Items.Add("Alcool/Gasolina");
+            cBoxCombustivel.Items.Add("GNV - Gás");
         }
 
         
@@ -55,7 +51,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 txtCapacidadeTanque.Text = veiculo.CapacidadeTanque;
                 txtKmPercorridos.Text = veiculo.KmPercorridos;
                 cBoxCombustivel.Text = veiculo.Combustivel;
-                cBoxCor.Text = veiculo.Cor;
+                txtCor.Text = veiculo.Cor;
                 cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
                 
             }
@@ -70,7 +66,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             veiculo.CapacidadeTanque = txtCapacidadeTanque.Text;
             veiculo.KmPercorridos = txtKmPercorridos.Text;
             veiculo.Combustivel = cBoxCombustivel.Text;
-            veiculo.Cor = cBoxCor.Text;
+            veiculo.Cor = txtCor.Text;
             veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
 
             var resultadoValidacao = GravarRegistro(veiculo);
