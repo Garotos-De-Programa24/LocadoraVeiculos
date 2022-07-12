@@ -31,16 +31,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtKmPercorridos = new System.Windows.Forms.TextBox();
             this.lKmPercorridos = new System.Windows.Forms.Label();
-            this.txtAno = new System.Windows.Forms.TextBox();
             this.lAno = new System.Windows.Forms.Label();
-            this.txtCapacidadeTanque = new System.Windows.Forms.TextBox();
             this.lCapacidadeTanque = new System.Windows.Forms.Label();
-            this.btnAddCor = new System.Windows.Forms.Button();
-            this.txtCor = new System.Windows.Forms.TextBox();
-            this.lAddCor = new System.Windows.Forms.Label();
-            this.cBoxCor = new System.Windows.Forms.ComboBox();
             this.cBoxCombustivel = new System.Windows.Forms.ComboBox();
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
@@ -56,6 +49,10 @@
             this.lAgrupamento = new System.Windows.Forms.Label();
             this.btnSelecionarFoto = new System.Windows.Forms.Button();
             this.pictureCarro = new System.Windows.Forms.PictureBox();
+            this.txtCor = new System.Windows.Forms.TextBox();
+            this.txtAno = new System.Windows.Forms.MaskedTextBox();
+            this.txtCapacidadeTanque = new System.Windows.Forms.MaskedTextBox();
+            this.txtKmPercorridos = new System.Windows.Forms.MaskedTextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).BeginInit();
             this.SuspendLayout();
@@ -89,111 +86,57 @@
             this.panel1.Size = new System.Drawing.Size(535, 16);
             this.panel1.TabIndex = 4;
             // 
-            // txtKmPercorridos
-            // 
-            this.txtKmPercorridos.Location = new System.Drawing.Point(171, 202);
-            this.txtKmPercorridos.Name = "txtKmPercorridos";
-            this.txtKmPercorridos.Size = new System.Drawing.Size(157, 23);
-            this.txtKmPercorridos.TabIndex = 47;
-            // 
             // lKmPercorridos
             // 
             this.lKmPercorridos.AutoSize = true;
             this.lKmPercorridos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lKmPercorridos.Location = new System.Drawing.Point(60, 204);
+            this.lKmPercorridos.Location = new System.Drawing.Point(60, 229);
             this.lKmPercorridos.Name = "lKmPercorridos";
             this.lKmPercorridos.Size = new System.Drawing.Size(99, 16);
             this.lKmPercorridos.TabIndex = 46;
             this.lKmPercorridos.Text = "Km Percorridos";
             // 
-            // txtAno
-            // 
-            this.txtAno.Location = new System.Drawing.Point(467, 70);
-            this.txtAno.Name = "txtAno";
-            this.txtAno.Size = new System.Drawing.Size(52, 23);
-            this.txtAno.TabIndex = 45;
-            // 
             // lAno
             // 
             this.lAno.AutoSize = true;
             this.lAno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAno.Location = new System.Drawing.Point(429, 72);
+            this.lAno.Location = new System.Drawing.Point(134, 100);
             this.lAno.Name = "lAno";
             this.lAno.Size = new System.Drawing.Size(31, 16);
             this.lAno.TabIndex = 44;
             this.lAno.Text = "Ano";
             // 
-            // txtCapacidadeTanque
-            // 
-            this.txtCapacidadeTanque.Location = new System.Drawing.Point(171, 171);
-            this.txtCapacidadeTanque.Name = "txtCapacidadeTanque";
-            this.txtCapacidadeTanque.Size = new System.Drawing.Size(348, 23);
-            this.txtCapacidadeTanque.TabIndex = 43;
-            // 
             // lCapacidadeTanque
             // 
             this.lCapacidadeTanque.AutoSize = true;
             this.lCapacidadeTanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCapacidadeTanque.Location = new System.Drawing.Point(12, 173);
+            this.lCapacidadeTanque.Location = new System.Drawing.Point(12, 198);
             this.lCapacidadeTanque.Name = "lCapacidadeTanque";
             this.lCapacidadeTanque.Size = new System.Drawing.Size(151, 16);
             this.lCapacidadeTanque.TabIndex = 42;
             this.lCapacidadeTanque.Text = "Capacidade do Tanque";
             // 
-            // btnAddCor
-            // 
-            this.btnAddCor.Location = new System.Drawing.Point(477, 295);
-            this.btnAddCor.Name = "btnAddCor";
-            this.btnAddCor.Size = new System.Drawing.Size(42, 23);
-            this.btnAddCor.TabIndex = 41;
-            this.btnAddCor.Text = "Add";
-            this.btnAddCor.UseVisualStyleBackColor = true;
-            // 
-            // txtCor
-            // 
-            this.txtCor.Location = new System.Drawing.Point(432, 267);
-            this.txtCor.Name = "txtCor";
-            this.txtCor.Size = new System.Drawing.Size(87, 23);
-            this.txtCor.TabIndex = 40;
-            // 
-            // lAddCor
-            // 
-            this.lAddCor.AutoSize = true;
-            this.lAddCor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAddCor.Location = new System.Drawing.Point(334, 269);
-            this.lAddCor.Name = "lAddCor";
-            this.lAddCor.Size = new System.Drawing.Size(88, 16);
-            this.lAddCor.TabIndex = 39;
-            this.lAddCor.Text = "Adicionar Cor";
-            // 
-            // cBoxCor
-            // 
-            this.cBoxCor.FormattingEnabled = true;
-            this.cBoxCor.Location = new System.Drawing.Point(171, 267);
-            this.cBoxCor.Name = "cBoxCor";
-            this.cBoxCor.Size = new System.Drawing.Size(157, 23);
-            this.cBoxCor.TabIndex = 38;
-            // 
             // cBoxCombustivel
             // 
+            this.cBoxCombustivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxCombustivel.FormattingEnabled = true;
-            this.cBoxCombustivel.Location = new System.Drawing.Point(171, 234);
+            this.cBoxCombustivel.Location = new System.Drawing.Point(171, 259);
             this.cBoxCombustivel.Name = "cBoxCombustivel";
-            this.cBoxCombustivel.Size = new System.Drawing.Size(157, 23);
+            this.cBoxCombustivel.Size = new System.Drawing.Size(252, 23);
             this.cBoxCombustivel.TabIndex = 37;
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(171, 138);
+            this.txtPlaca.Location = new System.Drawing.Point(171, 163);
             this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(348, 23);
+            this.txtPlaca.Size = new System.Drawing.Size(252, 23);
             this.txtPlaca.TabIndex = 36;
             // 
             // txtMarca
             // 
-            this.txtMarca.Location = new System.Drawing.Point(171, 105);
+            this.txtMarca.Location = new System.Drawing.Point(171, 130);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(348, 23);
+            this.txtMarca.Size = new System.Drawing.Size(252, 23);
             this.txtMarca.TabIndex = 35;
             // 
             // txtVeiculo
@@ -207,7 +150,7 @@
             // 
             this.lCor.AutoSize = true;
             this.lCor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lCor.Location = new System.Drawing.Point(137, 269);
+            this.lCor.Location = new System.Drawing.Point(137, 294);
             this.lCor.Name = "lCor";
             this.lCor.Size = new System.Drawing.Size(28, 16);
             this.lCor.TabIndex = 33;
@@ -217,7 +160,7 @@
             // 
             this.lTipoCombustivel.AutoSize = true;
             this.lTipoCombustivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lTipoCombustivel.Location = new System.Drawing.Point(32, 236);
+            this.lTipoCombustivel.Location = new System.Drawing.Point(32, 261);
             this.lTipoCombustivel.Name = "lTipoCombustivel";
             this.lTipoCombustivel.Size = new System.Drawing.Size(129, 16);
             this.lTipoCombustivel.TabIndex = 32;
@@ -227,7 +170,7 @@
             // 
             this.lPlaca.AutoSize = true;
             this.lPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lPlaca.Location = new System.Drawing.Point(121, 140);
+            this.lPlaca.Location = new System.Drawing.Point(121, 165);
             this.lPlaca.Name = "lPlaca";
             this.lPlaca.Size = new System.Drawing.Size(42, 16);
             this.lPlaca.TabIndex = 31;
@@ -237,7 +180,7 @@
             // 
             this.lMarca.AutoSize = true;
             this.lMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lMarca.Location = new System.Drawing.Point(117, 107);
+            this.lMarca.Location = new System.Drawing.Point(117, 132);
             this.lMarca.Name = "lMarca";
             this.lMarca.Size = new System.Drawing.Size(45, 16);
             this.lMarca.TabIndex = 30;
@@ -257,7 +200,7 @@
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(435, 426);
+            this.btnCancelar.Location = new System.Drawing.Point(336, 489);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 23);
             this.btnCancelar.TabIndex = 49;
@@ -268,7 +211,7 @@
             // 
             this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrar.Location = new System.Drawing.Point(342, 426);
+            this.btnCadastrar.Location = new System.Drawing.Point(243, 489);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(87, 23);
             this.btnCadastrar.TabIndex = 48;
@@ -279,10 +222,11 @@
             // cBoxAgrupamento
             // 
             this.cBoxAgrupamento.DisplayMember = "Nome";
+            this.cBoxAgrupamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxAgrupamento.FormattingEnabled = true;
-            this.cBoxAgrupamento.Location = new System.Drawing.Point(171, 300);
+            this.cBoxAgrupamento.Location = new System.Drawing.Point(171, 325);
             this.cBoxAgrupamento.Name = "cBoxAgrupamento";
-            this.cBoxAgrupamento.Size = new System.Drawing.Size(157, 23);
+            this.cBoxAgrupamento.Size = new System.Drawing.Size(252, 23);
             this.cBoxAgrupamento.TabIndex = 51;
             this.cBoxAgrupamento.ValueMember = "Nome";
             // 
@@ -290,7 +234,7 @@
             // 
             this.lAgrupamento.AutoSize = true;
             this.lAgrupamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lAgrupamento.Location = new System.Drawing.Point(73, 302);
+            this.lAgrupamento.Location = new System.Drawing.Point(73, 327);
             this.lAgrupamento.Name = "lAgrupamento";
             this.lAgrupamento.Size = new System.Drawing.Size(88, 16);
             this.lAgrupamento.TabIndex = 50;
@@ -299,7 +243,7 @@
             // btnSelecionarFoto
             // 
             this.btnSelecionarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSelecionarFoto.Location = new System.Drawing.Point(60, 332);
+            this.btnSelecionarFoto.Location = new System.Drawing.Point(60, 354);
             this.btnSelecionarFoto.Name = "btnSelecionarFoto";
             this.btnSelecionarFoto.Size = new System.Drawing.Size(105, 23);
             this.btnSelecionarFoto.TabIndex = 53;
@@ -308,33 +252,64 @@
             // 
             // pictureCarro
             // 
-            this.pictureCarro.Location = new System.Drawing.Point(171, 332);
+            this.pictureCarro.Location = new System.Drawing.Point(171, 354);
             this.pictureCarro.Name = "pictureCarro";
-            this.pictureCarro.Size = new System.Drawing.Size(157, 117);
+            this.pictureCarro.Size = new System.Drawing.Size(252, 129);
             this.pictureCarro.TabIndex = 54;
             this.pictureCarro.TabStop = false;
+            // 
+            // txtCor
+            // 
+            this.txtCor.Location = new System.Drawing.Point(171, 292);
+            this.txtCor.Name = "txtCor";
+            this.txtCor.Size = new System.Drawing.Size(252, 23);
+            this.txtCor.TabIndex = 55;
+            // 
+            // txtAno
+            // 
+            this.txtAno.Location = new System.Drawing.Point(171, 98);
+            this.txtAno.Mask = "0000";
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(59, 23);
+            this.txtAno.TabIndex = 56;
+            this.txtAno.ValidatingType = typeof(int);
+            // 
+            // txtCapacidadeTanque
+            // 
+            this.txtCapacidadeTanque.Location = new System.Drawing.Point(171, 196);
+            this.txtCapacidadeTanque.Mask = "0000";
+            this.txtCapacidadeTanque.Name = "txtCapacidadeTanque";
+            this.txtCapacidadeTanque.Size = new System.Drawing.Size(59, 23);
+            this.txtCapacidadeTanque.TabIndex = 57;
+            this.txtCapacidadeTanque.ValidatingType = typeof(int);
+            // 
+            // txtKmPercorridos
+            // 
+            this.txtKmPercorridos.Location = new System.Drawing.Point(171, 227);
+            this.txtKmPercorridos.Mask = "000000";
+            this.txtKmPercorridos.Name = "txtKmPercorridos";
+            this.txtKmPercorridos.Size = new System.Drawing.Size(59, 23);
+            this.txtKmPercorridos.TabIndex = 58;
+            this.txtKmPercorridos.ValidatingType = typeof(int);
             // 
             // TelaCadastroVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 461);
+            this.ClientSize = new System.Drawing.Size(441, 524);
+            this.Controls.Add(this.txtKmPercorridos);
+            this.Controls.Add(this.txtCapacidadeTanque);
+            this.Controls.Add(this.txtAno);
+            this.Controls.Add(this.txtCor);
             this.Controls.Add(this.pictureCarro);
             this.Controls.Add(this.btnSelecionarFoto);
             this.Controls.Add(this.cBoxAgrupamento);
             this.Controls.Add(this.lAgrupamento);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.txtKmPercorridos);
             this.Controls.Add(this.lKmPercorridos);
-            this.Controls.Add(this.txtAno);
             this.Controls.Add(this.lAno);
-            this.Controls.Add(this.txtCapacidadeTanque);
             this.Controls.Add(this.lCapacidadeTanque);
-            this.Controls.Add(this.btnAddCor);
-            this.Controls.Add(this.txtCor);
-            this.Controls.Add(this.lAddCor);
-            this.Controls.Add(this.cBoxCor);
             this.Controls.Add(this.cBoxCombustivel);
             this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.txtMarca);
@@ -365,16 +340,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lTitulo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtKmPercorridos;
         private System.Windows.Forms.Label lKmPercorridos;
-        private System.Windows.Forms.TextBox txtAno;
         private System.Windows.Forms.Label lAno;
-        private System.Windows.Forms.TextBox txtCapacidadeTanque;
         private System.Windows.Forms.Label lCapacidadeTanque;
-        private System.Windows.Forms.Button btnAddCor;
-        private System.Windows.Forms.TextBox txtCor;
-        private System.Windows.Forms.Label lAddCor;
-        private System.Windows.Forms.ComboBox cBoxCor;
         private System.Windows.Forms.ComboBox cBoxCombustivel;
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.TextBox txtMarca;
@@ -390,5 +358,9 @@
         private System.Windows.Forms.Label lAgrupamento;
         private System.Windows.Forms.Button btnSelecionarFoto;
         private System.Windows.Forms.PictureBox pictureCarro;
+        private System.Windows.Forms.TextBox txtCor;
+        private System.Windows.Forms.MaskedTextBox txtAno;
+        private System.Windows.Forms.MaskedTextBox txtCapacidadeTanque;
+        private System.Windows.Forms.MaskedTextBox txtKmPercorridos;
     }
 }

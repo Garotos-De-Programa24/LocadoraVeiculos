@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Compartilhado;
 
@@ -10,14 +6,116 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
 {
     public class RepositorioVeiculoEmBancoDados : RepositorioBase<Veiculo, MapeadorVeiculo>, IRepositorioVeiculo
     {
-        protected override string sqlInserir => throw new NotImplementedException();
+        protected override string sqlInserir => 
+            @"INSERT INTO [TBVEICULO]
+                (
+                    
+                    [VEICULONOME],
+                    [MARCA],
+                    [ANO],
+                    [PLACA],
+                    [CAPACIDADETANQUE],
+                    [KMPERCORRIDO],
+                    [COMBUSTIVEL],
+                    [COR],
+                    [AGRUPAMENTO_ID]
+                )
+            VALUES
+                (
+                    
+                    @VEICULONOME,
+                    @MARCA,
+                    @ANO,
+                    @PLACA,
+                    @CAPACIDADETANQUE,
+                    @KMPERCORRIDO,
+                    @COMBUSTIVEL,
+                    @COR,
+                    @AGRUPAMENTO_ID
+                ); SELECT SCOPE_IDENTITY();";
 
-        protected override string sqlEditar => throw new NotImplementedException();
+        protected override string sqlEditar =>
+            @" UPDATE [TBVEICULO]
+                SET 
+                    
+                    [VEICULONOME] = @VEICULONOME,
+                    [MARCA] = @MARCA,
+                    [ANO] = @ANO,
+                    [PLACA] = @PLACA,
+                    [CAPACIDADETANQUE] = @CAPACIDADETANQUE,
+                    [KMPERCORRIDO] = @KMPERCORRIDO,
+                    [COMBUSTIVEL] = @COMBUSTIVEL,
+                    [COR] = @COR,
+                    [AGRUPAMENTO_ID] = @AGRUPAMENTO_ID
+                WHERE [ID] = @ID";
 
-        protected override string sqlExcluir => throw new NotImplementedException();
+        protected override string sqlExcluir => 
+            @"DELETE FROM [TBVEICULO] 
+                WHERE [ID] = @ID";
 
-        protected override string sqlSelecionarPorId => throw new NotImplementedException();
+        protected override string sqlSelecionarPorId =>
+            @"SELECT 
+                VEIC.[ID],
+                VEIC.[VEICULONOME],
+                VEIC.[MARCA],
+                VEIC.[ANO],
+                VEIC.[PLACA],
+                VEIC.[CAPACIDADETANQUE],
+                VEIC.[KMPERCORRIDO],
+                VEIC.[COMBUSTIVEL],
+                VEIC.[COR],
+                VEIC.[AGRUPAMENTO_ID],
+                GRUPO.[AGRUPAMENTO]
+            FROM 
+		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
+                ON
+                    GRUPO.ID = VEIC.AGRUPAMENTO_ID
+            WHERE
+                VEIC.[ID] = @ID";
 
-        protected override string sqlSelecionarTodos => throw new NotImplementedException();
+        protected override string sqlSelecionarTodos =>
+            @"SELECT 
+                VEIC.[ID],                
+                VEIC.[VEICULONOME],
+                VEIC.[MARCA],
+                VEIC.[ANO],
+                VEIC.[PLACA],
+                VEIC.[CAPACIDADETANQUE],
+                VEIC.[KMPERCORRIDO],
+                VEIC.[COMBUSTIVEL],
+                VEIC.[COR],
+                VEIC.[AGRUPAMENTO_ID],
+                GRUPO.[AGRUPAMENTO]
+            FROM 
+		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
+                ON
+                    GRUPO.ID = VEIC.AGRUPAMENTO_ID";
+
+        protected string sqlSelecionarPorNome =>
+            @"SELECT 
+                VEIC.[ID],
+                
+                VEIC.[VEICULONOME],
+                VEIC.[MARCA],
+                VEIC.[ANO],
+                VEIC.[PLACA],
+                VEIC.[CAPACIDADETANQUE],
+                VEIC.[KMPERCORRIDO],
+                VEIC.[COMBUSTIVEL],
+                VEIC.[COR],
+                VEIC.[AGRUPAMENTO_ID],
+                GRUPO.[AGRUPAMENTO]
+            FROM 
+		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
+                ON
+                    GRUPO.ID = VEIC.AGRUPAMENTO_ID
+            WHERE 
+                VEIC.[VEICULONOME] = @VEICULONOME";
+
+
+        public Veiculo SelecionarVeiculoPeloNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("VEICULONOME", nome));
+        }
     }
 }

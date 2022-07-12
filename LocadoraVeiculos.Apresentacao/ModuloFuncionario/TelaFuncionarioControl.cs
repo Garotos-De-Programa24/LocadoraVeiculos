@@ -45,7 +45,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
             foreach (var funcionario in funcionarios)
             {
                 grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Login, funcionario.Senha,
-                    "R$" + funcionario.Salario, funcionario.DataAdmissao.ToString("dd/MM/yyyy"), funcionario.GetGerente());
+                    "R$ " + funcionario.Salario, funcionario.DataAdmissao.ToString("dd/MM/yyyy"), funcionario.GetGerente());
 
             }
         }

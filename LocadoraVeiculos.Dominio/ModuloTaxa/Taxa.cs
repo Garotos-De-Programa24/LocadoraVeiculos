@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         {
 
         }
-        public Taxa(string equipamento, string valor,bool taxaDiaria)
+        public Taxa(string equipamento, string valor, bool taxaDiaria)
         {
             Equipamento = equipamento;
             Valor = valor;            

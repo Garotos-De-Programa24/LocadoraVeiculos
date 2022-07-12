@@ -102,14 +102,14 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(96, 74);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(388, 23);
+            this.txtNome.Size = new System.Drawing.Size(269, 23);
             this.txtNome.TabIndex = 8;
             // 
             // txtEndereco
             // 
             this.txtEndereco.Location = new System.Drawing.Point(96, 140);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(388, 23);
+            this.txtEndereco.Size = new System.Drawing.Size(269, 23);
             this.txtEndereco.TabIndex = 10;
             // 
             // btnCadastrar
@@ -157,7 +157,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(96, 206);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(388, 23);
+            this.txtEmail.Size = new System.Drawing.Size(269, 23);
             this.txtEmail.TabIndex = 14;
             // 
             // lEmail
