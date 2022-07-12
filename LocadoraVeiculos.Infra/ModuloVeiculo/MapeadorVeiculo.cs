@@ -37,7 +37,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             var cnhCondutor = Convert.ToString(leitorRegistro["CNHCONDUTOR"]);
             var validadeCnh = Convert.ToDateTime(leitorRegistro["VALIDADECNH"]);
             var email = Convert.ToString(leitorRegistro["EMAIL"]);
-            var telefone = Convert.ToString(leitorRegistro["TELEFONE"])
+            var telefone = Convert.ToString(leitorRegistro["TELEFONE"]);
 
 
 

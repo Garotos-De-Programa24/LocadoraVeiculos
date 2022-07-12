@@ -1,5 +1,7 @@
 using LocadoraVeiculos.Infra.Logging;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao
@@ -12,6 +14,11 @@ namespace LocadoraVeiculos.Apresentacao
         [STAThread]
         static void Main()
         {
+            var configuracao = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("ConfiguracaoAplicacao").Build();
+            var nome = configuracao.GetSection("nome").Value;
+
+            MessageBox.Show($"Seja bem vindo {nome}");
+
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

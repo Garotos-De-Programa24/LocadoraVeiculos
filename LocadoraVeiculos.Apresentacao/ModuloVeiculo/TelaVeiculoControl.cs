@@ -45,10 +45,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 
             foreach (var condutor in condutores)
             {
-                grid.Rows.Add(condutor.Id, condutor.Cliente.Nome,
-                    condutor.Nome, condutor.Cpf, condutor.CnhCondutor,
-                    condutor.ValidadeCnh.ToShortDateString(), condutor.Endereco,
-                     condutor.Email, condutor.Telefone);
+               
             }
         }
 
