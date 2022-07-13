@@ -62,12 +62,12 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\TBTaxa.sql" />
     <Build Include="dbo\Tables\TBCondutor.sql" />
     <Build Include="dbo\Tables\TBPlano.sql" />
-    <Build Include="dbo\Tables\TBCliente.sql" />
     <Build Include="dbo\Tables\TBVeiculo.sql" />
-    <Build Include="dbo\Tables\TBFuncionario.sql" />
     <Build Include="dbo\Tables\TBAgrupamento.sql" />
+    <Build Include="dbo\Tables\TBCliente.sql" />
+    <Build Include="dbo\Tables\TBFuncionario.sql" />
+    <Build Include="dbo\Tables\TBTaxa.sql" />
   </ItemGroup>
 </Project>
