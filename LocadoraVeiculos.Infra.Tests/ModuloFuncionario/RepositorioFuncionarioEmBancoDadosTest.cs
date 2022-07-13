@@ -16,9 +16,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloFuncionario
         private RepositorioFuncionarioEmBancoDados repositorio;
 
         public RepositorioFuncionarioEmBancoDadosTest()
-        {
-            Db.ExecutarSql("DELETE FROM TBFUNCIONARIO; DBCC CHECKIDENT (TBFUNCIONARIO, RESEED, 0)");
-
+        {           
             funcionario = new Funcionario();
             funcionario.Nome = "Alberto Roberto";
             funcionario.Login = "albertoroberto@gmail.com";

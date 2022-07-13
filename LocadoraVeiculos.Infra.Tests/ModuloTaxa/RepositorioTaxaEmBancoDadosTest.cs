@@ -19,8 +19,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloTaxa
         private RepositorioTaxaEmBancoDados repositorio;
 
         public RepositorioTaxaEmBancoDadosTest()
-        {
-            Db.ExecutarSql("DELETE FROM TBTAXA; DBCC CHECKIDENT (TBTAXA, RESEED, 0)");
+        {           
 
             taxa = new Taxa();
             taxa.Equipamento = "Cadeira Infantil";

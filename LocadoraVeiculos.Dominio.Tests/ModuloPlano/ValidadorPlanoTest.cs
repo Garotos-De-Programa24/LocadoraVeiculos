@@ -16,6 +16,9 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloPlano
         private Agrupamento agrupamento;
         public ValidadorPlanoTest()
         {
+            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+            agrupamento = new Agrupamento();
+
             agrupamento.Nome = "Uber";
             repositorioAgrupamento.Inserir(agrupamento);
             planoCobranca = new()

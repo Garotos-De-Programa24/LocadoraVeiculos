@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
                 return null;
 
             var id = Guid.Parse(leitorRegistro["ID"].ToString());
-            var nome = Convert.ToString(leitorRegistro["AGRUPAMENTO"]);            
+            var nome = Convert.ToString(leitorRegistro["AGRUPAMENTO"]);
 
             Agrupamento agrupamento = new Agrupamento();
             agrupamento.Id = id;

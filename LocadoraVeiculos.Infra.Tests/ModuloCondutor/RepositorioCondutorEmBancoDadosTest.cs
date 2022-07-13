@@ -1,6 +1,5 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
-using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloCondutor;
 using LocadoraVeiculos.Infra.Tests.Compartilhado;

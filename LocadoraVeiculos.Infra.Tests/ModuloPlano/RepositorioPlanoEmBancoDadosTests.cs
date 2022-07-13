@@ -1,11 +1,9 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
-using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.Tests.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
 {
@@ -17,16 +15,16 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         private PlanoCobranca planoCobranca;
         private Agrupamento agrupamento;
+
         public RepositorioPlanoEmBancoDadosTests()
         {
             repositorioPlano = new RepositorioPlanoCobrancaEmBancoDados();
             repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
-            
-           
-            agrupamento.Nome = "Uber";
+
+            agrupamento = new Agrupamento();
+            agrupamento.Nome = "UBER";
             repositorioAgrupamento.Inserir(agrupamento);
 
-            Db.ExecutarSql("DELETE FROM TBPLANO; DBCC CHECKIDENT (TBPLANO, RESEED, 0)");
             planoCobranca = new PlanoCobranca();
             planoCobranca.GrupoVeiculos = agrupamento;
             planoCobranca.NomePlano = "Uber Basico";
@@ -34,16 +32,12 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
             planoCobranca.SetValorDiario("45");
             planoCobranca.SetValorPorKm("52");
             planoCobranca.SetLimiteQuilometragem("80");
-
-
         }
 
 
         [TestMethod]
         public void Deve_inserir_novo_plano()
         {
-           
-
             //action            
             repositorioPlano.Inserir(planoCobranca);
 

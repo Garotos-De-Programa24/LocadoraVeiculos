@@ -11,7 +11,6 @@ namespace LocadoraVeiculos.Infra.Compartilhado
 {
     public class Db
     {
-
         public static void ExecutarSql(string sql)
         {
             var configuracao = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("ConfiguracaoAplicacao.json").Build();

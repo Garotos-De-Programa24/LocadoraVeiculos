@@ -40,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Aplicação", "2-Aplicaç
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Aplicacao", "LocadoraVeiculos.Aplicacao\LocadoraVeiculos.Aplicacao.csproj", "{B082C9BA-5584-483A-8EEE-9B69E6473C8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Infra.Logging", "LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj", "{35C6EEE3-6743-46FB-8C9A-A7AFCEEEC842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Infra.Logging", "LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj", "{35C6EEE3-6743-46FB-8C9A-A7AFCEEEC842}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BancoDados", "BancoDados", "{5F2BA340-3225-4C03-8729-9FCF15A585F9}"
 EndProject

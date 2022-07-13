@@ -27,10 +27,12 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
             var valorLivre = Convert.ToString(leitorRegistro["VALOR_LIVRE"]);
             var valorDiario = Convert.ToString(leitorRegistro["VALOR_DIARIO"]);
             var valorControlado = Convert.ToString(leitorRegistro["VALOR_CONTROLADO"]);
+            var agrupamentoId = Guid.Parse(leitorRegistro["AGRUPAMENTO_ID"].ToString());
 
             var agrupamento = new MapeadorAgrupamento().ConverterRegistro(leitorRegistro);
 
             PlanoCobranca novoPlano = new PlanoCobranca();
+            agrupamento.Id = agrupamentoId;
             novoPlano.Id = id;
             novoPlano.NomePlano = nomePlano;
             novoPlano.TipoPlano = (EnunPlano)tipoPlano;

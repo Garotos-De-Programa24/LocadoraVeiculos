@@ -16,6 +16,8 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
         private Cliente cliente;
         public ValidadorCondutorTest()
         {
+            repositorioCliente = new RepositorioClienteEmBancoDados();
+
             cliente = new Cliente();
             cliente.Nome = "Pedro";
             cliente.CpfCnpj = "100.000.000-00";
@@ -23,6 +25,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
             cliente.Email = "pedro@email.com";
             cliente.Telefone = "(49)99999-9999";
             repositorioCliente.Inserir(cliente);
+
             condutor = new()
             {
                 Nome = "João",
