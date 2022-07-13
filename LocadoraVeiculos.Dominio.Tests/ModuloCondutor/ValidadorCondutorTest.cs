@@ -1,12 +1,9 @@
 ﻿using FluentValidation.TestHelper;
+using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
 {
@@ -16,21 +13,27 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCondutor
         private readonly Condutor condutor;
         private readonly ValidaCondutor validador;
         private RepositorioClienteEmBancoDados repositorioCliente;
-
+        private Cliente cliente;
         public ValidadorCondutorTest()
         {
-            repositorioCliente = new RepositorioClienteEmBancoDados();
+            cliente = new Cliente();
+            cliente.Nome = "Pedro";
+            cliente.CpfCnpj = "100.000.000-00";
+            cliente.Endereco = "Lages";
+            cliente.Email = "pedro@email.com";
+            cliente.Telefone = "(49)99999-9999";
+            repositorioCliente.Inserir(cliente);
             condutor = new()
-            {                
+            {
                 Nome = "João",
                 Cpf = "111.111.111.11",
                 Endereco = "Lages",
                 CnhCondutor = "32131232111",
                 ValidadeCnh = DateTime.Today,
                 Email = "condutor@gmail.com",
-                Telefone = "(049)99999-9999"
+                Telefone = "(049)99999-9999",
+                Cliente = cliente,
             };
-            condutor.Cliente = repositorioCliente.SelecionarPorId(1);
 
             validador = new ValidaCondutor();
         }

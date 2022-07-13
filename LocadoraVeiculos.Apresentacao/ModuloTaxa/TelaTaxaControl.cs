@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -48,9 +49,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
             return resultado;
         }
 
-        public int ObtemNumeroTaxaSelecionado()
+        public Guid ObtemNumeroTaxaSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
     }
 }

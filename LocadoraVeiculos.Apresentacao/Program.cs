@@ -14,10 +14,7 @@ namespace LocadoraVeiculos.Apresentacao
         [STAThread]
         static void Main()
         {
-            var configuracao = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("ConfiguracaoAplicacao").Build();
-            var nome = configuracao.GetSection("nome").Value;
-
-            MessageBox.Show($"Seja bem vindo {nome}");
+           
 
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);

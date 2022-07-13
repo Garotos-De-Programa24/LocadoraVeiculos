@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Infra.ModuloCliente
             if(leitorRegistro["ID"] == DBNull.Value)
                 return null;
 
-            var id = Convert.ToInt32(leitorRegistro["ID"]);
+            var id = Guid.Parse(leitorRegistro["ID"].ToString());
             var nome = Convert.ToString(leitorRegistro["NOME"]);
             var cpfCnpj = Convert.ToString(leitorRegistro["CPFCNPJ"]);
             var endereco = Convert.ToString(leitorRegistro["ENDERECO"]);                      

@@ -21,9 +21,13 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
             repositorioPlano = new RepositorioPlanoCobrancaEmBancoDados();
             repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
             
+           
+            agrupamento.Nome = "Uber";
+            repositorioAgrupamento.Inserir(agrupamento);
+
             Db.ExecutarSql("DELETE FROM TBPLANO; DBCC CHECKIDENT (TBPLANO, RESEED, 0)");
             planoCobranca = new PlanoCobranca();
-            planoCobranca.GrupoVeiculos = repositorioAgrupamento.SelecionarPorId(1);
+            planoCobranca.GrupoVeiculos = agrupamento;
             planoCobranca.NomePlano = "Uber Basico";
             planoCobranca.TipoPlano = EnunPlano.Diario;
             planoCobranca.SetValorDiario("45");
@@ -37,7 +41,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         [TestMethod]
         public void Deve_inserir_novo_plano()
         {
-            //arrange
+           
 
             //action            
             repositorioPlano.Inserir(planoCobranca);
@@ -74,7 +78,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         public void Deve_excluir_plano()
         {
             //arrange
-            var novoPlano = new PlanoCobranca(repositorioAgrupamento.SelecionarPorId(3), "teste de Plano", EnunPlano.Livre, 25, 0, 0);
+            var novoPlano = new PlanoCobranca(agrupamento, "teste de Plano", EnunPlano.Livre, 25, 0, 0);
             repositorioPlano.Inserir(novoPlano);
 
             //action           
@@ -89,7 +93,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         public void Deve_selecionar_apenas_um_Plano()
         {
             //arrange
-            var novoPlano = new PlanoCobranca(repositorioAgrupamento.SelecionarPorId(3), "teste de Plano", EnunPlano.Livre, 25, 0, 0);
+            var novoPlano = new PlanoCobranca(agrupamento, "teste de Plano", EnunPlano.Livre, 25, 0, 0);
             repositorioPlano.Inserir(novoPlano);
 
 
@@ -105,11 +109,11 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         public void Deve_selecionar_todos_os_Planos()
         {
             //arrange
-            var novoPlano = new PlanoCobranca(repositorioAgrupamento.SelecionarPorId(1), "Uber Basico", EnunPlano.Livre, 25, 0, 0); 
+            var novoPlano = new PlanoCobranca(agrupamento, "Uber Basico", EnunPlano.Livre, 25, 0, 0); 
 
-            var novoPlano2 = new PlanoCobranca(repositorioAgrupamento.SelecionarPorId(2), "99 Sem Fronteiras", EnunPlano.Controlado, 25, 8, 56);
+            var novoPlano2 = new PlanoCobranca(agrupamento, "99 Sem Fronteiras", EnunPlano.Controlado, 25, 8, 56);
 
-            var novoPlano3 = new PlanoCobranca(repositorioAgrupamento.SelecionarPorId(3), "Para Quem é muito Rico!", EnunPlano.Controlado, 10000, 250, 60000);
+            var novoPlano3 = new PlanoCobranca(agrupamento, "Para Quem é muito Rico!", EnunPlano.Controlado, 10000, 250, 60000);
 
             repositorioPlano.Inserir(novoPlano);
             repositorioPlano.Inserir(novoPlano2);

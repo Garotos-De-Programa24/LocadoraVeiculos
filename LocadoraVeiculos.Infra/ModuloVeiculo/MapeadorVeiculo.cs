@@ -29,7 +29,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 return null;
 
             //var foto = (byte[])(leitorRegistro["FOTO"]);
-            var id = Convert.ToInt32(leitorRegistro["ID"]);
+            var id = Guid.Parse(leitorRegistro["ID"].ToString());
             var veiculoNome = Convert.ToString(leitorRegistro["VEICULONOME"]);
             var marca = Convert.ToString(leitorRegistro["MARCA"]);
             var ano = Convert.ToString(leitorRegistro["ANO"]);

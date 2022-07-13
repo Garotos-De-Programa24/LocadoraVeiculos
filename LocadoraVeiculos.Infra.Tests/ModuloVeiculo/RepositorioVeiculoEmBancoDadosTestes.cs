@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraVeiculos.Dominio.ModuloAgrupamento;
+using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloVeiculo;
@@ -10,6 +11,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
     public class RepositorioVeiculoEmBancoDadosTestes
     {
         private Veiculo veiculo;
+        private Agrupamento agrupamento;
         private RepositorioVeiculoEmBancoDados repositorio;
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
 
@@ -19,6 +21,11 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
 
             veiculo = new Veiculo();
             repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+            
+            agrupamento = new Agrupamento();
+            agrupamento.Nome = "Uber";
+            repositorioAgrupamento.Inserir(agrupamento);
+
             veiculo = new()
             {
                 VeiculoNome = "Ranger",
@@ -29,8 +36,8 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
                 KmPercorridos = "103400",
                 Combustivel = "Diesel",
                 Cor = "Prata",
+                Agrupamento = agrupamento,
             };
-            veiculo.Agrupamento = repositorioAgrupamento.SelecionarPorId(1);            
 
             repositorio = new RepositorioVeiculoEmBancoDados();
         }
@@ -105,9 +112,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
         public void Deve_selecionar_todos_os_funcionarios()
         {
             //arrange
-            var veiculo1 = new Veiculo("S-10", "Chevrolet", "2005", "ACD3214", "57 litros", "45600", "Gasolina", "Prata", repositorioAgrupamento.SelecionarPorId(1));
-            var veiculo2 = new Veiculo("HB20", "Hyundai", "2010", "ADA2313", "48 litros", "13500", "Gasolina", "Branco", repositorioAgrupamento.SelecionarPorId(2));
-            var veiculo3 = new Veiculo("Montana", "Chevrolet", "2004", "AAA1111", "52 litros", "67200", "Gasolina", "Branco", repositorioAgrupamento.SelecionarPorId(1));
+            var veiculo1 = new Veiculo("S-10", "Chevrolet", "2005", "ACD3214", "57 litros", "45600", "Gasolina", "Prata", agrupamento);
+            var veiculo2 = new Veiculo("HB20", "Hyundai", "2010", "ADA2313", "48 litros", "13500", "Gasolina", "Branco", agrupamento);
+            var veiculo3 = new Veiculo("Montana", "Chevrolet", "2004", "AAA1111", "52 litros", "67200", "Gasolina", "Branco", agrupamento);
 
             var repositorio = new RepositorioVeiculoEmBancoDados();
             repositorio.Inserir(veiculo1);

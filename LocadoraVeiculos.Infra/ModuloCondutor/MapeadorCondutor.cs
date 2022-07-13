@@ -27,7 +27,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
                 return null;
 
             //cria o condutor
-            var id = Convert.ToInt32(leitorRegistro["ID"]);                     
+            var id = Guid.Parse(leitorRegistro["ID"].ToString());                     
             var nome = Convert.ToString(leitorRegistro["NOME"]);
             var cpf = Convert.ToString(leitorRegistro["CPF"]);
             var endereco = Convert.ToString(leitorRegistro["ENDERECO"]);
@@ -49,7 +49,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
             };
 
             //cria o cliente
-            var cliente_id = Convert.ToInt32(leitorRegistro["CLIENTE_ID"]);
+            var cliente_id = Guid.Parse(leitorRegistro["CLIENTE_ID"].ToString());
             var cliente_nome = Convert.ToString(leitorRegistro["CLIENTE_NOME"]);
             var cliente_cpfcnpj = Convert.ToString(leitorRegistro["CPFCNPJ"]);
             var cliente_endereco = Convert.ToString(leitorRegistro["CLIENTE_ENDERECO"]);

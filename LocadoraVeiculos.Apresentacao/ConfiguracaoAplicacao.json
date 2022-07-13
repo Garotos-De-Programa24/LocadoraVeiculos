@@ -1,3 +1,8 @@
 {
-"nome":  "Anderson Silva"
+  "ConfiguracaoLogs": {
+    "DiretorioSaida": "C://logs"
+  },
+  "ConnectionStrings": {
+    "SqlServer": "Data Source=(LOCALDB)\\MSSQLLOCALDB;Initial Catalog=LocadoraDB;Integrated Security=True"
+  } 
 }

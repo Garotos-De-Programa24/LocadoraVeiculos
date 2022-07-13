@@ -49,9 +49,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
 
             }
         }
-        public int ObtemNumeroFuncionarioSelecionado()
+        public Guid ObtemNumeroFuncionarioSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
     }
 }

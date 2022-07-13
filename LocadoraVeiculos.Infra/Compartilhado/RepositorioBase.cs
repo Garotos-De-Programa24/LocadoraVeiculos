@@ -1,21 +1,25 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using LocadoraVeiculos.Dominio.Compartilhado;
+﻿using LocadoraVeiculos.Dominio.Compartilhado;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
+
 namespace LocadoraVeiculos.Infra.Compartilhado
 {
     public abstract class RepositorioBase<T, TMapeador> : IRepositorio<T>
            where T : EntidadeBase<T>
            where TMapeador : MapeadorBase<T>, new()
     {
-        protected string enderecoBanco =
-            @"Data Source=(LOCALDB)\MSSQLLOCALDB;
-              Initial Catalog=LocadoraDB;
-              Integrated Security=True";
+        private readonly string enderecoBanco;
 
-        protected abstract string sqlInserir { get; }
+        public RepositorioBase()
+        {
+            var configuracao = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("ConfiguracaoAplicacao.json").Build();
+            enderecoBanco = configuracao.GetConnectionString("SqlServer");
+        }
+
+    protected abstract string sqlInserir { get; }
 
         protected abstract string sqlEditar { get; }
 
@@ -36,9 +40,8 @@ namespace LocadoraVeiculos.Infra.Compartilhado
             mapeador.ConfigurarParametros(registro, comandoInsercao);
 
             conexaoComBanco.Open();
-            var id = comandoInsercao.ExecuteScalar();
-            registro.Id = Convert.ToInt32(id);
-
+            var id = comandoInsercao.ExecuteNonQuery();
+      
             conexaoComBanco.Close();
         }
 
@@ -70,7 +73,7 @@ namespace LocadoraVeiculos.Infra.Compartilhado
             conexaoComBanco.Close();
         }
 
-        public virtual T SelecionarPorId(int id)
+        public virtual T SelecionarPorId(Guid id)
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 

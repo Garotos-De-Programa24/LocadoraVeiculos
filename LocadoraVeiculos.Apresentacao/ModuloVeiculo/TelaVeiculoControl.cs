@@ -51,9 +51,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             }
         }
 
-        public int ObtemNumeroVeiculoSelecionado()
+        public Guid ObtemNumeroVeiculoSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
     }
 }

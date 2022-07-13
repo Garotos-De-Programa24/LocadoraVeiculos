@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -50,9 +51,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
             }
         }
 
-        public int ObtemNumeroPlanoCobrancaSelecionado()
+        public Guid ObtemNumeroPlanoCobrancaSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
 
     

@@ -43,9 +43,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
             }
         }
 
-        public int ObtemNumeroAgrupamentoSelecionado()
+        public Guid ObtemNumeroAgrupamentoSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation.TestHelper;
+using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,11 +11,13 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloVeiculo
     {
         private readonly Veiculo veiculo;
         private readonly ValidaVeiculo validador;
-        private readonly RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
-
+        private readonly RepositorioAgrupamentoEmBancoDados repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+        private Agrupamento agrupamento = new Agrupamento();
         public ValidadorVeiculoTest()
         {
-            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+
+            agrupamento.Nome = "Uber";
+            repositorioAgrupamento.Inserir(agrupamento);
             veiculo = new()
             {
                 VeiculoNome = "Ranger",
@@ -25,8 +28,8 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloVeiculo
                 KmPercorridos = "103400",
                 Combustivel = "Diesel",
                 Cor = "Prata",                
+                Agrupamento = agrupamento,
             };
-            veiculo.Agrupamento = repositorioAgrupamento.SelecionarPorId(1);
 
             validador = new ValidaVeiculo();
         }

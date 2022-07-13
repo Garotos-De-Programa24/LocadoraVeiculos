@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCliente;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -42,9 +43,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             }
         }
 
-        public int ObtemNumeroClienteSelecionado()
+        public Guid ObtemNumeroClienteSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
     }
 }
