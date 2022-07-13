@@ -10,6 +10,6 @@
     [VeiculoNome]      VARCHAR (100)    NOT NULL,
     [Cor]              VARCHAR (50)     NOT NULL,
     CONSTRAINT [PK_TBVeiculo_1] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_TBVeiculo_TBAgrupamento] FOREIGN KEY ([Id]) REFERENCES [dbo].[TBAgrupamento] ([Id])
+    CONSTRAINT [FK_TBVeiculo_TBAgrupamento] FOREIGN KEY ([Agrupamento_Id]) REFERENCES [dbo].[TBAgrupamento] ([Id])
 );
 
