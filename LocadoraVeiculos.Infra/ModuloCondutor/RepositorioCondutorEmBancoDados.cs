@@ -9,6 +9,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
         protected override string sqlInserir =>
             @"INSERT INTO [TBCONDUTOR] 
                 (
+                    [ID],
                     [CLIENTE_ID],                    
                     [NOME],
                     [CPF],
@@ -20,6 +21,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
 	            )
 	            VALUES
                 (
+                    @ID,
                     @CLIENTE_ID,                    
                     @NOME,
                     @CPF,
@@ -28,7 +30,7 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
                     @VALIDADECNH,
                     @EMAIL,
                     @TELEFONE
-                );SELECT SCOPE_IDENTITY();";
+                );";
 
         protected override string sqlEditar =>
             @"UPDATE [TBCONDUTOR]	

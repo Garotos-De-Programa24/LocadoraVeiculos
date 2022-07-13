@@ -3,12 +3,13 @@ using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloVeiculo;
+using LocadoraVeiculos.Infra.Tests.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
 {
     [TestClass]
-    public class RepositorioVeiculoEmBancoDadosTestes
+    public class RepositorioVeiculoEmBancoDadosTestes : BaseIntegrationTest
     {
         private Veiculo veiculo;
         private Agrupamento agrupamento;
@@ -17,8 +18,6 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
 
         public RepositorioVeiculoEmBancoDadosTestes()
         {
-            Db.ExecutarSql("DELETE FROM TBVEICULO; DBCC CHECKIDENT (TBVEICULO, RESEED, 0)");
-
             veiculo = new Veiculo();
             repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
             

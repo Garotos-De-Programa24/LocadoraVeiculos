@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloTaxa;
+using LocadoraVeiculos.Infra.Tests.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace LocadoraVeiculos.Infra.Tests.ModuloTaxa
 {
     [TestClass]
-    public class RepositorioTaxaEmBancoDadosTest
+    public class RepositorioTaxaEmBancoDadosTest : BaseIntegrationTest
     {
 
         private Taxa taxa;

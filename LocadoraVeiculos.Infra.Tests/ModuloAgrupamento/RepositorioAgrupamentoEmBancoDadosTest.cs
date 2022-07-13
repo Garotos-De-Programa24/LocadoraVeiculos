@@ -1,24 +1,21 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
+using LocadoraVeiculos.Infra.Tests.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LocadoraVeiculos.Infra.Tests.ModuloAgrupamento
 {
     [TestClass]
-    public class RepositorioAgrupamentoEmBancoDadosTest
+    public class RepositorioAgrupamentoEmBancoDadosTest : BaseIntegrationTest
     {
         private Agrupamento agrupamento;
         private RepositorioAgrupamentoEmBancoDados repositorio;
 
         public RepositorioAgrupamentoEmBancoDadosTest()
         {
-            Db.ExecutarSql("DELETE FROM TBAGRUPAMENTO; DBCC CHECKIDENT (TBAGRUPAMENTO, RESEED, 0)");
-
             agrupamento = new Agrupamento();
             agrupamento.Nome = "Uber";
-            
-
             repositorio = new RepositorioAgrupamentoEmBancoDados();
         }
 
@@ -36,7 +33,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloAgrupamento
         }
 
         [TestMethod]
-        public void Deve_editar_informacoes_cliente()
+        public void Deve_editar_informacoes_agrupamento()
         {
             //arrange                      
             repositorio.Inserir(agrupamento);
@@ -54,7 +51,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloAgrupamento
         }
 
         [TestMethod]
-        public void Deve_excluir_cliente()
+        public void Deve_excluir_agrupamento()
         {
             //arrange           
             repositorio.Inserir(agrupamento);
@@ -68,7 +65,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloAgrupamento
         }
 
         [TestMethod]
-        public void Deve_selecionar_apenas_um_clientes()
+        public void Deve_selecionar_apenas_um_agrupamento()
         {
             //arrange          
             repositorio.Inserir(agrupamento);
@@ -82,7 +79,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloAgrupamento
         }
 
         [TestMethod]
-        public void Deve_selecionar_todos_os_clientes()
+        public void Deve_selecionar_todos_os_agrupamento()
         {
             //arrange
             var c0 = new Agrupamento("UBER");

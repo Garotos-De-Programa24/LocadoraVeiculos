@@ -3,13 +3,14 @@ using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Infra.Tests.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
 {
     [TestClass]
-    public class RepositorioPlanoEmBancoDadosTests
+    public class RepositorioPlanoEmBancoDadosTests : BaseIntegrationTest
     {  
 
         private RepositorioPlanoCobrancaEmBancoDados repositorioPlano;

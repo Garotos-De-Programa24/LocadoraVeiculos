@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
 	            )
 	            VALUES
                 (
-                    @ID
+                    @ID,
                     @AGRUPAMENTO                    
                 );";
 

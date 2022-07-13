@@ -1,12 +1,13 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloCliente;
+using LocadoraVeiculos.Infra.Tests.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
 {
     [TestClass]
-    public class RepositorioClienteEmBancoDadosTest
+    public class RepositorioClienteEmBancoDadosTest : BaseIntegrationTest
     {
         private Cliente cliente;
         private RepositorioClienteEmBancoDados repositorio;

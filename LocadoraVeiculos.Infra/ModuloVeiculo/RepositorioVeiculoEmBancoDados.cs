@@ -9,7 +9,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         protected override string sqlInserir => 
             @"INSERT INTO [TBVEICULO]
                 (
-                    
+                    [ID],
                     [VEICULONOME],
                     [MARCA],
                     [ANO],
@@ -22,7 +22,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 )
             VALUES
                 (
-                    
+                    @ID,
                     @VEICULONOME,
                     @MARCA,
                     @ANO,
@@ -32,7 +32,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                     @COMBUSTIVEL,
                     @COR,
                     @AGRUPAMENTO_ID
-                ); SELECT SCOPE_IDENTITY();";
+                ); ";
 
         protected override string sqlEditar =>
             @" UPDATE [TBVEICULO]

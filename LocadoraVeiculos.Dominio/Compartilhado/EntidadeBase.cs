@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Taikandi;
 namespace LocadoraVeiculos.Dominio.Compartilhado
 {
     public abstract class EntidadeBase<T>
@@ -8,7 +8,7 @@ namespace LocadoraVeiculos.Dominio.Compartilhado
 
         public EntidadeBase()
         {
-            Id = Guid.NewGuid();
+            Id = SequentialGuid.NewGuid();
         }
         public abstract void Atualizar(T Registro);
     }
