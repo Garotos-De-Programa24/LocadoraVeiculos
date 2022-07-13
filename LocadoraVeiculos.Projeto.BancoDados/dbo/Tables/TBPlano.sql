@@ -7,6 +7,6 @@
     [Valor_Controlado] VARCHAR (50)     NULL,
     [Agrupamento_Id]   UNIQUEIDENTIFIER NOT NULL,
     CONSTRAINT [PK_TBPlano_1] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_TBPlano_TBAgrupamento] FOREIGN KEY ([Id]) REFERENCES [dbo].[TBAgrupamento] ([Id])
+    CONSTRAINT [FK_TBPlano_TBAgrupamento] FOREIGN KEY ([Agrupamento_Id]) REFERENCES [dbo].[TBAgrupamento] ([Id])
 );
 

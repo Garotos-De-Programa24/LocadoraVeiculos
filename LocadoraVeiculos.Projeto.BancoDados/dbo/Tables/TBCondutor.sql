@@ -9,6 +9,6 @@
     [Email]       VARCHAR (100)    NOT NULL,
     [Telefone]    VARCHAR (50)     NOT NULL,
     CONSTRAINT [PK_TBCondutor_1] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_TBCondutor_TBCliente] FOREIGN KEY ([Id]) REFERENCES [dbo].[TBCliente] ([Id])
+    CONSTRAINT [FK_TBCondutor_TBCliente] FOREIGN KEY ([Cliente_Id]) REFERENCES [dbo].[TBCliente] ([Id])
 );
 
