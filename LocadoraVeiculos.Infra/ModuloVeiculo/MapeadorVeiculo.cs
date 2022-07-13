@@ -10,7 +10,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
     {
         public override void ConfigurarParametros(Veiculo registro, SqlCommand comando)
         {
-            comando.Parameters.AddWithValue("ID", registro.Cor);
+            comando.Parameters.AddWithValue("ID", registro.Id);
             //comando.Parameters.AddWithValue("FOTO", registro.Foto);
             comando.Parameters.AddWithValue("VEICULONOME", registro.VeiculoNome);
             comando.Parameters.AddWithValue("MARCA", registro.Marca);
@@ -38,6 +38,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             var kmpercorrido = Convert.ToString(leitorRegistro["KMPERCORRIDO"]);
             var combustivel = Convert.ToString(leitorRegistro["COMBUSTIVEL"]);
             var cor = Convert.ToString(leitorRegistro["COR"]);
+
             var agrupamento = new MapeadorAgrupamento().ConverterRegistro(leitorRegistro);
             
 

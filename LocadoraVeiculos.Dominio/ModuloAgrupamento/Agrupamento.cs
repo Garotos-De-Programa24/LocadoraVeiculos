@@ -13,8 +13,9 @@ namespace LocadoraVeiculos.Dominio.ModuloAgrupamento
         {
         }
 
-        public Agrupamento(string nome)
+        public Agrupamento(Guid id,string nome)
         {
+            Id = id;
             Nome = nome;            
         }
 

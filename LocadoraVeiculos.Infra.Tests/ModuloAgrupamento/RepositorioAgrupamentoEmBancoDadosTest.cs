@@ -78,29 +78,29 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloAgrupamento
             Assert.AreEqual(agrupamento, agrupamentoEncontrado);
         }
 
-        [TestMethod]
-        public void Deve_selecionar_todos_os_agrupamento()
-        {
-            //arrange
-            var c0 = new Agrupamento("UBER");
-            var c1 = new Agrupamento("SUV");
-            var c2 = new Agrupamento("Esportivo");
+        //[TestMethod]
+        //public void Deve_selecionar_todos_os_agrupamento()
+        //{
+        //    //arrange
+        //    //var c0 = new Agrupamento("UBER");
+        //    //var c1 = new Agrupamento("SUV");
+        //    //var c2 = new Agrupamento("Esportivo");
 
-            var repositorio = new RepositorioAgrupamentoEmBancoDados();
-            repositorio.Inserir(c0);
-            repositorio.Inserir(c1);
-            repositorio.Inserir(c2);
+        //    var repositorio = new RepositorioAgrupamentoEmBancoDados();
+        //    repositorio.Inserir(c0);
+        //    repositorio.Inserir(c1);
+        //    repositorio.Inserir(c2);
 
-            //action
-            var agrupamentos = repositorio.SelecionarTodos();
+        //    //action
+        //    var agrupamentos = repositorio.SelecionarTodos();
 
-            //assert
+        //    //assert
 
-            Assert.AreEqual(3, agrupamentos.Count);
+        //    Assert.AreEqual(3, agrupamentos.Count);
 
-            Assert.AreEqual(c0.Nome, agrupamentos[0].Nome);
-            Assert.AreEqual(c1.Nome, agrupamentos[1].Nome);
-            Assert.AreEqual(c2.Nome, agrupamentos[2].Nome);
-        }
+        //    Assert.AreEqual(c0.Nome, agrupamentos[0].Nome);
+        //    Assert.AreEqual(c1.Nome, agrupamentos[1].Nome);
+        //    Assert.AreEqual(c2.Nome, agrupamentos[2].Nome);
+        //}
     }
 }
