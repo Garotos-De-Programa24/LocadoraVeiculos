@@ -5,7 +5,8 @@
     [Valor_Livre]      VARCHAR (50)     NULL,
     [Valor_Diario]     VARCHAR (50)     NULL,
     [Valor_Controlado] VARCHAR (50)     NULL,
-    [Agrupamento_Id]   INT              NOT NULL,
-    CONSTRAINT [PK_TBPlano_1] PRIMARY KEY CLUSTERED ([Id] ASC)
+    [Agrupamento_Id]   UNIQUEIDENTIFIER NOT NULL,
+    CONSTRAINT [PK_TBPlano_1] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_TBPlano_TBAgrupamento] FOREIGN KEY ([Id]) REFERENCES [dbo].[TBAgrupamento] ([Id])
 );
 
