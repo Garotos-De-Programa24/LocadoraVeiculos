@@ -11,14 +11,13 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
     public class RepositorioPlanoEmBancoDadosTests : BaseIntegrationTest
     {  
 
-        private RepositorioPlanoCobrancaEmBancoDados repositorioPlano;
+        private RepositorioPlanoCobrancaEmBancoDados repositorio;
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         private PlanoCobranca planoCobranca;
         private Agrupamento agrupamento;
 
         public RepositorioPlanoEmBancoDadosTests()
         {
-            repositorioPlano = new RepositorioPlanoCobrancaEmBancoDados();
             repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
 
             agrupamento = new Agrupamento();
@@ -39,10 +38,10 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         public void Deve_inserir_novo_plano()
         {
             //action            
-            repositorioPlano.Inserir(planoCobranca);
+            repositorio.Inserir(planoCobranca);
 
             //assert
-            var planoEncontrado = repositorioPlano.SelecionarPorId(planoCobranca.Id);
+            var planoEncontrado = repositorio.SelecionarPorId(planoCobranca.Id);
 
             Assert.IsNotNull(planoEncontrado);
             Assert.AreEqual(planoCobranca, planoEncontrado);
@@ -52,7 +51,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         public void Deve_editar_informacoes_Plano()
         {
             //arrange
-            repositorioPlano.Inserir(planoCobranca);
+            repositorio.Inserir(planoCobranca);
 
             //action
             planoCobranca.NomePlano = "99 Basico";
@@ -60,10 +59,10 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
             planoCobranca.SetValorDiario("99");
             planoCobranca.SetValorPorKm("5");
             planoCobranca.SetLimiteQuilometragem("8");
-            repositorioPlano.Editar(planoCobranca);
+            repositorio.Editar(planoCobranca);
 
             //assert
-            var planoEncontrado = repositorioPlano.SelecionarPorId(planoCobranca.Id);
+            var planoEncontrado = repositorio.SelecionarPorId(planoCobranca.Id);
 
             Assert.IsNotNull(planoEncontrado);
             Assert.AreEqual(planoCobranca, planoEncontrado);
@@ -74,13 +73,13 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         {
             //arrange
             var novoPlano = new PlanoCobranca(agrupamento, "teste de Plano", EnunPlano.Livre, 25, 0, 0);
-            repositorioPlano.Inserir(novoPlano);
+            repositorio.Inserir(novoPlano);
 
             //action           
-            repositorioPlano.Excluir(novoPlano);
+            repositorio.Excluir(novoPlano);
 
             //assert
-            var medicamentoEncontrado = repositorioPlano.SelecionarPorId(novoPlano.Id);
+            var medicamentoEncontrado = repositorio.SelecionarPorId(novoPlano.Id);
             Assert.IsNull(medicamentoEncontrado);
         }
 
@@ -89,11 +88,11 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
         {
             //arrange
             var novoPlano = new PlanoCobranca(agrupamento, "teste de Plano", EnunPlano.Livre, 25, 0, 0);
-            repositorioPlano.Inserir(novoPlano);
+            repositorio.Inserir(novoPlano);
 
 
             //action
-            var planoEncontrado = repositorioPlano.SelecionarPorId(novoPlano.Id);
+            var planoEncontrado = repositorio.SelecionarPorId(novoPlano.Id);
 
             //assert
             Assert.IsNotNull(planoEncontrado);
@@ -110,11 +109,11 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
 
             var novoPlano3 = new PlanoCobranca(agrupamento, "Para Quem é muito Rico!", EnunPlano.Controlado, 10000, 250, 60000);
 
-            repositorioPlano.Inserir(novoPlano);
-            repositorioPlano.Inserir(novoPlano2);
-            repositorioPlano.Inserir(novoPlano3);
+            repositorio.Inserir(novoPlano);
+            repositorio.Inserir(novoPlano2);
+            repositorio.Inserir(novoPlano3);
             // action
-            var planoEncontrado = repositorioPlano.SelecionarTodos();
+            var planoEncontrado = repositorio.SelecionarTodos();
 
             // assert
             Assert.AreEqual(3, planoEncontrado.Count);

@@ -14,6 +14,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCliente
 
         public RepositorioClienteEmBancoDadosTest()
         {
+
             cliente = new Cliente();
             cliente.Nome = "Pedro";
             cliente.CpfCnpj = "100.000.000-00";

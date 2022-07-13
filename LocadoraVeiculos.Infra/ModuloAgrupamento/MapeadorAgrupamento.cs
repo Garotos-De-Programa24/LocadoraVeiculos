@@ -7,6 +7,7 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
 {
     public class MapeadorAgrupamento : MapeadorBase<Agrupamento>
     {
+         
         public override void ConfigurarParametros(Agrupamento registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Id);
@@ -21,9 +22,10 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
             var id = Guid.Parse(leitorRegistro["ID"].ToString());
             var nome = Convert.ToString(leitorRegistro["AGRUPAMENTO"]);
 
-            Agrupamento agrupamento = new Agrupamento();
-            agrupamento.Id = id;
-            agrupamento.Nome = nome;
+            Agrupamento agrupamento = new Agrupamento(id, nome);
+
+            //agrupamento.Id = id;
+            //agrupamento.Nome = nome;
 
             return agrupamento;
         }
