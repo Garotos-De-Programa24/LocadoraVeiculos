@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -46,9 +47,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             }
         }
 
-        public int ObtemNumeroCondutorSelecionado()
+        public Guid ObtemNumeroCondutorSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCondutor
         private Condutor condutor;
         private RepositorioCondutorEmBancoDados repositorio;
         private RepositorioClienteEmBancoDados repositorioCliente;
+        private Cliente cliente;
 
         public RepositorioCondutorEmBancoDadosTest()
         {
@@ -21,8 +22,16 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCondutor
             repositorioCliente = new RepositorioClienteEmBancoDados();
             repositorio = new RepositorioCondutorEmBancoDados();
 
+            cliente = new Cliente();
+            cliente.Nome = "Pedro";
+            cliente.CpfCnpj = "100.000.000-00";
+            cliente.Endereco = "Lages";
+            cliente.Email = "pedro@email.com";
+            cliente.Telefone = "(49)99999-9999";
+            repositorioCliente.Inserir(cliente);
+
             condutor = new Condutor();            
-            condutor.Cliente = repositorioCliente.SelecionarPorId(1);
+            condutor.Cliente = cliente;
             condutor.Nome = "João";
             condutor.Cpf = "111.111.111.11";
             condutor.Endereco = "Lages";
@@ -53,7 +62,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCondutor
             repositorio.Inserir(condutor);
 
             //action            
-            condutor.Cliente = repositorioCliente.SelecionarPorId(2);
+            condutor.Cliente = cliente;
             condutor.Nome = "Pedro";
             condutor.Cpf = "222.222.222-22";
             condutor.Endereco = "Centro";
@@ -103,9 +112,9 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloCondutor
         public void Deve_selecionar_todos_os_condutores()
         {
             //arrange
-            var condutor1 = new Condutor(repositorioCliente.SelecionarPorId(1), "Pedro", "111.111.111-11", "Rua", "00000000000", DateTime.Today, "condutor1@gmail.com", "(049)00000-0000");
-            var condutor2 = new Condutor(repositorioCliente.SelecionarPorId(2), "Luiz", "222.222.222-22", "Praça", "11111111111", DateTime.Today.AddDays(3), "condutor2@gmail.com", "(049)11111-1111");
-            var condutor3 = new Condutor(repositorioCliente.SelecionarPorId(3), "José", "333.333.333-33", "Centro", "22222222222", DateTime.Today.AddDays(5), "condutor3@gmail.com", "(049)22222-2222");
+            var condutor1 = new Condutor(cliente, "Pedro", "111.111.111-11", "Rua", "00000000000", DateTime.Today, "condutor1@gmail.com", "(049)00000-0000");
+            var condutor2 = new Condutor(cliente, "Luiz", "222.222.222-22", "Praça", "11111111111", DateTime.Today.AddDays(3), "condutor2@gmail.com", "(049)11111-1111");
+            var condutor3 = new Condutor(cliente, "José", "333.333.333-33", "Centro", "22222222222", DateTime.Today.AddDays(5), "condutor3@gmail.com", "(049)22222-2222");
 
             var repositorio = new RepositorioCondutorEmBancoDados();
             repositorio.Inserir(condutor1);

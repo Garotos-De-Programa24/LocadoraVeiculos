@@ -1,4 +1,5 @@
 ﻿using FluentValidation.TestHelper;
+using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,10 +13,11 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloPlano
         private readonly PlanoCobranca planoCobranca;
         private readonly ValidaPlanoCobranca validador;
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
-
+        private Agrupamento agrupamento;
         public ValidadorPlanoTest()
         {
-            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+            agrupamento.Nome = "Uber";
+            repositorioAgrupamento.Inserir(agrupamento);
             planoCobranca = new()
             {
                 NomePlano = "Teste Para Uber",
@@ -24,7 +26,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloPlano
             planoCobranca.SetLimiteQuilometragem("25");
             planoCobranca.SetValorDiario("45");
             planoCobranca.SetValorPorKm("55");
-            planoCobranca.GrupoVeiculos = repositorioAgrupamento.SelecionarPorId(1);
+            planoCobranca.GrupoVeiculos = agrupamento;
 
             validador = new ValidaPlanoCobranca();
         }

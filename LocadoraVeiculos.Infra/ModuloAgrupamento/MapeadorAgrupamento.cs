@@ -1,11 +1,7 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.Compartilhado;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Infra.ModuloAgrupamento
 {
@@ -22,7 +18,7 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
             if (leitorRegistro["ID"] == DBNull.Value)
                 return null;
 
-            var id = Convert.ToInt32(leitorRegistro["ID"]);
+            var id = Guid.Parse(leitorRegistro["ID"].ToString());
             var nome = Convert.ToString(leitorRegistro["AGRUPAMENTO"]);            
 
             Agrupamento agrupamento = new Agrupamento();

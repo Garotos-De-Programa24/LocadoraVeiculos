@@ -9,12 +9,14 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
         protected override string sqlInserir =>
             @"INSERT INTO [TBAGRUPAMENTO] 
                 (
+                    [ID],
                     [AGRUPAMENTO]                    
 	            )
 	            VALUES
                 (
+                    @ID
                     @AGRUPAMENTO                    
-                );SELECT SCOPE_IDENTITY();";
+                );";
 
         protected override string sqlEditar =>
             @"UPDATE [TBAGRUPAMENTO]	

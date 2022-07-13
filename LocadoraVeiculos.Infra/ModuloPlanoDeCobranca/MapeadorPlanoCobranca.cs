@@ -21,7 +21,7 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
 
         public override PlanoCobranca ConverterRegistro(SqlDataReader leitorRegistro)
         {
-            var id = Convert.ToInt32(leitorRegistro["ID"]);
+            var id = Guid.Parse(leitorRegistro["ID"].ToString());
             var nomePlano = Convert.ToString(leitorRegistro["NOMEPLANO"]);
             var tipoPlano = Convert.ToInt32(leitorRegistro["TIPOPLANO"]);
             var valorLivre = Convert.ToString(leitorRegistro["VALOR_LIVRE"]);
