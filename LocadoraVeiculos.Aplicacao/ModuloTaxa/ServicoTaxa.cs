@@ -13,19 +13,19 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
         }
         public ValidationResult Inserir(Taxa taxa)
         {
-            Log.Logger.Information("Tentando inserir no Taxa @{Taxa", taxa);
+            Log.Logger.Debug("Tentando inserir nova Taxa @{Taxa}", taxa);
             ValidationResult resultadoValidacao = Validar(taxa);
 
             if (resultadoValidacao.IsValid)
             {
                 repositorioTaxa.Inserir(taxa);
-                Log.Logger.Information("Taxa{TaxaEquipamento} inserido com sucesso.", taxa.Equipamento);
+                Log.Logger.Information("Taxa{TaxaId} inserido com sucesso.", taxa.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir Taxa {TaxaEquipamento} -> Motivo: {erro}", taxa.Equipamento, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir Taxa {TaxaId} -> Motivo: {erro}", taxa.Id, erro.ErrorMessage);
                 }
             }
             return resultadoValidacao;
@@ -33,20 +33,20 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 
         public ValidationResult Editar(Taxa taxa)
         {
-            Log.Logger.Information("Tentando editar no Taxa @{Taxa", taxa);
+            Log.Logger.Debug("Tentando editar no Taxa @{Taxa}", taxa);
 
             ValidationResult resultadoValidacao = Validar(taxa);
 
             if (resultadoValidacao.IsValid)
             {
                 repositorioTaxa.Editar(taxa);
-                Log.Logger.Information("Taxa{TaxaEquipamento} editar com sucesso.", taxa.Equipamento);
+                Log.Logger.Information("Taxa{TaxaId} editado com sucesso.", taxa.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar Taxa {TaxaEquipamento} -> Motivo: {erro}", taxa.Equipamento, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar Taxa {TaxaId} -> Motivo: {erro}", taxa.Id, erro.ErrorMessage);
                 }
             }
             return resultadoValidacao;

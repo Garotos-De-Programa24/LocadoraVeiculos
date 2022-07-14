@@ -14,20 +14,20 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
         }
         public ValidationResult Inserir(PlanoCobranca planoCobranca)
         {
-            Log.Logger.Information("Tentando inserir no Plano de Cobrança @{PlanoCobranca", planoCobranca);
+            Log.Logger.Debug("Tentando inserir no Plano de Cobrança @{PlanoCobranca}", planoCobranca);
 
             var resultadoValidacao = ValidarPlano(planoCobranca);
 
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlano.Inserir(planoCobranca);
-                Log.Logger.Information("Plano de Cobrança{PlanoCobrancaNomePlano} inserido com sucesso.", planoCobranca.NomePlano);
+                Log.Logger.Information("Plano de Cobrança{PlanoCobrancaId} inserido com sucesso.", planoCobranca.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir Plano de Cobrança {PlanoCobrancaNomePlano} -> Motivo: {erro}", planoCobranca.NomePlano, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir Plano de Cobrança {PlanoCobrancaId} -> Motivo: {erro}", planoCobranca.Id, erro.ErrorMessage);
                 }
             }
             return resultadoValidacao;
@@ -35,21 +35,21 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
         public ValidationResult Editar(PlanoCobranca planoCobranca)
         {
-            Log.Logger.Information("Tentando editar no Plano de Cobrança @{PlanoCobranca", planoCobranca);
+            Log.Logger.Debug("Tentando editar no Plano de Cobrança @{PlanoCobranca}", planoCobranca);
 
             var resultadoValidacao = ValidarPlano(planoCobranca);
 
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlano.Editar(planoCobranca);
-                Log.Logger.Information("Plano de Cobrança{PlanoCobrancaNomePlano} editar com sucesso.", planoCobranca.NomePlano);
+                Log.Logger.Information("Plano de Cobrança{PlanoCobrancaId} editar com sucesso.", planoCobranca.Id);
 
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar Plano de Cobrança {PlanoCobrancaNomePlano} -> Motivo: {erro}", planoCobranca.NomePlano, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar Plano de Cobrança {PlanoCobrancaId} -> Motivo: {erro}", planoCobranca.Id, erro.ErrorMessage);
                 }
             }
             return resultadoValidacao;
