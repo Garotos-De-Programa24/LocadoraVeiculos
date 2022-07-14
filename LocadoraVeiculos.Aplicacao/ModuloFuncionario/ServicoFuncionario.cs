@@ -57,6 +57,26 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             }
             return resultadoValidacao;
         }
+        public ValidationResult Excluir(Funcionario funcionario)
+        {
+            Log.Logger.Debug("Tentando excluir funcionário {@funcionario}", funcionario);
+
+            ValidationResult resultadoValidacao = Validar(funcionario);
+
+            if (resultadoValidacao.IsValid)
+            {
+                Log.Logger.Information("Funcionário {FuncionarioId} excluido com sucesso", funcionario.Id);
+                repositorioFuncionario.Excluir(funcionario);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar excluir o Funcionário {FuncionarioId} - {Motivo}", funcionario.Id, erro.ErrorMessage);
+                }
+            }
+            return resultadoValidacao;
+        }
 
         public Result<List<Funcionario>> SelecionarTodos()
         {
@@ -72,6 +92,21 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 return Result.Fail(mensagemErro);
             }
         }
+        public Result<Funcionario> SelecionarPorId(Guid id)
+        {
+            try
+            {
+                return Result.Ok(repositorioFuncionario.SelecionarPorId(id));
+
+            }
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar o Funcionario";
+                Log.Logger.Error(ex, mensagemErro + "{FuncionarioId}", id);
+                return Result.Fail(mensagemErro);
+            }
+        }
+
         private ValidationResult Validar(Funcionario funcionario)
         {
             var validador = new ValidaFuncionario();

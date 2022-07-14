@@ -69,7 +69,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
 
             if (resultado == DialogResult.OK)
             {
-                repositorioFuncionario.Excluir(funcionarioSelecionado);
+                servicoFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionarios();
             }
         }
@@ -87,8 +87,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
         private Funcionario ObtemFuncionarioSelecionado()
         {
             var id = telaFuncionarioControl.ObtemNumeroFuncionarioSelecionado();
-
-            return repositorioFuncionario.SelecionarPorId(id);
+            var resultado = servicoFuncionario.SelecionarPorId(id);
+            Funcionario funcionario = null;
+            if (resultado.IsSuccess)
+            {
+                funcionario = resultado.Value;
+                
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return funcionario;
         }
         private void CarregarFuncionarios()
         {
