@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
         private Veiculo veiculo;
         private Agrupamento agrupamento;
         private RepositorioVeiculoEmBancoDados repositorio;
-        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
+        
 
         public RepositorioVeiculoEmBancoDadosTestes()
         {
@@ -23,6 +23,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
             agrupamento = new Agrupamento();
             agrupamento.Nome = "Uber";
             repositorioAgrupamento.Inserir(agrupamento);
+         
 
             veiculo = new()
             {

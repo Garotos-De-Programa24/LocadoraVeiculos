@@ -11,7 +11,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
     public class RepositorioPlanoEmBancoDadosTests : BaseIntegrationTest
     {  
 
-        private RepositorioPlanoCobrancaEmBancoDados repositorio;
+        private RepositorioPlanoCobrancaEmBancoDados repositorio = new RepositorioPlanoCobrancaEmBancoDados();
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         private PlanoCobranca planoCobranca;
         private Agrupamento agrupamento;
