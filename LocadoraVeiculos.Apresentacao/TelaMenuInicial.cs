@@ -162,9 +162,24 @@ namespace LocadoraVeiculos.Apresentacao
             senha = txtSenha.Text;
             bool statusLogin = false;
 
+            //isto aqui serve apenas como controle de danos, cso de problemas na seleção dos Funcionarios, no momento do login.
             RepositorioFuncionarioEmBancoDados rep = new RepositorioFuncionarioEmBancoDados();
+            var servicoFuncionario = new ServicoFuncionario(rep);
+            TelaFuncionarioControl telaFuncionarioControl = new TelaFuncionarioControl();
+            List<Funcionario> funcionarios = null;
+            var resultado = servicoFuncionario.SelecionarTodos();
+            if (resultado.IsSuccess)
+            {
+                funcionarios = resultado.Value;
 
-            List<Funcionario> funcionarios = rep.SelecionarTodos();
+                telaFuncionarioControl.AtualizarRegistros(funcionarios);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show( resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //-----------------------------------------------------------------------------------------------------------------
 
             //abertura do programa sem senha!
             if (btnEntrar.Text == "Deslogar")

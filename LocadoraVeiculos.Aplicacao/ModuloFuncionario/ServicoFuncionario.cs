@@ -1,7 +1,9 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using Serilog;
 using System;
+using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 {
@@ -56,6 +58,20 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             return resultadoValidacao;
         }
 
+        public Result<List<Funcionario>> SelecionarTodos()
+        {
+            try
+            {
+                return Result.Ok(repositorioFuncionario.SelecionarTodos());
+
+            } 
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar todos os Funcionarios";
+                Log.Logger.Error(ex, mensagemErro);
+                return Result.Fail(mensagemErro);
+            }
+        }
         private ValidationResult Validar(Funcionario funcionario)
         {
             var validador = new ValidaFuncionario();

@@ -1,6 +1,9 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using Serilog;
+using System;
+using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 {
@@ -54,7 +57,20 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             }
             return resultadoValidacao;
         }
+        public Result<List<PlanoCobranca>> SelecionarTodos()
+        {
+            try
+            {
+                return Result.Ok(repositorioPlano.SelecionarTodos());
 
+            }
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar todos os Planos de Cobrança";
+                Log.Logger.Error(ex, mensagemErro);
+                return Result.Fail(mensagemErro);
+            }
+        }
         private ValidationResult ValidarPlano(PlanoCobranca planoCobranca)
         {
             ValidaPlanoCobranca validador = new ValidaPlanoCobranca();

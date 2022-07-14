@@ -92,8 +92,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
 
         private void CarregarClientes()
         {
-            List<Cliente> clientes = repositorioCliente.SelecionarTodos();
-
+            List<Cliente> clientes = servicoCliente.SelecionarTodos();
+            if(clientes != null)
             telaClienteControl.AtualizarRegistros(clientes);
         }
 

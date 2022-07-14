@@ -1,6 +1,9 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using Serilog;
+using System;
+using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 {
@@ -51,7 +54,19 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
             }
             return resultadoValidacao;
         }
-
+        public Result<List<Taxa>> SelecionarTodos()
+        {
+            try
+            {
+                return Result.Ok(repositorioTaxa.SelecionarTodos());
+            }
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar todas as Taxas";
+                Log.Logger.Error(ex, mensagemErro);
+                return Result.Fail(mensagemErro);
+            }
+        }
         private ValidationResult Validar(Taxa taxa)
         {
             var validador = new ValidaTaxa();
@@ -74,6 +89,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
                    funcionarioEncontrado.Id != taxa.Id;
         }
 
-       
+        
     }
 }

@@ -3,6 +3,6 @@
     "DiretorioSaida": "C://logs"
   },
   "ConnectionStrings": {
-    "SqlServer": "Data Source=(LOCALDB)\\MSSQLLOCALDB;Initial Catalog=LocadoraDB;Integrated Security=True"
+    "SqlServer": "Data Source=(LOCALDB)\\MSSQLLOCALDB;Initial Catalog=LocadoraDBB;Integrated Security=True"
   } 
 }

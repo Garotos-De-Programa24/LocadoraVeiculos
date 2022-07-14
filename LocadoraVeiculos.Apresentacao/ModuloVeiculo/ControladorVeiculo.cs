@@ -89,9 +89,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         }
         private void CarregaVeiculo()
         {
-            List<Veiculo> veiculos = repositorioVeiculo.SelecionarTodos();
+            var resultado = servicoVeiculo.SelecionarTodos();
+            if (resultado.IsSuccess)
+            {
+                List<Veiculo> funcionarios = resultado.Value;
 
-            telaVeiculoControl.AtualizarRegistros(veiculos);
+                telaVeiculoControl.AtualizarRegistros(funcionarios);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private Veiculo ObtemVeiculoSelecionado()
         {

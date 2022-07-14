@@ -1,7 +1,6 @@
 ﻿using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
-using LocadoraVeiculos.Infra.ModuloFuncionario;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -93,9 +92,17 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
         }
         private void CarregarFuncionarios()
         {
-            List<Funcionario> funcionarios = repositorioFuncionario.SelecionarTodos();
+            var resultado = servicoFuncionario.SelecionarTodos();
+            if (resultado.IsSuccess) {
+                List<Funcionario> funcionarios = resultado.Value;
 
             telaFuncionarioControl.AtualizarRegistros(funcionarios);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

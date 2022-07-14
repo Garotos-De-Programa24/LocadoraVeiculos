@@ -2,6 +2,8 @@
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using Serilog;
+using System;
+using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
@@ -56,6 +58,22 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             }
 
             return resultadoValidacao;
+        }
+        public List<Cliente> SelecionarTodos()
+        {
+            List<Cliente> clientes = null;
+            try
+            {
+                clientes = repositorioCliente.SelecionarTodos();
+
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+            return clientes;
         }
 
         private ValidationResult ValidarCliente(Cliente taxa)
