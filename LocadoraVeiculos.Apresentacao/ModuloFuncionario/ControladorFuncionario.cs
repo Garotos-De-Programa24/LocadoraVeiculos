@@ -8,13 +8,13 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
 {
     public class ControladorFuncionario : ControladorBase
     {
-        private readonly IRepositorioFuncionario repositorioFuncionario;
+        
         private TelaFuncionarioControl telaFuncionarioControl;
         private readonly ServicoFuncionario servicoFuncionario;
 
-        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario, ServicoFuncionario servicoFuncionario)
+        public ControladorFuncionario(ServicoFuncionario servicoFuncionario)
         {
-            this.repositorioFuncionario = repositorioFuncionario;
+           
             this.servicoFuncionario = servicoFuncionario;
         }
 

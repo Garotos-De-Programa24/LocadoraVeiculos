@@ -72,7 +72,7 @@ namespace LocadoraVeiculos.Apresentacao
             controladores.Add("Agrupamentos", new ControladorAgrupamento(repositorioAgrupamento, servicoGrupoVeiculo));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
             controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, servicoCondutor));
-            controladores.Add("Funcionarios", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("Funcionarios", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Planos", new ControladorPlanoDeCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
             controladores.Add("Veiculos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo));
         }
