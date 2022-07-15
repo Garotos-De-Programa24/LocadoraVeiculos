@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
             InitializeComponent();
         }
         private Agrupamento agrupamento;
-        public Func<Agrupamento, ValidationResult> GravarRegistro { get; set; }
+        public Func<Agrupamento, Result<Agrupamento>> GravarRegistro { get; set; }
 
         public Agrupamento Agrupamento
         {
@@ -39,12 +40,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
             agrupamento.Nome = txtNome.Text;
 
             var resultadoValidacao = GravarRegistro(agrupamento);
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                MessageBox.Show(erro, "Cadastro de Grupo de Veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                DialogResult = DialogResult.None;
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Cadastro de Grupo de Veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
         }
     }

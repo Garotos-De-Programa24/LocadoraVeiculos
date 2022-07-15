@@ -68,10 +68,10 @@ namespace LocadoraVeiculos.Apresentacao
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
-            controladores.Add("Agrupamentos", new ControladorAgrupamento(repositorioAgrupamento, servicoGrupoVeiculo));
+            controladores.Add("Clientes", new ControladorCliente(servicoCliente));
+            controladores.Add("Agrupamentos", new ControladorAgrupamento(servicoGrupoVeiculo));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
-            controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, servicoCondutor));
+            controladores.Add("Condutores", new ControladorCondutor(servicoCondutor));
             controladores.Add("Funcionarios", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
             controladores.Add("Planos", new ControladorPlanoDeCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
             controladores.Add("Veiculos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo));

@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Aplicacao.ModuloCondutor;
+﻿using FluentResults;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using System.Collections.Generic;
@@ -8,14 +9,13 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 {
     public class ControladorCondutor : ControladorBase
     {
-        private readonly IRepositorioCondutor repositorioCondutor;
+        
         private TelaCondutorControl telaCondutorControl;
         private readonly ServicoCondutor servicoCondutor;
 
-        public ControladorCondutor(IRepositorioCondutor repositorioCondutor, ServicoCondutor servicoCondutor)
+        public ControladorCondutor(ServicoCondutor servicoCondutor)
         {
-            this.servicoCondutor = servicoCondutor;
-            this.repositorioCondutor = repositorioCondutor;
+            this.servicoCondutor = servicoCondutor;            
         }
 
         public override void Inserir()
@@ -32,46 +32,63 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 
         public override void Editar()
         {
-            Condutor condutorSelecionado = ObtemCondutorSelecionado();
+            Condutor condutorSelecionado = null;
 
-            if (condutorSelecionado == null)
+            var resultado = ObtemCondutorSelecionado();
+            if (resultado.IsSuccess)
             {
-                MessageBox.Show("Selecione uma Condutor primeiro",
-                "Edição de Condutores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                condutorSelecionado = resultado.Value;
+
+                TelaCadastroCondutor tela = new TelaCadastroCondutor();
+
+                tela.Condutor = condutorSelecionado;
+
+                tela.GravarRegistro = servicoCondutor.Editar;
+
+                DialogResult result = tela.ShowDialog();
+
+                if (result == DialogResult.OK)
+                    CarregarCondutores();
             }
-
-            TelaCadastroCondutor tela = new TelaCadastroCondutor();
-
-            tela.Condutor = condutorSelecionado;
-
-            tela.GravarRegistro = servicoCondutor.Editar;
-
-            DialogResult resultado = tela.ShowDialog();
-
-            if (resultado == DialogResult.OK)
-                CarregarCondutores();
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Tela de condutores",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         public override void Excluir()
         {
-            Condutor condutorSelecionado = ObtemCondutorSelecionado();
+            Condutor condutorSelecionado = null;
 
-            if (condutorSelecionado == null)
+            var resultadoSelecao = ObtemCondutorSelecionado();
+            if (resultadoSelecao.IsSuccess)
             {
-                MessageBox.Show("Selecione um condutor primeiro",
-                "Exclusão de Condutores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                condutorSelecionado = resultadoSelecao.Value;
+
+                DialogResult result = MessageBox.Show("Deseja realmente excluir o Condutor?",
+                "Exclusão de condutores", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.OK)
+                {
+                    var resultadoExclusao = servicoCondutor.Excluir(condutorSelecionado);
+                    if (resultadoExclusao.IsSuccess)
+                    {
+                        CarregarCondutores();
+                    }
+                    else
+                    {
+                        MessageBox.Show(resultadoExclusao.Errors[0].Message, "Exclusão de Condutores",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
-
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Condutor?",
-                "Exclusão de Condutores", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.OK)
+            else
             {
-                repositorioCondutor.Excluir(condutorSelecionado);
-                CarregarCondutores();
+                MessageBox.Show(resultadoSelecao.Errors[0].Message, "Tela de condutores",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //comit
@@ -87,16 +104,26 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 
         private void CarregarCondutores()
         {
-            List<Condutor> condutores = repositorioCondutor.SelecionarTodos();
+            var resultado = servicoCondutor.SelecionarTodos();
 
-            telaCondutorControl.AtualizarRegistros(condutores);
+            if (resultado.IsSuccess)
+            {
+                List<Condutor> clientes = resultado.Value;
+
+                telaCondutorControl.AtualizarRegistros(clientes);
+            }
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Tela de condutores",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private Condutor ObtemCondutorSelecionado()
+        private Result<Condutor> ObtemCondutorSelecionado()
         {
             var id = telaCondutorControl.ObtemNumeroCondutorSelecionado();
 
-            return repositorioCondutor.SelecionarPorId(id);
+            return servicoCondutor.SelecionarPorId(id);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
         private Veiculo veiculo;
         private Agrupamento agrupamento;
         private RepositorioVeiculoEmBancoDados repositorio;
+        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         
 
         public RepositorioVeiculoEmBancoDadosTestes()

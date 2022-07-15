@@ -4,5 +4,5 @@
   },
   "ConnectionStrings": {
     "SqlServer": "Data Source=(LOCALDB)\\MSSQLLOCALDB;Initial Catalog=LocadoraDB;Integrated Security=True"
-  } 
+  }
 }
