@@ -10,13 +10,11 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
 {
     public class ControladorPlanoDeCobranca : ControladorBase
     {
-        private readonly IRepositorioPlanoCobranca repositorioPlanoCobranca;
         private TelaPlanoCobrancaControl telaPlanoCobrancaControl;
         private readonly ServicoPlanoCobranca servicoPlanoCobranca;
 
-        public ControladorPlanoDeCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca, ServicoPlanoCobranca servicoPlanoCobranca)
+        public ControladorPlanoDeCobranca(ServicoPlanoCobranca servicoPlanoCobranca)
         {
-            this.repositorioPlanoCobranca = repositorioPlanoCobranca;
             this.servicoPlanoCobranca = servicoPlanoCobranca;
         }
         public override void Inserir()
@@ -64,7 +62,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
 
             if (resultado == DialogResult.OK)
             {
-                repositorioPlanoCobranca.Excluir(planoSelecioando);
+                servicoPlanoCobranca.Excluir(planoSelecioando);
                 CarregarPlanosDeCobranca();
             }
 
@@ -97,8 +95,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
         private PlanoCobranca ObtemPlanoSelecionado()
         {
             var id = telaPlanoCobrancaControl.ObtemNumeroPlanoCobrancaSelecionado();
+            var resultado = servicoPlanoCobranca.SelecionarPorId(id);
+            PlanoCobranca planoSelecionado = null;
+            if (resultado.IsSuccess)
+            {
+                planoSelecionado = resultado.Value;
 
-            return repositorioPlanoCobranca.SelecionarPorId(id);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar a Taxa Selecionada",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return planoSelecionado;
         }
     }
 }

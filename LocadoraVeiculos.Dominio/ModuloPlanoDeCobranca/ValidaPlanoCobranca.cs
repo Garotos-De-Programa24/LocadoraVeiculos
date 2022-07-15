@@ -10,8 +10,6 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
 
             RuleFor(x => x.NomePlano).NotNull().NotEmpty().MinimumLength(3);
 
-            RuleFor(x => x.TipoPlano).NotNull().NotEmpty();
-
             RuleFor(x => x.ValorDiario).NotNull();
 
             RuleFor(x => x.ValorPorKm).NotNull();

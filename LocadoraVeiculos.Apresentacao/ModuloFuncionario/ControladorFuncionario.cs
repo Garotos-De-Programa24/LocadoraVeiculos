@@ -14,7 +14,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
 
         public ControladorFuncionario(ServicoFuncionario servicoFuncionario)
         {
-           
             this.servicoFuncionario = servicoFuncionario;
         }
 

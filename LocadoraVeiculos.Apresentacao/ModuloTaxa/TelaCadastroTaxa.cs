@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
         }
 
         private Taxa taxa;
-        public Func<Taxa, ValidationResult> GravarRegistro { get; set; }
+        public Func<Taxa, Result<Taxa>> GravarRegistro { get; set; }
         public Taxa Taxa
         {
             get
@@ -42,9 +43,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
             taxa.TaxaDiaria = checkBoxDiario.Checked;
 
             var resultadoValidacao = GravarRegistro(Taxa);
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
                 MessageBox.Show(erro, "Cadastro de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 DialogResult = DialogResult.None;

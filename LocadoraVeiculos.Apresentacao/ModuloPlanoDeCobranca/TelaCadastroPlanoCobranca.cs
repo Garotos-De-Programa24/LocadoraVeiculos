@@ -1,4 +1,5 @@
 ﻿
+using FluentResults;
 using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
@@ -24,7 +25,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
                 cmbAgrupamento.Items.Add(g);
             }
         }
-        public Func<PlanoCobranca, ValidationResult> GravarRegistro { get; set; }
+        public Func<PlanoCobranca, Result<PlanoCobranca>> GravarRegistro { get; set; }
 
         public PlanoCobranca PlanoCobranca
         {
@@ -60,9 +61,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
             planoCobranca.TipoPlano = ObterTipoPlano();
 
             var resultadoValidacao = GravarRegistro(planoCobranca);
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
                 MessageBox.Show(erro, "Cadastro de Plano de Cobrança", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 DialogResult = DialogResult.None;

@@ -4,6 +4,7 @@ using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 {
@@ -15,47 +16,115 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
         {
             this.repositorioPlano = repositorioPlano;
         }
-        public ValidationResult Inserir(PlanoCobranca planoCobranca)
+        public Result<PlanoCobranca> Inserir(PlanoCobranca planoCobranca)
         {
-            Log.Logger.Debug("Tentando inserir no Plano de Cobrança @{PlanoCobranca}", planoCobranca);
+            Log.Logger.Debug("Tentando inserir novo Plano de Cobrança {@planoCobranca}", planoCobranca);
 
-            var resultadoValidacao = ValidarPlano(planoCobranca);
+            Result resultadoValidacao = ValidarPlano(planoCobranca);
 
-            if (resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir um Plano de Cobrança {PlanoId} - {Motivo}",
+                       planoCobranca.NomePlano, erro.Message);
+                }
+                return Result.Fail(resultadoValidacao.Errors);
+            }
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+            try
             {
                 repositorioPlano.Inserir(planoCobranca);
-                Log.Logger.Information("Plano de Cobrança{PlanoCobrancaId} inserido com sucesso.", planoCobranca.Id);
+
+                Log.Logger.Information("Funcionário {PlanoId} inserido com sucesso", planoCobranca.Id);
+                return Result.Ok(planoCobranca);
+
             }
-            else
+            catch (Exception ex)
             {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar inserir Plano de Cobrança {PlanoCobrancaId} -> Motivo: {erro}", planoCobranca.Id, erro.ErrorMessage);
-                }
+                string mensagemErro = "Falha no sistema ao tentar selecionar o Plano de Cobrança";
+                Log.Logger.Error(ex, mensagemErro + "{PlanoId}", planoCobranca.Id);
+                return Result.Fail(mensagemErro);
             }
-            return resultadoValidacao;
         }
 
-        public ValidationResult Editar(PlanoCobranca planoCobranca)
+        public Result<PlanoCobranca> Editar(PlanoCobranca planoCobranca)
         {
-            Log.Logger.Debug("Tentando editar no Plano de Cobrança @{PlanoCobranca}", planoCobranca);
+            Log.Logger.Debug("Tentando editar Plano de Cobrança {@planodeCobrança}", planoCobranca);
 
-            var resultadoValidacao = ValidarPlano(planoCobranca);
+            Result resultadoValidacao = ValidarPlano(planoCobranca);
 
-            if (resultadoValidacao.IsValid)
-            {
-                repositorioPlano.Editar(planoCobranca);
-                Log.Logger.Information("Plano de Cobrança{PlanoCobrancaId} editar com sucesso.", planoCobranca.Id);
-
-            }
-            else
+            if (resultadoValidacao.IsFailed)
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar Plano de Cobrança {PlanoCobrancaId} -> Motivo: {erro}", planoCobranca.Id, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar um Plano de cobrança {PlanoId} - {Motivo}", planoCobranca.Id, erro.Message);
                 }
+                return Result.Fail(resultadoValidacao.Errors);
             }
-            return resultadoValidacao;
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+            try
+            {
+                repositorioPlano.Editar(planoCobranca);
+
+                Log.Logger.Information("Funcionário {PlanoId} editado com sucesso", planoCobranca.Id);
+
+                return Result.Ok(planoCobranca);
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar editar o Plano de cobrança";
+
+                Log.Logger.Error(ex, msgErro + "{PlanaId}", planoCobranca.Id);
+
+                return Result.Fail(msgErro);
+            }
+        }
+        public Result<PlanoCobranca> Excluir(PlanoCobranca planoCobranca)
+        {
+            Log.Logger.Information("Tentando excluir o Plano de Cobrança @{planocobrança}", planoCobranca);
+
+            Result resultadoValidacao = ValidarPlano(planoCobranca);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar excluir Plano de Cobrança {PlanoId}" +
+                        " -> Motivo: {erro}", planoCobranca.Id, erro.Message);
+                }
+                return Result.Fail(resultadoValidacao.Errors);
+            }
+
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+            try
+            {
+                repositorioPlano.Excluir(planoCobranca);
+                Log.Logger.Information("Plano de Cobrança {PlanoId} inserido com sucesso.", planoCobranca.Id);
+
+                return Result.Ok(planoCobranca);
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar excluir Plano de Cobrança";
+
+                Log.Logger.Error(ex, msgErro + "{PlanoId}", planoCobranca.Id);
+
+                return Result.Fail(msgErro);
+            }
+
         }
         public Result<List<PlanoCobranca>> SelecionarTodos()
         {
@@ -71,15 +140,42 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
                 return Result.Fail(mensagemErro);
             }
         }
-        private ValidationResult ValidarPlano(PlanoCobranca planoCobranca)
+        public Result<PlanoCobranca> SelecionarPorId(Guid id)
         {
-            ValidaPlanoCobranca validador = new ValidaPlanoCobranca();
+            try
+            {
+                return Result.Ok(repositorioPlano.SelecionarPorId(id));
+
+            }
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar o Plano de Cobrança";
+                Log.Logger.Error(ex, mensagemErro + "{PlanoId}", id);
+                return Result.Fail(mensagemErro);
+            }
+        }
+
+        private Result ValidarPlano(PlanoCobranca planoCobranca)
+        {
+            var validador = new ValidaPlanoCobranca();
 
             var resultadoValidacao = validador.Validate(planoCobranca);
-            if (NomeDuplicado(planoCobranca))
-                resultadoValidacao.Errors.Add(new ValidationFailure("Nome", "Nome duplicado"));
 
-            return resultadoValidacao; 
+            List<Error> erros = new List<Error>(); //Fluent Result <<<<<<<<<<
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors) //Fluent Validation <<<<<<<<<
+            {
+                Log.Logger.Warning(item.ErrorMessage);
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (NomeDuplicado(planoCobranca))
+                erros.Add(new Error("Nome duplicado"));
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private bool NomeDuplicado(PlanoCobranca planoCobranca)

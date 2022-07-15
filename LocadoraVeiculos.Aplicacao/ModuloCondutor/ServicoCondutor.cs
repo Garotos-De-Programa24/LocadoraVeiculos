@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
         public Result<Condutor> Inserir(Condutor condutor)
         {
-            Log.Logger.Information("Tentando inserir no Condutor @{condutor", condutor);
+            Log.Logger.Information("Tentando inserir no Condutor @{condutor}", condutor);
 
             Result resultadoValidacao = ValidarCondutor(condutor);
 
@@ -59,7 +59,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
         public Result<Condutor> Editar(Condutor condutor)
         {
-            Log.Logger.Information("Tentando editar Condutor @{condutor", condutor);
+            Log.Logger.Information("Tentando editar Condutor @{condutor}", condutor);
 
             Result resultadoValidacao = ValidarCondutor(condutor);
 
@@ -90,14 +90,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             {
                 string msgErro = "Falha no sistema ao tentar editar condutor";
 
-                Log.Logger.Error(ex, msgErro + "{AgrupamentoId}", condutor.Id);
+                Log.Logger.Error(ex, msgErro + "{CondutorId}", condutor.Id);
 
                 return Result.Fail(msgErro);
             }
         }
         public Result<Condutor> Excluir(Condutor condutor)
         {
-            Log.Logger.Information("Tentando excluir no Grupo de Veiculos @{agrupamento", condutor);
+            Log.Logger.Information("Tentando excluir o Condutor @{condutor}", condutor);
 
             Result resultadoValidacao = ValidarCondutor(condutor);
 

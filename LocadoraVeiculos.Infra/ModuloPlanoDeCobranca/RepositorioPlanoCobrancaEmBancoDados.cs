@@ -75,7 +75,7 @@ namespace LocadoraVeiculos.Infra.ModuloPlanoDeCobranca
                     PLANO.[VALOR_LIVRE],
                     PLANO.[VALOR_DIARIO],
                     PLANO.[VALOR_CONTROLADO],
-                    PLANO.[AGRUPAMENTO_ID] ,
+                    PLANO.[AGRUPAMENTO_ID],
                     GRUPO.[AGRUPAMENTO]
 	            FROM 
 		            [TBPLANO] AS PLANO INNER JOIN [TBAGRUPAMENTO] AS GRUPO

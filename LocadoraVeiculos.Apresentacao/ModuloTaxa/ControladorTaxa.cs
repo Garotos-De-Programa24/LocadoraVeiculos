@@ -13,14 +13,12 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 {
     internal class ControladorTaxa : ControladorBase
     {
-        private readonly IRepositorioTaxa repositorioTaxa;
         private TelaTaxaControl telaTaxaControl;
         private readonly ServicoTaxa servicoTaxa;
 
 
-        public ControladorTaxa(IRepositorioTaxa repositorioCliente,ServicoTaxa servicoTaxa)
+        public ControladorTaxa(ServicoTaxa servicoTaxa)
         {
-            this.repositorioTaxa = repositorioCliente;
             this.servicoTaxa = servicoTaxa;
         }
 
@@ -75,7 +73,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 
             if (resultado == DialogResult.OK)
             {
-                repositorioTaxa.Excluir(clienteSelecionado);
+                servicoTaxa.Excluir(clienteSelecionado);
                 CarregarTaxa();
             }
         }
@@ -101,15 +99,26 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
             }
             else if (resultado.IsFailed)
             {
-                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todas as Taxas",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private Taxa ObtemTaxaSelecionado()
         {
             var id = telaTaxaControl.ObtemNumeroTaxaSelecionado();
+            var resultado = servicoTaxa.SelecionarPorId(id);
+            Taxa taxaSeleciondo = null;
+            if (resultado.IsSuccess)
+            {
+                taxaSeleciondo = resultado.Value;
 
-            return repositorioTaxa.SelecionarPorId(id);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar a Taxa Selecionada",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return taxaSeleciondo;
         }
       
     }

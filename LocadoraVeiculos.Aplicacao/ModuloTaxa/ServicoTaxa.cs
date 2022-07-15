@@ -4,6 +4,7 @@ using LocadoraVeiculos.Dominio.ModuloTaxa;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 {
@@ -14,45 +15,115 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
         {
             this.repositorioTaxa = repositorioTaxa;
         }
-        public ValidationResult Inserir(Taxa taxa)
+        public Result<Taxa> Inserir(Taxa taxa)
         {
-            Log.Logger.Debug("Tentando inserir nova Taxa @{Taxa}", taxa);
-            ValidationResult resultadoValidacao = Validar(taxa);
+            Log.Logger.Debug("Tentando inserir Taxa {@taxa}", taxa);
 
-            if (resultadoValidacao.IsValid)
+            Result resultadoValidacao = ValidarTaxa(taxa);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir um Funcionário {TaxaId} - {Motivo}",
+                       taxa.Equipamento, erro.Message);
+                }
+                return Result.Fail(resultadoValidacao.Errors);
+            }
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+            try
             {
                 repositorioTaxa.Inserir(taxa);
-                Log.Logger.Information("Taxa{TaxaId} inserido com sucesso.", taxa.Id);
+
+                Log.Logger.Information("Funcionário {FuncionarioId} inserido com sucesso", taxa.Id);
+                return Result.Ok(taxa);
+
             }
-            else
+            catch (Exception ex)
             {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar inserir Taxa {TaxaId} -> Motivo: {erro}", taxa.Id, erro.ErrorMessage);
-                }
+                string mensagemErro = "Falha no sistema ao tentar selecionar o Funcionario";
+                Log.Logger.Error(ex, mensagemErro + "{FuncionarioId}", taxa.Id);
+                return Result.Fail(mensagemErro);
             }
-            return resultadoValidacao;
         }
 
-        public ValidationResult Editar(Taxa taxa)
+        public Result<Taxa> Editar(Taxa taxa)
         {
-            Log.Logger.Debug("Tentando editar no Taxa @{Taxa}", taxa);
+            Log.Logger.Debug("Tentando editar taxa {@taxa}", taxa);
 
-            ValidationResult resultadoValidacao = Validar(taxa);
+            Result resultadoValidacao = ValidarTaxa(taxa);
 
-            if (resultadoValidacao.IsValid)
-            {
-                repositorioTaxa.Editar(taxa);
-                Log.Logger.Information("Taxa{TaxaId} editado com sucesso.", taxa.Id);
-            }
-            else
+            if (resultadoValidacao.IsFailed)
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar Taxa {TaxaId} -> Motivo: {erro}", taxa.Id, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar um Taxa {TaxaId} - {Motivo}", taxa.Id, erro.Message);
                 }
+                return Result.Fail(resultadoValidacao.Errors);
             }
-            return resultadoValidacao;
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+            try
+            {
+                repositorioTaxa.Editar(taxa);
+
+                Log.Logger.Information("Funcionário {TaxaId} editado com sucesso", taxa.Id);
+
+                return Result.Ok(taxa);
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar editar a Taxa";
+
+                Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
+
+                return Result.Fail(msgErro);
+            }
+        }
+        public Result<Taxa> Excluir(Taxa taxa)
+        {
+            Log.Logger.Information("Tentando excluir o Taxa @{taxa}", taxa);
+
+            Result resultadoValidacao = ValidarTaxa(taxa);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar excluir Taxa {TaxaId}" +
+                        " -> Motivo: {erro}", taxa.Id, erro.Message);
+                }
+                return Result.Fail(resultadoValidacao.Errors);
+            }
+
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+            try
+            {
+                repositorioTaxa.Excluir(taxa);
+                Log.Logger.Information("Taxa {TaxaId} inserido com sucesso.", taxa.Id);
+
+                return Result.Ok(taxa);
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar excluir taxa";
+
+                Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
+
+                return Result.Fail(msgErro);
+            }
+
         }
         public Result<List<Taxa>> SelecionarTodos()
         {
@@ -67,17 +138,41 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
                 return Result.Fail(mensagemErro);
             }
         }
-        private ValidationResult Validar(Taxa taxa)
+        public Result<Taxa> SelecionarPorId(Guid id)
+        {
+            try
+            {
+                return Result.Ok(repositorioTaxa.SelecionarPorId(id));
+
+            }
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar a Taxa";
+                Log.Logger.Error(ex, mensagemErro + "{TaxaId}", id);
+                return Result.Fail(mensagemErro);
+            }
+        }
+        private Result  ValidarTaxa(Taxa taxa)
         {
             var validador = new ValidaTaxa();
 
             var resultadoValidacao = validador.Validate(taxa);
 
-            if (NomeDuplicado(taxa))
-                resultadoValidacao.Errors.Add(new ValidationFailure("Nome", "Nome duplicado"));
+            List<Error> erros = new List<Error>(); //Fluent Result <<<<<<<<<<
 
-           
-            return resultadoValidacao;
+            foreach (ValidationFailure item in resultadoValidacao.Errors) //Fluent Validation <<<<<<<<<
+            {
+                Log.Logger.Warning(item.ErrorMessage);
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (NomeDuplicado(taxa))
+                erros.Add(new Error("Nome duplicado"));
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private bool NomeDuplicado(Taxa taxa)

@@ -1,10 +1,6 @@
 ﻿using FluentResults;
-using FluentValidation.Results;
-using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
-using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario

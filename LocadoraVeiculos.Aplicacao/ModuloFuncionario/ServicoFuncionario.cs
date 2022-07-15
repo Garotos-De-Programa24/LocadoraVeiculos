@@ -30,6 +30,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 }
                 return Result.Fail(resultadoValidacao.Errors);
             }
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
             try
             {
                 repositorioFuncionario.Inserir(funcionario);
@@ -60,6 +65,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 }
                 return Result.Fail(resultadoValidacao.Errors);
             }
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
             try
             {
                 repositorioFuncionario.Editar(funcionario);
@@ -77,26 +87,43 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 return Result.Fail(msgErro);
             }
         }
-        public Result Excluir(Funcionario funcionario)
+        public Result<Funcionario> Excluir(Funcionario funcionario)
         {
-            Log.Logger.Debug("Tentando excluir funcionario {@funcionario}", funcionario);
+            Log.Logger.Information("Tentando excluir o Funcionario @{funcionario}", funcionario);
 
+            Result resultadoValidacao = ValidarFuncionario(funcionario);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar excluir Funcionario {FuncionarioId}" +
+                        " -> Motivo: {erro}", funcionario.Id, erro.Message);
+                }
+                return Result.Fail(resultadoValidacao.Errors);
+            }
+
+            List<Error> erros = new List<Error>();
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
             try
             {
                 repositorioFuncionario.Excluir(funcionario);
+                Log.Logger.Information("Funcionario {FuncionarioId} inserido com sucesso.", funcionario.Id);
 
-                Log.Logger.Information("Funcionário {FuncionarioId} excluído com sucesso", funcionario.Id);
-
-                return Result.Ok();
+                return Result.Ok(funcionario);
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o funcionário";
+                string msgErro = "Falha no sistema ao tentar excluir funcionario";
 
                 Log.Logger.Error(ex, msgErro + "{FuncionarioId}", funcionario.Id);
 
                 return Result.Fail(msgErro);
             }
+           
         }        
 
         public Result<List<Funcionario>> SelecionarTodos()
