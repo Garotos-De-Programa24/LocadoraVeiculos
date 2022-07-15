@@ -34,7 +34,7 @@ namespace LocadoraVeiculos.Infra.ModuloAgrupamento
             @"SELECT 
 		            [ID],
                     [AGRUPAMENTO]
-	            FROM 
+	            FROM
 		            [TBAGRUPAMENTO]
 		        WHERE
                     [ID] = @ID";

@@ -1,6 +1,5 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
-using LocadoraVeiculos.Infra.Compartilhado;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloVeiculo;
 using LocadoraVeiculos.Infra.Tests.Compartilhado;
@@ -14,13 +13,13 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
         private Veiculo veiculo;
         private Agrupamento agrupamento;
         private RepositorioVeiculoEmBancoDados repositorio;
+        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         
 
         public RepositorioVeiculoEmBancoDadosTestes()
         {
-
-
-            RepositorioAgrupamentoEmBancoDados repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+            repositorio = new RepositorioVeiculoEmBancoDados();
+            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
             
             agrupamento = new Agrupamento();
             agrupamento.Nome = "Uber";
@@ -39,9 +38,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
                 Cor = "Prata",
                 Agrupamento = agrupamento,
                 
-            };
-
-            repositorio = new RepositorioVeiculoEmBancoDados();
+            };           
         }
 
 

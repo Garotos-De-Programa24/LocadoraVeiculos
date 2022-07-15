@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             InitializeComponent();
         }
         private Cliente cliente;
-        public Func<Cliente, ValidationResult> GravarRegistro { get; set; }
+        public Func<Cliente, Result<Cliente>> GravarRegistro { get; set; }
 
         public Cliente Cliente
         {
@@ -56,12 +57,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             cliente.Telefone = RemoverEspaços(txtTelefone.Text.Split(" "));
 
             var resultadoValidacao = GravarRegistro(cliente);
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
-                MessageBox.Show(erro,"Cadastro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DialogResult = DialogResult.None;
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Cadastro de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
         }
         private string RemoverEspaços(string[] valid)

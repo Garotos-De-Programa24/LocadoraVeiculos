@@ -18,6 +18,7 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloPlano
 
         public RepositorioPlanoEmBancoDadosTests()
         {
+            repositorio = new RepositorioPlanoCobrancaEmBancoDados();
             repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
 
             agrupamento = new Agrupamento();

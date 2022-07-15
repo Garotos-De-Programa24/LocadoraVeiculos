@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Infra.ModuloCliente;
@@ -26,7 +27,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
         
         private Condutor condutor;
         
-        public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
+        public Func<Condutor, Result<Condutor>> GravarRegistro { get; set; }
 
         public Condutor Condutor
         {
@@ -51,12 +52,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             condutor.Telefone = RemoverEspaços(txtTelefone.Text.Split(" "));
 
             var resultadoValidacao = GravarRegistro(condutor);
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
-                MessageBox.Show(erro, "Cadastro de Condutor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DialogResult = DialogResult.None;
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Cadastro de condutor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 

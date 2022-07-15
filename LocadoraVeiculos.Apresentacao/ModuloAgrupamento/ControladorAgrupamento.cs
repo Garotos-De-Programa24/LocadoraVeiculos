@@ -1,25 +1,19 @@
-﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
+﻿using FluentResults;
+using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
-using LocadoraVeiculos.Infra.ModuloAgrupamento;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
 {
     public class ControladorAgrupamento : ControladorBase
-    {
-        private readonly IRepositorioAgrupamento repositorioAgrupamento;
+    {        
         private TelaAgrupamentoControl telaAgrupamentoControl;
         private readonly ServicoAgrupamento servicoAgrupamento;
 
-        public ControladorAgrupamento(IRepositorioAgrupamento repositorioAgrupamento, ServicoAgrupamento servicoAgrupamento)
-        {
-            this.repositorioAgrupamento = repositorioAgrupamento;
+        public ControladorAgrupamento(ServicoAgrupamento servicoAgrupamento)
+        {            
             this.servicoAgrupamento = servicoAgrupamento;
         }
 
@@ -30,52 +24,69 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
             tela.GravarRegistro = servicoAgrupamento.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
+
             if (resultado == DialogResult.OK)
                 CarregarAgrupamentos();
         }
 
         public override void Editar()
         {
-            Agrupamento agrupamentoSelecionado = ObtemAgrupamentoSelecionado();
+            Agrupamento agrupamentoSelecionado = null;
 
-            if (agrupamentoSelecionado == null)
+            var resultado = ObtemAgrupamentoSelecionado();
+            if (resultado.IsSuccess)
             {
-                MessageBox.Show("Selecione um agrupamento primeiro",
-                "Edição de Agrupamentos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                agrupamentoSelecionado = resultado.Value;
+
+                TelaCadastroAgrupamento tela = new TelaCadastroAgrupamento();
+
+                tela.Agrupamento = agrupamentoSelecionado;
+
+                tela.GravarRegistro = servicoAgrupamento.Editar;
+
+                DialogResult result = tela.ShowDialog();
+
+                if (result == DialogResult.OK)
+                    CarregarAgrupamentos();
             }
-
-            TelaCadastroAgrupamento tela = new TelaCadastroAgrupamento();
-
-            tela.Agrupamento = agrupamentoSelecionado;
-
-            tela.GravarRegistro = servicoAgrupamento.Editar;
-
-            DialogResult resultado = tela.ShowDialog();
-
-            if (resultado == DialogResult.OK)
-                CarregarAgrupamentos();
-
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Tela de agrupamentos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void Excluir()
         {
-            Agrupamento agrupamentoSelecionado = ObtemAgrupamentoSelecionado();
+            Agrupamento agrupamentoSelecionado = null;
 
-            if (agrupamentoSelecionado == null)
+            var resultadoSelecao = ObtemAgrupamentoSelecionado();
+            if (resultadoSelecao.IsSuccess)
             {
-                MessageBox.Show("Selecione um agrupamento primeiro",
-                "Exclusão de Agrupamentos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+                agrupamentoSelecionado = resultadoSelecao.Value;
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Agrupamento?",
+                DialogResult result = MessageBox.Show("Deseja realmente excluir o Agrupamento?",
                 "Exclusão de Agrupamentos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if (resultado == DialogResult.OK)
+                if (result == DialogResult.OK)
+                {
+                    var resultadoExclusao = servicoAgrupamento.Excluir(agrupamentoSelecionado);
+                    if (resultadoExclusao.IsSuccess)
+                    {
+                        CarregarAgrupamentos();
+                    }
+                    else
+                    {
+                        MessageBox.Show(resultadoExclusao.Errors[0].Message, "Exclusão de Grupo de Veículos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
+                }
+            }
+            else
             {
-                repositorioAgrupamento.Excluir(agrupamentoSelecionado);
-                CarregarAgrupamentos();
+                MessageBox.Show(resultadoSelecao.Errors[0].Message, "Tela de agrupamentos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -91,16 +102,26 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
 
         private void CarregarAgrupamentos()
         {
-            List<Agrupamento> clientes = repositorioAgrupamento.SelecionarTodos();
+            var resultado = servicoAgrupamento.SelecionarTodos();
 
-            telaAgrupamentoControl.AtualizarRegistros(clientes);
+            if (resultado.IsSuccess)
+            {
+                List<Agrupamento> clientes = resultado.Value;
+
+                telaAgrupamentoControl.AtualizarRegistros(clientes);
+            }
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Tela de agrupamentos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private Agrupamento ObtemAgrupamentoSelecionado()
+        private Result<Agrupamento> ObtemAgrupamentoSelecionado()
         {
             var id = telaAgrupamentoControl.ObtemNumeroAgrupamentoSelecionado();
 
-            return repositorioAgrupamento.SelecionarPorId(id);
+            return servicoAgrupamento.SelecionarPorId(id);
         }
     }
 }

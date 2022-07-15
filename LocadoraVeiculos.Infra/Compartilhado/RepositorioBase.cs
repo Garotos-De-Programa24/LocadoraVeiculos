@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Infra.Compartilhado
             enderecoBanco = configuracao.GetConnectionString("SqlServer");
         }
 
-    protected abstract string sqlInserir { get; }
+        protected abstract string sqlInserir { get; }
 
         protected abstract string sqlEditar { get; }
 
