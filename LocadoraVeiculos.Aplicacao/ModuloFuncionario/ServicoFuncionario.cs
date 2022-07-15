@@ -1,7 +1,9 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using Serilog;
 using System;
+using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 {
@@ -54,6 +56,55 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 }
             }
             return resultadoValidacao;
+        }
+        public ValidationResult Excluir(Funcionario funcionario)
+        {
+            Log.Logger.Debug("Tentando excluir funcionário {@funcionario}", funcionario);
+
+            ValidationResult resultadoValidacao = Validar(funcionario);
+
+            if (resultadoValidacao.IsValid)
+            {
+                Log.Logger.Information("Funcionário {FuncionarioId} excluido com sucesso", funcionario.Id);
+                repositorioFuncionario.Excluir(funcionario);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar excluir o Funcionário {FuncionarioId} - {Motivo}", funcionario.Id, erro.ErrorMessage);
+                }
+            }
+            return resultadoValidacao;
+        }
+
+        public Result<List<Funcionario>> SelecionarTodos()
+        {
+            try
+            {
+                return Result.Ok(repositorioFuncionario.SelecionarTodos());
+
+            } 
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar todos os Funcionarios";
+                Log.Logger.Error(ex, mensagemErro);
+                return Result.Fail(mensagemErro);
+            }
+        }
+        public Result<Funcionario> SelecionarPorId(Guid id)
+        {
+            try
+            {
+                return Result.Ok(repositorioFuncionario.SelecionarPorId(id));
+
+            }
+            catch (Exception ex)
+            {
+                string mensagemErro = "Falha no sistema ao tentar selecionar o Funcionario";
+                Log.Logger.Error(ex, mensagemErro + "{FuncionarioId}", id);
+                return Result.Fail(mensagemErro);
+            }
         }
 
         private ValidationResult Validar(Funcionario funcionario)

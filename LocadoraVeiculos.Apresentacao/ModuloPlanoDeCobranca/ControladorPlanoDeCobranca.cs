@@ -81,9 +81,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
         }
         private void CarregarPlanosDeCobranca()
         {
-            List<PlanoCobranca> condutores = repositorioPlanoCobranca.SelecionarTodos();
+            var resultado = servicoPlanoCobranca.SelecionarTodos();
+            if (resultado.IsSuccess)
+            {
+                List<PlanoCobranca> funcionarios = resultado.Value;
 
-            telaPlanoCobrancaControl.AtualizarRegistros(condutores);
+                telaPlanoCobrancaControl.AtualizarRegistros(funcionarios);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private PlanoCobranca ObtemPlanoSelecionado()
         {

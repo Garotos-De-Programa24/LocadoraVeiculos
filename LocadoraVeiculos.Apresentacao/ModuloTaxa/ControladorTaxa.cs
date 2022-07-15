@@ -92,9 +92,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 
         private void CarregarTaxa()
         {
-            List<Taxa> taxas = repositorioTaxa.SelecionarTodos();
+            var resultado = servicoTaxa.SelecionarTodos();
+            if (resultado.IsSuccess)
+            {
+                List<Taxa> funcionarios = resultado.Value;
 
-            telaTaxaControl.AtualizarRegistros(taxas);
+                telaTaxaControl.AtualizarRegistros(funcionarios);
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar todos os Funcionarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private Taxa ObtemTaxaSelecionado()
         {

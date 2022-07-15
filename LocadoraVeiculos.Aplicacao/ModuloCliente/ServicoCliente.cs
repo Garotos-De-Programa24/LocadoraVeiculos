@@ -135,6 +135,22 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
                 return Result.Fail(msgErro);
             }
         }
+        public List<Cliente> SelecionarTodos()
+        {
+            List<Cliente> clientes = null;
+            try
+            {
+                clientes = repositorioCliente.SelecionarTodos();
+
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+            return clientes;
+        }
 
         private Result ValidarCliente(Cliente cliente)
         {
