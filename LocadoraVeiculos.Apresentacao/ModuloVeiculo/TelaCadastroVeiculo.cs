@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FluentValidation.Results;
+using FluentResults;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
@@ -33,7 +33,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         }
 
         
-        public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
+        public Func<Veiculo, Result<Veiculo>> GravarRegistro { get; set; }
 
         public Veiculo Veiculo
         {
@@ -70,12 +70,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
 
             var resultadoValidacao = GravarRegistro(veiculo);
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                MessageBox.Show(erro, "Cadastro de Condutor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DialogResult = DialogResult.None;
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Cadastro de Veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
 
         }

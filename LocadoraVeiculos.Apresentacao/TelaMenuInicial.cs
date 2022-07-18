@@ -74,7 +74,7 @@ namespace LocadoraVeiculos.Apresentacao
             controladores.Add("Condutores", new ControladorCondutor(servicoCondutor));
             controladores.Add("Funcionarios", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Planos", new ControladorPlanoDeCobranca(servicoPlanoCobranca));
-            controladores.Add("Veiculos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo));
+            controladores.Add("Veiculos", new ControladorVeiculo(servicoVeiculo));
         }
         
         private void ConfigurarTelaPrincipal(string tipo)
