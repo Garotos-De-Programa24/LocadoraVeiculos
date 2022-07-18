@@ -249,12 +249,14 @@
             this.btnSelecionarFoto.TabIndex = 53;
             this.btnSelecionarFoto.Text = "Selecionar Foto";
             this.btnSelecionarFoto.UseVisualStyleBackColor = true;
+            this.btnSelecionarFoto.Click += new System.EventHandler(this.btnSelecionarFoto_Click);
             // 
             // pictureCarro
             // 
             this.pictureCarro.Location = new System.Drawing.Point(171, 354);
             this.pictureCarro.Name = "pictureCarro";
             this.pictureCarro.Size = new System.Drawing.Size(252, 129);
+            this.pictureCarro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureCarro.TabIndex = 54;
             this.pictureCarro.TabStop = false;
             // 

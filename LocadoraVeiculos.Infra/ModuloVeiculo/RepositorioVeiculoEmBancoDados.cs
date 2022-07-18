@@ -18,7 +18,8 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                     [KMPERCORRIDO],
                     [COMBUSTIVEL],
                     [COR],
-                    [AGRUPAMENTO_ID]
+                    [AGRUPAMENTO_ID],
+                    [FOTO]
                 )
             VALUES
                 (
@@ -31,7 +32,8 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                     @KMPERCORRIDO,
                     @COMBUSTIVEL,
                     @COR,
-                    @AGRUPAMENTO_ID
+                    @AGRUPAMENTO_ID,
+                    @FOTO
                 ); ";
 
         protected override string sqlEditar =>
@@ -46,7 +48,8 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                     [KMPERCORRIDO] = @KMPERCORRIDO,
                     [COMBUSTIVEL] = @COMBUSTIVEL,
                     [COR] = @COR,
-                    [AGRUPAMENTO_ID] = @AGRUPAMENTO_ID
+                    [AGRUPAMENTO_ID] = @AGRUPAMENTO_ID,
+                    [FOTO] = @FOTO
                 WHERE [ID] = @ID";
 
         protected override string sqlExcluir => 
@@ -65,6 +68,8 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 VEIC.[COMBUSTIVEL],
                 VEIC.[COR],
                 VEIC.[AGRUPAMENTO_ID],
+                VEIC.[FOTO],
+          
                 GRUPO.[AGRUPAMENTO]
             FROM 
 		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
@@ -85,6 +90,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 VEIC.[COMBUSTIVEL],
                 VEIC.[COR],
                 VEIC.[AGRUPAMENTO_ID],
+                VEIC.[FOTO],
                 GRUPO.[AGRUPAMENTO]
             FROM 
 		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
@@ -104,6 +110,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 VEIC.[COMBUSTIVEL],
                 VEIC.[COR],
                 VEIC.[AGRUPAMENTO_ID],
+                VEIC.[FOTO],
                 GRUPO.[AGRUPAMENTO]
             FROM 
 		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
@@ -111,7 +118,6 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                     GRUPO.ID = VEIC.AGRUPAMENTO_ID
             WHERE 
                 VEIC.[VEICULONOME] = @VEICULONOME";
-
 
         public Veiculo SelecionarVeiculoPeloNome(string nome)
         {

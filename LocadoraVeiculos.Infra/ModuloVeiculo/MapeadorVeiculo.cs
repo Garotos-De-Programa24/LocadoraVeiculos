@@ -11,7 +11,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         public override void ConfigurarParametros(Veiculo registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Id);
-            //comando.Parameters.AddWithValue("FOTO", registro.Foto);
+            comando.Parameters.AddWithValue("FOTO",registro.Foto);
             comando.Parameters.AddWithValue("VEICULONOME", registro.VeiculoNome);
             comando.Parameters.AddWithValue("MARCA", registro.Marca);
             comando.Parameters.AddWithValue("ANO", registro.Ano);
@@ -27,8 +27,6 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
         {
             if (leitorRegistro["ID"] == DBNull.Value)
                 return null;
-
-            //var foto = (byte[])(leitorRegistro["FOTO"]);
             var id = Guid.Parse(leitorRegistro["ID"].ToString());
             var veiculoNome = Convert.ToString(leitorRegistro["VEICULONOME"]);
             var marca = Convert.ToString(leitorRegistro["MARCA"]);
@@ -38,6 +36,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             var kmpercorrido = Convert.ToString(leitorRegistro["KMPERCORRIDO"]);
             var combustivel = Convert.ToString(leitorRegistro["COMBUSTIVEL"]);
             var cor = Convert.ToString(leitorRegistro["COR"]);
+            var foto = ((byte[])leitorRegistro["FOTO"]);
 
             var agrupamento = new MapeadorAgrupamento().ConverterRegistro(leitorRegistro);
 
@@ -46,7 +45,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
 
             Veiculo veiculo = new Veiculo()
             {
-                //Foto = foto,
+                Foto = foto,
                 Id = id,
                 Marca = marca,
                 VeiculoNome = veiculoNome,
