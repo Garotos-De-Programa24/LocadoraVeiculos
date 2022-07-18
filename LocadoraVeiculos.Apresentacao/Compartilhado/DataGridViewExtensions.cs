@@ -66,12 +66,16 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado
 
         public static T SelecionarNumero<T>(this DataGridView grid)
         {
-            const int firstLine = 0, firstColumn = 0;
+            const int firstline = 0, firstLine = 0;
             if (grid.SelectedRows.Count == 0)
                 return default(T);
 
-            object value = grid.SelectedRows[firstLine].Cells[firstColumn].Value;
-
+            object value = grid.SelectedRows[firstline].Cells[firstLine].Value;
+            
+            if(value == null)
+            {
+                return default(T);
+            }
             return (T)Convert.ChangeType(value, typeof(T));
         }
     }

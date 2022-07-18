@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
@@ -12,6 +14,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
     {
         private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         private Veiculo veiculo;
+
+        public string caminhoFoto = "";
 
 
         public TelaCadastroVeiculo()
@@ -53,12 +57,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 cBoxCombustivel.Text = veiculo.Combustivel;
                 txtCor.Text = veiculo.Cor;
                 cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
+                ExibirImagem();
+
+
                 
             }
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+           
             veiculo.VeiculoNome = txtVeiculo.Text;
             veiculo.Ano = txtAno.Text;
             veiculo.Marca = txtMarca.Text;
@@ -68,6 +76,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             veiculo.Combustivel = cBoxCombustivel.Text;
             veiculo.Cor = txtCor.Text;
             veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
+            veiculo.SalvarFoto(Veiculo);
 
             var resultadoValidacao = GravarRegistro(veiculo);
             if (resultadoValidacao.IsValid == false)
@@ -80,5 +89,27 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 
         }
 
+        public void ExibirImagem()
+        {
+            using (var img = new MemoryStream(Veiculo.Foto))
+            {
+                pictureCarro.Image = Image.FromStream(img);
+            }
+        }
+
+        private void btnSelecionarFoto_Click(object sender, EventArgs e)
+        {
+            var openFile = new OpenFileDialog();
+            openFile.Filter = "Arquivos de imagens JPG e PNG| *.jpg; *.png";
+            openFile.Multiselect = false;
+            
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+                Veiculo.CaminhoDaFotoNaMaquina = openFile.FileName;
+
+            if (Veiculo.CaminhoDaFotoNaMaquina != "")
+                pictureCarro.Load(Veiculo.CaminhoDaFotoNaMaquina);
+            
+        }
     }
 }

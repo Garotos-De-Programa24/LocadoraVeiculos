@@ -1,12 +1,14 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using System;
+using System.IO;
 
 namespace LocadoraVeiculos.Dominio.ModuloVeiculo
 {
     public class Veiculo : EntidadeBase<Veiculo>
     {
-        //public byte [] Foto { get; set; }
+        public byte [] Foto { get; set; }
+        public string CaminhoDaFotoNaMaquina { get; set; }
         public string VeiculoNome{ get; set; }
         public string Marca { get; set; }
         public string Ano { get; set; }
@@ -21,9 +23,9 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
         {
             Agrupamento = new Agrupamento();
         }
-        public Veiculo(string veiculoNome, string marca, string ano, string placa, string capacidadeTanque, string kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo)
+        public Veiculo(string veiculoNome, string marca, string ano, string placa, string capacidadeTanque, string kmPercorridos, string combustivel, string cor, Agrupamento agrupamentoVeiculo, byte[] foto)
         {
-            //Foto = foto;
+            Foto = foto;
             VeiculoNome = veiculoNome;
             Marca = marca;
             Ano = ano;
@@ -33,6 +35,23 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
             Combustivel = combustivel;
             Cor = cor;
             Agrupamento = agrupamentoVeiculo;
+        }
+        public void SalvarFoto(Veiculo veiculo)
+        {
+            this.Foto = ConverterFotoParaBytes(veiculo.CaminhoDaFotoNaMaquina);
+        }
+    
+        private byte[] ConverterFotoParaBytes(string caminhoDaFotoNaMaquina)
+        {
+            byte[] novaFoto;
+            using(var stream = new FileStream(caminhoDaFotoNaMaquina, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    novaFoto = reader.ReadBytes((int)stream.Length);
+                }
+            }
+            return novaFoto;
         }
 
         public override void Atualizar(Veiculo Registro)
