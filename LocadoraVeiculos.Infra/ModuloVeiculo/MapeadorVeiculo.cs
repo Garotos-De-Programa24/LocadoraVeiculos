@@ -36,7 +36,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
             var kmpercorrido = Convert.ToString(leitorRegistro["KMPERCORRIDO"]);
             var combustivel = Convert.ToString(leitorRegistro["COMBUSTIVEL"]);
             var cor = Convert.ToString(leitorRegistro["COR"]);
-            var foto = ((byte[])leitorRegistro["FOTO"]);
+            var foto = (byte[])leitorRegistro["FOTO"];
 
             var agrupamento = new MapeadorAgrupamento().ConverterRegistro(leitorRegistro);
 

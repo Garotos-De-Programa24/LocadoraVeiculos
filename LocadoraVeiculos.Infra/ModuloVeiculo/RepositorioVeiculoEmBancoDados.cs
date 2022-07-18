@@ -80,7 +80,7 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-                VEIC.[ID],                
+                VEIC.[ID],
                 VEIC.[VEICULONOME],
                 VEIC.[MARCA],
                 VEIC.[ANO],
@@ -93,14 +93,13 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 VEIC.[FOTO],
                 GRUPO.[AGRUPAMENTO]
             FROM 
-		            [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
+                    [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
                 ON
                     GRUPO.ID = VEIC.AGRUPAMENTO_ID";
 
         protected string sqlSelecionarPorNome =>
             @"SELECT 
-                VEIC.[ID],
-                
+                VEIC.[ID],                
                 VEIC.[VEICULONOME],
                 VEIC.[MARCA],
                 VEIC.[ANO],

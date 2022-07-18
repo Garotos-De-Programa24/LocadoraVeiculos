@@ -57,9 +57,10 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 cBoxCombustivel.Text = veiculo.Combustivel;
                 txtCor.Text = veiculo.Cor;
                 cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
-                ExibirImagem();
-
-
+                if (veiculo.Foto != null)
+                {
+                    ExibirImagem();
+                }
                 
             }
         }
@@ -96,8 +97,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         }
 
         public void ExibirImagem()
-        {
-            using (var img = new MemoryStream(Veiculo.Foto))
+        {            
+            using (var img = new MemoryStream(veiculo.Foto))
             {
                 pictureCarro.Image = Image.FromStream(img);
             }
