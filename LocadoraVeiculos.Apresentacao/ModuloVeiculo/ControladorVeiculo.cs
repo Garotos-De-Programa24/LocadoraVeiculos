@@ -1,25 +1,19 @@
 ﻿using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 {
     public class ControladorVeiculo : ControladorBase
-    {
-        private readonly IRepositorioVeiculo repositorioVeiculo;
+    {        
         private TelaVeiculoControl telaVeiculoControl;
         private readonly ServicoVeiculo servicoVeiculo;
 
 
-        public ControladorVeiculo(IRepositorioVeiculo repositorioVeiculo, ServicoVeiculo servicoVeiculo)
-        {
-            this.repositorioVeiculo = repositorioVeiculo;
+        public ControladorVeiculo(ServicoVeiculo servicoVeiculo)
+        {            
             this.servicoVeiculo = servicoVeiculo;
         }
 
@@ -73,7 +67,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 
             if (resultado == DialogResult.OK)
             {
-                repositorioVeiculo.Excluir(veiculoSelecionado);
+                servicoVeiculo.Excluir(veiculoSelecionado);
                 CarregaVeiculo();
             }
         }
@@ -105,8 +99,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         private Veiculo ObtemVeiculoSelecionado()
         {
             var id = telaVeiculoControl.ObtemNumeroVeiculoSelecionado();
-
-            return repositorioVeiculo.SelecionarPorId(id);
+            var resultado = servicoVeiculo.SelecionarPorId(id);
+            Veiculo veiculoSelecionado = null;
+            if (resultado.IsSuccess)
+            {
+                veiculoSelecionado = resultado.Value;
+            }
+            else if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Selecionar Veiculo Selecionada",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return veiculoSelecionado;
         }
     }
 }

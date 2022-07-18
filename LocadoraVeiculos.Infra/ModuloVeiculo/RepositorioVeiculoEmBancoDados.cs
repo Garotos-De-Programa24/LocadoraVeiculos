@@ -79,28 +79,27 @@ namespace LocadoraVeiculos.Infra.ModuloVeiculo
                 VEIC.[ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
-                    @"SELECT 
-                        VEIC.[ID],                
-                        VEIC.[VEICULONOME],
-                        VEIC.[MARCA],
-                        VEIC.[ANO],
-                        VEIC.[PLACA],
-                        VEIC.[CAPACIDADETANQUE],
-                        VEIC.[KMPERCORRIDO],
-                        VEIC.[COMBUSTIVEL],
-                        VEIC.[COR],
-                        VEIC.[AGRUPAMENTO_ID],
-                        VEIC.[FOTO],
-                        GRUPO.[AGRUPAMENTO]
-                    FROM 
-		                    [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
-                        ON
-                            GRUPO.ID = VEIC.AGRUPAMENTO_ID";
+            @"SELECT 
+                VEIC.[ID],
+                VEIC.[VEICULONOME],
+                VEIC.[MARCA],
+                VEIC.[ANO],
+                VEIC.[PLACA],
+                VEIC.[CAPACIDADETANQUE],
+                VEIC.[KMPERCORRIDO],
+                VEIC.[COMBUSTIVEL],
+                VEIC.[COR],
+                VEIC.[AGRUPAMENTO_ID],
+                VEIC.[FOTO],
+                GRUPO.[AGRUPAMENTO]
+            FROM 
+                    [TBVEICULO] AS VEIC INNER JOIN [TBAGRUPAMENTO] AS GRUPO
+                ON
+                    GRUPO.ID = VEIC.AGRUPAMENTO_ID";
 
         protected string sqlSelecionarPorNome =>
             @"SELECT 
-                VEIC.[ID],
-                
+                VEIC.[ID],                
                 VEIC.[VEICULONOME],
                 VEIC.[MARCA],
                 VEIC.[ANO],
