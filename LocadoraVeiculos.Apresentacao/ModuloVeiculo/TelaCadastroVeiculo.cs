@@ -57,6 +57,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 cBoxCombustivel.Text = veiculo.Combustivel;
                 txtCor.Text = veiculo.Cor;
                 cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
+                if(veiculo.Foto != null)
                 ExibirImagem();
 
 
