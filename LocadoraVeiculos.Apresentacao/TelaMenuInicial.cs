@@ -1,11 +1,6 @@
-﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
-using LocadoraVeiculos.Aplicacao.ModuloCliente;
-using LocadoraVeiculos.Aplicacao.ModuloCondutor;
-using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
-using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
-using LocadoraVeiculos.Aplicacao.ModuloTaxa;
-using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
+﻿using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
+using LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator;
 using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloCondutor;
@@ -14,13 +9,7 @@ using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.ModuloVeiculo;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
-using LocadoraVeiculos.Infra.ModuloAgrupamento;
-using LocadoraVeiculos.Infra.ModuloCliente;
-using LocadoraVeiculos.Infra.ModuloCondutor;
 using LocadoraVeiculos.Infra.ModuloFuncionario;
-using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
-using LocadoraVeiculos.Infra.ModuloTaxa;
-using LocadoraVeiculos.Infra.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -30,16 +19,17 @@ namespace LocadoraVeiculos.Apresentacao
     public partial class TelaMenuInicial : Form
     {
         private ControladorBase controlador;
-        private Dictionary<string, ControladorBase> controladores;
+        //private ServiceLocatorManual serviceLocator = new ServiceLocatorManual(); refatorar depois
+        private IServiceLocator serviceLocator;
         bool gerente = false;
         string login;
         string senha;
 
-        public TelaMenuInicial()
+        public TelaMenuInicial(IServiceLocator serviceLocator)
         {
             InitializeComponent();
+            this.serviceLocator = serviceLocator;
             Instancia = this;
-            InicializarControladores();
             txtLogin.Text = "admin";
             txtSenha.Text = "admin";
         }
@@ -48,39 +38,11 @@ namespace LocadoraVeiculos.Apresentacao
             get;
             private set;
         }
-        private void InicializarControladores()
-        {
-            var repositorioCliente = new RepositorioClienteEmBancoDados();
-            var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
-            var repositorioTaxa = new RepositorioTaxaEmBancoDados();
-            var repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
-            var repositorioCondutor = new RepositorioCondutorEmBancoDados();
-            var repositorioPlanoCobranca = new RepositorioPlanoCobrancaEmBancoDados();
-            var repositorioVeiculo = new RepositorioVeiculoEmBancoDados();
-
-            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
-            var servicoCliente = new ServicoCliente(repositorioCliente);
-            var servicoGrupoVeiculo = new ServicoAgrupamento(repositorioAgrupamento);
-            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
-            var servicoCondutor = new ServicoCondutor(repositorioCondutor);
-            var servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
-            var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
-
-            controladores = new Dictionary<string, ControladorBase>();
-
-            controladores.Add("Clientes", new ControladorCliente(servicoCliente));
-            controladores.Add("Agrupamentos", new ControladorAgrupamento(servicoGrupoVeiculo));
-            controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
-            controladores.Add("Condutores", new ControladorCondutor(servicoCondutor));
-            controladores.Add("Funcionarios", new ControladorFuncionario(servicoFuncionario));
-            controladores.Add("Planos", new ControladorPlanoDeCobranca(servicoPlanoCobranca));
-            controladores.Add("Veiculos", new ControladorVeiculo(servicoVeiculo));
-        }
         
-        private void ConfigurarTelaPrincipal(string tipo)
+        
+        private void ConfigurarTelaPrincipal(ControladorBase controlador)
         {
-            controlador = controladores[tipo];
-
+            this.controlador = controlador; 
             ConfigurarListagem();
         }
 
@@ -97,38 +59,51 @@ namespace LocadoraVeiculos.Apresentacao
 
         private void btnClientes_Click_1(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Clientes");
+            controlador = serviceLocator.Get<ControladorCliente>();
+            ConfigurarTelaPrincipal(controlador);
         }        
 
         private void btnAgrupamento_Click_1(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Agrupamentos");
+            controlador = serviceLocator.Get<ControladorAgrupamento>();
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnCondutor_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Condutores");
+            controlador = serviceLocator.Get<ControladorCondutor>();
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnPlano_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Planos");
+            controlador = serviceLocator.Get<ControladorPlanoDeCobranca>();
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnTaxa_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Taxas");
+            controlador = serviceLocator.Get<ControladorTaxa>();
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnVeiculo_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal("Veiculos");
+            controlador = serviceLocator.Get<ControladorVeiculo>();
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnFuncionario_Click_1(object sender, EventArgs e)
         {
+            controlador = serviceLocator.Get<ControladorFuncionario>();
+
             if (gerente == true)
-                ConfigurarTelaPrincipal("Funcionarios");
+                ConfigurarTelaPrincipal(controlador);
 
             if (gerente == false)
             {
@@ -193,7 +168,7 @@ namespace LocadoraVeiculos.Apresentacao
                 txtSenha.Enabled = true;
                 txtSenha.Text = "";
                 btnEntrar.Text = "Entrar";
-                ConfigurarTelaPrincipal("Clientes");
+                ConfigurarTelaPrincipal(serviceLocator.Get<ControladorCliente>());
                 return;
             }
 

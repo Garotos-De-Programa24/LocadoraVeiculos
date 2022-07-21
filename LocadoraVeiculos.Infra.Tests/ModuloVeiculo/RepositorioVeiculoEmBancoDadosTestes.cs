@@ -110,10 +110,11 @@ namespace LocadoraVeiculos.Infra.Tests.ModuloVeiculo
         [TestMethod]
         public void Deve_selecionar_todos_os_funcionarios()
         {
+            byte[] foto = null;
             //arrange
-            var veiculo1 = new Veiculo("S-10", "Chevrolet", "2005", "ACD3214", "57 litros", "45600", "Gasolina", "Prata", agrupamento);
-            var veiculo2 = new Veiculo("HB20", "Hyundai", "2010", "ADA2313", "48 litros", "13500", "Gasolina", "Branco", agrupamento);
-            var veiculo3 = new Veiculo("Montana", "Chevrolet", "2004", "AAA1111", "52 litros", "67200", "Gasolina", "Branco", agrupamento);
+            var veiculo1 = new Veiculo("S-10", "Chevrolet", "2005", "ACD3214", "57 litros", "45600", "Gasolina", "Prata", agrupamento,foto);
+            var veiculo2 = new Veiculo("HB20", "Hyundai", "2010", "ADA2313", "48 litros", "13500", "Gasolina", "Branco", agrupamento,foto);
+            var veiculo3 = new Veiculo("Montana", "Chevrolet", "2004", "AAA1111", "52 litros", "67200", "Gasolina", "Branco", agrupamento, foto);
 
             var repositorio = new RepositorioVeiculoEmBancoDados();
             repositorio.Inserir(veiculo1);

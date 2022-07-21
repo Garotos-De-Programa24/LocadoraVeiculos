@@ -1,3 +1,4 @@
+using LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator;
 using LocadoraVeiculos.Infra.Logging;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -20,7 +21,8 @@ namespace LocadoraVeiculos.Apresentacao
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TelaMenuInicial());
+            var serviceLocatorAutofac = new ServiceLocatorComAutoFac();
+            Application.Run(new TelaMenuInicial(serviceLocatorAutofac));
         }
     }
 }
