@@ -55,7 +55,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
         {
             Log.Logger.Debug("Tentando editar taxa {@taxa}", taxa);
 
-            Result resultadoValidacao = ValidarTaxa(taxa);
+            Result resultadoValidacao = ValidarEdicaoTaxa(taxa);
 
             if (resultadoValidacao.IsFailed)
             {
@@ -90,28 +90,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
         public Result<Taxa> Excluir(Taxa taxa)
         {
             Log.Logger.Information("Tentando excluir o Taxa @{taxa}", taxa);
-
-            Result resultadoValidacao = ValidarTaxa(taxa);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar excluir Taxa {TaxaId}" +
-                        " -> Motivo: {erro}", taxa.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            List<Error> erros = new List<Error>();
-            foreach (ValidationFailure item in resultadoValidacao.Errors)
-            {
-                erros.Add(new Error(item.ErrorMessage));
-            }
+                        
             try
             {
                 repositorioTaxa.Excluir(taxa);
-                Log.Logger.Information("Taxa {TaxaId} inserido com sucesso.", taxa.Id);
+                Log.Logger.Information("Taxa {TaxaId} excluido com sucesso.", taxa.Id);
 
                 return Result.Ok(taxa);
             }
@@ -152,6 +135,26 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
                 return Result.Fail(mensagemErro);
             }
         }
+
+        private Result ValidarEdicaoTaxa(Taxa Taxa)
+        {
+            var validador = new ValidaTaxa();
+
+            var resultadoValidacao = validador.Validate(Taxa);
+
+            List<Error> erros = new List<Error>();
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
+        }
+
         private Result  ValidarTaxa(Taxa taxa)
         {
             var validador = new ValidaTaxa();

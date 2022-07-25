@@ -39,6 +39,14 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             set
             {
                 condutor = value;
+                comboCliente.Text = condutor.Cliente.Nome;
+                txtNome.Text = condutor.Nome;
+                txtCPF.Text = condutor.Cpf;
+                txtEndereco.Text = condutor.Endereco;
+                MaskedCNHCondutor.Text = condutor.CnhCondutor;
+                dataValidade.Value = condutor.ValidadeCnh;
+                txtEmail.Text = condutor.Email;
+                txtTelefone.Text = condutor.Telefone;
             }
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -48,7 +56,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             condutor.Cpf = RemoverEspaços(txtCPF.Text.Split(" "));
             condutor.Endereco = txtEndereco.Text;
             condutor.CnhCondutor = MaskedCNHCondutor.Text;
-            condutor.ValidadeCnh = dateValidade.Value;
+            condutor.ValidadeCnh = dataValidade.Value;
             condutor.Email = txtEmail.Text;
             condutor.Telefone = RemoverEspaços(txtTelefone.Text.Split(" "));
 

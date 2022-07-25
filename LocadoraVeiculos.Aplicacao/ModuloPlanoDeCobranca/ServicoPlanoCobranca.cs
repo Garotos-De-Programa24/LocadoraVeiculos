@@ -56,7 +56,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
         {
             Log.Logger.Debug("Tentando editar Plano de Cobrança {@planodeCobrança}", planoCobranca);
 
-            Result resultadoValidacao = ValidarPlano(planoCobranca);
+            Result resultadoValidacao = ValidarEdicaoPlano(planoCobranca);
 
             if (resultadoValidacao.IsFailed)
             {
@@ -91,28 +91,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
         public Result<PlanoCobranca> Excluir(PlanoCobranca planoCobranca)
         {
             Log.Logger.Information("Tentando excluir o Plano de Cobrança @{planocobrança}", planoCobranca);
-
-            Result resultadoValidacao = ValidarPlano(planoCobranca);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar excluir Plano de Cobrança {PlanoId}" +
-                        " -> Motivo: {erro}", planoCobranca.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            List<Error> erros = new List<Error>();
-            foreach (ValidationFailure item in resultadoValidacao.Errors)
-            {
-                erros.Add(new Error(item.ErrorMessage));
-            }
+                        
             try
             {
                 repositorioPlano.Excluir(planoCobranca);
-                Log.Logger.Information("Plano de Cobrança {PlanoId} inserido com sucesso.", planoCobranca.Id);
+                Log.Logger.Information("Plano de Cobrança {PlanoId} excluido com sucesso.", planoCobranca.Id);
 
                 return Result.Ok(planoCobranca);
             }
@@ -153,6 +136,25 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
                 Log.Logger.Error(ex, mensagemErro + "{PlanoId}", id);
                 return Result.Fail(mensagemErro);
             }
+        }
+
+        private Result ValidarEdicaoPlano(PlanoCobranca plano)
+        {
+            var validador = new ValidaPlanoCobranca();
+
+            var resultadoValidacao = validador.Validate(plano);
+
+            List<Error> erros = new List<Error>();
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private Result ValidarPlano(PlanoCobranca planoCobranca)
