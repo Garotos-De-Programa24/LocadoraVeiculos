@@ -38,8 +38,12 @@ namespace LocadoraVeiculos.Apresentacao
             get;
             private set;
         }
-        
-        
+
+        public void AtualizarRodape(string mensagem)
+        {
+            status.Text = mensagem;
+        }
+
         private void ConfigurarTelaPrincipal(ControladorBase controlador)
         {
             this.controlador = controlador; 

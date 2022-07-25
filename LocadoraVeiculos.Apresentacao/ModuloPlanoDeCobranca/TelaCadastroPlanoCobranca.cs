@@ -65,8 +65,13 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
             {
                 string erro = resultadoValidacao.Errors[0].Message;
 
-                MessageBox.Show(erro, "Cadastro de Plano de Cobrança", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DialogResult = DialogResult.None;
+                if (erro.StartsWith("Falha no sistema"))
+                    MessageBox.Show(erro, "Cadastro de Plano de Cobrança", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    TelaMenuInicial.Instancia.AtualizarRodape(erro);
+                    DialogResult = DialogResult.None;
+                }                
             }
         }
 

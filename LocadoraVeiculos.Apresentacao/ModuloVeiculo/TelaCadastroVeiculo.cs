@@ -76,7 +76,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             veiculo.KmPercorridos = txtKmPercorridos.Text;
             veiculo.Combustivel = cBoxCombustivel.Text;
             veiculo.Cor = txtCor.Text;
-            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
+            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;            
             veiculo.SalvarFoto(Veiculo);
 
             var resultadoValidacao = GravarRegistro(veiculo);
@@ -90,6 +90,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 }
                 else
                 {
+                    TelaMenuInicial.Instancia.AtualizarRodape(erro);
                     DialogResult = DialogResult.None;
                 }
             }

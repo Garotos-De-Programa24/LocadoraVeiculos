@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelRegistros = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.RodaPé = new System.Windows.Forms.StatusStrip();
             this.lValid = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolControl = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -52,8 +52,8 @@
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.lLogin = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.panelRegistros.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RodaPé.SuspendLayout();
             this.toolControl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,21 +61,21 @@
             // panelRegistros
             // 
             this.panelRegistros.BackColor = System.Drawing.Color.White;
-            this.panelRegistros.Controls.Add(this.statusStrip1);
             this.panelRegistros.Location = new System.Drawing.Point(151, 114);
             this.panelRegistros.Name = "panelRegistros";
-            this.panelRegistros.Size = new System.Drawing.Size(1119, 527);
+            this.panelRegistros.Size = new System.Drawing.Size(1119, 515);
             this.panelRegistros.TabIndex = 0;
             // 
-            // statusStrip1
+            // RodaPé
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lValid});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 505);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1119, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
+            this.RodaPé.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lValid,
+            this.status});
+            this.RodaPé.Location = new System.Drawing.Point(0, 619);
+            this.RodaPé.Name = "RodaPé";
+            this.RodaPé.Size = new System.Drawing.Size(1270, 22);
+            this.RodaPé.TabIndex = 0;
+            this.RodaPé.Text = "Rodapé";
             // 
             // lValid
             // 
@@ -374,12 +374,21 @@
             this.txtLogin.Size = new System.Drawing.Size(150, 23);
             this.txtLogin.TabIndex = 5;
             // 
+            // status
+            // 
+            this.status.ActiveLinkColor = System.Drawing.Color.Black;
+            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(47, 17);
+            this.status.Text = "Rodapé";
+            // 
             // TelaMenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1270, 641);
+            this.Controls.Add(this.RodaPé);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnClientes);
@@ -394,15 +403,14 @@
             this.Name = "TelaMenuInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaMenuInicial";
-            this.panelRegistros.ResumeLayout(false);
-            this.panelRegistros.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.RodaPé.ResumeLayout(false);
+            this.RodaPé.PerformLayout();
             this.toolControl.ResumeLayout(false);
             this.toolControl.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -426,11 +434,12 @@
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.Label lSenha;
         private System.Windows.Forms.TextBox txtSenha;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip RodaPé;
         private System.Windows.Forms.ToolStripStatusLabel lValid;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.Label lTitulo;
         private System.Windows.Forms.Label lStatus;
+        private System.Windows.Forms.ToolStripStatusLabel status;
     }
 }

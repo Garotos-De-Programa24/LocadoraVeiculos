@@ -51,6 +51,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloAgrupamento
                 }
                 else
                 {
+                    TelaMenuInicial.Instancia.AtualizarRodape(erro);
                     DialogResult = DialogResult.None;
                 }
             }

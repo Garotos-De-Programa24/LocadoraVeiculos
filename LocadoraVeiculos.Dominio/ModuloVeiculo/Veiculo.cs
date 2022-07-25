@@ -38,6 +38,7 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
         }
         public void SalvarFoto(Veiculo veiculo)
         {
+            if(veiculo.CaminhoDaFotoNaMaquina != null)
             this.Foto = ConverterFotoParaBytes(veiculo.CaminhoDaFotoNaMaquina);
         }
     
