@@ -61,7 +61,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
         {
             Log.Logger.Information("Tentando editar Condutor @{condutor}", condutor);
 
-            Result resultadoValidacao = ValidarCondutor(condutor);
+            Result resultadoValidacao = ValidarEdicaoCondutor(condutor);
 
             if (resultadoValidacao.IsFailed)
             {
@@ -98,28 +98,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
         public Result<Condutor> Excluir(Condutor condutor)
         {
             Log.Logger.Information("Tentando excluir o Condutor @{condutor}", condutor);
-
-            Result resultadoValidacao = ValidarCondutor(condutor);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar excluir Condutor {CondutorId}" +
-                        " -> Motivo: {erro}", condutor.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            List<Error> erros = new List<Error>();
-            foreach (ValidationFailure item in resultadoValidacao.Errors)
-            {
-                erros.Add(new Error(item.ErrorMessage));
-            }
+            
             try
             {
                 repositorioCondutor.Excluir(condutor);
-                Log.Logger.Information("Condutor {CondutorId} inserido com sucesso.", condutor.Id);
+                Log.Logger.Information("Condutor {CondutorId} excluido com sucesso.", condutor.Id);
 
                 return Result.Ok(condutor);
             }
@@ -131,6 +114,25 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
                 return Result.Fail(msgErro);
             }
+        }
+
+        private Result ValidarEdicaoCondutor(Condutor condutor)
+        {
+            var validador = new ValidaCondutor();
+
+            var resultadoValidacao = validador.Validate(condutor);
+
+            List<Error> erros = new List<Error>();
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private Result ValidarCondutor(Condutor condutor)

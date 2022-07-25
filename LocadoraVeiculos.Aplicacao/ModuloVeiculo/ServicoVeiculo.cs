@@ -57,7 +57,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
         {
             Log.Logger.Debug("Tentando editar veiculo {@veiculo}", veiculo);
 
-            Result resultadoValidacao = ValidarVeiculo(veiculo);
+            Result resultadoValidacao = ValidarEdicaoVeiculo(veiculo);
 
             if (resultadoValidacao.IsFailed)
             {
@@ -93,28 +93,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
         public Result<Veiculo> Excluir(Veiculo veiculo)
         {
             Log.Logger.Information("Tentando excluir o Veiculo @{veiculo}", veiculo);
-
-            Result resultadoValidacao = ValidarVeiculo(veiculo);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar excluir Veiculo {VeiculoId}" +
-                        " -> Motivo: {erro}", veiculo.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            List<Error> erros = new List<Error>();
-            foreach (ValidationFailure item in resultadoValidacao.Errors)
-            {
-                erros.Add(new Error(item.ErrorMessage));
-            }
+            
             try
             {
                 repositorioVeiculo.Excluir(veiculo);
-                Log.Logger.Information("Veiculo {VeiculoId} inserido com sucesso.", veiculo.Id);
+                Log.Logger.Information("Veiculo {VeiculoId} excluido com sucesso.", veiculo.Id);
 
                 return Result.Ok(veiculo);
             }
@@ -126,7 +109,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
 
                 return Result.Fail(msgErro);
             }
-
         }
 
         public Result<List<Veiculo>> SelecionarTodos()
@@ -156,6 +138,24 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
                 Log.Logger.Error(ex, mensagemErro + "{TaxaId}", id);
                 return Result.Fail(mensagemErro);
             }
+        }
+        private Result ValidarEdicaoVeiculo(Veiculo veiculo)
+        {
+            var validador = new ValidaVeiculo();
+
+            var resultadoValidacao = validador.Validate(veiculo);
+
+            List<Error> erros = new List<Error>();
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private Result ValidarVeiculo(Veiculo veiculo)

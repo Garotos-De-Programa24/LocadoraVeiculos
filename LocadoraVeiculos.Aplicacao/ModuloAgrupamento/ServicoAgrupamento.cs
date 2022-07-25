@@ -59,7 +59,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
         {
             Log.Logger.Information("Tentando editar no Grupo de Veiculos @{agrupamento", agrupamento);
 
-            Result resultadoValidacao = ValidarAgrupamento(agrupamento);
+            Result resultadoValidacao = ValidarEdicaoAgrupamento(agrupamento);
 
             if (resultadoValidacao.IsFailed)
             {
@@ -97,28 +97,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
         public Result<Agrupamento> Excluir(Agrupamento agrupamento)
         {
             Log.Logger.Information("Tentando excluir no Grupo de Veiculos @{agrupamento", agrupamento);
-
-            Result resultadoValidacao = ValidarAgrupamento(agrupamento);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar excluir Grupo de Veiculos {AgrupamentoId}" +
-                        " -> Motivo: {erro}", agrupamento.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            List<Error> erros = new List<Error>();
-            foreach (ValidationFailure item in resultadoValidacao.Errors)
-            {
-                erros.Add(new Error(item.ErrorMessage));
-            }
+            
             try
             {
                 repositorioAgrupamento.Excluir(agrupamento);
-                Log.Logger.Information("Grupo de Veiculos {AgrupamentoId} inserido com sucesso.", agrupamento.Id);
+                Log.Logger.Information("Grupo de Veiculos {AgrupamentoId} excluido com sucesso.", agrupamento.Id);
 
                 return Result.Ok(agrupamento);
             }
@@ -130,6 +113,25 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
 
                 return Result.Fail(msgErro);
             }
+        }
+
+        private Result ValidarEdicaoAgrupamento(Agrupamento agrupamento)
+        {
+            var validador = new ValidaAgrupamento();
+
+            var resultadoValidacao = validador.Validate(agrupamento);
+
+            List<Error> erros = new List<Error>();
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private Result ValidarAgrupamento(Agrupamento agrupamento)

@@ -31,7 +31,7 @@
             this.MaskedCNHCondutor = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
-            this.dateValidade = new System.Windows.Forms.DateTimePicker();
+            this.dataValidade = new System.Windows.Forms.DateTimePicker();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lEmail = new System.Windows.Forms.Label();
             this.lTelefone = new System.Windows.Forms.Label();
@@ -77,12 +77,12 @@
             this.txtCPF.Size = new System.Drawing.Size(96, 23);
             this.txtCPF.TabIndex = 25;
             // 
-            // dateValidade
+            // dataValidade
             // 
-            this.dateValidade.Location = new System.Drawing.Point(135, 230);
-            this.dateValidade.Name = "dateValidade";
-            this.dateValidade.Size = new System.Drawing.Size(235, 23);
-            this.dateValidade.TabIndex = 28;
+            this.dataValidade.Location = new System.Drawing.Point(135, 230);
+            this.dataValidade.Name = "dataValidade";
+            this.dataValidade.Size = new System.Drawing.Size(235, 23);
+            this.dataValidade.TabIndex = 28;
             // 
             // txtEmail
             // 
@@ -271,7 +271,7 @@
             this.Controls.Add(this.MaskedCNHCondutor);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCPF);
-            this.Controls.Add(this.dateValidade);
+            this.Controls.Add(this.dataValidade);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lEmail);
             this.Controls.Add(this.lTelefone);
@@ -302,7 +302,7 @@
         private System.Windows.Forms.MaskedTextBox MaskedCNHCondutor;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.MaskedTextBox txtCPF;
-        private System.Windows.Forms.DateTimePicker dateValidade;
+        private System.Windows.Forms.DateTimePicker dataValidade;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lEmail;
         private System.Windows.Forms.Label lTelefone;

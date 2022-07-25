@@ -67,8 +67,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             {
                 clienteSelecionado = resultadoSelecao.Value;
 
-                DialogResult result = MessageBox.Show("Deseja realmente excluir o Agrupamento?",
-                "Exclusão de Agrupamentos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Deseja realmente excluir o Cliente?",
+                "Exclusão de Clientes", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
@@ -80,14 +80,15 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                     }
                     else
                     {
-                        MessageBox.Show(resultadoExclusao.Errors[0].Message, "Exclusão de Clientes",
+                        MessageBox.Show("Falha no Sistema ao tentar Excluir o cliente selecionado" +
+                            "\nVerifique se o mesmo não está vinculado a outra entidade", "Exclusão de Clientes",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show(resultadoSelecao.Errors[0].Message, "Tela de agrupamentos",
+                MessageBox.Show(resultadoSelecao.Errors[0].Message, "Tela de clientes",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }        

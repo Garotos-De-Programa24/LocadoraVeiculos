@@ -55,7 +55,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
         {
             Log.Logger.Debug("Tentando editar funcionário {@funcionario}", funcionario);
 
-            Result resultadoValidacao = ValidarFuncionario(funcionario);
+            Result resultadoValidacao = ValidarEdicaoFuncionario(funcionario);
 
             if (resultadoValidacao.IsFailed)
             {
@@ -90,28 +90,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
         public Result<Funcionario> Excluir(Funcionario funcionario)
         {
             Log.Logger.Information("Tentando excluir o Funcionario @{funcionario}", funcionario);
-
-            Result resultadoValidacao = ValidarFuncionario(funcionario);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar excluir Funcionario {FuncionarioId}" +
-                        " -> Motivo: {erro}", funcionario.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            List<Error> erros = new List<Error>();
-            foreach (ValidationFailure item in resultadoValidacao.Errors)
-            {
-                erros.Add(new Error(item.ErrorMessage));
-            }
+                        
             try
             {
                 repositorioFuncionario.Excluir(funcionario);
-                Log.Logger.Information("Funcionario {FuncionarioId} inserido com sucesso.", funcionario.Id);
+                Log.Logger.Information("Funcionario {FuncionarioId} excluido com sucesso.", funcionario.Id);
 
                 return Result.Ok(funcionario);
             }
@@ -153,6 +136,25 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 Log.Logger.Error(ex, mensagemErro + "{FuncionarioId}", id);
                 return Result.Fail(mensagemErro);
             }
+        }
+
+        private Result ValidarEdicaoFuncionario(Funcionario funcionario)
+        {
+            var validador = new ValidaFuncionario();
+
+            var resultadoValidacao = validador.Validate(funcionario);
+
+            List<Error> erros = new List<Error>();
+
+            foreach (ValidationFailure item in resultadoValidacao.Errors)
+            {
+                erros.Add(new Error(item.ErrorMessage));
+            }
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
 
         private Result ValidarFuncionario(Funcionario funcionario)
