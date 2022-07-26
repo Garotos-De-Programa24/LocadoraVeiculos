@@ -4,14 +4,16 @@ using LocadoraVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    partial class LocadoraVeiculoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220726180754_AdicionandoTbPlano")]
+    partial class AdicionandoTbPlano
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,59 +141,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     b.ToTable("TBPlano");
                 });
 
-            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloVeiculo.Veiculo", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AgrupamentoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Ano")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<string>("CaminhoDaFotoNaMaquina")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CapacidadeTanque")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Combustivel")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Cor")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<byte[]>("Foto")
-                        .HasColumnType("varbinary(MAX)");
-
-                    b.Property<string>("KmPercorridos")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Placa")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<string>("VeiculoNome")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AgrupamentoId");
-
-                    b.ToTable("TBVeiculo");
-                });
-
             modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCondutor.Condutor", b =>
                 {
                     b.HasOne("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
@@ -208,17 +157,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                         .HasForeignKey("GrupoVeiculosId");
 
                     b.Navigation("GrupoVeiculos");
-                });
-
-            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloVeiculo.Veiculo", b =>
-                {
-                    b.HasOne("LocadoraVeiculos.Dominio.ModuloAgrupamento.Agrupamento", "Agrupamento")
-                        .WithMany()
-                        .HasForeignKey("AgrupamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Agrupamento");
                 });
 #pragma warning restore 612, 618
         }

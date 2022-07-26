@@ -22,17 +22,23 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
             this.limiteQuilometragem = limiteQuilometragem;
         }
 
+        public Guid GrupoVeiculosId { get; set; }
+
         public string NomePlano { get; set; }
+
         public Agrupamento GrupoVeiculos { get; set; }
+
         public EnunPlano TipoPlano { get; set; }
+
         public decimal ValorDiario { get => valorDiario; }
+
         public decimal ValorPorKm { get => valorPorKm;  }
+
         public decimal LimiteQuilometragem { get => limiteQuilometragem;}
 
         private decimal valorDiario;
         private decimal valorPorKm;
         private decimal limiteQuilometragem;
-
         public void SetValorDiario(string valorDiario)
         {
             string valor = LimparString(valorDiario);
