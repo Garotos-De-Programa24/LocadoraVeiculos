@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloVeiculo
     {
         private DbSet<Veiculo> veiculo;
         private readonly LocadoraVeiculoDbContext dbContext;
-
+    
         public RepositorioVeiculoORM(LocadoraVeiculoDbContext dbContext)
         {
             veiculo = dbContext.Set<Veiculo>();
@@ -27,17 +27,17 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloVeiculo
         {
             veiculo.Update(registro);
         }
-
+    
         public void Excluir(Veiculo registro)
         {
             veiculo.Remove(registro);
         }
-
+    
         public Veiculo SelecionarPorId(Guid id)
         {
             return veiculo.SingleOrDefault(x => x.Id == id);
         }
-
+    
         public Veiculo SelecionarVeiculoPeloNome(string nome)
         {
             return veiculo.SingleOrDefault(x => x.VeiculoNome == nome);

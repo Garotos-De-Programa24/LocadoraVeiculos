@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
-    public partial class AdicionandotbFuncionario : Migration
+    public partial class AdicionandoFuncionario : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TbFuncionario",
+                name: "TBFuncionario",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -21,14 +21,14 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TbFuncionario", x => x.Id);
+                    table.PrimaryKey("PK_TBFuncionario", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TbFuncionario");
+                name: "TBFuncionario");
         }
     }
 }

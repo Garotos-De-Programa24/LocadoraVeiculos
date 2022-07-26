@@ -11,7 +11,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloCliente
     {
         private DbSet<Cliente> clientes;
         private readonly LocadoraVeiculoDbContext dbContext;
-
+    
         public RepositorioClienteORM(LocadoraVeiculoDbContext dbContext)
         {
             clientes = dbContext.Set<Cliente>();
@@ -25,17 +25,17 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloCliente
         {
             clientes.Update(registro);
         }
-
+    
         public void Excluir(Cliente registro)
         {
             clientes.Remove(registro);
         }
-
+    
         public Cliente SelecionarPorId(Guid id)
         {
             return clientes.SingleOrDefault(x => x.Id == id);
         }
-
+    
         public Cliente SelecionarClientePorNome(string nome)
         {
             return clientes.SingleOrDefault(x => x.Nome == nome);

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20220726174403_AdicionandoTbCondutor")]
-    partial class AdicionandoTbCondutor
+    [Migration("20220726204352_AdicionandoCliente")]
+    partial class AdicionandoCliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,20 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloAgrupamento.Agrupamento", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBAgrupamento");
+                });
 
             modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", b =>
                 {
@@ -51,55 +65,36 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     b.ToTable("TBCliente");
                 });
 
-            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCondutor.Condutor", b =>
+            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloFuncionario.Funcionario", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClienteId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<DateTime>("DataAdmissao")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("CnhCondutor")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
+                    b.Property<bool>("Gerente")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Cpf")
+                    b.Property<string>("Login")
                         .IsRequired()
-                        .HasColumnType("varchar(40)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Endereco")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Telefone")
+                    b.Property<string>("Salario")
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime>("ValidadeCnh")
-                        .HasColumnType("date");
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
-
-                    b.ToTable("TBCondutor");
-                });
-
-            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCondutor.Condutor", b =>
-                {
-                    b.HasOne("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.Navigation("Cliente");
+                    b.ToTable("TBFuncionario");
                 });
 #pragma warning restore 612, 618
         }

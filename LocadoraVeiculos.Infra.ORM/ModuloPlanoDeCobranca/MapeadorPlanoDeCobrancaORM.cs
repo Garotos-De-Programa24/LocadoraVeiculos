@@ -12,11 +12,11 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloPlanoDeCobranca
             builder.Property(x => x.Id).ValueGeneratedNever();
             builder.Property(x => x.NomePlano).HasColumnType("varchar(200)").IsRequired();
             builder.Property(x => x.TipoPlano).HasColumnType("int").IsRequired();
-
+    
             builder.Property(x => x.ValorPorKm).HasColumnType("varchar(20)").IsRequired();
             builder.Property(x => x.ValorDiario).HasColumnType("varchar(20)").IsRequired();
             builder.Property(x => x.LimiteQuilometragem).HasColumnType("varchar(20)").IsRequired();
-
+    
             builder.HasOne(x => x.GrupoVeiculos);
         }
     }

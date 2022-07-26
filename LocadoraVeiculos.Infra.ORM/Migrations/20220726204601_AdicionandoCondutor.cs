@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
-    public partial class AdicionandoTbCondutor : Migration
+    public partial class AdicionandoCondutor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
                     Cpf = table.Column<string>(type: "varchar(40)", nullable: false),
                     Endereco = table.Column<string>(type: "varchar(200)", nullable: false),
@@ -29,7 +29,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                         column: x => x.ClienteId,
                         principalTable: "TBCliente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

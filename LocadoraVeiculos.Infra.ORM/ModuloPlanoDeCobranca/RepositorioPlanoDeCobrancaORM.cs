@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloPlanoDeCobranca
     {
         private DbSet<PlanoCobranca> planoCobranca;
         private readonly LocadoraVeiculoDbContext dbContext;
-
+    
         public RepositorioPlanoDeCobrancaORM(LocadoraVeiculoDbContext dbContext)
         {
             planoCobranca = dbContext.Set<PlanoCobranca>();
@@ -27,17 +27,17 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloPlanoDeCobranca
         {
             planoCobranca.Update(registro);
         }
-
+    
         public void Excluir(PlanoCobranca registro)
         {
             planoCobranca.Remove(registro);
         }
-
+    
         public PlanoCobranca SelecionarPorId(Guid id)
         {
             return planoCobranca.SingleOrDefault(x => x.Id == id);
         }
-
+    
         public PlanoCobranca SelecionarPlanoPorNome(string nome)
         {
             return planoCobranca.SingleOrDefault(x => x.NomePlano == nome);

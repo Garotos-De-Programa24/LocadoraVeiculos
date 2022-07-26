@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20220726162930_AdicionandotbCliente")]
-    partial class AdicionandotbCliente
+    [Migration("20220726204013_AdicionandoAgrupamento")]
+    partial class AdicionandoAgrupamento
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,34 +21,18 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", b =>
+            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloAgrupamento.Agrupamento", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CpfCnpj")
-                        .IsRequired()
-                        .HasColumnType("varchar(40)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Endereco")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
-
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TBCliente");
+                    b.ToTable("TBAgrupamento");
                 });
 #pragma warning restore 612, 618
         }

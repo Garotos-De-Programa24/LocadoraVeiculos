@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
-    public partial class AdicionandoTbVeiculo : Migration
+    public partial class AdicionandoVeiculo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,17 +22,17 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     KmPercorridos = table.Column<string>(type: "varchar(50)", nullable: false),
                     Combustivel = table.Column<string>(type: "varchar(50)", nullable: false),
                     Cor = table.Column<string>(type: "varchar(50)", nullable: false),
-                    AgrupamentoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    AgrupamentoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TBVeiculo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TBVeiculo_Agrupamento_AgrupamentoId",
+                        name: "FK_TBVeiculo_TBAgrupamento_AgrupamentoId",
                         column: x => x.AgrupamentoId,
-                        principalTable: "Agrupamento",
+                        principalTable: "TBAgrupamento",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
