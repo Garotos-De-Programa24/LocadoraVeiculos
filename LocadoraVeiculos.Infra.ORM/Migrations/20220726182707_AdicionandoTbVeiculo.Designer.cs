@@ -4,14 +4,16 @@ using LocadoraVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    partial class LocadoraVeiculoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220726182707_AdicionandoTbVeiculo")]
+    partial class AdicionandoTbVeiculo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,7 +146,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AgrupamentoId")
+                    b.Property<Guid?>("AgrupamentoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Ano")
@@ -214,9 +216,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 {
                     b.HasOne("LocadoraVeiculos.Dominio.ModuloAgrupamento.Agrupamento", "Agrupamento")
                         .WithMany()
-                        .HasForeignKey("AgrupamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AgrupamentoId");
 
                     b.Navigation("Agrupamento");
                 });

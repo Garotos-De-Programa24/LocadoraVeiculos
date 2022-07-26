@@ -22,6 +22,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
             Email = email;
             Telefone = telefone;
         }
+        public Guid ClienteId { get; set; }
         public Cliente Cliente { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }

@@ -19,6 +19,8 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
         public string Cor { get; set; }
         public Agrupamento Agrupamento { get; set; }
         
+        public Guid AgrupamentoId { get; set; }
+
         public Veiculo()
         {
             Agrupamento = new Agrupamento();
