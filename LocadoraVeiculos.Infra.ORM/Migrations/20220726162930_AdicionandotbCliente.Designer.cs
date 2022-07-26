@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20220726014045_AdicionarTabelasTbClientes")]
-    partial class AdicionarTabelasTbClientes
+    [Migration("20220726162930_AdicionandotbCliente")]
+    partial class AdicionandotbCliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

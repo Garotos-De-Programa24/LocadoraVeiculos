@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.Infra.ORM.Compartilhado
         {
             var configuracao = new ConfigurationBuilder()
               .SetBasePath(Directory.GetCurrentDirectory())
-              .AddJsonFile("ConfiguracaoAplicacao.json")
+              .AddJsonFile("ConfiguracaoAplicacaoORM.json")
               .Build();
 
             var connectionString = configuracao.GetConnectionString("SqlServer");

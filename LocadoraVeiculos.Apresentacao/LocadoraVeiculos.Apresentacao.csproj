@@ -45,6 +45,9 @@
     <None Update="ConfiguracaoAplicacao.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ConfiguracaoAplicacaoORM.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

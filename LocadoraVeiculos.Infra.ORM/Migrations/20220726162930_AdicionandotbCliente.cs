@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
-    public partial class AdicionarTabelasTbClientes : Migration
+    public partial class AdicionandotbCliente : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

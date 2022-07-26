@@ -17,10 +17,4 @@
     <ProjectReference Include="..\LocadoraVeiculos.Dominio\LocadoraVeiculos.Dominio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="ConfiguracaoAplicacao.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
