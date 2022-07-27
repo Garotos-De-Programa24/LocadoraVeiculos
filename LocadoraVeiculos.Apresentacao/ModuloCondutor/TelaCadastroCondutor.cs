@@ -44,7 +44,10 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
                 txtCPF.Text = condutor.Cpf;
                 txtEndereco.Text = condutor.Endereco;
                 MaskedCNHCondutor.Text = condutor.CnhCondutor;
-                dataValidade.Value = condutor.ValidadeCnh;
+                if (condutor.ValidadeCnh != DateTime.MinValue)
+                {
+                    dataValidade.Value = condutor.ValidadeCnh;
+                }                
                 txtEmail.Text = condutor.Email;
                 txtTelefone.Text = condutor.Telefone;
             }
