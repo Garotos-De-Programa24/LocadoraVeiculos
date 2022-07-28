@@ -11,19 +11,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 {
     public partial class TelaCadastroCondutor : Form
     {
-        //acho que da pra conseguir usar o serviçopra selecionar os Clientes
         private List<Cliente> clientes;
 
         public TelaCadastroCondutor(List<Cliente> clientes)
         {
             InitializeComponent();
             this.clientes = clientes;
-            //servicoCliente = new RepositorioClienteEmBancoDados();
             CarregarClientes();
-            //List<Cliente> clientes = servicoCliente.SelecionarTodos();
             
         }
-        
+
         private Condutor condutor;
         
         public Func<Condutor, Result<Condutor>> GravarRegistro { get; set; }
@@ -37,6 +34,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             set
             {
                 condutor = value;
+                if(condutor.Cliente != null)// para evitar o erro sempre no inserir, pois nao tera um cliente instanciado neste momento
                 comboCliente.Text = condutor.Cliente.Nome;
                 txtNome.Text = condutor.Nome;
                 txtCPF.Text = condutor.Cpf;

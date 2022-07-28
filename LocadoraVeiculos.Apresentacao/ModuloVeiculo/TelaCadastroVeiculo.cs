@@ -52,6 +52,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 txtKmPercorridos.Text = veiculo.KmPercorridos;
                 cBoxCombustivel.Text = veiculo.Combustivel;
                 txtCor.Text = veiculo.Cor;
+                if(veiculo.Agrupamento != null) //Para evitar de da erro na hora de intancir o novo veiculo, ele nao tera um agrupamento
                 cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
                 if(veiculo.Foto != null)
                 ExibirImagem();
@@ -72,7 +73,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             veiculo.KmPercorridos = txtKmPercorridos.Text;
             veiculo.Combustivel = cBoxCombustivel.Text;
             veiculo.Cor = txtCor.Text;
-            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;            
+            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
+            //Colocar a disponibilidade em true na inserção, pois está disponível
+            veiculo.Disponivel = true;
             veiculo.SalvarFoto(Veiculo);
 
             var resultadoValidacao = GravarRegistro(veiculo);

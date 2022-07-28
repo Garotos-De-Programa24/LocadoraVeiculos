@@ -36,7 +36,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 new DataGridViewTextBoxColumn { DataPropertyName = "Combustivel", HeaderText = "Combustível"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cor", HeaderText = "Cor"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Agrupamento", HeaderText = "Agrupamento"},
-                new DataGridViewImageColumn { DataPropertyName = "Foto",HeaderText = "Foto"},
+                new DataGridViewImageColumn   { DataPropertyName = "Foto",HeaderText = "Foto",ImageLayout = DataGridViewImageCellLayout.Stretch, Width = 50},
                 
             };
 

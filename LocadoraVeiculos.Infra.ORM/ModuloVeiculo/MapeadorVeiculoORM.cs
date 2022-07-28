@@ -20,6 +20,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloVeiculo
             builder.Property(x => x.Combustivel).HasColumnType("varchar(50)").IsRequired();
             builder.Property(x => x.Cor).HasColumnType("varchar(50)").IsRequired();
             builder.Property(x => x.Foto).HasColumnType("varbinary(MAX)");
+            builder.Property(x => x.Disponivel);
         }
     }
 }

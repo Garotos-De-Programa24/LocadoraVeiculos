@@ -34,6 +34,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
             {
                 planoCobranca = value;
                 txtNome.Text = planoCobranca.NomePlano;
+                if(planoCobranca.GrupoVeiculos != null) // para evitar que na hora de insirir, estar sem um Agrupamento no plano
                 cmbAgrupamento.Text = planoCobranca.GrupoVeiculos.Nome;
 
                 if(planoCobranca.ValorPorKm != 0)

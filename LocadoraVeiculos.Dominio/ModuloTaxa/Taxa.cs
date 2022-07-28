@@ -9,10 +9,7 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
 {
     public class Taxa : EntidadeBase<Taxa>
     {
-        public Taxa()
-        {
-
-        }
+        public Taxa(){}
         public Taxa(string equipamento, string valor, bool taxaDiaria)
         {
             Equipamento = equipamento;
