@@ -12,18 +12,17 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
     public partial class TelaCadastroCondutor : Form
     {
         //acho que da pra conseguir usar o serviçopra selecionar os Clientes
-        private RepositorioClienteEmBancoDados repositorioCliente;
+        private RepositorioClienteEmBancoDados servicoCliente;
+        private List<Cliente> clientes;
 
-        public TelaCadastroCondutor()
+        public TelaCadastroCondutor(List<Cliente> clientes)
         {
             InitializeComponent();
-            repositorioCliente = new RepositorioClienteEmBancoDados();
+            this.clientes = clientes;
+            //servicoCliente = new RepositorioClienteEmBancoDados();
+            CarregarClientes();
+            //List<Cliente> clientes = servicoCliente.SelecionarTodos();
             
-            List<Cliente> clientes = repositorioCliente.SelecionarTodos();
-            foreach (Cliente c in clientes)
-            {
-                comboCliente.Items.Add(c);
-            }
         }
         
         private Condutor condutor;
@@ -95,6 +94,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             return resultado;
         }
 
+        private void CarregarClientes()
+        {
+            if (clientes.Count > 0)
+            {
+                foreach (Cliente c in clientes)
+                {
+                    comboCliente.Items.Add(c);
+                }
+            }
+        }
         private void checkClienteCondutor_CheckedChanged(object sender, EventArgs e)
         {
             Cliente cliente = (Cliente)comboCliente.SelectedItem;

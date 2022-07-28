@@ -27,11 +27,7 @@ using LocadoraVeiculos.Infra.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.ModuloTaxa;
 using LocadoraVeiculos.Infra.ModuloVeiculo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
 {

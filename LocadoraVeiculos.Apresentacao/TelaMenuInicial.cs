@@ -10,8 +10,12 @@ using LocadoraVeiculos.Apresentacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.ModuloVeiculo;
 using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloFuncionario;
+using LocadoraVeiculos.Infra.ORM.Compartilhado;
+using LocadoraVeiculos.Infra.ORM.ModuloFuncionario;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao
@@ -142,8 +146,17 @@ namespace LocadoraVeiculos.Apresentacao
             bool statusLogin = false;
 
             //isto aqui serve apenas como controle de danos, cso de problemas na seleção dos Funcionarios, no momento do login.
-            RepositorioFuncionarioEmBancoDados rep = new RepositorioFuncionarioEmBancoDados();
-            var servicoFuncionario = new ServicoFuncionario(rep);
+            //RepositorioFuncionarioEmBancoDados rep = new RepositorioFuncionarioEmBancoDados();
+            var configuracao = new ConfigurationBuilder()
+              .SetBasePath(Directory.GetCurrentDirectory())
+              .AddJsonFile("ConfiguracaoAplicacaoORM.json")
+              .Build();
+
+            var connectionString = configuracao.GetConnectionString("SqlServer");
+            var contextoDadosOrm = new LocadoraVeiculoDbContext(connectionString);
+
+            RepositorioFuncionarioORM rep = new RepositorioFuncionarioORM(contextoDadosOrm);
+            var servicoFuncionario = new ServicoFuncionario(rep,contextoDadosOrm);
             TelaFuncionarioControl telaFuncionarioControl = new TelaFuncionarioControl();
             List<Funcionario> funcionarios = null;
             var resultado = servicoFuncionario.SelecionarTodos();

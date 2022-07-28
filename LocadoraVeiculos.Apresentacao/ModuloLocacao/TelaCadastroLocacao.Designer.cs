@@ -31,7 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lTitulo = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.lFuncionario = new System.Windows.Forms.Label();
             this.lCliente = new System.Windows.Forms.Label();
             this.lCondutor = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,14 +86,6 @@
             this.lTitulo.Size = new System.Drawing.Size(212, 25);
             this.lTitulo.TabIndex = 9;
             this.lTitulo.Text = "Locação de Veículos";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(599, 68);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(5, 561);
-            this.panel3.TabIndex = 6;
             // 
             // lFuncionario
             // 
@@ -299,6 +291,14 @@
             this.textBox2.Size = new System.Drawing.Size(432, 23);
             this.textBox2.TabIndex = 30;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(599, 68);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(5, 561);
+            this.panel3.TabIndex = 6;
+            // 
             // TelaCadastroLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -344,7 +344,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lTitulo;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lFuncionario;
         private System.Windows.Forms.Label lCliente;
         private System.Windows.Forms.Label lCondutor;
@@ -368,5 +367,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

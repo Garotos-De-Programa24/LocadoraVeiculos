@@ -2,6 +2,7 @@
 using FluentResults;
 using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
+using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using System;
@@ -13,17 +14,13 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
     public partial class TelaCadastroPlanoCobranca : Form
     {
         private PlanoCobranca planoCobranca;
-        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
 
-        public TelaCadastroPlanoCobranca()
+        public TelaCadastroPlanoCobranca(List<Agrupamento> agrupamentos)
         {
             InitializeComponent();
-            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
-            List<Agrupamento> grupo = repositorioAgrupamento.SelecionarTodos();
-            foreach (Agrupamento g in grupo)
-            {
-                cmbAgrupamento.Items.Add(g);
-            }
+            
+            CarregarClientes(agrupamentos);
+
         }
         public Func<PlanoCobranca, Result<PlanoCobranca>> GravarRegistro { get; set; }
 
@@ -94,7 +91,14 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança
             return tipoPlano;
 
         }
-
+        private void CarregarClientes(List<Agrupamento> agrupamentos)
+        {
+            cmbAgrupamento.Items.Clear();
+            foreach (var item in agrupamentos)
+            {
+                cmbAgrupamento.Items.Add(item);
+            }
+        }
         private void PreencherTipoPlano()
         {
             if(planoCobranca.TipoPlano == EnunPlano.Livre)

@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.Infra.Compartilhado
 
         public RepositorioBase()
         {
-            var configuracao = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("ConfiguracaoAplicacao.json").Build();
+            var configuracao = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("ConfiguracaoAplicacaoORM.json").Build();
             enderecoBanco = configuracao.GetConnectionString("SqlServer");
         }
 

@@ -16,5 +16,10 @@ namespace LocadoraVeiculos.Apresentacao.ModuloDevolucao
         {
             InitializeComponent();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

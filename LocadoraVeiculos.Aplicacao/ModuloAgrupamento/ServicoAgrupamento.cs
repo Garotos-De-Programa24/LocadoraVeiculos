@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
+using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using Serilog;
 using System;
@@ -11,9 +12,12 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
     public class ServicoAgrupamento
     {
         private IRepositorioAgrupamento repositorioAgrupamento;
-        public ServicoAgrupamento(IRepositorioAgrupamento repositorioAgrupamento)
+        private IContextoPersistencia contextoDados;
+
+        public ServicoAgrupamento(IRepositorioAgrupamento repositorioAgrupamento, IContextoPersistencia contextoDados)
         {
             this.repositorioAgrupamento = repositorioAgrupamento;
+            this.contextoDados = contextoDados;
         }
         public Result<Agrupamento> Inserir(Agrupamento agrupamento)
         {
@@ -39,7 +43,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
             try
             {
                 repositorioAgrupamento.Inserir(agrupamento);
-
+                contextoDados.GravarDados();
                 Log.Logger.Information("Grupo de Veiculos {AgrupamentoId} inserido com sucesso.", agrupamento.Id);
 
                 return Result.Ok(agrupamento);
@@ -79,6 +83,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
             try
             {
                 repositorioAgrupamento.Editar(agrupamento);
+                contextoDados.GravarDados();
 
                 Log.Logger.Information("Grupo de Veiculos {AgrupamentoId} editado com sucesso.", agrupamento.Id);
 
@@ -101,6 +106,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloAgrupamento
             try
             {
                 repositorioAgrupamento.Excluir(agrupamento);
+                contextoDados.GravarDados();
+
                 Log.Logger.Information("Grupo de Veiculos {AgrupamentoId} excluido com sucesso.", agrupamento.Id);
 
                 return Result.Ok(agrupamento);
