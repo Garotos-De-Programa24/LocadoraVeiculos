@@ -12,7 +12,6 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
     public partial class TelaCadastroCondutor : Form
     {
         //acho que da pra conseguir usar o serviçopra selecionar os Clientes
-        private RepositorioClienteEmBancoDados servicoCliente;
         private List<Cliente> clientes;
 
         public TelaCadastroCondutor(List<Cliente> clientes)

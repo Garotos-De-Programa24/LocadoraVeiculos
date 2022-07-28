@@ -12,22 +12,17 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 {
     public partial class TelaCadastroVeiculo : Form
     {
-        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         private Veiculo veiculo;
-
+        private List<Agrupamento> grupoDeVeiculos;
         public string caminhoFoto = "";
 
 
-        public TelaCadastroVeiculo()
+        public TelaCadastroVeiculo(List<Agrupamento> grupoDeVeiculos)
         {
             InitializeComponent();
-            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+            this.grupoDeVeiculos = grupoDeVeiculos;
 
-            List<Agrupamento> grupos = repositorioAgrupamento.SelecionarTodos();
-            foreach (Agrupamento c in grupos)
-            {
-                cBoxAgrupamento.Items.Add(c);
-            }
+            CarregarAgrupamentos();
 
             cBoxCombustivel.Items.Add("Gasolina");
             cBoxCombustivel.Items.Add("Alcool");
@@ -37,6 +32,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         }
 
         
+
         public Func<Veiculo, Result<Veiculo>> GravarRegistro { get; set; }
 
         public Veiculo Veiculo
@@ -96,7 +92,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             }
 
         }
-
+        private void CarregarAgrupamentos()
+        {
+            if (grupoDeVeiculos.Count > 0)
+            {
+                foreach (Agrupamento c in grupoDeVeiculos)
+                {
+                    cBoxAgrupamento.Items.Add(c);
+                }
+            }
+        }
         public void ExibirImagem()
         {            
             using (var img = new MemoryStream(veiculo.Foto))

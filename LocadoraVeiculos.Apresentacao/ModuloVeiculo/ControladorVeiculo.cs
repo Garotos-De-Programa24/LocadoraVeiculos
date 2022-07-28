@@ -1,5 +1,7 @@
-﻿using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
+﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
+using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,16 +12,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
     {        
         private TelaVeiculoControl telaVeiculoControl;
         private readonly ServicoVeiculo servicoVeiculo;
-
-
-        public ControladorVeiculo(ServicoVeiculo servicoVeiculo)
+        private ServicoAgrupamento servicoAgrupamento;
+        public ControladorVeiculo(ServicoVeiculo servicoVeiculo,ServicoAgrupamento servicoAgrupamento)
         {            
             this.servicoVeiculo = servicoVeiculo;
+            this.servicoAgrupamento = servicoAgrupamento;
         }
 
         public override void Inserir()
         {
-            TelaCadastroVeiculo tela = new TelaCadastroVeiculo();
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo(ObterAgrupamentos());
             tela.Veiculo = new Veiculo();
             tela.GravarRegistro = servicoVeiculo.Inserir;
 
@@ -27,6 +29,18 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             if (resultado == DialogResult.OK)
                 CarregaVeiculo();
         }
+
+        private List<Agrupamento> ObterAgrupamentos()
+        {
+            var resultadoDoresult = servicoAgrupamento.SelecionarTodos();
+            List<Agrupamento> agrupamentos = new List<Agrupamento>();
+
+            if (resultadoDoresult.IsSuccess)
+                agrupamentos = resultadoDoresult.Value;
+
+            return agrupamentos;
+        }
+
         public override void Editar()
         {
             Veiculo veiculoSelecionado = ObtemVeiculoSelecionado();
@@ -38,7 +52,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 return;
             }
 
-            TelaCadastroVeiculo tela = new TelaCadastroVeiculo();
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo(ObterAgrupamentos());
 
             tela.Veiculo = veiculoSelecionado;
 

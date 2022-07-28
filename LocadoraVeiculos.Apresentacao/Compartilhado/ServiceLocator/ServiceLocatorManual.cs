@@ -97,7 +97,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             controladores.Add("ControladorCondutor", new ControladorCondutor(servicoCondutor,servicoCliente));
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(servicoPlanoCobranca,servicoGrupoVeiculo));
-            controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo));
+            controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo,servicoGrupoVeiculo));
         }
 
        
