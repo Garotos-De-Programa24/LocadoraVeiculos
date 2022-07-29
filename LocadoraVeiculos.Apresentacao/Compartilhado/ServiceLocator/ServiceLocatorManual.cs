@@ -2,6 +2,7 @@
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculos.Aplicacao.ModuloLocacao;
 using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
@@ -9,6 +10,7 @@ using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloCondutor;
 using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
+using LocadoraVeiculos.Apresentacao.ModuloLocacao;
 using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.ModuloVeiculo;
@@ -24,6 +26,7 @@ using LocadoraVeiculos.Infra.ORM.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ORM.ModuloCliente;
 using LocadoraVeiculos.Infra.ORM.ModuloCondutor;
 using LocadoraVeiculos.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculos.Infra.ORM.ModuloLocacao;
 using LocadoraVeiculos.Infra.ORM.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.ORM.ModuloVeiculo;
 using Microsoft.Extensions.Configuration;
@@ -80,6 +83,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             var repositorioCondutor = new RepositorioCondutorORM(contextoDadosOrm);
             var repositorioPlanoCobranca = new RepositorioPlanoDeCobrancaORM(contextoDadosOrm);
             var repositorioVeiculo = new RepositorioVeiculoORM(contextoDadosOrm);
+            var repositorioLocacao = new RepositorioLocacaoORM(contextoDadosOrm);
 
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario,contextoDadosOrm);
             var servicoCliente = new ServicoCliente(repositorioCliente,contextoDadosOrm);
@@ -88,6 +92,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             var servicoCondutor = new ServicoCondutor(repositorioCondutor,contextoDadosOrm);
             var servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca,contextoDadosOrm);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo,contextoDadosOrm);
+            var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -98,6 +103,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(servicoPlanoCobranca,servicoGrupoVeiculo));
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo,servicoGrupoVeiculo));
+            controladores.Add("ControladorLocacao", new ControladorLocacao(servicoLocacao));
         }
 
        
