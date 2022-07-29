@@ -15,18 +15,19 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloLocacao
         {
             builder.ToTable("TbLocacao");
             builder.Property(x => x.Id).ValueGeneratedNever();
-            builder.Property(x => x.Funcionario);
-            builder.Property(x => x.Plano);
-            builder.Property(x => x.Taxa);
-            builder.Property(x => x.Veiculo);
-            builder.Property(x => x.Agrupamento);
-            builder.Property(x => x.Condutor);
-            builder.Property(x => x.Cliente);
+            builder.HasOne(x => x.Funcionario);
+            builder.HasOne(x => x.Plano);
+            builder.HasOne(x => x.Taxa);
+            builder.HasOne(x => x.Veiculo);
+            builder.HasOne(x => x.Agrupamento);
+            builder.HasOne(x => x.Condutor);
+            builder.HasOne(x => x.Cliente);
             builder.Property(x => x.DataLocacao).IsRequired(); 
-            builder.Property(x => x.DataDevolucao).IsRequired();
-            builder.Property(x => x.ValorInicio).HasColumnType("double").IsRequired(); 
-            builder.Property(x => x.ValorFinal).HasColumnType("double").IsRequired();
+            builder.Property(x => x.DataDevolucao);
+            builder.Property(x => x.ValorInicio).HasColumnType("decimal(18,2)"); 
+            builder.Property(x => x.ValorFinal).HasColumnType("decimal(18,2)");
 
+            
         }
     }
 }
