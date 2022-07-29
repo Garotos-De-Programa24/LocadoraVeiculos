@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lTitulo = new System.Windows.Forms.Label();
             this.lFuncionario = new System.Windows.Forms.Label();
             this.lCliente = new System.Windows.Forms.Label();
@@ -68,7 +69,7 @@
             this.lSubTotal = new System.Windows.Forms.Label();
             this.lValor = new System.Windows.Forms.Label();
             this.lCifrao = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +90,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1208, 53);
             this.panel2.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(610, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(209, 25);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Resumo de Locação";
             // 
             // lTitulo
             // 
@@ -442,31 +455,20 @@
             this.lCifrao.TabIndex = 44;
             this.lCifrao.Text = "R$";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(610, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 25);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Resumo de Locação";
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(599, 68);
+            this.panel3.Location = new System.Drawing.Point(597, 68);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(5, 561);
-            this.panel3.TabIndex = 6;
+            this.panel3.Size = new System.Drawing.Size(5, 567);
+            this.panel3.TabIndex = 45;
             // 
             // TelaCadastroLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 641);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.lCifrao);
             this.Controls.Add(this.lValor);
             this.Controls.Add(this.lSubTotal);
@@ -504,7 +506,6 @@
             this.Controls.Add(this.lCondutor);
             this.Controls.Add(this.lCliente);
             this.Controls.Add(this.lFuncionario);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -563,5 +564,6 @@
         private System.Windows.Forms.Label lValor;
         private System.Windows.Forms.Label lCifrao;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel3;
     }
 }
