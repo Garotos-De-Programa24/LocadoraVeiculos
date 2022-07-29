@@ -44,5 +44,10 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloCondutor
         {
             return condutores.Include(x => x.Cliente).ToList();
         }
+
+        public List<Condutor> SelecionarPorClienteId(Guid id)
+        {
+            return condutores.Include(x => x.Cliente).ToList();
+        }
     }
 }

@@ -257,6 +257,7 @@
             this.cboxCliente.Name = "cboxCliente";
             this.cboxCliente.Size = new System.Drawing.Size(432, 23);
             this.cboxCliente.TabIndex = 22;
+            this.cboxCliente.SelectedIndexChanged += new System.EventHandler(this.cboxCliente_SelectedIndexChanged);
             // 
             // cboxCondutor
             // 

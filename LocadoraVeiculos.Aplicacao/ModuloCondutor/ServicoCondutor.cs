@@ -99,6 +99,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
                 return Result.Fail(msgErro);
             }
         }
+
+        
+
         public Result<Condutor> Excluir(Condutor condutor)
         {
             Log.Logger.Information("Tentando excluir o Condutor @{condutor}", condutor);
@@ -195,6 +198,22 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 return Result.Ok(repositorioCondutor.SelecionarPorId(id));
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no Sistema ao tentar selecionar o condutor";
+
+                Log.Logger.Error(ex, msgErro + "{CondutorId}", id);
+
+                return Result.Fail(msgErro);
+            }
+        }
+
+        public Result<Condutor> SelecionarPorClienteId(Guid id)
+        {
+            try
+            {
+                return Result.Ok(repositorioCondutor.SelecionarPorClienteId(id));
             }
             catch (Exception ex)
             {

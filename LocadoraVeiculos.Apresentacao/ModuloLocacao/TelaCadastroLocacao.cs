@@ -1,6 +1,8 @@
 ﻿using FluentResults;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Dominio.ModuloLocação;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
@@ -24,6 +26,8 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         private RepositorioVeiculoEmBancoDados repositorioVeiculo;
         private RepositorioPlanoCobrancaEmBancoDados repositorioPlano;
         private RepositorioTaxaEmBancoDados repositorioTaxa;
+
+        private ServicoCondutor servicoCondutor;
         public TelaCadastroLocacao()
         {
             InitializeComponent();
@@ -35,6 +39,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             repositorioPlano = new RepositorioPlanoCobrancaEmBancoDados();
             repositorioTaxa = new RepositorioTaxaEmBancoDados();
 
+            servicoCondutor = new ServicoCondutor();
             //configurar combo box iniciais
 
             List<Cliente> clientes = repositorioCliente.SelecionarTodos();
@@ -67,6 +72,32 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             }
         }
 
-       
+        private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)cboxCliente.SelectedItem;
+
+            var resultado = servicoCondutor.SelecionarPorClienteId(cliente.Id);
+
+            if (resultado.IsSuccess)
+            {
+                List<Condutor> condutores = resultado.Value;
+
+                AtualizarCondutores(condutores);
+            }
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Tela de Locação",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void AtualizarCondutores(List<Condutor> condutores)
+        {
+            cboxCondutor.Items.Clear();
+
+            foreach(Condutor c in condutores)
+            cboxCondutor.Items.Add(c);
+        }
     }
 }
