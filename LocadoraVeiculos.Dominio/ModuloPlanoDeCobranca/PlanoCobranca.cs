@@ -72,11 +72,7 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
             return strValor;
         }
 
-        public override void Atualizar(PlanoCobranca Registro)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public override bool Equals(object obj)
         {
             PlanoCobranca plano = obj as PlanoCobranca;

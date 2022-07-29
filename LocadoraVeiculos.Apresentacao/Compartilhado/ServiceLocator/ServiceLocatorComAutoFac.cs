@@ -27,6 +27,7 @@ using LocadoraVeiculos.Infra.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Infra.ModuloTaxa;
 using LocadoraVeiculos.Infra.ModuloVeiculo;
+using LocadoraVeiculos.Infra.ORM.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +43,8 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
         public ServiceLocatorComAutoFac()
         {
             var builder = new ContainerBuilder();
-
-            builder.RegisterType<RepositorioClienteEmBancoDados>().As<IRepositorioCliente>();
+            //repositorioClienteORM            
+            builder.RegisterType<RepositorioClienteORM>().As<IRepositorioCliente>();
             builder.RegisterType<ServicoCliente>().AsSelf();
             builder.RegisterType<ControladorCliente>().AsSelf();
 

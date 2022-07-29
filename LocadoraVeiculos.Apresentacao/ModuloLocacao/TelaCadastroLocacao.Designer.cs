@@ -46,15 +46,30 @@
             this.lTempoLocacao = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cboxCliente = new System.Windows.Forms.ComboBox();
+            this.cboxCondutor = new System.Windows.Forms.ComboBox();
+            this.cboxAgrupamento = new System.Windows.Forms.ComboBox();
+            this.cboxVeiculo = new System.Windows.Forms.ComboBox();
+            this.cboxPlano = new System.Windows.Forms.ComboBox();
+            this.cboxTaxa = new System.Windows.Forms.ComboBox();
+            this.txtFuncionario = new System.Windows.Forms.TextBox();
+            this.dataLocacao = new System.Windows.Forms.DateTimePicker();
+            this.txtTempoLocacao = new System.Windows.Forms.TextBox();
+            this.lTituloDadosLocador = new System.Windows.Forms.Label();
+            this.lDadosCliente = new System.Windows.Forms.Label();
+            this.lTituloDadosVeiculo = new System.Windows.Forms.Label();
+            this.lDadosVeiculo = new System.Windows.Forms.Label();
+            this.lDadosTaxa = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lDadosLocacao = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnGerarPdf = new System.Windows.Forms.Button();
+            this.btnDevolucao = new System.Windows.Forms.Button();
+            this.lSubTotal = new System.Windows.Forms.Label();
+            this.lValor = new System.Windows.Forms.Label();
+            this.lCifrao = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +84,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lTitulo);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -230,89 +246,251 @@
             this.btnCadastrar.Text = "Cadastrar Locação";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cboxCliente
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(158, 114);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(432, 23);
-            this.comboBox1.TabIndex = 22;
+            this.cboxCliente.FormattingEnabled = true;
+            this.cboxCliente.Location = new System.Drawing.Point(158, 114);
+            this.cboxCliente.Name = "cboxCliente";
+            this.cboxCliente.Size = new System.Drawing.Size(432, 23);
+            this.cboxCliente.TabIndex = 22;
             // 
-            // comboBox2
+            // cboxCondutor
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(158, 154);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(432, 23);
-            this.comboBox2.TabIndex = 23;
+            this.cboxCondutor.FormattingEnabled = true;
+            this.cboxCondutor.Location = new System.Drawing.Point(158, 154);
+            this.cboxCondutor.Name = "cboxCondutor";
+            this.cboxCondutor.Size = new System.Drawing.Size(432, 23);
+            this.cboxCondutor.TabIndex = 23;
             // 
-            // comboBox3
+            // cboxAgrupamento
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(158, 194);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(432, 23);
-            this.comboBox3.TabIndex = 24;
+            this.cboxAgrupamento.FormattingEnabled = true;
+            this.cboxAgrupamento.Location = new System.Drawing.Point(158, 194);
+            this.cboxAgrupamento.Name = "cboxAgrupamento";
+            this.cboxAgrupamento.Size = new System.Drawing.Size(432, 23);
+            this.cboxAgrupamento.TabIndex = 24;
             // 
-            // comboBox4
+            // cboxVeiculo
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(158, 234);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(432, 23);
-            this.comboBox4.TabIndex = 25;
+            this.cboxVeiculo.FormattingEnabled = true;
+            this.cboxVeiculo.Location = new System.Drawing.Point(158, 234);
+            this.cboxVeiculo.Name = "cboxVeiculo";
+            this.cboxVeiculo.Size = new System.Drawing.Size(432, 23);
+            this.cboxVeiculo.TabIndex = 25;
             // 
-            // comboBox5
+            // cboxPlano
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(158, 274);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(432, 23);
-            this.comboBox5.TabIndex = 26;
+            this.cboxPlano.FormattingEnabled = true;
+            this.cboxPlano.Location = new System.Drawing.Point(158, 274);
+            this.cboxPlano.Name = "cboxPlano";
+            this.cboxPlano.Size = new System.Drawing.Size(432, 23);
+            this.cboxPlano.TabIndex = 26;
             // 
-            // comboBox6
+            // cboxTaxa
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(158, 314);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(432, 23);
-            this.comboBox6.TabIndex = 27;
+            this.cboxTaxa.FormattingEnabled = true;
+            this.cboxTaxa.Location = new System.Drawing.Point(158, 314);
+            this.cboxTaxa.Name = "cboxTaxa";
+            this.cboxTaxa.Size = new System.Drawing.Size(432, 23);
+            this.cboxTaxa.TabIndex = 27;
             // 
-            // textBox1
+            // txtFuncionario
             // 
-            this.textBox1.Location = new System.Drawing.Point(158, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(432, 23);
-            this.textBox1.TabIndex = 28;
+            this.txtFuncionario.Location = new System.Drawing.Point(158, 74);
+            this.txtFuncionario.Name = "txtFuncionario";
+            this.txtFuncionario.Size = new System.Drawing.Size(432, 23);
+            this.txtFuncionario.TabIndex = 28;
             // 
-            // dateTimePicker1
+            // dataLocacao
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(158, 484);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(432, 23);
-            this.dateTimePicker1.TabIndex = 29;
+            this.dataLocacao.Location = new System.Drawing.Point(158, 484);
+            this.dataLocacao.Name = "dataLocacao";
+            this.dataLocacao.Size = new System.Drawing.Size(432, 23);
+            this.dataLocacao.TabIndex = 29;
             // 
-            // textBox2
+            // txtTempoLocacao
             // 
-            this.textBox2.Location = new System.Drawing.Point(158, 523);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(432, 23);
-            this.textBox2.TabIndex = 30;
+            this.txtTempoLocacao.Location = new System.Drawing.Point(158, 523);
+            this.txtTempoLocacao.Name = "txtTempoLocacao";
+            this.txtTempoLocacao.Size = new System.Drawing.Size(432, 23);
+            this.txtTempoLocacao.TabIndex = 30;
+            // 
+            // lTituloDadosLocador
+            // 
+            this.lTituloDadosLocador.AutoSize = true;
+            this.lTituloDadosLocador.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.lTituloDadosLocador.Location = new System.Drawing.Point(621, 75);
+            this.lTituloDadosLocador.Name = "lTituloDadosLocador";
+            this.lTituloDadosLocador.Size = new System.Drawing.Size(130, 18);
+            this.lTituloDadosLocador.TabIndex = 31;
+            this.lTituloDadosLocador.Text = "Dados do Cliente";
+            // 
+            // lDadosCliente
+            // 
+            this.lDadosCliente.AutoSize = true;
+            this.lDadosCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lDadosCliente.Location = new System.Drawing.Point(621, 104);
+            this.lDadosCliente.Name = "lDadosCliente";
+            this.lDadosCliente.Size = new System.Drawing.Size(13, 17);
+            this.lDadosCliente.TabIndex = 32;
+            this.lDadosCliente.Text = "-";
+            // 
+            // lTituloDadosVeiculo
+            // 
+            this.lTituloDadosVeiculo.AutoSize = true;
+            this.lTituloDadosVeiculo.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.lTituloDadosVeiculo.Location = new System.Drawing.Point(621, 275);
+            this.lTituloDadosVeiculo.Name = "lTituloDadosVeiculo";
+            this.lTituloDadosVeiculo.Size = new System.Drawing.Size(130, 18);
+            this.lTituloDadosVeiculo.TabIndex = 33;
+            this.lTituloDadosVeiculo.Text = "Dados do Veículo";
+            // 
+            // lDadosVeiculo
+            // 
+            this.lDadosVeiculo.AutoSize = true;
+            this.lDadosVeiculo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lDadosVeiculo.Location = new System.Drawing.Point(621, 304);
+            this.lDadosVeiculo.Name = "lDadosVeiculo";
+            this.lDadosVeiculo.Size = new System.Drawing.Size(13, 17);
+            this.lDadosVeiculo.TabIndex = 34;
+            this.lDadosVeiculo.Text = "-";
+            // 
+            // lDadosTaxa
+            // 
+            this.lDadosTaxa.AutoSize = true;
+            this.lDadosTaxa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lDadosTaxa.Location = new System.Drawing.Point(925, 104);
+            this.lDadosTaxa.Name = "lDadosTaxa";
+            this.lDadosTaxa.Size = new System.Drawing.Size(13, 17);
+            this.lDadosTaxa.TabIndex = 36;
+            this.lDadosTaxa.Text = "-";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(925, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 18);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Dados de Taxas";
+            // 
+            // lDadosLocacao
+            // 
+            this.lDadosLocacao.AutoSize = true;
+            this.lDadosLocacao.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lDadosLocacao.Location = new System.Drawing.Point(925, 304);
+            this.lDadosLocacao.Name = "lDadosLocacao";
+            this.lDadosLocacao.Size = new System.Drawing.Size(13, 17);
+            this.lDadosLocacao.TabIndex = 38;
+            this.lDadosLocacao.Text = "-";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(925, 275);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 18);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Dados do Locação";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Location = new System.Drawing.Point(610, 524);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(584, 5);
+            this.panel4.TabIndex = 39;
+            // 
+            // btnGerarPdf
+            // 
+            this.btnGerarPdf.Location = new System.Drawing.Point(892, 591);
+            this.btnGerarPdf.Name = "btnGerarPdf";
+            this.btnGerarPdf.Size = new System.Drawing.Size(148, 38);
+            this.btnGerarPdf.TabIndex = 41;
+            this.btnGerarPdf.Text = "Gerar PDF";
+            this.btnGerarPdf.UseVisualStyleBackColor = true;
+            // 
+            // btnDevolucao
+            // 
+            this.btnDevolucao.Location = new System.Drawing.Point(1046, 591);
+            this.btnDevolucao.Name = "btnDevolucao";
+            this.btnDevolucao.Size = new System.Drawing.Size(148, 38);
+            this.btnDevolucao.TabIndex = 40;
+            this.btnDevolucao.Text = "Fazer Devolução";
+            this.btnDevolucao.UseVisualStyleBackColor = true;
+            // 
+            // lSubTotal
+            // 
+            this.lSubTotal.AutoSize = true;
+            this.lSubTotal.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.lSubTotal.Location = new System.Drawing.Point(621, 545);
+            this.lSubTotal.Name = "lSubTotal";
+            this.lSubTotal.Size = new System.Drawing.Size(168, 18);
+            this.lSubTotal.TabIndex = 42;
+            this.lSubTotal.Text = "Sub-Total da Locação: ";
+            // 
+            // lValor
+            // 
+            this.lValor.AutoSize = true;
+            this.lValor.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lValor.Location = new System.Drawing.Point(795, 546);
+            this.lValor.Name = "lValor";
+            this.lValor.Size = new System.Drawing.Size(32, 17);
+            this.lValor.TabIndex = 43;
+            this.lValor.Text = "0,00";
+            // 
+            // lCifrao
+            // 
+            this.lCifrao.AutoSize = true;
+            this.lCifrao.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lCifrao.Location = new System.Drawing.Point(848, 546);
+            this.lCifrao.Name = "lCifrao";
+            this.lCifrao.Size = new System.Drawing.Size(23, 17);
+            this.lCifrao.TabIndex = 44;
+            this.lCifrao.Text = "R$";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(610, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(209, 25);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Resumo de Locação";
             // 
             // TelaCadastroLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 641);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox6);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lCifrao);
+            this.Controls.Add(this.lValor);
+            this.Controls.Add(this.lSubTotal);
+            this.Controls.Add(this.btnGerarPdf);
+            this.Controls.Add(this.btnDevolucao);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.lDadosLocacao);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lDadosTaxa);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lDadosVeiculo);
+            this.Controls.Add(this.lTituloDadosVeiculo);
+            this.Controls.Add(this.lDadosCliente);
+            this.Controls.Add(this.lTituloDadosLocador);
+            this.Controls.Add(this.txtTempoLocacao);
+            this.Controls.Add(this.dataLocacao);
+            this.Controls.Add(this.txtFuncionario);
+            this.Controls.Add(this.cboxTaxa);
+            this.Controls.Add(this.cboxPlano);
+            this.Controls.Add(this.cboxVeiculo);
+            this.Controls.Add(this.cboxAgrupamento);
+            this.Controls.Add(this.cboxCondutor);
+            this.Controls.Add(this.cboxCliente);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lTempoLocacao);
@@ -330,8 +508,12 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroLocacao";
-            this.Text = "TelaCadastroLocacao";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -359,14 +541,29 @@
         private System.Windows.Forms.Label lTempoLocacao;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnCadastrar;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox cboxCliente;
+        private System.Windows.Forms.ComboBox cboxCondutor;
+        private System.Windows.Forms.ComboBox cboxAgrupamento;
+        private System.Windows.Forms.ComboBox cboxVeiculo;
+        private System.Windows.Forms.ComboBox cboxPlano;
+        private System.Windows.Forms.ComboBox cboxTaxa;
+        private System.Windows.Forms.TextBox txtFuncionario;
+        private System.Windows.Forms.DateTimePicker dataLocacao;
+        private System.Windows.Forms.TextBox txtTempoLocacao;
+        private System.Windows.Forms.Label lTituloDadosLocador;
+        private System.Windows.Forms.Label lDadosCliente;
+        private System.Windows.Forms.Label lTituloDadosVeiculo;
+        private System.Windows.Forms.Label lDadosVeiculo;
+        private System.Windows.Forms.Label lDadosTaxa;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lDadosLocacao;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnGerarPdf;
+        private System.Windows.Forms.Button btnDevolucao;
+        private System.Windows.Forms.Label lSubTotal;
+        private System.Windows.Forms.Label lValor;
+        private System.Windows.Forms.Label lCifrao;
+        private System.Windows.Forms.Label label1;
     }
 }

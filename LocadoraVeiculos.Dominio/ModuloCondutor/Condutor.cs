@@ -32,10 +32,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
         public string Telefone { get; set; }
         public string Email { get; set; }
 
-        public override void Atualizar(Condutor Registro)
-        {
-            //teste
-        }
+        
         public override bool Equals(object obj)
         {
             Condutor condutor = obj as Condutor;

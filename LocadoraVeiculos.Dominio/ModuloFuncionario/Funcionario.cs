@@ -26,10 +26,7 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
         public string Senha { get; set; }        
         public bool Gerente { get; set; }
 
-        public override void Atualizar(Funcionario Registro)
-        {
-            throw new NotImplementedException();
-        }
+        
         public override bool Equals(object obj)
         {
             Funcionario funcionario = obj as Funcionario;

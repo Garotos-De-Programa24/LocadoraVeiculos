@@ -48,7 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{DDF556D8-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ORM", "ORM", "{2C4B1428-787D-4C1B-8C15-2B0780995F2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Infra.ORM", "LocadoraVeiculos.Infra.ORM\LocadoraVeiculos.Infra.ORM.csproj", "{22E28E4C-B135-4F26-919B-D7D082CE333B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Infra.ORM", "LocadoraVeiculos.Infra.ORM\LocadoraVeiculos.Infra.ORM.csproj", "{22E28E4C-B135-4F26-919B-D7D082CE333B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

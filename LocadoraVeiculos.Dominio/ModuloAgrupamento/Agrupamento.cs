@@ -20,11 +20,7 @@ namespace LocadoraVeiculos.Dominio.ModuloAgrupamento
         }
 
         public string Nome { get; set; }        
-
-        public override void Atualizar(Agrupamento Registro)
-        {
-            //teste
-        }
+                
         public override bool Equals(object obj)
         {
             Agrupamento agrupamento = obj as Agrupamento;

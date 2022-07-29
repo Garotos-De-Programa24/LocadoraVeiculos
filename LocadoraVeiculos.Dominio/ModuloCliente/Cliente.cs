@@ -23,10 +23,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
         public string Telefone { get; set; }
         public string Email { get; set; }
 
-        public override void Atualizar(Cliente Registro)
-        {
-            //teste
-        }
+        
         public override bool Equals(object obj)
         {
             Cliente cliente = obj as Cliente;

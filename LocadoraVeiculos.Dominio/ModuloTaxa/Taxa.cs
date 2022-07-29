@@ -23,10 +23,7 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         public string Valor { get; set; }        
         public bool TaxaDiaria { get; set; }
 
-        public override void Atualizar(Taxa Registro)
-        {
-            throw new NotImplementedException();
-        }
+        
         public override bool Equals(object obj)
         {
             Taxa taxa = obj as Taxa;

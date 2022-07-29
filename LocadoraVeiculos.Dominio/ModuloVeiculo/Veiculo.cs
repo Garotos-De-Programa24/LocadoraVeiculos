@@ -57,10 +57,7 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
             return novaFoto;
         }
 
-        public override void Atualizar(Veiculo Registro)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override bool Equals(object obj)
         {
