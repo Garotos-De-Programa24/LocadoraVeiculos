@@ -17,10 +17,12 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloFuncionario
             funcionarios = dbContext.Set<Funcionario>();
             this.dbContext = dbContext;
         }
+
         public void Inserir(Funcionario novoRegistro)
         {
             funcionarios.Add(novoRegistro);
         }
+
         public void Editar(Funcionario registro)
         {
             funcionarios.Update(registro);
