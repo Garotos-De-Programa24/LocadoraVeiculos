@@ -41,8 +41,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
 {
     public class ServiceLocatorManual : IServiceLocator
     {
-        private Dictionary<string, ControladorBase> controladores;
-       
+        private Dictionary<string, ControladorBase> controladores;        
         public ServiceLocatorManual()
         {
             InicializarControladores();
@@ -103,9 +102,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(servicoPlanoCobranca,servicoGrupoVeiculo));
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo,servicoGrupoVeiculo));
-            controladores.Add("ControladorLocacao", new ControladorLocacao(servicoLocacao));
+            controladores.Add("ControladorLocacao", new ControladorLocacao(servicoLocacao,servicoGrupoVeiculo,servicoCondutor,servicoCliente,servicoVeiculo,servicoTaxa,servicoPlanoCobranca));
         }
-
-       
     }
 }

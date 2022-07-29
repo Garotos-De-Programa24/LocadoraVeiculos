@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaMenuInicial));
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.RodaPé = new System.Windows.Forms.StatusStrip();
             this.lValid = new System.Windows.Forms.ToolStripStatusLabel();
+            this.status = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolControl = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnCadastrar = new System.Windows.Forms.ToolStripButton();
@@ -52,7 +54,7 @@
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.lLogin = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnLocacao = new System.Windows.Forms.Button();
             this.RodaPé.SuspendLayout();
             this.toolControl.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,6 +83,14 @@
             // 
             this.lValid.Name = "lValid";
             this.lValid.Size = new System.Drawing.Size(0, 17);
+            // 
+            // status
+            // 
+            this.status.ActiveLinkColor = System.Drawing.Color.Black;
+            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(47, 17);
+            this.status.Text = "Rodapé";
             // 
             // toolControl
             // 
@@ -374,13 +384,25 @@
             this.txtLogin.Size = new System.Drawing.Size(150, 23);
             this.txtLogin.TabIndex = 5;
             // 
-            // status
+            // btnLocacao
             // 
-            this.status.ActiveLinkColor = System.Drawing.Color.Black;
-            this.status.BackColor = System.Drawing.Color.Transparent;
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(47, 17);
-            this.status.Text = "Rodapé";
+            this.btnLocacao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLocacao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLocacao.FlatAppearance.BorderSize = 0;
+            this.btnLocacao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnLocacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocacao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLocacao.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnLocacao.Image = ((System.Drawing.Image)(resources.GetObject("btnLocacao.Image")));
+            this.btnLocacao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLocacao.Location = new System.Drawing.Point(0, 352);
+            this.btnLocacao.Name = "btnLocacao";
+            this.btnLocacao.Size = new System.Drawing.Size(151, 34);
+            this.btnLocacao.TabIndex = 6;
+            this.btnLocacao.Text = "Locação";
+            this.btnLocacao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLocacao.UseVisualStyleBackColor = false;
+            this.btnLocacao.Click += new System.EventHandler(this.btnLocacao_Click);
             // 
             // TelaMenuInicial
             // 
@@ -388,6 +410,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1270, 641);
+            this.Controls.Add(this.btnLocacao);
             this.Controls.Add(this.RodaPé);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.panel1);
@@ -441,5 +464,6 @@
         private System.Windows.Forms.Label lTitulo;
         private System.Windows.Forms.Label lStatus;
         private System.Windows.Forms.ToolStripStatusLabel status;
+        private System.Windows.Forms.Button btnLocacao;
     }
 }

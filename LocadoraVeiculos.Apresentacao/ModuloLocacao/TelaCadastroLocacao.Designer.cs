@@ -187,12 +187,14 @@
             // 
             // listEquipamentos
             // 
+            this.listEquipamentos.DisplayMember = "Equipamento";
             this.listEquipamentos.FormattingEnabled = true;
             this.listEquipamentos.ItemHeight = 15;
             this.listEquipamentos.Location = new System.Drawing.Point(158, 357);
             this.listEquipamentos.Name = "listEquipamentos";
             this.listEquipamentos.Size = new System.Drawing.Size(332, 109);
             this.listEquipamentos.TabIndex = 15;
+            this.listEquipamentos.ValueMember = "Equipamento";
             // 
             // btnAdicionar
             // 
@@ -202,6 +204,7 @@
             this.btnAdicionar.TabIndex = 16;
             this.btnAdicionar.Text = "Adicionar Equipamento";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnRemover
             // 
@@ -211,6 +214,7 @@
             this.btnRemover.TabIndex = 17;
             this.btnRemover.Text = "Remover Equipamento";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // lDataLocacao
             // 
@@ -252,54 +256,75 @@
             // 
             // cboxCliente
             // 
+            this.cboxCliente.DisplayMember = "Nome";
+            this.cboxCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCliente.FormattingEnabled = true;
             this.cboxCliente.Location = new System.Drawing.Point(158, 114);
             this.cboxCliente.Name = "cboxCliente";
             this.cboxCliente.Size = new System.Drawing.Size(432, 23);
             this.cboxCliente.TabIndex = 22;
+            this.cboxCliente.ValueMember = "Nome";
+            this.cboxCliente.SelectedIndexChanged += new System.EventHandler(this.cboxCliente_SelectedIndexChanged);
             // 
             // cboxCondutor
             // 
+            this.cboxCondutor.DisplayMember = "Nome";
+            this.cboxCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCondutor.FormattingEnabled = true;
             this.cboxCondutor.Location = new System.Drawing.Point(158, 154);
             this.cboxCondutor.Name = "cboxCondutor";
             this.cboxCondutor.Size = new System.Drawing.Size(432, 23);
             this.cboxCondutor.TabIndex = 23;
+            this.cboxCondutor.ValueMember = "Nome";
             // 
             // cboxAgrupamento
             // 
+            this.cboxAgrupamento.DisplayMember = "Nome";
+            this.cboxAgrupamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxAgrupamento.FormattingEnabled = true;
             this.cboxAgrupamento.Location = new System.Drawing.Point(158, 194);
             this.cboxAgrupamento.Name = "cboxAgrupamento";
             this.cboxAgrupamento.Size = new System.Drawing.Size(432, 23);
             this.cboxAgrupamento.TabIndex = 24;
+            this.cboxAgrupamento.ValueMember = "Nome";
+            this.cboxAgrupamento.SelectedIndexChanged += new System.EventHandler(this.cboxAgrupamento_SelectedIndexChanged);
             // 
             // cboxVeiculo
             // 
+            this.cboxVeiculo.DisplayMember = "VeiculoNome";
+            this.cboxVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxVeiculo.FormattingEnabled = true;
             this.cboxVeiculo.Location = new System.Drawing.Point(158, 234);
             this.cboxVeiculo.Name = "cboxVeiculo";
             this.cboxVeiculo.Size = new System.Drawing.Size(432, 23);
             this.cboxVeiculo.TabIndex = 25;
+            this.cboxVeiculo.ValueMember = "VeiculoNome";
             // 
             // cboxPlano
             // 
+            this.cboxPlano.DisplayMember = "NomePlano";
+            this.cboxPlano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxPlano.FormattingEnabled = true;
             this.cboxPlano.Location = new System.Drawing.Point(158, 274);
             this.cboxPlano.Name = "cboxPlano";
             this.cboxPlano.Size = new System.Drawing.Size(432, 23);
             this.cboxPlano.TabIndex = 26;
+            this.cboxPlano.ValueMember = "NomePlano";
             // 
             // cboxTaxa
             // 
+            this.cboxTaxa.DisplayMember = "Equipamento";
+            this.cboxTaxa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxTaxa.FormattingEnabled = true;
             this.cboxTaxa.Location = new System.Drawing.Point(158, 314);
             this.cboxTaxa.Name = "cboxTaxa";
             this.cboxTaxa.Size = new System.Drawing.Size(432, 23);
             this.cboxTaxa.TabIndex = 27;
+            this.cboxTaxa.ValueMember = "Equipamento";
             // 
             // txtFuncionario
             // 
+            this.txtFuncionario.Enabled = false;
             this.txtFuncionario.Location = new System.Drawing.Point(158, 74);
             this.txtFuncionario.Name = "txtFuncionario";
             this.txtFuncionario.Size = new System.Drawing.Size(432, 23);

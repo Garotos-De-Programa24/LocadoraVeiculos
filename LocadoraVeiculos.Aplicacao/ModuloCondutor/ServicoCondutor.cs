@@ -99,6 +99,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
                 return Result.Fail(msgErro);
             }
         }
+
+        
+
         public Result<Condutor> Excluir(Condutor condutor)
         {
             Log.Logger.Information("Tentando excluir o Condutor @{condutor}", condutor);
@@ -204,6 +207,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
                 return Result.Fail(msgErro);
             }
-        }
+        }        
     }
 }

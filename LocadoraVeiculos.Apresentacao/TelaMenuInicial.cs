@@ -5,6 +5,7 @@ using LocadoraVeiculos.Apresentacao.ModuloAgrupamento;
 using LocadoraVeiculos.Apresentacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.ModuloCondutor;
 using LocadoraVeiculos.Apresentacao.ModuloFuncionario;
+using LocadoraVeiculos.Apresentacao.ModuloLocacao;
 using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.ModuloVeiculo;
@@ -102,6 +103,13 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnVeiculo_Click(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorVeiculo>();
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void btnLocacao_Click(object sender, EventArgs e)
+        {
+            controlador = serviceLocator.Get<ControladorLocacao>();
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -227,5 +235,7 @@ namespace LocadoraVeiculos.Apresentacao
                 }
             }
         }
+
+        
     }
 }

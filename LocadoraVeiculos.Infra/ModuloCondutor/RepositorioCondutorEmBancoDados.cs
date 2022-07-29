@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Infra.Compartilhado;
+using System;
 using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.ModuloCondutor
@@ -116,10 +117,12 @@ namespace LocadoraVeiculos.Infra.ModuloCondutor
                 ON
                     CLI.ID = COND.CLIENTE_ID
 		        WHERE
-                    COND.[NOME] = @NOME";
+                    COND.[NOME] = @NOME";        
+
+
         public Condutor SelecionarCondutorPorNome(string nome)
         {
             return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
-        }
+        }        
     }
 }

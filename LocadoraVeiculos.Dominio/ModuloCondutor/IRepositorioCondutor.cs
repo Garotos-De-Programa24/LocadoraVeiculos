@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
+using System;
 
 namespace LocadoraVeiculos.Dominio.ModuloCondutor
 {
