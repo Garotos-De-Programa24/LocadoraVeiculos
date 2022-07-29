@@ -44,7 +44,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloPlanoDeCobranca
         }
         public List<PlanoCobranca> SelecionarTodos()
         {
-            return planoCobranca.ToList();
+            return planoCobranca.Include(x => x.GrupoVeiculos).ToList();
         }
     }
 }

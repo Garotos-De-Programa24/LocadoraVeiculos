@@ -12,22 +12,17 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 {
     public partial class TelaCadastroVeiculo : Form
     {
-        private RepositorioAgrupamentoEmBancoDados repositorioAgrupamento;
         private Veiculo veiculo;
-
+        private List<Agrupamento> grupoDeVeiculos;
         public string caminhoFoto = "";
 
 
-        public TelaCadastroVeiculo()
+        public TelaCadastroVeiculo(List<Agrupamento> grupoDeVeiculos)
         {
             InitializeComponent();
-            repositorioAgrupamento = new RepositorioAgrupamentoEmBancoDados();
+            this.grupoDeVeiculos = grupoDeVeiculos;
 
-            List<Agrupamento> grupos = repositorioAgrupamento.SelecionarTodos();
-            foreach (Agrupamento c in grupos)
-            {
-                cBoxAgrupamento.Items.Add(c);
-            }
+            CarregarAgrupamentos();
 
             cBoxCombustivel.Items.Add("Gasolina");
             cBoxCombustivel.Items.Add("Alcool");
@@ -37,6 +32,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
         }
 
         
+
         public Func<Veiculo, Result<Veiculo>> GravarRegistro { get; set; }
 
         public Veiculo Veiculo
@@ -56,6 +52,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
                 txtKmPercorridos.Text = veiculo.KmPercorridos;
                 cBoxCombustivel.Text = veiculo.Combustivel;
                 txtCor.Text = veiculo.Cor;
+                if(veiculo.Agrupamento != null) //Para evitar de da erro na hora de intancir o novo veiculo, ele nao tera um agrupamento
                 cBoxAgrupamento.Text = veiculo.Agrupamento.Nome;
                 if(veiculo.Foto != null)
                 ExibirImagem();
@@ -76,7 +73,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             veiculo.KmPercorridos = txtKmPercorridos.Text;
             veiculo.Combustivel = cBoxCombustivel.Text;
             veiculo.Cor = txtCor.Text;
-            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;            
+            veiculo.Agrupamento = (Agrupamento)cBoxAgrupamento.SelectedItem;
+            //Colocar a disponibilidade em true na inserção, pois está disponível
+            veiculo.Disponivel = true;
             veiculo.SalvarFoto(Veiculo);
 
             var resultadoValidacao = GravarRegistro(veiculo);
@@ -96,7 +95,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             }
 
         }
-
+        private void CarregarAgrupamentos()
+        {
+            if (grupoDeVeiculos.Count > 0)
+            {
+                foreach (Agrupamento c in grupoDeVeiculos)
+                {
+                    cBoxAgrupamento.Items.Add(c);
+                }
+            }
+        }
         public void ExibirImagem()
         {            
             using (var img = new MemoryStream(veiculo.Foto))

@@ -1,12 +1,12 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloCondutor;
+using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
-        public Cliente()
-        {
-        }
+        public Cliente(){}
 
         public Cliente(string nome, string cpfCnpj, string endereco, string email, string telefone)
         {
@@ -39,5 +39,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
                 cliente.Email.Equals(Email)&&
                 cliente.Telefone.Equals(Telefone);
         }
+        
+        
     }
 }

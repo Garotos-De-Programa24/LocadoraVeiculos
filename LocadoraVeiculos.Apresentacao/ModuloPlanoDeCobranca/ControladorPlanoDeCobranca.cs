@@ -1,8 +1,9 @@
-﻿using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
+﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
+using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança;
+using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -12,14 +13,17 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
     {
         private TelaPlanoCobrancaControl telaPlanoCobrancaControl;
         private readonly ServicoPlanoCobranca servicoPlanoCobranca;
+        private ServicoAgrupamento servicoAgrupamento;
 
-        public ControladorPlanoDeCobranca(ServicoPlanoCobranca servicoPlanoCobranca)
+        public ControladorPlanoDeCobranca(ServicoPlanoCobranca servicoPlanoCobranca, ServicoAgrupamento servicoAgrupamento)
         {
             this.servicoPlanoCobranca = servicoPlanoCobranca;
+            this.servicoAgrupamento = servicoAgrupamento;
         }
         public override void Inserir()
         {
-            TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca();
+            List<Agrupamento> clientes = servicoAgrupamento.SelecionarTodos().Value;
+            TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca(clientes);
             tela.PlanoCobranca = new PlanoCobranca();
             tela.GravarRegistro = servicoPlanoCobranca.Inserir;
 
@@ -36,7 +40,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
                 "Edição de Condutores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca();
+            List<Agrupamento> clientes = servicoAgrupamento.SelecionarTodos().Value;
+            TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca(clientes);
             tela.PlanoCobranca = planoSelecionado;
             tela.GravarRegistro = servicoPlanoCobranca.Editar;
 

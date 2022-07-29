@@ -1,6 +1,8 @@
 ﻿using FluentResults;
+using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -12,15 +14,19 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
         
         private TelaCondutorControl telaCondutorControl;
         private readonly ServicoCondutor servicoCondutor;
+        private ServicoCliente servicoCliente;
 
-        public ControladorCondutor(ServicoCondutor servicoCondutor)
+
+        public ControladorCondutor(ServicoCondutor servicoCondutor,ServicoCliente servicoCliente)
         {
-            this.servicoCondutor = servicoCondutor;            
+            this.servicoCondutor = servicoCondutor;
+            this.servicoCliente = servicoCliente;
         }
 
         public override void Inserir()
         {
-            TelaCadastroCondutor tela = new TelaCadastroCondutor();
+
+            TelaCadastroCondutor tela = new TelaCadastroCondutor(ObterClientes());
             tela.Condutor = new Condutor();
             tela.GravarRegistro = servicoCondutor.Inserir;
 
@@ -39,7 +45,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             {
                 condutorSelecionado = resultado.Value;
 
-                TelaCadastroCondutor tela = new TelaCadastroCondutor();
+                TelaCadastroCondutor tela = new TelaCadastroCondutor(ObterClientes());
 
                 tela.Condutor = condutorSelecionado;
 
@@ -117,6 +123,16 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
                 MessageBox.Show(resultado.Errors[0].Message, "Tela de condutores",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private List<Cliente> ObterClientes()
+        {
+            var resultadoDoresult = servicoCliente.SelecionarTodos();
+            List<Cliente> clientes = new List<Cliente>();
+
+            if (resultadoDoresult.IsSuccess)
+                clientes = resultadoDoresult.Value;
+
+            return clientes;
         }
 
         private Result<Condutor> ObtemCondutorSelecionado()

@@ -18,6 +18,9 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloCondutor
             builder.Property(x => x.ValidadeCnh).HasColumnType("date").IsRequired();
             builder.Property(x => x.Email).HasColumnType("varchar(200)").IsRequired();
             builder.Property(x => x.Telefone).HasColumnType("varchar(20)").IsRequired();
+
+
+
         }
     }
 }

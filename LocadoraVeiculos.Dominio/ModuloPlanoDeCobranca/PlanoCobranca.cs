@@ -7,10 +7,7 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
 {
     public class PlanoCobranca : EntidadeBase <PlanoCobranca>
     {
-        public PlanoCobranca()
-        {
-            GrupoVeiculos = new Agrupamento();
-        }
+        public PlanoCobranca(){}
 
         public PlanoCobranca(Agrupamento grupoVeiculo,string nomePlano, EnunPlano tipoPlano, decimal valorDiario, decimal valorPorKm, decimal limiteQuilometragem)
         {
@@ -22,7 +19,7 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
             this.limiteQuilometragem = limiteQuilometragem;
         }
 
-        public Guid GrupoVeiculosId { get; set; }
+        public Guid? GrupoVeiculosId { get; set; }
 
         public string NomePlano { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
+using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using Serilog;
 using System;
@@ -11,9 +12,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
     public class ServicoCondutor
     {
         private IRepositorioCondutor repositorioCondutor;
+        private IContextoPersistencia contextoDados;
 
-        public ServicoCondutor(IRepositorioCondutor repositorioCondutor)
+        public ServicoCondutor(IRepositorioCondutor repositorioCondutor, IContextoPersistencia contextoDados)
         {
+            this.contextoDados = contextoDados;
             this.repositorioCondutor = repositorioCondutor;
         }
 
@@ -41,7 +44,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Inserir(condutor);
-
+                contextoDados.GravarDados();
                 Log.Logger.Information("Condutor {CondutorId} inserido com sucesso.", condutor.Id);
 
                 return Result.Ok(condutor);
@@ -81,6 +84,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Editar(condutor);
+                contextoDados.GravarDados();
 
                 Log.Logger.Information("Condutor {CondutorId} editado com sucesso.", condutor.Id);
 
@@ -102,6 +106,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Excluir(condutor);
+                contextoDados.GravarDados();
+
                 Log.Logger.Information("Condutor {CondutorId} excluido com sucesso.", condutor.Id);
 
                 return Result.Ok(condutor);

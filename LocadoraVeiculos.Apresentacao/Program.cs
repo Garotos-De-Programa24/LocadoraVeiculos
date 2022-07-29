@@ -21,8 +21,9 @@ namespace LocadoraVeiculos.Apresentacao
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var serviceLocatorAutofac = new ServiceLocatorComAutoFac();
-            Application.Run(new TelaMenuInicial(serviceLocatorAutofac));
+            //var serviceLocatorAutofac = new ServiceLocatorComAutoFac();
+            Application.Run(new TelaMenuInicial(new ServiceLocatorManual()));
+            //Application.Run(new TelaMenuInicial(serviceLocatorAutofac));
         }
     }
 }

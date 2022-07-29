@@ -20,19 +20,12 @@ using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
-using LocadoraVeiculos.Infra.ModuloAgrupamento;
-using LocadoraVeiculos.Infra.ModuloCliente;
-using LocadoraVeiculos.Infra.ModuloCondutor;
-using LocadoraVeiculos.Infra.ModuloFuncionario;
-using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
-using LocadoraVeiculos.Infra.ModuloTaxa;
-using LocadoraVeiculos.Infra.ModuloVeiculo;
+using LocadoraVeiculos.Infra.ORM.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ORM.ModuloCliente;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LocadoraVeiculos.Infra.ORM.ModuloCondutor;
+using LocadoraVeiculos.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculos.Infra.ORM.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Infra.ORM.ModuloVeiculo;
 
 namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
 {
@@ -43,32 +36,32 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
         public ServiceLocatorComAutoFac()
         {
             var builder = new ContainerBuilder();
-            //repositorioClienteORM            
+
             builder.RegisterType<RepositorioClienteORM>().As<IRepositorioCliente>();
             builder.RegisterType<ServicoCliente>().AsSelf();
             builder.RegisterType<ControladorCliente>().AsSelf();
 
-            builder.RegisterType<RepositorioAgrupamentoEmBancoDados>().As<IRepositorioAgrupamento>();
+            builder.RegisterType<RepositorioAgrupamentoORM>().As<IRepositorioAgrupamento>();
             builder.RegisterType<ServicoAgrupamento>().AsSelf();
             builder.RegisterType<ControladorAgrupamento>().AsSelf();
 
-            builder.RegisterType<RepositorioFuncionarioEmBancoDados>().As<IRepositorioFuncionario>();
+            builder.RegisterType<RepositorioFuncionarioORM>().As<IRepositorioFuncionario>();
             builder.RegisterType<ServicoFuncionario>().AsSelf();
             builder.RegisterType<ControladorFuncionario>().AsSelf();
 
-            builder.RegisterType<RepositorioCondutorEmBancoDados>().As<IRepositorioCondutor>();
+            builder.RegisterType<RepositorioCondutorORM>().As<IRepositorioCondutor>();
             builder.RegisterType<ServicoCondutor>().AsSelf();
             builder.RegisterType<ControladorCondutor>().AsSelf();
 
-            builder.RegisterType<RepositorioTaxaEmBancoDados>().As<IRepositorioTaxa>();
+            builder.RegisterType<RepositorioTaxaORM>().As<IRepositorioTaxa>();
             builder.RegisterType<ServicoTaxa>().AsSelf();
             builder.RegisterType<ControladorTaxa>().AsSelf();
 
-            builder.RegisterType<RepositorioPlanoCobrancaEmBancoDados>().As<IRepositorioPlanoCobranca>();
+            builder.RegisterType<RepositorioPlanoDeCobrancaORM>().As<IRepositorioPlanoCobranca>();
             builder.RegisterType<ServicoPlanoCobranca>().AsSelf();
             builder.RegisterType<ControladorPlanoDeCobranca>().AsSelf();
 
-            builder.RegisterType<RepositorioVeiculoEmBancoDados>().As<IRepositorioVeiculo>();
+            builder.RegisterType<RepositorioVeiculoORM>().As<IRepositorioVeiculo>();
             builder.RegisterType<ServicoVeiculo>().AsSelf();
             builder.RegisterType<ControladorVeiculo>().AsSelf();
 

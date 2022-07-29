@@ -6,10 +6,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
 {
     public class Condutor : EntidadeBase<Condutor>
     {
-        public Condutor()
-        {
-            Cliente = new Cliente();
-        }
+        public Condutor(){}
 
         public Condutor(Cliente cliente, string nome, string cpf, string endereco, string cnhCondutor, DateTime validadeCnh, string email, string telefone)
         {
@@ -22,7 +19,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
             Email = email;
             Telefone = telefone;
         }
-        public Guid ClienteId { get; set; }
+        public Guid? ClienteId { get; set; }
         public Cliente Cliente { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
@@ -50,6 +47,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
                 condutor.ValidadeCnh.Equals(ValidadeCnh) &&
                 condutor.Email.Equals(Email) &&
                 condutor.Telefone.Equals(Telefone);
-        }       
+        }
+        
     }
 }

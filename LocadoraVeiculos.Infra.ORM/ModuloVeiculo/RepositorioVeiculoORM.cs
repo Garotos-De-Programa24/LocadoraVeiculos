@@ -44,7 +44,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloVeiculo
         }
         public List<Veiculo> SelecionarTodos()
         {
-            return veiculo.ToList();
+            return veiculo.Include(x => x.Agrupamento).ToList();
         }
     }
 }
