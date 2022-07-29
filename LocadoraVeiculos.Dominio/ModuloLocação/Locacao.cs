@@ -24,22 +24,26 @@ namespace LocadoraVeiculos.Dominio.ModuloLocação
         }
 
         public Funcionario Funcionario { get; set; }
+        public Guid FuncionarioId { get; set; }
 
         public Cliente Cliente { get; set; }
-
+        public Guid ClienteId { get; set; }
         public Condutor Condutor { get; set; }
-
+        public Guid CondutorId { get; set; }
         public Agrupamento Agrupamento { get; set; }
-
+        public Guid AgrupamentoId { get; set; }
         public Veiculo Veiculo { get; set; }
-
+        public Guid VeiculoId { get; set; }
         public PlanoCobranca Plano { get; set; }
-
+        public Guid PlanoId { get; set; }
         public Taxa Taxa { get; set; }
-
+        public Guid TaxaId { get; set; }
         public DateTime DataLocacao { get; set; }
 
         public DateTime DataDevolucao { get; set; }
+
+        public decimal ValorInicio { get; set; }
+        public decimal ValorFinal { get; set; }
 
         public override bool Equals(object obj)
         {
