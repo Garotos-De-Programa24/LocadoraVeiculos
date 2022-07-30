@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using FluentResults;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
-using LocadoraVeiculos.Infra.ModuloAgrupamento;
 
 namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 {

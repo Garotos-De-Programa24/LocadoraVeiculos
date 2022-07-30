@@ -77,5 +77,11 @@ namespace LocadoraVeiculos.Dominio.ModuloVeiculo
                 veiculo.Agrupamento.Equals(Agrupamento) &&
                 veiculo.Disponivel.Equals(Disponivel);
         }
+
+        public override string ToString()
+        {
+            return string.Format("Veiculo: {0}\nAno: {1}\nMarca: {2}\nPlaca: {3}\nCapacidade do Tanque: {4} litros\n" +
+                "Km Percorridos: {5}\nCombustivel: {6}\nCor: {7}", VeiculoNome,Ano,Marca,Placa,CapacidadeTanque,KmPercorridos,Combustivel,Cor);
+        }
     }
 }

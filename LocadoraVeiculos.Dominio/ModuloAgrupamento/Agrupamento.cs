@@ -25,7 +25,10 @@ namespace LocadoraVeiculos.Dominio.ModuloAgrupamento
             return
                 agrupamento.Id.Equals(Id) &&
                 agrupamento.Nome.Equals(Nome);
-                
+        }
+        public override string ToString()
+        {
+            return string.Format("Grupo de Veiculo: {0}\n", Nome);
         }
     }
 }

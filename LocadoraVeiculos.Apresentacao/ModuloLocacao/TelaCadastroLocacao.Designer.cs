@@ -70,7 +70,9 @@
             this.lValor = new System.Windows.Forms.Label();
             this.lCifrao = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureCarro = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -276,6 +278,7 @@
             this.cboxCondutor.Size = new System.Drawing.Size(432, 23);
             this.cboxCondutor.TabIndex = 23;
             this.cboxCondutor.ValueMember = "Nome";
+            this.cboxCondutor.SelectedIndexChanged += new System.EventHandler(this.cboxCondutor_SelectedIndexChanged);
             // 
             // cboxAgrupamento
             // 
@@ -299,6 +302,7 @@
             this.cboxVeiculo.Size = new System.Drawing.Size(432, 23);
             this.cboxVeiculo.TabIndex = 25;
             this.cboxVeiculo.ValueMember = "VeiculoNome";
+            this.cboxVeiculo.SelectedIndexChanged += new System.EventHandler(this.cboxVeiculo_SelectedIndexChanged);
             // 
             // cboxPlano
             // 
@@ -358,17 +362,17 @@
             // 
             this.lDadosCliente.AutoSize = true;
             this.lDadosCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lDadosCliente.Location = new System.Drawing.Point(621, 104);
+            this.lDadosCliente.Location = new System.Drawing.Point(621, 93);
             this.lDadosCliente.Name = "lDadosCliente";
-            this.lDadosCliente.Size = new System.Drawing.Size(13, 17);
+            this.lDadosCliente.Size = new System.Drawing.Size(160, 17);
             this.lDadosCliente.TabIndex = 32;
-            this.lDadosCliente.Text = "-";
+            this.lDadosCliente.Text = "[Cliente não Selecionado]";
             // 
             // lTituloDadosVeiculo
             // 
             this.lTituloDadosVeiculo.AutoSize = true;
             this.lTituloDadosVeiculo.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.lTituloDadosVeiculo.Location = new System.Drawing.Point(621, 275);
+            this.lTituloDadosVeiculo.Location = new System.Drawing.Point(621, 303);
             this.lTituloDadosVeiculo.Name = "lTituloDadosVeiculo";
             this.lTituloDadosVeiculo.Size = new System.Drawing.Size(130, 18);
             this.lTituloDadosVeiculo.TabIndex = 33;
@@ -378,27 +382,27 @@
             // 
             this.lDadosVeiculo.AutoSize = true;
             this.lDadosVeiculo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lDadosVeiculo.Location = new System.Drawing.Point(621, 304);
+            this.lDadosVeiculo.Location = new System.Drawing.Point(621, 321);
             this.lDadosVeiculo.Name = "lDadosVeiculo";
-            this.lDadosVeiculo.Size = new System.Drawing.Size(13, 17);
+            this.lDadosVeiculo.Size = new System.Drawing.Size(173, 17);
             this.lDadosVeiculo.TabIndex = 34;
-            this.lDadosVeiculo.Text = "-";
+            this.lDadosVeiculo.Text = "[Veiculos não Selecionados]";
             // 
             // lDadosTaxa
             // 
             this.lDadosTaxa.AutoSize = true;
             this.lDadosTaxa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lDadosTaxa.Location = new System.Drawing.Point(925, 104);
+            this.lDadosTaxa.Location = new System.Drawing.Point(956, 93);
             this.lDadosTaxa.Name = "lDadosTaxa";
-            this.lDadosTaxa.Size = new System.Drawing.Size(13, 17);
+            this.lDadosTaxa.Size = new System.Drawing.Size(157, 17);
             this.lDadosTaxa.TabIndex = 36;
-            this.lDadosTaxa.Text = "-";
+            this.lDadosTaxa.Text = "[Taxas não Selecionadas]";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(925, 75);
+            this.label2.Location = new System.Drawing.Point(956, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 18);
             this.label2.TabIndex = 35;
@@ -408,17 +412,17 @@
             // 
             this.lDadosLocacao.AutoSize = true;
             this.lDadosLocacao.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lDadosLocacao.Location = new System.Drawing.Point(925, 304);
+            this.lDadosLocacao.Location = new System.Drawing.Point(956, 321);
             this.lDadosLocacao.Name = "lDadosLocacao";
-            this.lDadosLocacao.Size = new System.Drawing.Size(13, 17);
+            this.lDadosLocacao.Size = new System.Drawing.Size(189, 17);
             this.lDadosLocacao.TabIndex = 38;
-            this.lDadosLocacao.Text = "-";
+            this.lDadosLocacao.Text = "[Locação ainda não concluida]";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(925, 275);
+            this.label4.Location = new System.Drawing.Point(956, 303);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 18);
             this.label4.TabIndex = 37;
@@ -488,11 +492,21 @@
             this.panel3.Size = new System.Drawing.Size(5, 567);
             this.panel3.TabIndex = 45;
             // 
+            // pictureCarro
+            // 
+            this.pictureCarro.Location = new System.Drawing.Point(621, 458);
+            this.pictureCarro.Name = "pictureCarro";
+            this.pictureCarro.Size = new System.Drawing.Size(92, 60);
+            this.pictureCarro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureCarro.TabIndex = 55;
+            this.pictureCarro.TabStop = false;
+            // 
             // TelaCadastroLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 641);
+            this.Controls.Add(this.pictureCarro);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lCifrao);
             this.Controls.Add(this.lValor);
@@ -541,6 +555,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,5 +605,6 @@
         private System.Windows.Forms.Label lCifrao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureCarro;
     }
 }

@@ -48,7 +48,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
         public override void Inserir()
         {
             TelaCadastroLocacao tela = new TelaCadastroLocacao(ObterAgrupamentos(), ObterClientes(), ObterTaxas(), ObterPlanos(),
-                                                                ObterVeiculos(), ObterCondutores(),funcionario);
+                                                                ObterVeiculos(), ObterCondutores());
             tela.Locacao = new Locacao();
             tela.GravarRegistro = servicoLocacao.Inserir;
 

@@ -48,6 +48,10 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
                 condutor.Email.Equals(Email) &&
                 condutor.Telefone.Equals(Telefone);
         }
-        
+        public override string ToString()
+        {
+            return string.Format("\nCondutor: {0}\nCPF: {1}\nEndereço: {2}\n" +
+                "CNH: {3}\nValidade da CNH: {4}\nEmail: {5}\nTelefone: {6}", Nome,Cpf,Endereco,CnhCondutor,ValidadeCnh.ToShortDateString(),Email,Telefone);
+        }
     }
 }

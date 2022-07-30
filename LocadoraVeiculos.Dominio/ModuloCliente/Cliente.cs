@@ -39,7 +39,11 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
                 cliente.Email.Equals(Email)&&
                 cliente.Telefone.Equals(Telefone);
         }
-        
-        
+
+        public override string ToString()
+        {
+            return string.Format("Cliente: {0}\nCPF/CNPJ: {1}\nEndereço: {2}\n" +
+                "Email: {3}\nTelefone: {4}", Nome, CpfCnpj,Endereco,Email,Telefone);
+        }
     }
 }

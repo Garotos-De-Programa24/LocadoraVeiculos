@@ -8,14 +8,10 @@ using LocadoraVeiculos.Dominio.ModuloLocação;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
-using LocadoraVeiculos.Infra.ModuloAgrupamento;
-using LocadoraVeiculos.Infra.ModuloCliente;
-using LocadoraVeiculos.Infra.ModuloCondutor;
-using LocadoraVeiculos.Infra.ModuloPlanoDeCobranca;
-using LocadoraVeiculos.Infra.ModuloTaxa;
-using LocadoraVeiculos.Infra.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.Apresentacao.Modulolocacao
@@ -73,7 +69,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cliente cliente = (Cliente)cboxCliente.SelectedItem;
-
+            AtualizarResumo();
             cboxCondutor.Items.Clear();
 
             foreach (Condutor condutor in condutores)
@@ -81,6 +77,27 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
                 if (condutor.Cliente.Id == cliente.Id)
                     cboxCondutor.Items.Add(condutor);
             }
+            
+        }
+
+        private void AtualizarResumo()
+        {
+            if (cboxCliente.SelectedItem != null)
+                lDadosCliente.Text = cboxCliente.SelectedItem.ToString();
+            if (cboxCondutor.SelectedItem != null)
+                lDadosCliente.Text += cboxCondutor.SelectedItem.ToString();
+            if (cboxVeiculo.SelectedItem != null)
+            {
+                lDadosVeiculo.Text = cboxAgrupamento.SelectedItem.ToString();
+                lDadosVeiculo.Text = cboxVeiculo.SelectedItem.ToString();
+                Veiculo veiculo = new Veiculo();
+                veiculo = (Veiculo)cboxVeiculo.SelectedItem;
+                using (var img = new MemoryStream(veiculo.Foto))
+                {
+                    pictureCarro.Image = Image.FromStream(img);
+                }
+            }    
+
         }
 
         private void cboxAgrupamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,6 +129,16 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         private void btnRemover_Click(object sender, EventArgs e)
         {
             listEquipamentos.Items.Remove(listEquipamentos.SelectedItem);
+        }
+
+        private void cboxCondutor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarResumo();
+        }
+
+        private void cboxVeiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarResumo();
         }
     }
 }
