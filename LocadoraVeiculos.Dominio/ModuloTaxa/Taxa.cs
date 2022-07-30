@@ -1,9 +1,7 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
-using System;
+using LocadoraVeiculos.Dominio.ModuloLocação;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraVeiculos.Dominio.ModuloTaxa
 {
@@ -19,6 +17,8 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         public string Equipamento { get; set; }
         public string Valor { get; set; }        
         public bool TaxaDiaria { get; set; }
+        public List<Locacao> Locacoes { get; set; }
+        public int QuantidadePorLocacao { get; set; }
 
         
         public override bool Equals(object obj)
@@ -32,7 +32,17 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
                 taxa.Id.Equals(Id) &&
                 taxa.Equipamento.Equals(Equipamento) &&                
                 taxa.Valor.Equals(Valor)&&
-                taxa.TaxaDiaria.Equals(TaxaDiaria);
+                taxa.TaxaDiaria.Equals(TaxaDiaria) &&
+                taxa.QuantidadePorLocacao.Equals(QuantidadePorLocacao);
+        }
+        public override string ToString()
+        {
+            string tipoTaxa = "";
+            if (TaxaDiaria == true)
+                tipoTaxa = "Diaria";
+            else
+                tipoTaxa = "Fixa";
+            return string.Format("{0}   R${1}   {2}\n",Equipamento,Valor,tipoTaxa);
         }
     }
 }

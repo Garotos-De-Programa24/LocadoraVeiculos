@@ -29,7 +29,7 @@ namespace LocadoraVeiculos.Dominio.ModuloLocação
             RuleFor(x => x.Plano)
            .NotNull().NotEmpty();
 
-            RuleFor(x => x.Taxa)
+            RuleFor(x => x.Taxas)
            .NotNull().NotEmpty();
 
             RuleFor(x => x.DataLocacao)

@@ -17,7 +17,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloLocacao
             builder.Property(x => x.Id).ValueGeneratedNever();
             builder.HasOne(x => x.Funcionario);
             builder.HasOne(x => x.Plano);
-            builder.HasOne(x => x.Taxa);
+            builder.HasMany(x => x.Taxas);
             builder.HasOne(x => x.Veiculo);
             builder.HasOne(x => x.Agrupamento);
             builder.HasOne(x => x.Condutor);

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
-    public partial class AdicionandoTblocacao : Migration
+    public partial class AdicionandoTblocacaoEMudançasNaTabelaTaxa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,13 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 nullable: true,
                 oldClrType: typeof(Guid),
                 oldType: "uniqueidentifier");
+
+            migrationBuilder.AddColumn<int>(
+                name: "QuantidadePorLocacao",
+                table: "TBTaxa",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AlterColumn<Guid>(
                 name: "GrupoVeiculosId",
@@ -94,18 +101,41 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TbLocacao_TBTaxa_TaxaId",
-                        column: x => x.TaxaId,
-                        principalTable: "TBTaxa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_TbLocacao_TBVeiculo_VeiculoId",
                         column: x => x.VeiculoId,
                         principalTable: "TBVeiculo",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "LocacaoTaxa",
+                columns: table => new
+                {
+                    LocacoesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TaxasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocacaoTaxa", x => new { x.LocacoesId, x.TaxasId });
+                    table.ForeignKey(
+                        name: "FK_LocacaoTaxa_TbLocacao_LocacoesId",
+                        column: x => x.LocacoesId,
+                        principalTable: "TbLocacao",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LocacaoTaxa_TBTaxa_TaxasId",
+                        column: x => x.TaxasId,
+                        principalTable: "TBTaxa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LocacaoTaxa_TaxasId",
+                table: "LocacaoTaxa",
+                column: "TaxasId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TbLocacao_AgrupamentoId",
@@ -131,11 +161,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 name: "IX_TbLocacao_PlanoId",
                 table: "TbLocacao",
                 column: "PlanoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TbLocacao_TaxaId",
-                table: "TbLocacao",
-                column: "TaxaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TbLocacao_VeiculoId",
@@ -182,7 +207,14 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 table: "TBVeiculo");
 
             migrationBuilder.DropTable(
+                name: "LocacaoTaxa");
+
+            migrationBuilder.DropTable(
                 name: "TbLocacao");
+
+            migrationBuilder.DropColumn(
+                name: "QuantidadePorLocacao",
+                table: "TBTaxa");
 
             migrationBuilder.AlterColumn<Guid>(
                 name: "AgrupamentoId",

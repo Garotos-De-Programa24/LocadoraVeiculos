@@ -13,6 +13,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloTaxa
             builder.Property(x => x.Equipamento).HasColumnType("varchar(200)").IsRequired();
             builder.Property(x => x.Valor).HasColumnType("varchar(40)").IsRequired();
             builder.Property(x => x.TaxaDiaria).HasColumnType("varchar(200)").IsRequired();
+            builder.Property(x => x.QuantidadePorLocacao).HasColumnType("int");
         }
     }
 }

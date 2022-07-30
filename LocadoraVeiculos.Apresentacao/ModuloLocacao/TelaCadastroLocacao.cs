@@ -23,6 +23,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         private List<PlanoCobranca> planos;
         private List<Veiculo> veiculos;
         private List<Condutor> condutores;
+        private int qtdTaxas;
 
         public TelaCadastroLocacao(List<Agrupamento> _agrupamentos, List<Cliente> _clientes, List<Taxa> _taxas,
                                     List<PlanoCobranca> _planos, List<Veiculo> _veiculos, List<Condutor> _condutores)
@@ -83,9 +84,14 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         private void AtualizarResumo()
         {
             if (cboxCliente.SelectedItem != null)
+            {
                 lDadosCliente.Text = cboxCliente.SelectedItem.ToString();
+            }
             if (cboxCondutor.SelectedItem != null)
+            {
                 lDadosCliente.Text += cboxCondutor.SelectedItem.ToString();
+     
+            }
             if (cboxVeiculo.SelectedItem != null)
             {
                 lDadosVeiculo.Text = cboxAgrupamento.SelectedItem.ToString();
@@ -96,8 +102,8 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
                 {
                     pictureCarro.Image = Image.FromStream(img);
                 }
-            }    
 
+            }
         }
 
         private void cboxAgrupamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,12 +129,70 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            int n = 0;
             listEquipamentos.Items.Add(cboxTaxa.SelectedItem);
+            if(Locacao.Taxas.Count == 0)
+                Locacao.Taxas.Add((Taxa)cboxTaxa.SelectedItem);
+            foreach (var taxa in Locacao.Taxas)
+            {
+                if (taxa != cboxTaxa.SelectedItem)
+                    n++;
+
+
+                if (taxa == cboxTaxa.SelectedItem)
+                {
+                    taxa.QuantidadePorLocacao++;
+                    break;
+                }
+            }
+            if (n == Locacao.Taxas.Count)
+            {
+                
+                Locacao.Taxas.Add((Taxa)cboxTaxa.SelectedItem);
+                foreach (var taxa in Locacao.Taxas)
+                {
+
+                    if (taxa == cboxTaxa.SelectedItem)
+                    {
+                        taxa.QuantidadePorLocacao++;
+                        break;
+                    }
+                }
+                
+            }
+            lDadosTaxa.Text = "";
+           
+            foreach (var item in Locacao.Taxas)
+            {
+                lDadosTaxa.Text +=item.QuantidadePorLocacao + " " + item.ToString();
+            }
+            
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
+            foreach (var taxa in Locacao.Taxas)
+            {
+               
+                if (taxa == listEquipamentos.SelectedItem)
+                {
+                    taxa.QuantidadePorLocacao--;
+                    if (taxa.QuantidadePorLocacao == 0)
+                    {
+                        Locacao.Taxas.Remove((Taxa)listEquipamentos.SelectedItem);
+                        break;
+                    }
+                    break;
+                }
+            }
             listEquipamentos.Items.Remove(listEquipamentos.SelectedItem);
+            lDadosTaxa.Text = "";
+            if (Locacao.Taxas.Count == 0)
+                lDadosTaxa.Text = "[Taxas não Selecionadas]";
+            foreach (var item in Locacao.Taxas)
+            {
+                lDadosTaxa.Text += item.QuantidadePorLocacao + " " + item.ToString();
+            }
         }
 
         private void cboxCondutor_SelectedIndexChanged(object sender, EventArgs e)

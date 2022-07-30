@@ -46,7 +46,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloLocacao
                 .Include(x => x.Condutor)
                 .Include(x => x.Funcionario)
                 .Include(x => x.Plano)
-                .Include(x => x.Taxa)
+                .Include(x => x.Taxas)
                 .Include(x => x.Veiculo)
                 .ToList();
         }
