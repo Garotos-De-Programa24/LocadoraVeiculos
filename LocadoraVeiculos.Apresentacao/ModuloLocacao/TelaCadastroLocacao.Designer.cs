@@ -71,6 +71,7 @@
             this.lCifrao = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureCarro = new System.Windows.Forms.PictureBox();
+            this.dataTempoLocacao = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).BeginInit();
             this.SuspendLayout();
@@ -255,6 +256,7 @@
             this.btnCadastrar.TabIndex = 21;
             this.btnCadastrar.Text = "Cadastrar Locação";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // cboxCliente
             // 
@@ -314,6 +316,7 @@
             this.cboxPlano.Size = new System.Drawing.Size(432, 23);
             this.cboxPlano.TabIndex = 26;
             this.cboxPlano.ValueMember = "NomePlano";
+            this.cboxPlano.SelectedIndexChanged += new System.EventHandler(this.cboxPlano_SelectedIndexChanged);
             // 
             // cboxTaxa
             // 
@@ -501,11 +504,19 @@
             this.pictureCarro.TabIndex = 55;
             this.pictureCarro.TabStop = false;
             // 
+            // dataTempoLocacao
+            // 
+            this.dataTempoLocacao.Location = new System.Drawing.Point(158, 562);
+            this.dataTempoLocacao.Name = "dataTempoLocacao";
+            this.dataTempoLocacao.Size = new System.Drawing.Size(432, 23);
+            this.dataTempoLocacao.TabIndex = 56;
+            // 
             // TelaCadastroLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 641);
+            this.Controls.Add(this.dataTempoLocacao);
             this.Controls.Add(this.pictureCarro);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lCifrao);
@@ -606,5 +617,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureCarro;
+        private System.Windows.Forms.DateTimePicker dataTempoLocacao;
     }
 }

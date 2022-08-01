@@ -86,5 +86,32 @@ namespace LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca
                 plano.valorPorKm.Equals(valorPorKm) &&
                 plano.limiteQuilometragem.Equals(limiteQuilometragem);
         }
+        private string ToStringDiario()
+        {
+            return string.Format("Nome do Plano: {0}\n Tipo do Plano: {1}\n" +
+                "Valor Diario: R${2}\n",NomePlano,TipoPlano,ValorDiario);
+        }
+        private string ToStringPorKm()
+        {
+            return string.Format("Nome do Plano: {0}\n Tipo do Plano: {1}\n" +
+                "Valor Diario: R${2}\n Valor por Km: R${3}", NomePlano, TipoPlano, ValorDiario,ValorPorKm);
+        }
+        private string ToStringLimiteQuilometragem()
+        {
+            return string.Format("Nome do Plano: {0}\nTipo do Plano: {1}\n" +
+                "Valor Diario: R${2}\nValor por Km: R${3}\nLimite Quilometragem\n",NomePlano, TipoPlano, ValorDiario, ValorPorKm,LimiteQuilometragem);
+        }
+        public override string ToString()
+        {
+            if (this.TipoPlano == EnunPlano.Livre)
+                return ToStringDiario();
+            if (this.TipoPlano == EnunPlano.Diario)
+                return ToStringPorKm();
+            if (this.TipoPlano == EnunPlano.Controlado)
+                return ToStringLimiteQuilometragem();
+
+            return "Sem Tipo";
+        }
+
     }
 }

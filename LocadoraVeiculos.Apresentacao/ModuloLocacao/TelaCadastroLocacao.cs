@@ -104,6 +104,12 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
                 }
 
             }
+            if(cboxPlano.SelectedItem != null)
+            {
+               
+                lDadosLocacao.Text = cboxPlano.SelectedItem.ToString();
+            }
+            
         }
 
         private void cboxAgrupamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -201,6 +207,44 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         }
 
         private void cboxVeiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarResumo();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            locacao.Cliente = (Cliente)cboxCliente.SelectedItem;
+            locacao.Condutor = (Condutor)cboxCondutor.SelectedItem;
+            locacao.Agrupamento = (Agrupamento)cboxAgrupamento.SelectedItem;
+            
+            locacao.Veiculo = (Veiculo)cboxVeiculo.SelectedItem;
+            locacao.Veiculo.Disponivel = false;
+
+            locacao.DataLocacao = dataLocacao.Value;
+
+            locacao.DataDevolucao = dataTempoLocacao.Value;
+
+            
+
+            var resultadoValidacao = GravarRegistro(locacao);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Cadastro de condutor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    TelaMenuInicial.Instancia.AtualizarRodape(erro);
+                    DialogResult = DialogResult.None;
+                }
+            }
+        }
+
+        private void cboxPlano_SelectedIndexChanged(object sender, EventArgs e)
         {
             AtualizarResumo();
         }
