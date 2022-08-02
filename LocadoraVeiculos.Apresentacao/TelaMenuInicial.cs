@@ -29,6 +29,7 @@ namespace LocadoraVeiculos.Apresentacao
         bool gerente = false;
         string login;
         string senha;
+        Funcionario funcionarioLogado;
 
         public TelaMenuInicial(IServiceLocator serviceLocator)
         {
@@ -131,6 +132,10 @@ namespace LocadoraVeiculos.Apresentacao
 
         private void BtnCadastrar_Click_1(object sender, EventArgs e)
         {
+            //if(controlador == serviceLocator.Get<ControladorLocacao>())
+            //{
+            //    controlador.Inserir(Funcionario funcionarioLogado);
+            //}
             if (controlador != null)
                 controlador.Inserir();
         }
@@ -215,6 +220,7 @@ namespace LocadoraVeiculos.Apresentacao
                 {
                     if (f.Senha == senha)
                     {
+                        funcionarioLogado = f;
                         if (f.Gerente == true)
                             gerente = true;
 

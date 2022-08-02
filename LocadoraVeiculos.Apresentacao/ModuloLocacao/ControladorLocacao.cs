@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculos.Aplicacao.ModuloAgrupamento;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
+using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Aplicacao.ModuloLocacao;
 using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
@@ -10,6 +11,7 @@ using LocadoraVeiculos.Apresentacao.Modulolocacao;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Dominio.ModuloLocação;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
@@ -31,7 +33,8 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
         private ServicoVeiculo servicoVeiculo;
         private ServicoTaxa servicoTaxa;
         private ServicoPlanoCobranca servicoPlano;
-        string funcionario;
+        private ServicoFuncionario servicoFuncionario;
+        
 
         public ControladorLocacao(ServicoLocacao servicoLocacao, ServicoAgrupamento servicoAgrupamento, ServicoCondutor servicoCondutor,
             ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo, ServicoTaxa servicoTaxa, ServicoPlanoCobranca servicoPlano)
@@ -42,7 +45,9 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
             this.servicoCliente = servicoCliente;
             this.servicoVeiculo = servicoVeiculo;
             this.servicoTaxa = servicoTaxa;
-            this.servicoPlano = servicoPlano;            
+            this.servicoPlano = servicoPlano;
+            this.servicoFuncionario = servicoFuncionario;
+            
         }
 
         public override void Inserir()
@@ -143,6 +148,26 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
 
         //region
         #region Listas
+
+        //private Funcionario ObterFuncionarioLogado()
+        //{
+            
+        //    var id = telaLocacaoControl.ObtemNumeroLocacaoSelecionado();
+        //    var resultado = servicoLocacao.SelecionarPorId(id);
+        //    Locacao locacaoSelecionada = null;
+        //    if (resultado.IsSuccess)
+        //    {
+        //        locacaoSelecionada = resultado.Value;
+
+        //    }
+        //    else if (resultado.IsFailed)
+        //    {
+        //        MessageBox.Show(resultado.Errors[0].Message, "Selecionar a Locação",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    return locacaoSelecionada;
+
+        //}
         private List<Condutor> ObterCondutores()
         {
             var resultadoDoresult = servicoCondutor.SelecionarTodos();

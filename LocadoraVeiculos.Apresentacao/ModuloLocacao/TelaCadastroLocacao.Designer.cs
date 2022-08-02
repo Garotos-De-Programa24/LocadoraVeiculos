@@ -53,7 +53,7 @@
             this.cboxPlano = new System.Windows.Forms.ComboBox();
             this.cboxTaxa = new System.Windows.Forms.ComboBox();
             this.txtFuncionario = new System.Windows.Forms.TextBox();
-            this.dataLocacao = new System.Windows.Forms.DateTimePicker();
+            this.dataLocacaoBox = new System.Windows.Forms.DateTimePicker();
             this.txtTempoLocacao = new System.Windows.Forms.TextBox();
             this.lTituloDadosLocador = new System.Windows.Forms.Label();
             this.lDadosCliente = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.lCifrao = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureCarro = new System.Windows.Forms.PictureBox();
-            this.dataTempoLocacao = new System.Windows.Forms.DateTimePicker();
+            this.dataTempoLocacaoBox = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCarro)).BeginInit();
             this.SuspendLayout();
@@ -337,12 +337,12 @@
             this.txtFuncionario.Size = new System.Drawing.Size(432, 23);
             this.txtFuncionario.TabIndex = 28;
             // 
-            // dataLocacao
+            // dataLocacaoBox
             // 
-            this.dataLocacao.Location = new System.Drawing.Point(158, 484);
-            this.dataLocacao.Name = "dataLocacao";
-            this.dataLocacao.Size = new System.Drawing.Size(432, 23);
-            this.dataLocacao.TabIndex = 29;
+            this.dataLocacaoBox.Location = new System.Drawing.Point(158, 484);
+            this.dataLocacaoBox.Name = "dataLocacaoBox";
+            this.dataLocacaoBox.Size = new System.Drawing.Size(432, 23);
+            this.dataLocacaoBox.TabIndex = 29;
             // 
             // txtTempoLocacao
             // 
@@ -504,19 +504,20 @@
             this.pictureCarro.TabIndex = 55;
             this.pictureCarro.TabStop = false;
             // 
-            // dataTempoLocacao
+            // dataTempoLocacaoBox
             // 
-            this.dataTempoLocacao.Location = new System.Drawing.Point(158, 562);
-            this.dataTempoLocacao.Name = "dataTempoLocacao";
-            this.dataTempoLocacao.Size = new System.Drawing.Size(432, 23);
-            this.dataTempoLocacao.TabIndex = 56;
+            this.dataTempoLocacaoBox.Location = new System.Drawing.Point(158, 562);
+            this.dataTempoLocacaoBox.Name = "dataTempoLocacaoBox";
+            this.dataTempoLocacaoBox.Size = new System.Drawing.Size(432, 23);
+            this.dataTempoLocacaoBox.TabIndex = 56;
+            this.dataTempoLocacaoBox.ValueChanged += new System.EventHandler(this.dataTempoLocacao_ValueChanged);
             // 
             // TelaCadastroLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 641);
-            this.Controls.Add(this.dataTempoLocacao);
+            this.Controls.Add(this.dataTempoLocacaoBox);
             this.Controls.Add(this.pictureCarro);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lCifrao);
@@ -534,7 +535,7 @@
             this.Controls.Add(this.lDadosCliente);
             this.Controls.Add(this.lTituloDadosLocador);
             this.Controls.Add(this.txtTempoLocacao);
-            this.Controls.Add(this.dataLocacao);
+            this.Controls.Add(this.dataLocacaoBox);
             this.Controls.Add(this.txtFuncionario);
             this.Controls.Add(this.cboxTaxa);
             this.Controls.Add(this.cboxPlano);
@@ -598,7 +599,7 @@
         private System.Windows.Forms.ComboBox cboxPlano;
         private System.Windows.Forms.ComboBox cboxTaxa;
         private System.Windows.Forms.TextBox txtFuncionario;
-        private System.Windows.Forms.DateTimePicker dataLocacao;
+        private System.Windows.Forms.DateTimePicker dataLocacaoBox;
         private System.Windows.Forms.TextBox txtTempoLocacao;
         private System.Windows.Forms.Label lTituloDadosLocador;
         private System.Windows.Forms.Label lDadosCliente;
@@ -617,6 +618,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureCarro;
-        private System.Windows.Forms.DateTimePicker dataTempoLocacao;
+        private System.Windows.Forms.DateTimePicker dataTempoLocacaoBox;
     }
 }
