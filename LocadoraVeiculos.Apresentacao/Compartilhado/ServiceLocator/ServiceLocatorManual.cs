@@ -14,6 +14,7 @@ using LocadoraVeiculos.Apresentacao.ModuloLocacao;
 using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.ModuloVeiculo;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.ModuloAgrupamento;
 using LocadoraVeiculos.Infra.ModuloCliente;
 using LocadoraVeiculos.Infra.ModuloCondutor;
@@ -93,6 +94,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo,contextoDadosOrm);
             var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm);
 
+            var funcionario = new Funcionario(); 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("ControladorCliente", new ControladorCliente(servicoCliente));

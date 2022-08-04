@@ -3,6 +3,7 @@ using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobrança;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Dominio.ModuloPlanoDeCobranca;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -20,7 +21,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
             this.servicoPlanoCobranca = servicoPlanoCobranca;
             this.servicoAgrupamento = servicoAgrupamento;
         }
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
             List<Agrupamento> clientes = servicoAgrupamento.SelecionarTodos().Value;
             TelaCadastroPlanoCobranca tela = new TelaCadastroPlanoCobranca(clientes);
@@ -31,7 +32,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
             if (resultado == DialogResult.OK)
                 CarregarPlanosDeCobranca();
         }
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             PlanoCobranca planoSelecionado = ObtemPlanoSelecionado();
             if (planoSelecionado == null)
@@ -51,7 +52,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloPlanoDeCobranca
                 CarregarPlanosDeCobranca();
             }
         }
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
             PlanoCobranca planoSelecioando = ObtemPlanoSelecionado();
 

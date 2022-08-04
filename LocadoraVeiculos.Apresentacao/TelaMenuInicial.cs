@@ -136,20 +136,39 @@ namespace LocadoraVeiculos.Apresentacao
             //{
             //    controlador.Inserir(Funcionario funcionarioLogado);
             //}
-            if (controlador != null)
-                controlador.Inserir();
+            if (controlador != null && funcionarioLogado != null)
+                controlador.Inserir(funcionarioLogado);
+            else
+            {
+                MessageBox.Show("Realize o login para fazer um Cadastro",
+                "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
         }
 
         private void BtnEditar_Click_1(object sender, EventArgs e)
         {
-            if (controlador != null)
-                controlador.Editar();
+            if (controlador != null && funcionarioLogado != null)
+                controlador.Editar(funcionarioLogado);
+            else
+            {
+                MessageBox.Show("Realize o login para fazer uma Edição",
+               "Edição", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void BtnExcluir_Click_1(object sender, EventArgs e)
         {
-            if (controlador != null)
-                controlador.Excluir();
+            if (controlador != null && funcionarioLogado != null)
+                controlador.Excluir(funcionarioLogado);
+            else
+            {
+                MessageBox.Show("Realize o login para fazer uma Exclusão",
+               "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -204,7 +223,9 @@ namespace LocadoraVeiculos.Apresentacao
 
             if (login.ToLower() == "admin" && senha.ToLower() == "admin")
             {
-                gerente = true;
+                funcionarioLogado = new Funcionario("ADMIN","admin","admin","10", DateTime.Today, true);
+
+                gerente = funcionarioLogado.Gerente;
                 lStatus.Text = "LOGADO";
                 lStatus.ForeColor = System.Drawing.Color.Green;
                 statusLogin = true;

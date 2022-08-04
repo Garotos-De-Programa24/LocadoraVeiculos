@@ -2,6 +2,7 @@
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             this.servicoAgrupamento = servicoAgrupamento;
         }
 
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
             TelaCadastroVeiculo tela = new TelaCadastroVeiculo(ObterAgrupamentos());
             tela.Veiculo = new Veiculo();
@@ -41,7 +42,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
             return agrupamentos;
         }
 
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             Veiculo veiculoSelecionado = ObtemVeiculoSelecionado();
 
@@ -65,7 +66,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloVeiculo
 
         }
 
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
             Veiculo veiculoSelecionado = ObtemVeiculoSelecionado();
 

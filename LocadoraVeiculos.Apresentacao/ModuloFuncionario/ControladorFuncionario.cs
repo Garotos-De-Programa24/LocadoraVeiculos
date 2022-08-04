@@ -17,7 +17,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
             this.servicoFuncionario = servicoFuncionario;
         }
 
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
             TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
             tela.Funcionario = new Funcionario();
@@ -28,7 +28,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
                 CarregarFuncionarios();
         }
 
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             Funcionario funcionarioSelecionado = ObtemFuncionarioSelecionado();
 
@@ -51,7 +51,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloFuncionario
                 CarregarFuncionarios();
         }
 
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
 
             Funcionario funcionarioSelecionado = ObtemFuncionarioSelecionado();

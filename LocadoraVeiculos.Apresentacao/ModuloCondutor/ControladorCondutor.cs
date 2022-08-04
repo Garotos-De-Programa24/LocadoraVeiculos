@@ -4,6 +4,7 @@ using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -23,7 +24,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
             this.servicoCliente = servicoCliente;
         }
 
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
 
             TelaCadastroCondutor tela = new TelaCadastroCondutor(ObterClientes());
@@ -36,7 +37,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
                 CarregarCondutores();
         }
 
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             Condutor condutorSelecionado = null;
 
@@ -64,7 +65,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
 
         }
 
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
             Condutor condutorSelecionado = null;
 

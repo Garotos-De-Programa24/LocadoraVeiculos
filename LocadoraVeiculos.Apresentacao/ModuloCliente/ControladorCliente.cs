@@ -2,6 +2,7 @@
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
             this.servicoCliente = servicoCliente;            
         }
 
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
             TelaCadastroCliente tela = new TelaCadastroCliente();
             tela.Cliente = new Cliente();
@@ -29,7 +30,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
                 CarregarClientes();
         }
 
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             Cliente clienteSelecionado = null;
 
@@ -58,7 +59,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCliente
 
         }
 
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
             Cliente clienteSelecionado = null;
 

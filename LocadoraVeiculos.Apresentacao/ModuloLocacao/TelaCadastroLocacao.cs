@@ -29,7 +29,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         private int valorFinalTaxa;
 
         public TelaCadastroLocacao(List<Agrupamento> _agrupamentos, List<Cliente> _clientes, List<Taxa> _taxas,
-                                    List<PlanoCobranca> _planos, List<Veiculo> _veiculos, List<Condutor> _condutores)
+                                    List<PlanoCobranca> _planos, List<Veiculo> _veiculos, List<Condutor> _condutores,Funcionario funcionario)
         {
             InitializeComponent();
 
@@ -67,6 +67,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             set
             {
                 locacao = value;
+                txtFuncionario.Text = funcionario.Nome;
 
             }
         }

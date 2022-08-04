@@ -50,10 +50,10 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
             
         }
 
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
             TelaCadastroLocacao tela = new TelaCadastroLocacao(ObterAgrupamentos(), ObterClientes(), ObterTaxas(), ObterPlanos(),
-                                                                ObterVeiculos(), ObterCondutores());
+                                                                ObterVeiculos(), ObterCondutores(),funcionario);
             tela.Locacao = new Locacao();
             tela.GravarRegistro = servicoLocacao.Inserir;
 
@@ -62,7 +62,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
                 CarregarLocacao();
         }
 
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             Locacao locacaoSelecionada = ObtemLocacaoSelecionada();
             if (locacaoSelecionada == null)
@@ -72,7 +72,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
                 return;
             }
             TelaCadastroLocacao tela = new TelaCadastroLocacao(ObterAgrupamentos(), ObterClientes(), ObterTaxas(), ObterPlanos(),
-                                                                ObterVeiculos(), ObterCondutores());
+                                                                ObterVeiculos(), ObterCondutores(),funcionario);
             tela.Locacao = locacaoSelecionada;
             tela.GravarRegistro = servicoLocacao.Editar;
 
@@ -82,7 +82,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
                 CarregarLocacao();
             }
         }
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
             Locacao locacaoSelecionada = ObtemLocacaoSelecionada();
 

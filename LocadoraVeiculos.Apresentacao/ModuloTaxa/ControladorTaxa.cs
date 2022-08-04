@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.ModuloTaxa;
 using System;
@@ -22,7 +23,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
             this.servicoTaxa = servicoTaxa;
         }
 
-        public override void Inserir()
+        public override void Inserir(Funcionario funcionario)
         {
             TelaCadastroTaxa tela = new TelaCadastroTaxa();
             tela.Taxa = new Taxa();
@@ -33,7 +34,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
                 CarregarTaxa();
         }
 
-        public override void Editar()
+        public override void Editar(Funcionario funcionario)
         {
             Taxa clienteSelecionado = ObtemTaxaSelecionado();
 
@@ -57,7 +58,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloTaxa
 
         }
 
-        public override void Excluir()
+        public override void Excluir(Funcionario funcionario)
         {
             Taxa clienteSelecionado = ObtemTaxaSelecionado();
 
