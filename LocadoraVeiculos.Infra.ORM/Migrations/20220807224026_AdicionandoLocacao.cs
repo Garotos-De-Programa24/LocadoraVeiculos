@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
-    public partial class AdicionandoTblocacaoEMudançasNaTabelaTaxa : Migration
+    public partial class AdicionandoLocacao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,18 +14,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_TBPlano_TBAgrupamento_GrupoVeiculosId",
                 table: "TBPlano");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_TBVeiculo_TBAgrupamento_AgrupamentoId",
-                table: "TBVeiculo");
-
-            migrationBuilder.AlterColumn<Guid>(
-                name: "AgrupamentoId",
-                table: "TBVeiculo",
-                type: "uniqueidentifier",
-                nullable: true,
-                oldClrType: typeof(Guid),
-                oldType: "uniqueidentifier");
 
             migrationBuilder.AddColumn<int>(
                 name: "QuantidadePorLocacao",
@@ -51,6 +39,35 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 oldType: "uniqueidentifier");
 
             migrationBuilder.CreateTable(
+                name: "TBVeiculo",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Foto = table.Column<byte[]>(type: "varbinary(MAX)", nullable: true),
+                    CaminhoDaFotoNaMaquina = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VeiculoNome = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Marca = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Ano = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Placa = table.Column<string>(type: "varchar(20)", nullable: false),
+                    CapacidadeTanque = table.Column<string>(type: "varchar(50)", nullable: false),
+                    KmPercorridos = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Combustivel = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Cor = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Disponivel = table.Column<bool>(type: "bit", nullable: false),
+                    AgrupamentoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBVeiculo", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TBVeiculo_TBAgrupamento_AgrupamentoId",
+                        column: x => x.AgrupamentoId,
+                        principalTable: "TBAgrupamento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TbLocacao",
                 columns: table => new
                 {
@@ -61,11 +78,12 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     AgrupamentoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     VeiculoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PlanoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TaxaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TaxasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DataLocacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataDevolucao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataEntrega = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ValorInicio = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ValorFinal = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    ValorFinal = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,7 +147,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                         column: x => x.TaxasId,
                         principalTable: "TBTaxa",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -167,6 +185,11 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 table: "TbLocacao",
                 column: "VeiculoId");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_TBVeiculo_AgrupamentoId",
+                table: "TBVeiculo",
+                column: "AgrupamentoId");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_TBCondutor_TBCliente_ClienteId",
                 table: "TBCondutor",
@@ -182,14 +205,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 principalTable: "TBAgrupamento",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_TBVeiculo_TBAgrupamento_AgrupamentoId",
-                table: "TBVeiculo",
-                column: "AgrupamentoId",
-                principalTable: "TBAgrupamento",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -202,29 +217,18 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 name: "FK_TBPlano_TBAgrupamento_GrupoVeiculosId",
                 table: "TBPlano");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_TBVeiculo_TBAgrupamento_AgrupamentoId",
-                table: "TBVeiculo");
-
             migrationBuilder.DropTable(
                 name: "LocacaoTaxa");
 
             migrationBuilder.DropTable(
                 name: "TbLocacao");
 
+            migrationBuilder.DropTable(
+                name: "TBVeiculo");
+
             migrationBuilder.DropColumn(
                 name: "QuantidadePorLocacao",
                 table: "TBTaxa");
-
-            migrationBuilder.AlterColumn<Guid>(
-                name: "AgrupamentoId",
-                table: "TBVeiculo",
-                type: "uniqueidentifier",
-                nullable: false,
-                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"),
-                oldClrType: typeof(Guid),
-                oldType: "uniqueidentifier",
-                oldNullable: true);
 
             migrationBuilder.AlterColumn<Guid>(
                 name: "GrupoVeiculosId",
@@ -258,14 +262,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                 name: "FK_TBPlano_TBAgrupamento_GrupoVeiculosId",
                 table: "TBPlano",
                 column: "GrupoVeiculosId",
-                principalTable: "TBAgrupamento",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_TBVeiculo_TBAgrupamento_AgrupamentoId",
-                table: "TBVeiculo",
-                column: "AgrupamentoId",
                 principalTable: "TBAgrupamento",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);

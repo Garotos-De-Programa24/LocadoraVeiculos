@@ -94,7 +94,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo,contextoDadosOrm);
             var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm);
 
-            var funcionario = new Funcionario(); 
+            
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("ControladorCliente", new ControladorCliente(servicoCliente));
@@ -104,7 +104,7 @@ namespace LocadoraVeiculos.Apresentacao.Compartilhado.ServiceLocator
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(servicoPlanoCobranca,servicoGrupoVeiculo));
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo,servicoGrupoVeiculo));
-            controladores.Add("ControladorLocacao", new ControladorLocacao(servicoLocacao,servicoGrupoVeiculo,servicoCondutor,servicoCliente,servicoVeiculo,servicoTaxa,servicoPlanoCobranca));
+            controladores.Add("ControladorLocacao", new ControladorLocacao(servicoLocacao,servicoGrupoVeiculo,servicoCondutor,servicoCliente,servicoVeiculo,servicoTaxa,servicoPlanoCobranca,servicoFuncionario));
         }
     }
 }

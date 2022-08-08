@@ -54,7 +54,6 @@
             this.cboxTaxa = new System.Windows.Forms.ComboBox();
             this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.dataLocacaoBox = new System.Windows.Forms.DateTimePicker();
-            this.txtTempoLocacao = new System.Windows.Forms.TextBox();
             this.lTituloDadosLocador = new System.Windows.Forms.Label();
             this.lDadosCliente = new System.Windows.Forms.Label();
             this.lTituloDadosVeiculo = new System.Windows.Forms.Label();
@@ -65,7 +64,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnGerarPdf = new System.Windows.Forms.Button();
-            this.btnDevolucao = new System.Windows.Forms.Button();
             this.lSubTotal = new System.Windows.Forms.Label();
             this.lValor = new System.Windows.Forms.Label();
             this.lCifrao = new System.Windows.Forms.Label();
@@ -241,6 +239,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(444, 591);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(148, 38);
@@ -250,6 +249,7 @@
             // 
             // btnCadastrar
             // 
+            this.btnCadastrar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCadastrar.Location = new System.Drawing.Point(290, 591);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(148, 38);
@@ -344,13 +344,6 @@
             this.dataLocacaoBox.Size = new System.Drawing.Size(432, 23);
             this.dataLocacaoBox.TabIndex = 29;
             // 
-            // txtTempoLocacao
-            // 
-            this.txtTempoLocacao.Location = new System.Drawing.Point(158, 523);
-            this.txtTempoLocacao.Name = "txtTempoLocacao";
-            this.txtTempoLocacao.Size = new System.Drawing.Size(432, 23);
-            this.txtTempoLocacao.TabIndex = 30;
-            // 
             // lTituloDadosLocador
             // 
             this.lTituloDadosLocador.AutoSize = true;
@@ -441,21 +434,12 @@
             // 
             // btnGerarPdf
             // 
-            this.btnGerarPdf.Location = new System.Drawing.Point(892, 591);
+            this.btnGerarPdf.Location = new System.Drawing.Point(1046, 597);
             this.btnGerarPdf.Name = "btnGerarPdf";
             this.btnGerarPdf.Size = new System.Drawing.Size(148, 38);
             this.btnGerarPdf.TabIndex = 41;
             this.btnGerarPdf.Text = "Gerar PDF";
             this.btnGerarPdf.UseVisualStyleBackColor = true;
-            // 
-            // btnDevolucao
-            // 
-            this.btnDevolucao.Location = new System.Drawing.Point(1046, 591);
-            this.btnDevolucao.Name = "btnDevolucao";
-            this.btnDevolucao.Size = new System.Drawing.Size(148, 38);
-            this.btnDevolucao.TabIndex = 40;
-            this.btnDevolucao.Text = "Fazer Devolução";
-            this.btnDevolucao.UseVisualStyleBackColor = true;
             // 
             // lSubTotal
             // 
@@ -471,7 +455,7 @@
             // 
             this.lValor.AutoSize = true;
             this.lValor.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lValor.Location = new System.Drawing.Point(795, 546);
+            this.lValor.Location = new System.Drawing.Point(825, 545);
             this.lValor.Name = "lValor";
             this.lValor.Size = new System.Drawing.Size(32, 17);
             this.lValor.TabIndex = 43;
@@ -481,7 +465,7 @@
             // 
             this.lCifrao.AutoSize = true;
             this.lCifrao.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lCifrao.Location = new System.Drawing.Point(848, 546);
+            this.lCifrao.Location = new System.Drawing.Point(796, 545);
             this.lCifrao.Name = "lCifrao";
             this.lCifrao.Size = new System.Drawing.Size(23, 17);
             this.lCifrao.TabIndex = 44;
@@ -506,7 +490,7 @@
             // 
             // dataTempoLocacaoBox
             // 
-            this.dataTempoLocacaoBox.Location = new System.Drawing.Point(158, 562);
+            this.dataTempoLocacaoBox.Location = new System.Drawing.Point(158, 524);
             this.dataTempoLocacaoBox.Name = "dataTempoLocacaoBox";
             this.dataTempoLocacaoBox.Size = new System.Drawing.Size(432, 23);
             this.dataTempoLocacaoBox.TabIndex = 56;
@@ -524,7 +508,6 @@
             this.Controls.Add(this.lValor);
             this.Controls.Add(this.lSubTotal);
             this.Controls.Add(this.btnGerarPdf);
-            this.Controls.Add(this.btnDevolucao);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.lDadosLocacao);
             this.Controls.Add(this.label4);
@@ -534,7 +517,6 @@
             this.Controls.Add(this.lTituloDadosVeiculo);
             this.Controls.Add(this.lDadosCliente);
             this.Controls.Add(this.lTituloDadosLocador);
-            this.Controls.Add(this.txtTempoLocacao);
             this.Controls.Add(this.dataLocacaoBox);
             this.Controls.Add(this.txtFuncionario);
             this.Controls.Add(this.cboxTaxa);
@@ -600,7 +582,6 @@
         private System.Windows.Forms.ComboBox cboxTaxa;
         private System.Windows.Forms.TextBox txtFuncionario;
         private System.Windows.Forms.DateTimePicker dataLocacaoBox;
-        private System.Windows.Forms.TextBox txtTempoLocacao;
         private System.Windows.Forms.Label lTituloDadosLocador;
         private System.Windows.Forms.Label lDadosCliente;
         private System.Windows.Forms.Label lTituloDadosVeiculo;
@@ -611,7 +592,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnGerarPdf;
-        private System.Windows.Forms.Button btnDevolucao;
         private System.Windows.Forms.Label lSubTotal;
         private System.Windows.Forms.Label lValor;
         private System.Windows.Forms.Label lCifrao;

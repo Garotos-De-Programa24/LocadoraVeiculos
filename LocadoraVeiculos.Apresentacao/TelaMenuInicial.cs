@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Apresentacao
     public partial class TelaMenuInicial : Form
     {
         private ControladorBase controlador;
-        //private ServiceLocatorManual serviceLocator = new ServiceLocatorManual(); refatorar depois
+        private ControladorLocacao controladorLocacao;
         private IServiceLocator serviceLocator;
         bool gerente = false;
         string login;
@@ -52,7 +52,7 @@ namespace LocadoraVeiculos.Apresentacao
 
         private void ConfigurarTelaPrincipal(ControladorBase controlador)
         {
-            this.controlador = controlador; 
+            this.controlador = controlador;
             ConfigurarListagem();
         }
 
@@ -70,12 +70,15 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnClientes_Click_1(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorCliente>();
+            btnDevolucao.Visible = false;
+
             ConfigurarTelaPrincipal(controlador);
         }        
 
         private void btnAgrupamento_Click_1(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorAgrupamento>();
+            btnDevolucao.Visible = false;
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -83,13 +86,15 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnCondutor_Click(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorCondutor>();
-
+            btnDevolucao.Visible = false;
+            
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnPlano_Click(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorPlanoDeCobranca>();
+            btnDevolucao.Visible = false;
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -97,6 +102,7 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnTaxa_Click(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorTaxa>();
+            btnDevolucao.Visible = false;
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -104,6 +110,7 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnVeiculo_Click(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorVeiculo>();
+            btnDevolucao.Visible = false;
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -111,13 +118,15 @@ namespace LocadoraVeiculos.Apresentacao
         private void btnLocacao_Click(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorLocacao>();
-
+            btnDevolucao.Visible = true;
             ConfigurarTelaPrincipal(controlador);
+            
         }
 
         private void btnFuncionario_Click_1(object sender, EventArgs e)
         {
             controlador = serviceLocator.Get<ControladorFuncionario>();
+            btnDevolucao.Visible = false;
 
             if (gerente == true)
                 ConfigurarTelaPrincipal(controlador);
@@ -132,10 +141,7 @@ namespace LocadoraVeiculos.Apresentacao
 
         private void BtnCadastrar_Click_1(object sender, EventArgs e)
         {
-            //if(controlador == serviceLocator.Get<ControladorLocacao>())
-            //{
-            //    controlador.Inserir(Funcionario funcionarioLogado);
-            //}
+            
             if (controlador != null && funcionarioLogado != null)
                 controlador.Inserir(funcionarioLogado);
             else
@@ -170,7 +176,20 @@ namespace LocadoraVeiculos.Apresentacao
                 return;
             }
         }
-
+        private void btnDevolucao_Click(object sender, EventArgs e)
+        {
+            if (controlador != null && funcionarioLogado != null)
+            {
+                controladorLocacao = (ControladorLocacao)controlador;
+                controladorLocacao.Devolucao(funcionarioLogado);
+            }
+            else
+            {
+                MessageBox.Show("Realize o login para fazer uma Devolução",
+               "Devolução", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             login = txtLogin.Text;
@@ -217,6 +236,7 @@ namespace LocadoraVeiculos.Apresentacao
                 txtSenha.Enabled = true;
                 txtSenha.Text = "";
                 btnEntrar.Text = "Entrar";
+                funcionarioLogado = null;
                 ConfigurarTelaPrincipal(serviceLocator.Get<ControladorCliente>());
                 return;
             }

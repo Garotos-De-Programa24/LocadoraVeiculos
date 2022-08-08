@@ -38,6 +38,7 @@
             this.btnCadastrar = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
+            this.btnDevolucao = new System.Windows.Forms.ToolStripButton();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnAgrupamento = new System.Windows.Forms.Button();
             this.btnCondutor = new System.Windows.Forms.Button();
@@ -100,7 +101,8 @@
             this.toolStripLabel1,
             this.btnCadastrar,
             this.btnEditar,
-            this.btnExcluir});
+            this.btnExcluir,
+            this.btnDevolucao});
             this.toolControl.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolControl.Location = new System.Drawing.Point(0, 77);
             this.toolControl.Name = "toolControl";
@@ -149,6 +151,19 @@
             this.btnExcluir.Size = new System.Drawing.Size(78, 36);
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click_1);
+            // 
+            // btnDevolucao
+            // 
+            this.btnDevolucao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDevolucao.Image = global::LocadoraVeiculos.Apresentacao.Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24__1_;
+            this.btnDevolucao.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDevolucao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDevolucao.Name = "btnDevolucao";
+            this.btnDevolucao.Padding = new System.Windows.Forms.Padding(4);
+            this.btnDevolucao.Size = new System.Drawing.Size(100, 36);
+            this.btnDevolucao.Text = "Devolucao";
+            this.btnDevolucao.Visible = false;
+            this.btnDevolucao.Click += new System.EventHandler(this.btnDevolucao_Click);
             // 
             // btnClientes
             // 
@@ -315,11 +330,11 @@
             // 
             this.lTitulo.AutoSize = true;
             this.lTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lTitulo.Font = new System.Drawing.Font("News706 BT", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lTitulo.ForeColor = System.Drawing.Color.White;
             this.lTitulo.Location = new System.Drawing.Point(970, 22);
             this.lTitulo.Name = "lTitulo";
-            this.lTitulo.Size = new System.Drawing.Size(300, 42);
+            this.lTitulo.Size = new System.Drawing.Size(291, 39);
             this.lTitulo.TabIndex = 11;
             this.lTitulo.Text = "Rech\'s Locadora";
             // 
@@ -465,5 +480,6 @@
         private System.Windows.Forms.Label lStatus;
         private System.Windows.Forms.ToolStripStatusLabel status;
         private System.Windows.Forms.Button btnLocacao;
+        private System.Windows.Forms.ToolStripButton btnDevolucao;
     }
 }

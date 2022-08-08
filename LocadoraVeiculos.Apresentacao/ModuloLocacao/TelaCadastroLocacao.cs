@@ -18,31 +18,32 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
 {
     public partial class TelaCadastroLocacao : Form
     {
-        private ServicoCondutor servicoCondutor;
-
+        
         private List<PlanoCobranca> planos;
         private List<Veiculo> veiculos;
+        private List<Funcionario> funcionarios;
         private List<Condutor> condutores;
         private Funcionario funcionario;
         private int diasDeLocacao;
-        private int valorTaxaAcumulada;
-        private int valorFinalTaxa;
+        private decimal valorTaxaAcumulada;
+        private decimal valorPlano;
+        private decimal valorFinal;
 
         public TelaCadastroLocacao(List<Agrupamento> _agrupamentos, List<Cliente> _clientes, List<Taxa> _taxas,
-                                    List<PlanoCobranca> _planos, List<Veiculo> _veiculos, List<Condutor> _condutores,Funcionario funcionario)
+                                    List<PlanoCobranca> _planos, List<Veiculo> _veiculos, List<Condutor> _condutores, List<Funcionario> _funcionarios,Funcionario funcionario)
         {
             InitializeComponent();
 
             //configurar combo box iniciais
             this.funcionario = funcionario;
-
+            
 
             List<Cliente> clientes = _clientes;
-            foreach (Cliente c in clientes)            
+            foreach (Cliente c in clientes)
                 cboxCliente.Items.Add(c);
 
             List<Agrupamento> agrupamentos = _agrupamentos;
-            foreach (Agrupamento a in agrupamentos)            
+            foreach (Agrupamento a in agrupamentos)
                 cboxAgrupamento.Items.Add(a);
 
             List<Taxa> taxas = _taxas;
@@ -52,6 +53,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             planos = _planos;
             veiculos = _veiculos;
             condutores = _condutores;
+            this.funcionarios = _funcionarios;
         }
 
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
@@ -68,6 +70,12 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             {
                 locacao = value;
                 txtFuncionario.Text = funcionario.Nome;
+                cboxCliente.SelectedItem = locacao.Cliente;
+                cboxCondutor.SelectedItem = locacao.Condutor;
+                cboxAgrupamento.SelectedItem = locacao.Agrupamento;
+                cboxVeiculo.SelectedItem = locacao.Veiculo;
+                cboxPlano.SelectedItem = locacao.Plano;
+                listEquipamentos.SelectedItem = locacao.Taxas;
 
             }
         }
@@ -83,7 +91,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
                 if (condutor.Cliente.Id == cliente.Id)
                     cboxCondutor.Items.Add(condutor);
             }
-            
+
         }
 
         private void AtualizarResumo()
@@ -95,7 +103,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             if (cboxCondutor.SelectedItem != null)
             {
                 lDadosCliente.Text += cboxCondutor.SelectedItem.ToString();
-     
+
             }
             if (cboxVeiculo.SelectedItem != null)
             {
@@ -109,9 +117,9 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
                 }
 
             }
-            if(diasDeLocacao != 0 && Locacao.Taxas.Count != 0)
+            if (diasDeLocacao != 0 && Locacao.Taxas.Count != 0)
             {
-             
+
                 AtualizandoResumoTaxas();
                 valorTaxaAcumulada = 0;
 
@@ -125,23 +133,31 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
                     valorTaxaAcumulada += taxa.QuantidadePorLocacao * Convert.ToInt32(taxa.Valor);
                 }
                 
-                
+
                 lDadosTaxa.Text += "Valor Total das Taxas: R$" + valorTaxaAcumulada;
             }
             if (cboxPlano.SelectedItem != null)
             {
+                var plano = (PlanoCobranca)cboxPlano.SelectedItem;
+                valorPlano = plano.ValorDiario;
                 lDadosLocacao.Text = cboxPlano.SelectedItem.ToString();
                 Locacao.DataLocacao = dataLocacaoBox.Value;
                 Locacao.DataDevolucao = dataTempoLocacaoBox.Value;
 
                 if (Locacao.DataDevolucao.DayOfYear - Locacao.DataLocacao.DayOfYear >= 1)
                 {
-                lDadosLocacao.Text += "Data Locação: " + Locacao.DataLocacao.ToShortDateString() + "\nData Devolução: " + Locacao.DataDevolucao.ToShortDateString();
-                diasDeLocacao = Locacao.DataDevolucao.DayOfYear - Locacao.DataLocacao.DayOfYear;
-                lDadosLocacao.Text += "\nDias de Locação: " + diasDeLocacao;
+                    lDadosLocacao.Text += "Data Locação: " + Locacao.DataLocacao.ToShortDateString() + "\nData Devolução: " + Locacao.DataDevolucao.ToShortDateString();
+                    diasDeLocacao = Locacao.DataDevolucao.DayOfYear - Locacao.DataLocacao.DayOfYear;
+                    lDadosLocacao.Text += "\nDias de Locação: " + diasDeLocacao;
                 }
             }
-            
+            if(valorPlano != 0 && diasDeLocacao != 0)
+            {
+                AtualizandoResumoTaxas();
+                valorFinal = valorTaxaAcumulada + (valorPlano * diasDeLocacao);
+                lValor.Text = Convert.ToString(valorFinal);
+            }
+           
         }
 
         private void cboxAgrupamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -204,20 +220,30 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
 
         private void AtualizandoResumoTaxas()
         {
-            
-            lDadosTaxa.Text = "";
 
+            lDadosTaxa.Text = "";
+            valorTaxaAcumulada = 0;
             foreach (var item in Locacao.Taxas)
             {
                 lDadosTaxa.Text += item.QuantidadePorLocacao + " " + item.ToString();
+
+                if (item.TaxaDiaria)
+                {
+                    valorTaxaAcumulada += item.QuantidadePorLocacao * (Convert.ToDecimal(item.Valor) * diasDeLocacao);
+                }
+                else
+                {
+                    valorTaxaAcumulada += Convert.ToDecimal(item.Valor) * item.QuantidadePorLocacao;
+                }; 
             }
+            lDadosTaxa.Text += "Valor Total Acumulado: R$" + valorTaxaAcumulada;
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
             foreach (var taxa in Locacao.Taxas)
             {
-               
+
                 if (taxa == listEquipamentos.SelectedItem)
                 {
                     taxa.QuantidadePorLocacao--;
@@ -239,29 +265,22 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
             }
         }
 
-        private void cboxCondutor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AtualizarResumo();
-        }
-
-        private void cboxVeiculo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AtualizarResumo();
-        }
+        
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             locacao.Cliente = (Cliente)cboxCliente.SelectedItem;
             locacao.Condutor = (Condutor)cboxCondutor.SelectedItem;
             locacao.Agrupamento = (Agrupamento)cboxAgrupamento.SelectedItem;
-            
+            locacao.Plano = (PlanoCobranca)cboxPlano.SelectedItem;
             locacao.Veiculo = (Veiculo)cboxVeiculo.SelectedItem;
             locacao.Veiculo.Disponivel = false;
-
+            locacao.ValorInicio = valorFinal;
             locacao.DataLocacao = dataLocacaoBox.Value;
 
             locacao.DataDevolucao = dataTempoLocacaoBox.Value;
 
+            locacao.Funcionario = funcionarios.Find(x => x.Nome == txtFuncionario.Text);
             
 
             var resultadoValidacao = GravarRegistro(locacao);
@@ -272,7 +291,7 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
 
                 if (erro.StartsWith("Falha no sistema"))
                 {
-                    MessageBox.Show(erro, "Cadastro de condutor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(erro, "Cadastro de Locacao", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -288,6 +307,15 @@ namespace LocadoraVeiculos.Apresentacao.Modulolocacao
         }
 
         private void dataTempoLocacao_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarResumo();
+        }
+        private void cboxCondutor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarResumo();
+        }
+
+        private void cboxVeiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
             AtualizarResumo();
         }

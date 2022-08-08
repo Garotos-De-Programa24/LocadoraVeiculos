@@ -15,13 +15,20 @@ namespace LocadoraVeiculos.Dominio.ModuloLocação
     {
         public Locacao()
         {
-            Funcionario = new Funcionario();
-            Cliente = new Cliente();
-            Condutor = new Condutor();
-            Agrupamento = new Agrupamento();
-            Veiculo = new Veiculo();
-            Plano = new PlanoCobranca();
-            Taxas = new List<Taxa>();            
+            Taxas = new List<Taxa>();
+        }
+
+        public Locacao(Funcionario funcionario,Cliente cliente, Condutor condutor,Agrupamento agrupamento,
+            Veiculo veiculo,PlanoCobranca planoCobranca)
+        {
+
+            this.Funcionario = funcionario;
+            Cliente = cliente;
+            Condutor = condutor;
+            Agrupamento = agrupamento;
+            Veiculo = veiculo;
+            Plano = planoCobranca;
+                 
         }
 
         public Funcionario Funcionario { get; set; }
@@ -38,13 +45,15 @@ namespace LocadoraVeiculos.Dominio.ModuloLocação
         public PlanoCobranca Plano { get; set; }
         public Guid PlanoId { get; set; }
         public List<Taxa> Taxas { get; set; }
-        public Guid TaxaId { get; set; }
+        public Guid TaxasId { get; set; }
         public DateTime DataLocacao { get; set; }
 
         public DateTime DataDevolucao { get; set; }
 
+        public DateTime? DataEntrega { get; set; }
+        
         public decimal ValorInicio { get; set; }
-        public decimal ValorFinal { get; set; }
+        public decimal? ValorFinal { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -63,31 +72,12 @@ namespace LocadoraVeiculos.Dominio.ModuloLocação
                    EqualityComparer<PlanoCobranca>.Default.Equals(Plano, locacao.Plano) &&
                    PlanoId.Equals(locacao.PlanoId) &&
                    EqualityComparer<List<Taxa>>.Default.Equals(Taxas, locacao.Taxas) &&
-                   TaxaId.Equals(locacao.TaxaId) &&
+                   TaxasId.Equals(locacao.TaxasId) &&
                    DataLocacao == locacao.DataLocacao &&
                    DataDevolucao == locacao.DataDevolucao &&
+                   DataEntrega == locacao.DataEntrega &&
                    ValorInicio == locacao.ValorInicio &&
                    ValorFinal == locacao.ValorFinal;
         }
-
-
-
-        //public override bool Equals(object obj)
-        //{
-        //    Locacao locacao = obj as Locacao;
-
-        //    if (locacao == null)
-        //        return false;
-
-        //    return
-        //        locacao.Funcionario.Id.Equals(Funcionario.Id) &&
-        //        locacao.Cliente.Id.Equals(Cliente.Id) &&
-        //        locacao.Agrupamento.Id.Equals(Agrupamento.Id) &&
-        //        locacao.Veiculo.Id.Equals(Veiculo.Id) &&
-        //        locacao.Plano.Id.Equals(Plano.Id) &&
-        //        locacao.Taxas.Id.Equals(Taxa.Id) &&
-        //        locacao.DataLocacao.Equals(DataLocacao) &&
-        //        locacao.DataDevolucao.Equals(DataDevolucao);                
-        //}
     }
 }

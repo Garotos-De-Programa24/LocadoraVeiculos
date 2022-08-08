@@ -7,6 +7,7 @@ using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using LocadoraVeiculos.Apresentacao.Compartilhado;
+using LocadoraVeiculos.Apresentacao.ModuloDevolucao;
 using LocadoraVeiculos.Apresentacao.Modulolocacao;
 using LocadoraVeiculos.Dominio.ModuloAgrupamento;
 using LocadoraVeiculos.Dominio.ModuloCliente;
@@ -37,7 +38,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
         
 
         public ControladorLocacao(ServicoLocacao servicoLocacao, ServicoAgrupamento servicoAgrupamento, ServicoCondutor servicoCondutor,
-            ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo, ServicoTaxa servicoTaxa, ServicoPlanoCobranca servicoPlano)
+            ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo, ServicoTaxa servicoTaxa, ServicoPlanoCobranca servicoPlano,ServicoFuncionario servicoFuncionario)
         {
             this.servicoLocacao = servicoLocacao;
             this.servicoAgrupamento = servicoAgrupamento;
@@ -53,7 +54,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
         public override void Inserir(Funcionario funcionario)
         {
             TelaCadastroLocacao tela = new TelaCadastroLocacao(ObterAgrupamentos(), ObterClientes(), ObterTaxas(), ObterPlanos(),
-                                                                ObterVeiculos(), ObterCondutores(),funcionario);
+                                                                ObterVeiculos(), ObterCondutores(),ObterFuncionario(),funcionario);
             tela.Locacao = new Locacao();
             tela.GravarRegistro = servicoLocacao.Inserir;
 
@@ -62,9 +63,11 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
                 CarregarLocacao();
         }
 
+       
         public override void Editar(Funcionario funcionario)
         {
             Locacao locacaoSelecionada = ObtemLocacaoSelecionada();
+            locacaoSelecionada.Veiculo.Disponivel = true;
             if (locacaoSelecionada == null)
             {
                 MessageBox.Show("Selecione uma Locação primeiro",
@@ -72,7 +75,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
                 return;
             }
             TelaCadastroLocacao tela = new TelaCadastroLocacao(ObterAgrupamentos(), ObterClientes(), ObterTaxas(), ObterPlanos(),
-                                                                ObterVeiculos(), ObterCondutores(),funcionario);
+                                                                ObterVeiculos(), ObterCondutores(),ObterFuncionario(),funcionario);
             tela.Locacao = locacaoSelecionada;
             tela.GravarRegistro = servicoLocacao.Editar;
 
@@ -82,6 +85,28 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
                 CarregarLocacao();
             }
         }
+        public void Devolucao(Funcionario funcionario)
+        {
+            Locacao locacaoSelecionada = ObtemLocacaoSelecionada();
+            
+            if (locacaoSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma Locação primeiro",
+                "Edição de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            locacaoSelecionada.Veiculo.Disponivel = true;
+            TelaCadastroDevolucao tela = new TelaCadastroDevolucao(locacaoSelecionada);
+            tela.Locacao = locacaoSelecionada;
+            tela.GravarRegistro = servicoLocacao.Editar;
+
+            DialogResult resultado = tela.ShowDialog();
+            if (resultado == DialogResult.OK)
+            {
+                CarregarLocacao();
+            }
+        }
+
         public override void Excluir(Funcionario funcionario)
         {
             Locacao locacaoSelecionada = ObtemLocacaoSelecionada();
@@ -149,25 +174,17 @@ namespace LocadoraVeiculos.Apresentacao.ModuloLocacao
         //region
         #region Listas
 
-        //private Funcionario ObterFuncionarioLogado()
-        //{
-            
-        //    var id = telaLocacaoControl.ObtemNumeroLocacaoSelecionado();
-        //    var resultado = servicoLocacao.SelecionarPorId(id);
-        //    Locacao locacaoSelecionada = null;
-        //    if (resultado.IsSuccess)
-        //    {
-        //        locacaoSelecionada = resultado.Value;
+        private List<Funcionario> ObterFuncionario()
+        {
+            var resultadoDoresult = servicoFuncionario.SelecionarTodos();
+            List<Funcionario> funcionarios = new List<Funcionario>();
 
-        //    }
-        //    else if (resultado.IsFailed)
-        //    {
-        //        MessageBox.Show(resultado.Errors[0].Message, "Selecionar a Locação",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    return locacaoSelecionada;
+            if (resultadoDoresult.IsSuccess)
+                funcionarios = resultadoDoresult.Value;
 
-        //}
+            return funcionarios;
+        }
+
         private List<Condutor> ObterCondutores()
         {
             var resultadoDoresult = servicoCondutor.SelecionarTodos();

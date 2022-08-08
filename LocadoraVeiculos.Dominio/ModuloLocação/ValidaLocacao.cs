@@ -11,8 +11,8 @@ namespace LocadoraVeiculos.Dominio.ModuloLocação
     {
         public ValidaLocacao()
         {
-           // RuleFor(x => x.Funcionario)
-           //.NotNull().NotEmpty();
+            RuleFor(x => x.Funcionario)
+           .NotNull().NotEmpty();
 
             RuleFor(x => x.Cliente)
            .NotNull().NotEmpty();

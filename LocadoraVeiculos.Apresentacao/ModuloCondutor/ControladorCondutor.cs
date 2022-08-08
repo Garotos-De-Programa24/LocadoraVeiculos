@@ -16,7 +16,7 @@ namespace LocadoraVeiculos.Apresentacao.ModuloCondutor
         private TelaCondutorControl telaCondutorControl;
         private readonly ServicoCondutor servicoCondutor;
         private ServicoCliente servicoCliente;
-
+        
 
         public ControladorCondutor(ServicoCondutor servicoCondutor,ServicoCliente servicoCliente)
         {

@@ -22,10 +22,12 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloLocacao
             builder.HasOne(x => x.Agrupamento);
             builder.HasOne(x => x.Condutor);
             builder.HasOne(x => x.Cliente);
-            builder.Property(x => x.DataLocacao).IsRequired(); 
+            builder.Property(x => x.DataLocacao).IsRequired();
             builder.Property(x => x.DataDevolucao);
+            builder.Property(x => x.DataEntrega);
             builder.Property(x => x.ValorInicio).HasColumnType("decimal(18,2)"); 
             builder.Property(x => x.ValorFinal).HasColumnType("decimal(18,2)");
+            
 
             
         }

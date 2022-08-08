@@ -12,11 +12,12 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloLocacao
     public class RepositorioLocacaoORM : IRepositorioLocacao
     {
         private DbSet<Locacao> locacacoes;
-        private readonly LocadoraVeiculoDbContext dbContext;
+        private readonly LocadoraVeiculoDbContext _dbContext;
         public RepositorioLocacaoORM(LocadoraVeiculoDbContext dbContext)
         {
-            locacacoes = dbContext.Set<Locacao>();
-            this.dbContext = dbContext;
+            _dbContext = dbContext;
+            locacacoes = _dbContext.Set<Locacao>();
+           
                 
         }
         public void Inserir(Locacao novoRegistro)
@@ -35,7 +36,7 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloLocacao
 
         public Locacao SelecionarPorId(Guid id)
         {
-            return locacacoes.SingleOrDefault(x => x.Id == id);
+            return locacacoes.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Locacao> SelecionarTodos()

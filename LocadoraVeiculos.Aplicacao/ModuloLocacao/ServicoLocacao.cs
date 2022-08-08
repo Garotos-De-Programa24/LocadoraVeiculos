@@ -102,6 +102,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
                 return Result.Fail(msgErro);
             }
         }
+       
         public Result<Locacao> Excluir(Locacao locacao)
         {
             Log.Logger.Information("Tentando excluir o Locacao @{locacao}", locacao);

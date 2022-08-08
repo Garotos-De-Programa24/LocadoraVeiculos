@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20220730205557_AdicionandoTblocacaoEMudançasNaTabelaTaxa")]
-    partial class AdicionandoTblocacaoEMudançasNaTabelaTaxa
+    [Migration("20220807224026_AdicionandoLocacao")]
+    partial class AdicionandoLocacao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -171,6 +171,9 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     b.Property<DateTime>("DataDevolucao")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DataEntrega")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DataLocacao")
                         .HasColumnType("datetime2");
 
@@ -180,10 +183,10 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     b.Property<Guid>("PlanoId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TaxaId")
+                    b.Property<Guid>("TaxasId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("ValorFinal")
+                    b.Property<decimal?>("ValorFinal")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("ValorInicio")
@@ -335,7 +338,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                     b.HasOne("LocadoraVeiculos.Dominio.ModuloTaxa.Taxa", null)
                         .WithMany()
                         .HasForeignKey("TaxasId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
